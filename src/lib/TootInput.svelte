@@ -8,10 +8,11 @@
 	export let attrs: any = undefined;
 
 	$: parsed = parse_status_url(url);
+	$: invalid = !!(url && !parsed);
 </script>
 
 <fieldset>
-	<div class="row spaced">
+	<div class="row" class:spaced={invalid}>
 		<label title="where to load the toot" class="flex_1 row">
 			<a class="icon_button box spaced_hz" style:font-size="var(--size_1)" href={url || undefined}
 				>🔗</a
@@ -24,7 +25,7 @@
 			/>
 		</label>
 	</div>
-	{#if url && !parsed}
+	{#if invalid}
 		<div transition:slide>
 			<Alert status="error">invalid Mastodon status url</Alert>
 		</div>
