@@ -2,7 +2,7 @@
 	import Toot from '$lib/Toot.svelte';
 	import {mastodon_cache} from '$routes/mastodon_cache.js';
 
-	// TODO @multiple avoid loading in production, lazy import?
+	// TODO @multiple refactor mastodon fake data, avoid loading in production, lazy import?
 	const cache = import.meta.env.DEV ? mastodon_cache : null;
 </script>
 
