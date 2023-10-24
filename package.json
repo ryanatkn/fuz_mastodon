@@ -1,8 +1,8 @@
 {
   "name": "@fuz.dev/fuz_template",
-  "private": true,
   "description": "a static web app and Node library template with TypeScript, Svelte, SvelteKit, Vite, esbuild, Fuz, and Gro",
   "version": "0.0.1",
+  "license": "MIT",
   "homepage": "https://template.fuz.dev/",
   "repository": "https://github.com/fuz-dev/fuz_template",
   "type": "module",
