@@ -11,6 +11,9 @@
 		<h1>fuz_mastodon</h1>
 	</section>
 	<section class="box width_sm">
+		<blockquote>
+			TODO the slide transition isn't working like it was before moving it here
+		</blockquote>
 		<Toot
 			replies
 			storage_key="example_1"
@@ -19,6 +22,7 @@
 			initial_autoload={true}
 		/>
 	</section>
+	<footer>footer</footer>
 </main>
 
 <style>
