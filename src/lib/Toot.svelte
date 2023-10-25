@@ -71,7 +71,7 @@
 		show_settings = !show_settings;
 	};
 
-	export let autoload_key: string | undefined = 'autoload'; // TODO customizable
+	export let autoload_key: string | undefined = 'autoload';
 
 	export let initial_autoload = false;
 
@@ -81,11 +81,20 @@
 
 	$: autoload_key && set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
 
+	// TODO make this store the actual fetch result in localStorage, then it can be exposed during production
+	export let cache_enabled_key: string | undefined = 'cache_enabled';
+
+	export let initial_cache_enabled = import.meta.env.DEV;
+
+	export let cache_enabled = cache_enabled_key
+		? load_from_storage(cache_enabled_key, () => initial_cache_enabled)
+		: initial_cache_enabled; // TODO store?
+
+	$: cache_enabled_key && set_in_storage(cache_enabled_key, cache_enabled); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
+
 	$: parsed = parse_status_url(url);
 	$: id = parsed?.status_id ?? null;
 	$: host = parsed?.host ?? null;
-
-	// TODO save autoload state
 
 	$: with_context = replies || ancestors;
 
@@ -99,7 +108,7 @@
 		{host}
 		{id}
 		{with_context}
-		{cache}
+		cache={cache_enabled ? cache : null}
 		let:item
 		let:context
 		let:replies
@@ -195,6 +204,16 @@
 									onscreen</label
 								>
 							</fieldset>
+							{#if import.meta.env.DEV}
+								<fieldset class="row">
+									<label
+										class="row"
+										title={'the local Mastodon post cache is ' +
+											(cache_enabled ? 'enabled' : 'disabled')}
+										><input type="checkbox" bind:checked={cache_enabled} />enable local post cache</label
+									>
+								</fieldset>
+							{/if}
 						</form>
 						<slot name="settings" />
 					</div>

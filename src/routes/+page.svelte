@@ -12,7 +12,7 @@
 	</section>
 	<section class="box width_sm">
 		<blockquote>
-			TODO the slide transition isn't working like it was before moving it here
+			TODO the slide transition isn't working like it was before moving it here on reset
 		</blockquote>
 		<Toot
 			replies
