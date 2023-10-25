@@ -5,6 +5,11 @@
   "license": "MIT",
   "homepage": "https://mastodon.fuz.dev/",
   "repository": "https://github.com/fuz-dev/fuz_mastodon",
+  "author": {
+    "name": "Ryan Atkinson",
+    "email": "mail@ryanatkn.com",
+    "url": "https://www.ryanatkn.com/"
+  },
   "type": "module",
   "engines": {
     "node": ">=20.7"
@@ -78,6 +83,14 @@
     "./MastodonStatusTree.svelte": {
       "svelte": "./dist/MastodonStatusTree.svelte",
       "types": "./dist/MastodonStatusTree.svelte.d.ts"
+    },
+    "./package.gen.js": {
+      "default": "./dist/package.gen.js",
+      "types": "./dist/package.gen.d.ts"
+    },
+    "./package.js": {
+      "default": "./dist/package.js",
+      "types": "./dist/package.d.ts"
     },
     "./storage.js": {
       "default": "./dist/storage.js",

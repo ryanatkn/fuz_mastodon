@@ -231,12 +231,8 @@
 		flex-direction: column;
 		justify-content: space-between;
 		flex: 1;
-		margin: var(--spacing_3) 0;
 		gap: var(--spacing_md);
 		width: 100%;
-	}
-	.toot.replies {
-		margin-bottom: var(--spacing_md);
 	}
 	.toot_content {
 		flex: 1;
