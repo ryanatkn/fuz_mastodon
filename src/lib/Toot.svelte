@@ -101,6 +101,8 @@
 	$: enable_load = loading !== false && !!host;
 
 	$: enable_reset = loading !== undefined || url !== initial_url;
+
+	$: final_cache = cache_enabled ? cache : null;
 </script>
 
 {#key loaded_status_key}
@@ -108,7 +110,7 @@
 		{host}
 		{id}
 		{with_context}
-		cache={cache_enabled ? cache : null}
+		cache={final_cache}
 		let:item
 		let:context
 		let:replies
