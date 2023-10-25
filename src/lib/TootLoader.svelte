@@ -10,6 +10,8 @@
 		type MastodonCache,
 	} from '$lib/mastodon.js';
 
+	// TODO maybe delete this and merge into `Toot`
+
 	/**
 	 * The host part of the url, like `'mastodon.ryanatkn.com'`.
 	 */
