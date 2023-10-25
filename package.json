@@ -25,12 +25,14 @@
     "@fuz.dev/fuz_contextmenu": "^0.4.1",
     "@fuz.dev/fuz_dialog": "^0.3.1",
     "@fuz.dev/fuz_library": "^0.11.1",
+    "@fuz.dev/svelte_intersect": "^0.5.1",
     "@grogarden/gro": "^0.96.0",
     "@grogarden/util": "^0.15.2",
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.27.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "date-fns": "^2.30.0",
     "eslint": "^8.52.0",
     "eslint-plugin-svelte": "^2.34.0",
     "prettier": "^3.0.3",
@@ -63,9 +65,33 @@
     ]
   },
   "exports": {
-    "./example.js": {
-      "default": "./dist/example.js",
-      "types": "./dist/example.d.ts"
+    "./mastodon.js": {
+      "default": "./dist/mastodon.js",
+      "types": "./dist/mastodon.d.ts"
+    },
+    "./MastodonStatusItem.svelte": {
+      "svelte": "./dist/MastodonStatusItem.svelte",
+      "types": "./dist/MastodonStatusItem.svelte.d.ts"
+    },
+    "./MastodonStatusTree.svelte": {
+      "svelte": "./dist/MastodonStatusTree.svelte",
+      "types": "./dist/MastodonStatusTree.svelte.d.ts"
+    },
+    "./storage.js": {
+      "default": "./dist/storage.js",
+      "types": "./dist/storage.d.ts"
+    },
+    "./Toot.svelte": {
+      "svelte": "./dist/Toot.svelte",
+      "types": "./dist/Toot.svelte.d.ts"
+    },
+    "./TootInput.svelte": {
+      "svelte": "./dist/TootInput.svelte",
+      "types": "./dist/TootInput.svelte.d.ts"
+    },
+    "./TootLoader.svelte": {
+      "svelte": "./dist/TootLoader.svelte",
+      "types": "./dist/TootLoader.svelte.d.ts"
     }
   }
 }
