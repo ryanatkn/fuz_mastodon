@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.1.2
+
+### Patch Changes
+
+- 6cab5ac: use `import.meta.env.SSR` instead of `browser` from `$app/environment`
+
 ## 0.1.1
 
 ### Patch Changes
