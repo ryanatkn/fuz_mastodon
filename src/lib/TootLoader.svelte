@@ -1,6 +1,4 @@
 <script lang="ts">
-	import {browser} from '$app/environment';
-
 	import {
 		fetch_status_context,
 		type MastodonContext,
@@ -99,7 +97,7 @@
 	};
 
 	const load = async (): Promise<void> => {
-		if (!browser || !host || !id) return;
+		if (import.meta.env.SSR || !host || !id) return;
 		const start_time = performance.now();
 		loading = true;
 		// TODO error handling

@@ -1,5 +1,3 @@
-import {browser} from '$app/environment';
-
 // TODO would be nice to support `to_default_value` not being a function
 
 /**
@@ -15,7 +13,7 @@ export const load_from_storage = <T>(
 	to_default_value: () => T,
 	validate?: (value: any) => asserts value is T,
 ): T => {
-	if (!browser) return to_default_value();
+	if (import.meta.env.SSR) return to_default_value();
 	try {
 		const stored = localStorage.getItem(key);
 		if (!stored) return to_default_value();
@@ -38,7 +36,7 @@ export const load_from_storage = <T>(
  * @param value
  */
 export const set_in_storage = (key: string, value: any): void => {
-	if (!browser) return;
+	if (import.meta.env.SSR) return;
 	try {
 		if (value === undefined) {
 			localStorage.removeItem(key);
