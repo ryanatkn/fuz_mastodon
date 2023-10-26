@@ -33,9 +33,9 @@
   "devDependencies": {
     "@changesets/changelog-git": "^0.1.14",
     "@feltjs/eslint-config": "^0.4.1",
-    "@fuz.dev/fuz": "^0.75.1",
-    "@fuz.dev/fuz_contextmenu": "^0.4.1",
-    "@fuz.dev/fuz_dialog": "^0.3.1",
+    "@fuz.dev/fuz": "^0.75.2",
+    "@fuz.dev/fuz_contextmenu": "^0.4.2",
+    "@fuz.dev/fuz_dialog": "^0.3.2",
     "@fuz.dev/fuz_library": "^0.12.3",
     "@fuz.dev/svelte_intersect": "^0.5.1",
     "@grogarden/gro": "^0.96.1",
