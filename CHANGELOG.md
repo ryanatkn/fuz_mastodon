@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.1.3
+
+### Patch Changes
+
+- e7f5d95: upgrade `@grogarden/gro` to fix `package.ts`
+
 ## 0.1.2
 
 ### Patch Changes

@@ -5,7 +5,7 @@ import type {PackageJson} from '@grogarden/gro/package_json.js';
 export const package_json = {
 	name: '@fuz.dev/fuz_mastodon',
 	description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
-	version: '0.1.2',
+	version: '0.1.3',
 	public: true,
 	license: 'MIT',
 	homepage: 'https://mastodon.fuz.dev/',
