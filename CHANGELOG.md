@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.2.0
+
+### Minor Changes
+
+- 73447c0: rename to `Proper_Snakes`
+
 ## 0.1.3
 
 ### Patch Changes
