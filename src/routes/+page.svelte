@@ -1,7 +1,8 @@
 <script lang="ts">
-	import LibraryHeader from '@fuz.dev/fuz_library/LibraryHeader.svelte';
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
+	import Library_Header from '@fuz.dev/fuz_library/Library_Header.svelte';
+	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
+	import {base} from '$app/paths';
 
 	import Toot from '$lib/Toot.svelte';
 	import {mastodon_cache} from '$routes/mastodon_cache.js';
@@ -15,7 +16,7 @@
 
 <main>
 	<section class="box prose">
-		<LibraryHeader {pkg} />
+		<Library_Header {pkg} />
 	</section>
 	<section class="box width_sm">
 		<Toot
@@ -26,8 +27,11 @@
 			initial_autoload={true}
 		/>
 	</section>
+	<section class="box">
+		<a class="chip" href="{base}/about">about</a>
+	</section>
 	<section>
-		<LibraryFooter {pkg} root_url="https://www.fuz.dev/" />
+		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />
 	</section>
 </main>
 

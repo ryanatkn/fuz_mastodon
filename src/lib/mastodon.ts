@@ -14,7 +14,7 @@ import {Logger} from '@grogarden/util/log.js';
 // https://${host}/api/v1/statuses/${id}/context // status context endpoint
 // https://${host}/api/v1/statuses/${id}/favourited_by // status favourited by endpoint
 
-export type MastodonCache = Map<string, MastodonResponseData>;
+export type Mastodon_Cache = Map<string, Mastodon_Response_Data>;
 
 const CACHE_NETWORK_DELAY = 0; // set this to like 1000 to see how the animations behave
 
@@ -39,11 +39,11 @@ export interface ResponseData<T = any> {
 	data: T;
 }
 
-export type MastodonResponseData = ResponseData<
-	MastodonContext | MastodonStatus | MastodonFavourite
+export type Mastodon_Response_Data = ResponseData<
+	Mastodon_Context | Mastodon_Status | Mastodon_Favourite
 >;
 
-export const fetch_data = async (url: string, cache?: MastodonCache | null): Promise<any> => {
+export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Promise<any> => {
 	const r = cache?.get(url);
 	if (r) {
 		log.info('[fetch_data] cached', r);
@@ -87,7 +87,7 @@ export const to_api_favourites_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}/favourited_by`;
 
 // TODO should this have a `Parsed` prefix and then have a zod schema for the URL with a refinement type that uses `parse_status_url`?
-export interface MastodonStatusUrl {
+export interface Mastodon_Status_Url {
 	href: string;
 	host: string;
 	status_id: string;
@@ -99,7 +99,7 @@ export interface MastodonStatusUrl {
  * @param url
  * @returns the parsed host and id params, if any
  */
-export const parse_status_url = (url: string): MastodonStatusUrl | null => {
+export const parse_status_url = (url: string): Mastodon_Status_Url | null => {
 	try {
 		const u = new URL(url);
 		const parts = strip_end(u.pathname, '/context').split('/').filter(Boolean);
@@ -116,8 +116,8 @@ export const parse_status_url = (url: string): MastodonStatusUrl | null => {
 export const fetch_status_context = async (
 	host: string,
 	id: string,
-	cache?: MastodonCache | null,
-): Promise<MastodonContext | null> => {
+	cache?: Mastodon_Cache | null,
+): Promise<Mastodon_Context | null> => {
 	const url = to_api_status_context_url(host, id);
 	return fetch_data(url, cache);
 };
@@ -126,17 +126,17 @@ export const fetch_status = async (
 	host: string,
 	id: string,
 
-	cache?: MastodonCache | null,
-): Promise<MastodonStatus | null> => {
+	cache?: Mastodon_Cache | null,
+): Promise<Mastodon_Status | null> => {
 	const url = to_api_status_url(host, id);
 	return fetch_data(url, cache);
 };
 
 export const fetch_favourites = async (
 	host: string,
-	status: MastodonStatus,
-	cache?: MastodonCache | null,
-): Promise<MastodonFavourite[] | null> => {
+	status: Mastodon_Status,
+	cache?: Mastodon_Cache | null,
+): Promise<Mastodon_Favourite[] | null> => {
 	const url = to_api_favourites_url(host, status.id);
 	return fetch_data(url, cache);
 };
@@ -147,12 +147,12 @@ export const fetch_favourites = async (
  * Result from `https://:host/api/v1/statuses/:id/context`.
  * @see https://docs.joinmastodon.org/entities/Context/
  */
-export interface MastodonContext {
-	ancestors: MastodonStatus[];
-	descendants: MastodonStatus[];
+export interface Mastodon_Context {
+	ancestors: Mastodon_Status[];
+	descendants: Mastodon_Status[];
 }
 
-export interface MastodonStatus {
+export interface Mastodon_Status {
 	id: string;
 	created_at: string;
 	in_reply_to_id: string;
@@ -217,7 +217,7 @@ export interface MastodonStatus {
 	poll: unknown; // | null;
 }
 
-export interface MastodonFavourite {
+export interface Mastodon_Favourite {
 	id: string;
 	username: string;
 	acct: string;

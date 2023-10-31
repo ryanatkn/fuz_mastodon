@@ -1,11 +1,11 @@
 <script lang="ts">
 	import {
 		fetch_status_context,
-		type MastodonContext,
+		type Mastodon_Context,
 		fetch_status,
-		type MastodonStatus,
+		type Mastodon_Status,
 		fetch_favourites,
-		type MastodonCache,
+		type Mastodon_Cache,
 	} from '$lib/mastodon.js';
 
 	// TODO maybe delete this and merge into `Toot`
@@ -28,7 +28,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: MastodonCache | null = null;
+	export let cache: Mastodon_Cache | null = null;
 
 	/**
 	 * @readonly
@@ -38,17 +38,17 @@
 	/**
 	 * @readonly
 	 */
-	export let item: MastodonStatus | undefined | null = undefined;
+	export let item: Mastodon_Status | undefined | null = undefined;
 
 	/**
 	 * @readonly
 	 */
-	export let context: MastodonContext | undefined | null = undefined;
+	export let context: Mastodon_Context | undefined | null = undefined;
 
 	/**
 	 * @readonly
 	 */
-	export let replies: MastodonStatus[] | undefined | null = undefined;
+	export let replies: Mastodon_Status[] | undefined | null = undefined;
 
 	/**
 	 * @readonly
@@ -74,9 +74,9 @@
 	// TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
 	// TODO refactor
 	const filter_valid_replies = async (
-		status: MastodonStatus,
-		statuses: MastodonStatus[],
-	): Promise<MastodonStatus[]> => {
+		status: Mastodon_Status,
+		statuses: Mastodon_Status[],
+	): Promise<Mastodon_Status[]> => {
 		const host = new URL(status.url).host;
 		const acct = status.account.acct;
 		const allowed = new Set(); // TODO could simplify if no longer used, was allowing author but changed to favourites - `statuses.filter((s) => s.account.acct === acct`

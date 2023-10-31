@@ -3,6 +3,7 @@
   "description": "Mastodon components and helpers for Svelte, SvelteKit, and Fuz",
   "version": "0.1.3",
   "public": true,
+  "icon": "🦣",
   "license": "MIT",
   "homepage": "https://mastodon.fuz.dev/",
   "repository": "https://github.com/fuz-dev/fuz_mastodon",
@@ -35,13 +36,13 @@
   "devDependencies": {
     "@changesets/changelog-git": "^0.1.14",
     "@feltjs/eslint-config": "^0.4.1",
-    "@fuz.dev/fuz": "^0.77.1",
-    "@fuz.dev/fuz_contextmenu": "^0.5.1",
-    "@fuz.dev/fuz_dialog": "^0.4.2",
-    "@fuz.dev/fuz_library": "^0.17.0",
-    "@fuz.dev/svelte_intersect": "^0.6.1",
-    "@grogarden/gro": "^0.98.1",
-    "@grogarden/util": "^0.15.2",
+    "@fuz.dev/fuz": "^0.79.0",
+    "@fuz.dev/fuz_contextmenu": "^0.6.0",
+    "@fuz.dev/fuz_dialog": "^0.5.0",
+    "@fuz.dev/fuz_library": "^0.18.0",
+    "@fuz.dev/svelte_intersect": "^0.7.0",
+    "@grogarden/gro": "^0.98.3",
+    "@grogarden/util": "^0.15.4",
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.27.2",
     "@sveltejs/package": "^2.2.2",
@@ -80,19 +81,19 @@
     ]
   },
   "exports": {
+    "./Mastodon_Status_Item.svelte": {
+      "svelte": "./dist/Mastodon_Status_Item.svelte",
+      "default": "./dist/Mastodon_Status_Item.svelte",
+      "types": "./dist/Mastodon_Status_Item.svelte.d.ts"
+    },
+    "./Mastodon_Status_Tree.svelte": {
+      "svelte": "./dist/Mastodon_Status_Tree.svelte",
+      "default": "./dist/Mastodon_Status_Tree.svelte",
+      "types": "./dist/Mastodon_Status_Tree.svelte.d.ts"
+    },
     "./mastodon.js": {
       "default": "./dist/mastodon.js",
       "types": "./dist/mastodon.d.ts"
-    },
-    "./MastodonStatusItem.svelte": {
-      "svelte": "./dist/MastodonStatusItem.svelte",
-      "default": "./dist/MastodonStatusItem.svelte",
-      "types": "./dist/MastodonStatusItem.svelte.d.ts"
-    },
-    "./MastodonStatusTree.svelte": {
-      "svelte": "./dist/MastodonStatusTree.svelte",
-      "default": "./dist/MastodonStatusTree.svelte",
-      "types": "./dist/MastodonStatusTree.svelte.d.ts"
     },
     "./package.gen.js": {
       "default": "./dist/package.gen.js",
@@ -106,20 +107,20 @@
       "default": "./dist/storage.js",
       "types": "./dist/storage.d.ts"
     },
+    "./Toot_Input.svelte": {
+      "svelte": "./dist/Toot_Input.svelte",
+      "default": "./dist/Toot_Input.svelte",
+      "types": "./dist/Toot_Input.svelte.d.ts"
+    },
+    "./Toot_Loader.svelte": {
+      "svelte": "./dist/Toot_Loader.svelte",
+      "default": "./dist/Toot_Loader.svelte",
+      "types": "./dist/Toot_Loader.svelte.d.ts"
+    },
     "./Toot.svelte": {
       "svelte": "./dist/Toot.svelte",
       "default": "./dist/Toot.svelte",
       "types": "./dist/Toot.svelte.d.ts"
-    },
-    "./TootInput.svelte": {
-      "svelte": "./dist/TootInput.svelte",
-      "default": "./dist/TootInput.svelte",
-      "types": "./dist/TootInput.svelte.d.ts"
-    },
-    "./TootLoader.svelte": {
-      "svelte": "./dist/TootLoader.svelte",
-      "default": "./dist/TootLoader.svelte",
-      "types": "./dist/TootLoader.svelte.d.ts"
     }
   }
 }

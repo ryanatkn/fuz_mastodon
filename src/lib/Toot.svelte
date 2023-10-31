@@ -1,15 +1,15 @@
 <script lang="ts">
-	import PendingButton from '@fuz.dev/fuz_library/PendingButton.svelte';
+	import Pending_Button from '@fuz.dev/fuz_library/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
 	import {createEventDispatcher} from 'svelte';
 	import {intersect} from '@fuz.dev/svelte_intersect';
 
-	import MastodonStatusTree from '$lib/MastodonStatusTree.svelte';
-	import MastodonStatusItem from '$lib/MastodonStatusItem.svelte';
-	import TootLoader from '$lib/TootLoader.svelte';
+	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
+	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
+	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_status_url, type MastodonCache} from '$lib/mastodon.js';
-	import TootInput from '$lib/TootInput.svelte';
+	import {parse_status_url, type Mastodon_Cache} from '$lib/mastodon.js';
+	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	const dispatch = createEventDispatcher<{reset: void}>();
 
@@ -30,7 +30,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: MastodonCache | null = null;
+	export let cache: Mastodon_Cache | null = null;
 
 	/**
 	 * @readonly
@@ -106,7 +106,7 @@
 </script>
 
 {#key loaded_status_key}
-	<TootLoader
+	<Toot_Loader
 		{host}
 		{id}
 		{with_context}
@@ -126,7 +126,7 @@
 					<div transition:slide>
 						<!-- TODO style differently or something -->
 						{#each context.ancestors as ancestor}
-							<MastodonStatusItem item={ancestor} />
+							<Mastodon_Status_Item item={ancestor} />
 						{/each}
 					</div>
 				{/if}
@@ -134,11 +134,11 @@
 					<div class="panel bg_panel">
 						{#if item}
 							<div transition:slide>
-								<MastodonStatusItem {item} />
+								<Mastodon_Status_Item {item} />
 							</div>
 						{:else}
 							<div transition:slide>
-								<PendingButton
+								<Pending_Button
 									pending={loading || false}
 									disabled={!enable_load}
 									on:click={() => load()}
@@ -154,14 +154,14 @@
 											>
 										</div>
 									</div>
-								</PendingButton>
+								</Pending_Button>
 							</div>
 						{/if}
 					</div>
 				</div>
 				{#if item && replies}
 					<div transition:slide>
-						<MastodonStatusTree {item} items={replies} />
+						<Mastodon_Status_Tree {item} items={replies} />
 					</div>
 				{/if}
 			</div>
@@ -194,7 +194,7 @@
 					<div transition:slide class="settings controls panel">
 						<form class="width_full">
 							<div class="spaced">
-								<TootInput bind:url />
+								<Toot_Input bind:url />
 							</div>
 							<fieldset class="row">
 								<label
@@ -222,7 +222,7 @@
 				{/if}
 			</div>
 		</div>
-	</TootLoader>
+	</Toot_Loader>
 {/key}
 
 <style>

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {MastodonStatus} from '$lib/mastodon.js';
-	import Message from '$lib/MastodonStatusItem.svelte';
+	import type {Mastodon_Status} from '$lib/mastodon.js';
+	import Message from '$lib/Mastodon_Status_Item.svelte';
 
-	export let item: MastodonStatus;
-	export let items: MastodonStatus[]; // TODO make this a map?
+	export let item: Mastodon_Status;
+	export let items: Mastodon_Status[]; // TODO make this a map?
 
 	$: ({id} = item);
 	$: replies = items.filter((i) => i.in_reply_to_id === id);

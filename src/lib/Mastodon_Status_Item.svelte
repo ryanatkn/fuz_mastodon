@@ -3,9 +3,9 @@
 	import {slide} from 'svelte/transition';
 	import {strip_start} from '@grogarden/util/string.js';
 
-	import type {MastodonStatus} from '$lib/mastodon.js';
+	import type {Mastodon_Status} from '$lib/mastodon.js';
 
-	export let item: MastodonStatus;
+	export let item: Mastodon_Status;
 
 	// see the CSP in `svelte.config.js`
 	/* eslint-disable svelte/no-at-html-tags */
