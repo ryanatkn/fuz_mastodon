@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.2.1
+
+### Patch Changes
+
+- b36c7c8: fix a name
+
 ## 0.2.0
 
 ### Minor Changes
