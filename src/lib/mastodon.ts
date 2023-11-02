@@ -34,12 +34,12 @@ const headers = {
 
 const log = new Logger(['[mastodon]']);
 
-export interface ResponseData<T = any> {
+export interface Response_Data<T = any> {
 	url: string;
 	data: T;
 }
 
-export type Mastodon_Response_Data = ResponseData<
+export type Mastodon_Response_Data = Response_Data<
 	Mastodon_Context | Mastodon_Status | Mastodon_Favourite
 >;
 

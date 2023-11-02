@@ -102,7 +102,7 @@ export const package_json = {
 			path: 'mastodon.ts',
 			declarations: [
 				{name: 'Mastodon_Cache', kind: 'TypeAliasDeclaration'},
-				{name: 'ResponseData', kind: 'InterfaceDeclaration'},
+				{name: 'Response_Data', kind: 'InterfaceDeclaration'},
 				{name: 'Mastodon_Response_Data', kind: 'TypeAliasDeclaration'},
 				{name: 'fetch_data', kind: 'VariableDeclaration'},
 				{name: 'to_status_url', kind: 'VariableDeclaration'},
