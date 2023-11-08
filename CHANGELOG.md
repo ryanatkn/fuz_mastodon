@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.2.2
+
+### Patch Changes
+
+- f8c1f65: respect rate limits in `fetch_data`
+
 ## 0.2.1
 
 ### Patch Changes
