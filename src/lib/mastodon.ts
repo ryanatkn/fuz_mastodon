@@ -43,7 +43,22 @@ export type Mastodon_Response_Data = Response_Data<
 	Mastodon_Context | Mastodon_Status | Mastodon_Favourite
 >;
 
+let ratelimit_remaining: number | null = null;
+let ratelimit_reset: Date | null = null;
+
+// fuzzy boundary because we may get results out of order on concurrent requests, the fix is tricky
+const MAX_LIMIT = 3;
+
 export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Promise<any> => {
+	log.info('[fetch_data] ratelimit status', {ratelimit_remaining, ratelimit_reset});
+	if (ratelimit_reset && (!ratelimit_remaining || ratelimit_remaining < MAX_LIMIT)) {
+		if (new Date() > ratelimit_reset) {
+			ratelimit_reset = null; // reset the ratelimit
+		} else {
+			// TODO better error response, code 429
+			return null; // we're being ratelimited
+		}
+	}
 	const r = cache?.get(url);
 	if (r) {
 		log.info('[fetch_data] cached', r);
@@ -56,11 +71,12 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 		if (!res.ok) return null;
 		log.info('[fetch_data] res', url, res);
 		const h = Object.fromEntries(res.headers.entries());
-		// TODO process ratelimiting headers
-		// x-ratelimit-limit: "300"
-		// x-ratelimit-remaining: "297"
-		// x-ratelimit-reset: "2023-11-08T17:55:00.422141Z"
 		log.info('[fetch_data] fetched headers', url, h);
+		if ('x-ratelimit-remaining' in h || 'x-ratelimit-reset' in h) {
+			ratelimit_remaining = Number(h['x-ratelimit-remaining']) || -1;
+			ratelimit_reset = new Date(h['x-ratelimit-reset'] || Date.now() + 1000 * 60 * 60);
+			log.info('[fetch_data] ratelimit status updated', {ratelimit_remaining, ratelimit_reset});
+		}
 		const fetched = await res.json();
 		log.info('[fetch_data] fetched json', fetched);
 		// responses.push({url, data: fetched});
