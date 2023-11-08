@@ -46,12 +46,18 @@ export type Mastodon_Response_Data = Response_Data<
 let ratelimit_remaining: number | null = null;
 let ratelimit_reset: Date | null = null;
 
-// fuzzy boundary because we may get results out of order on concurrent requests, the fix is tricky
-const MAX_LIMIT = 3;
-
 export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Promise<any> => {
+	// local cache?
+	const r = cache?.get(url);
+	if (r) {
+		log.info('[fetch_data] cached', r);
+		await wait(CACHE_NETWORK_DELAY);
+		return Promise.resolve(r.data);
+	}
+
+	// rate limiting
 	log.info('[fetch_data] ratelimit status', {ratelimit_remaining, ratelimit_reset});
-	if (ratelimit_reset && (!ratelimit_remaining || ratelimit_remaining < MAX_LIMIT)) {
+	if (ratelimit_reset && (!ratelimit_remaining || ratelimit_remaining < 1)) {
 		if (new Date() > ratelimit_reset) {
 			ratelimit_reset = null; // reset the ratelimit
 		} else {
@@ -59,27 +65,39 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 			return null; // we're being ratelimited
 		}
 	}
-	const r = cache?.get(url);
-	if (r) {
-		log.info('[fetch_data] cached', r);
-		await wait(CACHE_NETWORK_DELAY);
-		return Promise.resolve(r.data);
-	}
+
 	try {
-		log.info('[fetch_data] url with headers', url, headers);
+		log.info('[fetch_data] fetching url with headers', url, headers);
 		const res = await fetch(url, {headers});
 		if (!res.ok) return null;
-		log.info('[fetch_data] res', url, res);
+		log.info('[fetch_data] fetched res', url, res);
+
 		const h = Object.fromEntries(res.headers.entries());
 		log.info('[fetch_data] fetched headers', url, h);
+
+		// rate limiting
 		if ('x-ratelimit-remaining' in h || 'x-ratelimit-reset' in h) {
-			ratelimit_remaining = Number(h['x-ratelimit-remaining']) || -1;
-			ratelimit_reset = new Date(h['x-ratelimit-reset'] || Date.now() + 1000 * 60 * 60);
-			log.info('[fetch_data] ratelimit status updated', {ratelimit_remaining, ratelimit_reset});
+			// might be out of order, so use `Math.min`
+			ratelimit_remaining = Math.min(
+				Number(h['x-ratelimit-remaining']) || -1,
+				ratelimit_remaining ?? Infinity,
+			);
+			const updated_ratelimit_reset = new Date(
+				h['x-ratelimit-reset'] || Date.now() + 1000 * 60 * 2, // fallback to waiting for 2 minutes
+			);
+			// might be out of order, this is like `Math.max` without coercing
+			if (!ratelimit_reset || ratelimit_reset < updated_ratelimit_reset) {
+				ratelimit_reset = updated_ratelimit_reset;
+			}
+			log.info('[fetch_data] ratelimit status updated', url, {
+				ratelimit_remaining,
+				ratelimit_reset,
+			});
 		}
+
 		const fetched = await res.json();
-		log.info('[fetch_data] fetched json', fetched);
-		// responses.push({url, data: fetched});
+		log.info('[fetch_data] fetched json', url, fetched);
+		// responses.push({url, data: fetched}); // TODO history
 		return fetched;
 	} catch (err) {
 		return null;
