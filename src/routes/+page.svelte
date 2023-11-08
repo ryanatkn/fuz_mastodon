@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Library_Header from '@fuz.dev/fuz_library/Library_Header.svelte';
 	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
+	import Card from '@fuz.dev/fuz_library/Card.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {base} from '$app/paths';
+	import 'prismjs'; // TODO shouldn't be needed
+	import Code from '@fuz.dev/fuz_code/Code.svelte';
 
 	import Toot from '$lib/Toot.svelte';
 	import {mastodon_cache} from '$routes/mastodon_cache.js';
@@ -18,17 +21,36 @@
 	<section class="box prose">
 		<Library_Header {pkg} />
 	</section>
+	<section class="box width_md">
+		<div class="spaced box width_full">
+			<div class="box width_full spaced">
+				<Code lang="ts" content={`import Toot from '@fuz.dev/fuz_mastodon/Toot.svelte'`} />
+			</div>
+			<div class="box width_full">
+				<Code
+					content={`<Toot
+	initial_url="https://hci.social/@ryanatkn/109768104377997044"
+	initial_autoload={true}
+	replies={true}
+	storage_key="example_1"
+	{cache}
+/>`}
+				/>
+			</div>
+		</div>
+	</section>
 	<section class="box width_sm">
 		<Toot
-			replies
-			storage_key="example_1"
-			{cache}
 			initial_url="https://hci.social/@ryanatkn/109768104377997044"
 			initial_autoload={true}
+			replies={true}
+			storage_key="example_1"
+			{cache}
 		/>
 	</section>
 	<section class="box">
-		<a class="chip" href="{base}/about">about</a>
+		<!-- TODO this slot API is hacky -->
+		<Card href="{base}/about"><svelte:fragment slot="icon">{''}</svelte:fragment>about</Card>
 	</section>
 	<section>
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />

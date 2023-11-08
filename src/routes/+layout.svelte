@@ -2,6 +2,7 @@
 	import '@fuz.dev/fuz/style.css';
 	import '@fuz.dev/fuz/theme.css';
 	import '$routes/style.css';
+	import '@fuz.dev/fuz_code/prism.css'; // TODO maybe import from Code?
 
 	import Themed from '@fuz.dev/fuz/Themed.svelte';
 	import Dialog from '@fuz.dev/fuz_dialog/Dialog.svelte';
