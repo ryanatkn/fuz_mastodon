@@ -1,6 +1,8 @@
 # @fuz.dev/fuz_mastodon
 
-> Mastodon components and helpers for Svelte, SvelteKit, and Fuz
+> [Mastodon](https://github.com/mastodon/mastodon) components and helpers for
+> [Svelte](https://github.com/sveltejs/svelte), [SvelteKit](https://github.com/sveltejs/kit),
+> and [Fuz](https://github.com/fuz-dev/fuz)
 > 🦣 [mastodon.fuz.dev](https://mastodon.fuz.dev/)
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
