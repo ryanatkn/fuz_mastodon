@@ -75,6 +75,8 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 		const h = Object.fromEntries(res.headers.entries());
 		log.info('[fetch_data] fetched headers', url, h);
 
+		// TODO handle `429` in case these headers aren't sent
+
 		// rate limiting
 		if ('x-ratelimit-remaining' in h || 'x-ratelimit-reset' in h) {
 			// might be out of order, so use `Math.min`
