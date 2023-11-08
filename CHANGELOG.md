@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.2.3
+
+### Patch Changes
+
+- e11b6fc: improve ratelimit handling
+
 ## 0.2.2
 
 ### Patch Changes
