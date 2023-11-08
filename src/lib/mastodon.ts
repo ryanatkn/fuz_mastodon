@@ -55,7 +55,11 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 		const res = await fetch(url, {headers});
 		if (!res.ok) return null;
 		log.info('[fetch_data] res', url, res);
-		const h = Array.from(res.headers.entries());
+		const h = Object.fromEntries(res.headers.entries());
+		// TODO process ratelimiting headers
+		// x-ratelimit-limit: "300"
+		// x-ratelimit-remaining: "297"
+		// x-ratelimit-reset: "2023-11-08T17:55:00.422141Z"
 		log.info('[fetch_data] fetched headers', url, h);
 		const fetched = await res.json();
 		log.info('[fetch_data] fetched json', fetched);

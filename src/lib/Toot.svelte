@@ -120,6 +120,7 @@
 		let:load_time
 		bind:load_time
 	>
+		<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
 		<div class="toot" class:replies transition:slide>
 			<div class="toot_content">
 				{#if ancestors && context}
