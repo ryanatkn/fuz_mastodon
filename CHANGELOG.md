@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.2.4
+
+### Patch Changes
+
+- 7034797: handle 429s
+
 ## 0.2.3
 
 ### Patch Changes
