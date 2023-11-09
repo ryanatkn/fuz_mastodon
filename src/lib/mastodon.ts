@@ -46,6 +46,8 @@ export type Mastodon_Response_Data = Response_Data<
 let ratelimit_remaining: number | null = null;
 let ratelimit_reset: Date | null = null;
 
+const RETRY_DELAY = 1000 * 60 * 2; // TODO exponential backoff
+
 export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Promise<any> => {
 	// local cache?
 	const r = cache?.get(url);
@@ -75,8 +77,6 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 		const h = Object.fromEntries(res.headers.entries());
 		log.info('[fetch_data] fetched headers', url, h);
 
-		// TODO handle `429` in case these headers aren't sent
-
 		// rate limiting
 		if ('x-ratelimit-remaining' in h || 'x-ratelimit-reset' in h) {
 			// might be out of order, so use `Math.min`
@@ -84,9 +84,7 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 				Number(h['x-ratelimit-remaining']) || -1,
 				ratelimit_remaining ?? Infinity,
 			);
-			const updated_ratelimit_reset = new Date(
-				h['x-ratelimit-reset'] || Date.now() + 1000 * 60 * 2, // fallback to waiting for 2 minutes
-			);
+			const updated_ratelimit_reset = new Date(h['x-ratelimit-reset'] || Date.now() + RETRY_DELAY);
 			// might be out of order, this is like `Math.max` without coercing
 			if (!ratelimit_reset || ratelimit_reset < updated_ratelimit_reset) {
 				ratelimit_reset = updated_ratelimit_reset;
@@ -95,6 +93,13 @@ export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Pr
 				ratelimit_remaining,
 				ratelimit_reset,
 			});
+		} else if (res.status === 429) {
+			// manual ratelimiting for a 429
+			ratelimit_remaining = 0;
+			const updated_ratelimit_reset = new Date(Date.now() + RETRY_DELAY);
+			if (!ratelimit_reset || ratelimit_reset < updated_ratelimit_reset) {
+				ratelimit_reset = updated_ratelimit_reset;
+			}
 		}
 
 		const fetched = await res.json();

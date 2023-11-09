@@ -134,11 +134,11 @@
 				<div class="main_post panel">
 					<div class="panel bg_panel">
 						{#if item}
-							<div transition:slide>
+							<div class="transition_wrapper" transition:slide>
 								<Mastodon_Status_Item {item} />
 							</div>
 						{:else}
-							<div transition:slide>
+							<div class="transition_wrapper" transition:slide>
 								<Pending_Button
 									pending={loading || false}
 									disabled={!enable_load}
@@ -292,5 +292,9 @@
 		padding: var(--spacing_md);
 		margin-top: var(--spacing_md);
 		width: 100%;
+	}
+	.transition_wrapper {
+		display: flex;
+		flex-direction: column;
 	}
 </style>
