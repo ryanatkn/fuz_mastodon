@@ -4,10 +4,10 @@
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json, src_json} from '$lib/package.js';
 
 	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 </script>
 
 <main class="width_md">

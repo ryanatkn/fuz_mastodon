@@ -9,12 +9,12 @@
 
 	import Toot from '$lib/Toot.svelte';
 	import {mastodon_cache} from '$routes/mastodon_cache.js';
-	import {package_json} from '$lib/package.js';
+	import {package_json, src_json} from '$lib/package.js';
 
 	// TODO @multiple refactor mastodon fake data, avoid loading in production, lazy import?
 	const cache = import.meta.env.DEV ? mastodon_cache : null;
 
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 </script>
 
 <main>
