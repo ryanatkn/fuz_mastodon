@@ -20,6 +20,7 @@
 <main>
 	<section class="box prose">
 		<Library_Header {pkg} />
+		<blockquote>⚠️ this project is still early, and its APIs will change</blockquote>
 	</section>
 	<section class="box width_md">
 		<div class="spaced box width_full">
