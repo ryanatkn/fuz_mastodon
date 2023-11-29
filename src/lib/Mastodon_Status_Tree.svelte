@@ -13,9 +13,8 @@
 	<ul class="mastodon_status_tree">
 		{#each replies as reply (reply.id)}
 			<li>
-				<svelte:self item={reply} {items}>
-					<Message item={reply} />
-				</svelte:self>
+				<Message item={reply} />
+				<svelte:self item={reply} {items} />
 			</li>
 		{/each}
 	</ul>
