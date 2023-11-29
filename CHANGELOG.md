@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.3.0
+
+### Minor Changes
+
+- e332cd8: unpublish package.ts
+
 ## 0.2.4
 
 ### Patch Changes
