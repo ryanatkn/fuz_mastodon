@@ -98,14 +98,6 @@
       "default": "./dist/mastodon.js",
       "types": "./dist/mastodon.d.ts"
     },
-    "./package.gen.js": {
-      "default": "./dist/package.gen.js",
-      "types": "./dist/package.gen.d.ts"
-    },
-    "./package.js": {
-      "default": "./dist/package.js",
-      "types": "./dist/package.d.ts"
-    },
     "./storage.js": {
       "default": "./dist/storage.js",
       "types": "./dist/storage.d.ts"

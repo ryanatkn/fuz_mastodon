@@ -13,7 +13,7 @@
 
 	const dispatch = createEventDispatcher<{reset: void}>();
 
-	export let initial_url: string;
+	export let initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
 
 	export let url = initial_url;
 
