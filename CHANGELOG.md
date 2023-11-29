@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.4.1
+
+### Patch Changes
+
+- 40bc404: fix `Mastodon_Status_Tree`
+
 ## 0.4.0
 
 ### Minor Changes
