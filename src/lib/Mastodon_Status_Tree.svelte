@@ -9,7 +9,6 @@
 	$: replies = items.filter((i) => i.in_reply_to_id === id);
 </script>
 
-<slot {item} {items} />
 {#if replies.length}
 	<ul class="mastodon_status_tree">
 		{#each replies as reply (reply.id)}
