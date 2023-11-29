@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.4.0
+
+### Minor Changes
+
+- 080d66e: cleanup `Mastodon_Status_Tree` API
+
 ## 0.3.0
 
 ### Minor Changes
