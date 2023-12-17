@@ -4,6 +4,7 @@
 	import {createEventDispatcher} from 'svelte';
 	import {intersect} from '@fuz.dev/svelte_intersect';
 	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
+	import type {Logger} from '@grogarden/util/log.js';
 
 	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
@@ -32,6 +33,11 @@
 	 * Optional API result cache.
 	 */
 	export let cache: Fetch_Value_Cache | null | undefined = undefined;
+
+	/**
+	 * Optional logger for network calls.
+	 */
+	export let log: Logger | undefined = undefined;
 
 	/**
 	 * @readonly
@@ -99,6 +105,7 @@
 		{id}
 		{with_context}
 		{cache}
+		{log}
 		let:item
 		let:context
 		let:replies

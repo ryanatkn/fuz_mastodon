@@ -1,5 +1,6 @@
 import {strip_end} from '@grogarden/util/string.js';
 import {Fetch_Value_Cache, fetch_value} from '@grogarden/util/fetch.js';
+import type {Logger} from '@grogarden/util/log.js';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig
@@ -69,11 +70,19 @@ export const fetch_mastodon_status_context = async (
 	host: string,
 	id: string,
 	cache?: Fetch_Value_Cache | null,
+	log?: Logger,
+	request?: RequestInit,
+	token?: string,
+	fetch?: typeof globalThis.fetch,
 ): Promise<Mastodon_Status_Context | null> => {
 	const url = to_mastodon_api_status_context_url(host, id);
 	const fetched = await fetch_value(url, {
+		request,
+		token,
 		cache,
 		return_early_from_cache: true,
+		log,
+		fetch,
 	});
 	if (!fetched.ok) return null;
 	return fetched.value;
@@ -83,11 +92,19 @@ export const fetch_mastodon_status = async (
 	host: string,
 	id: string,
 	cache?: Fetch_Value_Cache | null,
+	log?: Logger,
+	request?: RequestInit,
+	token?: string,
+	fetch?: typeof globalThis.fetch,
 ): Promise<Mastodon_Status | null> => {
 	const url = to_mastodon_api_status_url(host, id);
 	const fetched = await fetch_value(url, {
+		request,
+		token,
 		cache,
 		return_early_from_cache: true,
+		log,
+		fetch,
 	});
 	if (!fetched.ok) return null;
 	return fetched.value;
@@ -97,11 +114,19 @@ export const fetch_mastodon_favourites = async (
 	host: string,
 	status_id: string,
 	cache?: Fetch_Value_Cache | null,
+	log?: Logger,
+	request?: RequestInit,
+	token?: string,
+	fetch?: typeof globalThis.fetch,
 ): Promise<Mastodon_Favourite[] | null> => {
 	const url = to_mastodon_api_favourites_url(host, status_id);
 	const fetched = await fetch_value(url, {
+		request,
+		token,
 		cache,
 		return_early_from_cache: true,
+		log,
+		fetch,
 	});
 	if (!fetched.ok) return null;
 	return fetched.value;
