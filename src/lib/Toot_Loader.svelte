@@ -1,11 +1,13 @@
 <script lang="ts">
+	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
+	import type {Logger} from '@grogarden/util/log.js';
+
 	import {
-		fetch_status_context,
-		type Mastodon_Context,
-		fetch_status,
+		fetch_mastodon_status_context,
+		type Mastodon_Status_Context,
+		fetch_mastodon_status,
 		type Mastodon_Status,
-		fetch_favourites,
-		type Mastodon_Cache,
+		fetch_mastodon_favourites,
 	} from '$lib/mastodon.js';
 
 	// TODO maybe delete this and merge into `Toot`
@@ -28,7 +30,12 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Mastodon_Cache | null = null;
+	export let cache: Fetch_Value_Cache | null | undefined = undefined;
+
+	/**
+	 * Optional logger for network calls.
+	 */
+	export let log: Logger | undefined = undefined;
 
 	/**
 	 * @readonly
@@ -43,7 +50,7 @@
 	/**
 	 * @readonly
 	 */
-	export let context: Mastodon_Context | undefined | null = undefined;
+	export let context: Mastodon_Status_Context | undefined | null = undefined;
 
 	/**
 	 * @readonly
@@ -84,7 +91,7 @@
 		const unvalidated_replies = statuses.filter(({id}) => !allowed.has(id) && !skipped.has(id));
 		if (unvalidated_replies.length) {
 			await map_async(unvalidated_replies, async (s) => {
-				const favourites = await fetch_favourites(host, s, cache);
+				const favourites = await fetch_mastodon_favourites(host, s.id, cache, log);
 				const favourite = favourites?.find((f) => f.acct === acct);
 				// TODO this logic is what I want, but `favourite.created_at` is showing a date in 2022
 				// if (favourite && (!s.edited_at || new Date(s.edited_at) < new Date(favourite.created_at))) {
@@ -102,8 +109,8 @@
 		loading = true;
 		// TODO error handling
 		[item, context] = await Promise.all([
-			fetch_status(host, id, cache),
-			with_context ? fetch_status_context(host, id, cache) : null,
+			fetch_mastodon_status(host, id, cache, log),
+			with_context ? fetch_mastodon_status_context(host, id, cache, log) : null,
 		]);
 		if (item && context) {
 			replies = await filter_valid_replies(item, context.descendants);

@@ -1,8 +1,6 @@
 import {strip_end} from '@grogarden/util/string.js';
-import {wait} from '@grogarden/util/async.js';
-import {Logger} from '@grogarden/util/log.js';
-
-// TODO extract to fuz_mastodon or fuz_fediverse or fuz_fedi or fuz_activitypub
+import {Fetch_Value_Cache, fetch_value} from '@grogarden/util/fetch.js';
+import type {Logger} from '@grogarden/util/log.js';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig
@@ -14,124 +12,34 @@ import {Logger} from '@grogarden/util/log.js';
 // https://${host}/api/v1/statuses/${id}/context // status context endpoint
 // https://${host}/api/v1/statuses/${id}/favourited_by // status favourited by endpoint
 
-export type Mastodon_Cache = Map<string, Mastodon_Response_Data>;
+export const to_mastodon_status_url = (host: string, id: string): string =>
+	`https://${host}/statuses/${id}`;
 
-const CACHE_NETWORK_DELAY = 0; // set this to like 1000 to see how the animations behave
-
-const headers = {
-	accept: 'application/json',
-	'content-type': 'application/jsno',
-};
-
-// this is used to get the `mastodon_fake_data.json` response data,
-// see where `responses` is used - could be improved
-// const responses: Array<{url: string; data: any}> = [];
-// const flush_responses = () => {
-// 	console.log('flushing responses', JSON.stringify(responses));
-// 	responses.length = 0;
-// };
-// window.flush_responses = flush_responses;
-
-const log = new Logger(['[mastodon]']);
-
-export interface Response_Data<T = any> {
-	url: string;
-	data: T;
-}
-
-export type Mastodon_Response_Data = Response_Data<
-	Mastodon_Context | Mastodon_Status | Mastodon_Favourite
->;
-
-let ratelimit_remaining: number | null = null;
-let ratelimit_reset: Date | null = null;
-
-const RETRY_DELAY = 1000 * 60 * 2; // TODO exponential backoff
-
-export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Promise<any> => {
-	// local cache?
-	const r = cache?.get(url);
-	if (r) {
-		log.info('[fetch_data] cached', r);
-		await wait(CACHE_NETWORK_DELAY);
-		return Promise.resolve(r.data);
-	}
-
-	// rate limiting
-	log.info('[fetch_data] ratelimit status', {ratelimit_remaining, ratelimit_reset});
-	if (ratelimit_reset && (!ratelimit_remaining || ratelimit_remaining < 1)) {
-		if (new Date() > ratelimit_reset) {
-			ratelimit_reset = null; // reset the ratelimit
-		} else {
-			// TODO better error response, code 429
-			return null; // we're being ratelimited
-		}
-	}
-
-	try {
-		log.info('[fetch_data] fetching url with headers', url, headers);
-		const res = await fetch(url, {headers});
-		if (!res.ok) return null;
-		log.info('[fetch_data] fetched res', url, res);
-
-		const h = Object.fromEntries(res.headers.entries());
-		log.info('[fetch_data] fetched headers', url, h);
-
-		// rate limiting
-		if ('x-ratelimit-remaining' in h || 'x-ratelimit-reset' in h) {
-			// might be out of order, so use `Math.min`
-			ratelimit_remaining = Math.min(
-				Number(h['x-ratelimit-remaining']) || -1,
-				ratelimit_remaining ?? Infinity,
-			);
-			const updated_ratelimit_reset = new Date(h['x-ratelimit-reset'] || Date.now() + RETRY_DELAY);
-			// might be out of order, this is like `Math.max` without coercing
-			if (!ratelimit_reset || ratelimit_reset < updated_ratelimit_reset) {
-				ratelimit_reset = updated_ratelimit_reset;
-			}
-			log.info('[fetch_data] ratelimit status updated', url, {
-				ratelimit_remaining,
-				ratelimit_reset,
-			});
-		} else if (res.status === 429) {
-			// manual ratelimiting for a 429
-			ratelimit_remaining = 0;
-			const updated_ratelimit_reset = new Date(Date.now() + RETRY_DELAY);
-			if (!ratelimit_reset || ratelimit_reset < updated_ratelimit_reset) {
-				ratelimit_reset = updated_ratelimit_reset;
-			}
-		}
-
-		const fetched = await res.json();
-		log.info('[fetch_data] fetched json', url, fetched);
-		// responses.push({url, data: fetched}); // TODO history
-		return fetched;
-	} catch (err) {
-		return null;
-	}
-};
-
-export const to_status_url = (host: string, id: string): string => `https://${host}/statuses/${id}`;
-
-export const to_status_url_with_author = (host: string, id: string, author: string): string =>
-	`https://${host}/@${author}/${id}`;
+export const to_mastodon_status_url_with_author = (
+	host: string,
+	id: string,
+	author: string,
+): string => `https://${host}/@${author}/${id}`;
 
 /**
- * longhand for `to_status_url_with_author`, apperas
+ * longhand for `to_mastodon_status_url_with_author`, apperas
  */
-export const to_status_url_with_users_author = (host: string, id: string, author: string): string =>
-	`https://${host}/users/${author}/statuses/${id}`;
+export const to_mastodon_status_url_with_users_author = (
+	host: string,
+	id: string,
+	author: string,
+): string => `https://${host}/users/${author}/statuses/${id}`;
 
-export const to_api_status_url = (host: string, id: string): string =>
+export const to_mastodon_api_status_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}`;
 
-export const to_api_status_context_url = (host: string, id: string): string =>
+export const to_mastodon_api_status_context_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}/context`;
 
-export const to_api_favourites_url = (host: string, id: string): string =>
+export const to_mastodon_api_favourites_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}/favourited_by`;
 
-// TODO should this have a `Parsed` prefix and then have a zod schema for the URL with a refinement type that uses `parse_status_url`?
+// TODO should this have a `Parsed` prefix and then have a zod schema for the URL with a refinement type that uses `parse_mastodon_status_url`?
 export interface Mastodon_Status_Url {
 	href: string;
 	host: string;
@@ -144,7 +52,7 @@ export interface Mastodon_Status_Url {
  * @param url
  * @returns the parsed host and id params, if any
  */
-export const parse_status_url = (url: string): Mastodon_Status_Url | null => {
+export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | null => {
 	try {
 		const u = new URL(url);
 		const parts = strip_end(u.pathname, '/context').split('/').filter(Boolean);
@@ -158,41 +66,79 @@ export const parse_status_url = (url: string): Mastodon_Status_Url | null => {
 	}
 };
 
-export const fetch_status_context = async (
+export const fetch_mastodon_status_context = async (
 	host: string,
 	id: string,
-	cache?: Mastodon_Cache | null,
-): Promise<Mastodon_Context | null> => {
-	const url = to_api_status_context_url(host, id);
-	return fetch_data(url, cache);
+	cache?: Fetch_Value_Cache | null,
+	log?: Logger,
+	request?: RequestInit,
+	token?: string,
+	fetch?: typeof globalThis.fetch,
+): Promise<Mastodon_Status_Context | null> => {
+	const url = to_mastodon_api_status_context_url(host, id);
+	const fetched = await fetch_value(url, {
+		request,
+		token,
+		cache,
+		return_early_from_cache: true,
+		log,
+		fetch,
+	});
+	if (!fetched.ok) return null;
+	return fetched.value;
 };
 
-export const fetch_status = async (
+export const fetch_mastodon_status = async (
 	host: string,
 	id: string,
-
-	cache?: Mastodon_Cache | null,
+	cache?: Fetch_Value_Cache | null,
+	log?: Logger,
+	request?: RequestInit,
+	token?: string,
+	fetch?: typeof globalThis.fetch,
 ): Promise<Mastodon_Status | null> => {
-	const url = to_api_status_url(host, id);
-	return fetch_data(url, cache);
+	const url = to_mastodon_api_status_url(host, id);
+	const fetched = await fetch_value(url, {
+		request,
+		token,
+		cache,
+		return_early_from_cache: true,
+		log,
+		fetch,
+	});
+	if (!fetched.ok) return null;
+	return fetched.value;
 };
 
-export const fetch_favourites = async (
+export const fetch_mastodon_favourites = async (
 	host: string,
-	status: Mastodon_Status,
-	cache?: Mastodon_Cache | null,
+	status_id: string,
+	cache?: Fetch_Value_Cache | null,
+	log?: Logger,
+	request?: RequestInit,
+	token?: string,
+	fetch?: typeof globalThis.fetch,
 ): Promise<Mastodon_Favourite[] | null> => {
-	const url = to_api_favourites_url(host, status.id);
-	return fetch_data(url, cache);
+	const url = to_mastodon_api_favourites_url(host, status_id);
+	const fetched = await fetch_value(url, {
+		request,
+		token,
+		cache,
+		return_early_from_cache: true,
+		log,
+		fetch,
+	});
+	if (!fetched.ok) return null;
+	return fetched.value;
 };
 
-// TODO these are very in-progress
+// TODO these are very in-progress - add schemas and use them for parsing in the fetch helpers (probably with `.passthrough()` for foward-compat?)
 
 /**
  * Result from `https://:host/api/v1/statuses/:id/context`.
  * @see https://docs.joinmastodon.org/entities/Context/
  */
-export interface Mastodon_Context {
+export interface Mastodon_Status_Context {
 	ancestors: Mastodon_Status[];
 	descendants: Mastodon_Status[];
 }

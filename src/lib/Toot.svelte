@@ -3,12 +3,14 @@
 	import {slide} from 'svelte/transition';
 	import {createEventDispatcher} from 'svelte';
 	import {intersect} from '@fuz.dev/svelte_intersect';
+	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
+	import type {Logger} from '@grogarden/util/log.js';
 
 	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
 	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_status_url, type Mastodon_Cache} from '$lib/mastodon.js';
+	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	const dispatch = createEventDispatcher<{reset: void}>();
@@ -30,7 +32,12 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Mastodon_Cache | null = null;
+	export let cache: Fetch_Value_Cache | null | undefined = undefined;
+
+	/**
+	 * Optional logger for network calls.
+	 */
+	export let log: Logger | undefined = undefined;
 
 	/**
 	 * @readonly
@@ -81,18 +88,7 @@
 
 	$: autoload_key && set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
 
-	// TODO make this store the actual fetch result in localStorage, then it can be exposed during production
-	export let cache_enabled_key: string | undefined = 'cache_enabled';
-
-	export let initial_cache_enabled = import.meta.env.DEV;
-
-	export let cache_enabled = cache_enabled_key
-		? load_from_storage(cache_enabled_key, () => initial_cache_enabled)
-		: initial_cache_enabled; // TODO store?
-
-	$: cache_enabled_key && set_in_storage(cache_enabled_key, cache_enabled); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
-
-	$: parsed = parse_status_url(url);
+	$: parsed = parse_mastodon_status_url(url);
 	$: id = parsed?.status_id ?? null;
 	$: host = parsed?.host ?? null;
 
@@ -101,8 +97,6 @@
 	$: enable_load = loading !== false && !!host;
 
 	$: enable_reset = loading !== undefined || url !== initial_url;
-
-	$: final_cache = cache_enabled ? cache : null;
 </script>
 
 {#key loaded_status_key}
@@ -110,7 +104,8 @@
 		{host}
 		{id}
 		{with_context}
-		cache={final_cache}
+		{cache}
+		{log}
 		let:item
 		let:context
 		let:replies
@@ -207,16 +202,6 @@
 									onscreen</label
 								>
 							</fieldset>
-							{#if import.meta.env.DEV}
-								<fieldset class="row">
-									<label
-										class="row"
-										title={'the local Mastodon post cache is ' +
-											(cache_enabled ? 'enabled' : 'disabled')}
-										><input type="checkbox" bind:checked={cache_enabled} />enable local post cache</label
-									>
-								</fieldset>
-							{/if}
 						</form>
 						<slot name="settings" />
 					</div>
