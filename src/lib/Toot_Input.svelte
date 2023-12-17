@@ -2,12 +2,12 @@
 	import Alert from '@fuz.dev/fuz_library/Alert.svelte';
 	import {slide} from 'svelte/transition';
 
-	import {parse_status_url} from '$lib/mastodon.js';
+	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 
 	export let url: string;
 	export let attrs: any = undefined;
 
-	$: parsed = parse_status_url(url);
+	$: parsed = parse_mastodon_status_url(url);
 	$: invalid = !!(url && !parsed);
 </script>
 

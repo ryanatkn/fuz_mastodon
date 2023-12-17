@@ -2,11 +2,11 @@
 	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
 
 	import {
-		fetch_status_context,
+		fetch_mastodon_status_context,
 		type Mastodon_Context,
-		fetch_status,
+		fetch_mastodon_status,
 		type Mastodon_Status,
-		fetch_favourites,
+		fetch_mastodon_favourites,
 	} from '$lib/mastodon.js';
 
 	// TODO maybe delete this and merge into `Toot`
@@ -85,7 +85,7 @@
 		const unvalidated_replies = statuses.filter(({id}) => !allowed.has(id) && !skipped.has(id));
 		if (unvalidated_replies.length) {
 			await map_async(unvalidated_replies, async (s) => {
-				const favourites = await fetch_favourites(host, s.id, cache);
+				const favourites = await fetch_mastodon_favourites(host, s.id, cache);
 				const favourite = favourites?.find((f) => f.acct === acct);
 				// TODO this logic is what I want, but `favourite.created_at` is showing a date in 2022
 				// if (favourite && (!s.edited_at || new Date(s.edited_at) < new Date(favourite.created_at))) {
@@ -103,8 +103,8 @@
 		loading = true;
 		// TODO error handling
 		[item, context] = await Promise.all([
-			fetch_status(host, id, cache),
-			with_context ? fetch_status_context(host, id, cache) : null,
+			fetch_mastodon_status(host, id, cache),
+			with_context ? fetch_mastodon_status_context(host, id, cache) : null,
 		]);
 		if (item && context) {
 			replies = await filter_valid_replies(item, context.descendants);

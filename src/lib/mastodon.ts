@@ -11,8 +11,6 @@ import {Fetch_Value_Cache, fetch_value} from '@grogarden/util/fetch.js';
 // https://${host}/api/v1/statuses/${id}/context // status context endpoint
 // https://${host}/api/v1/statuses/${id}/favourited_by // status favourited by endpoint
 
-// TODO BLOCK maybe add `mastodon_` to all of these exports
-
 export interface Response_Data<T = any> {
 	url: string;
 	data: T;
@@ -22,27 +20,34 @@ export type Mastodon_Response_Data = Response_Data<
 	Mastodon_Context | Mastodon_Status | Mastodon_Favourite
 >;
 
-export const to_status_url = (host: string, id: string): string => `https://${host}/statuses/${id}`;
+export const to_mastodon_status_url = (host: string, id: string): string =>
+	`https://${host}/statuses/${id}`;
 
-export const to_status_url_with_author = (host: string, id: string, author: string): string =>
-	`https://${host}/@${author}/${id}`;
+export const to_mastodon_status_url_with_author = (
+	host: string,
+	id: string,
+	author: string,
+): string => `https://${host}/@${author}/${id}`;
 
 /**
- * longhand for `to_status_url_with_author`, apperas
+ * longhand for `to_mastodon_status_url_with_author`, apperas
  */
-export const to_status_url_with_users_author = (host: string, id: string, author: string): string =>
-	`https://${host}/users/${author}/statuses/${id}`;
+export const to_mastodon_status_url_with_users_author = (
+	host: string,
+	id: string,
+	author: string,
+): string => `https://${host}/users/${author}/statuses/${id}`;
 
-export const to_api_status_url = (host: string, id: string): string =>
+export const to_mastodon_api_status_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}`;
 
-export const to_api_status_context_url = (host: string, id: string): string =>
+export const to_mastodon_api_status_context_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}/context`;
 
-export const to_api_favourites_url = (host: string, id: string): string =>
+export const to_mastodon_api_favourites_url = (host: string, id: string): string =>
 	`https://${host}/api/v1/statuses/${id}/favourited_by`;
 
-// TODO should this have a `Parsed` prefix and then have a zod schema for the URL with a refinement type that uses `parse_status_url`?
+// TODO should this have a `Parsed` prefix and then have a zod schema for the URL with a refinement type that uses `parse_mastodon_status_url`?
 export interface Mastodon_Status_Url {
 	href: string;
 	host: string;
@@ -55,7 +60,7 @@ export interface Mastodon_Status_Url {
  * @param url
  * @returns the parsed host and id params, if any
  */
-export const parse_status_url = (url: string): Mastodon_Status_Url | null => {
+export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | null => {
 	try {
 		const u = new URL(url);
 		const parts = strip_end(u.pathname, '/context').split('/').filter(Boolean);
@@ -69,12 +74,12 @@ export const parse_status_url = (url: string): Mastodon_Status_Url | null => {
 	}
 };
 
-export const fetch_status_context = async (
+export const fetch_mastodon_status_context = async (
 	host: string,
 	id: string,
 	cache?: Fetch_Value_Cache,
 ): Promise<Mastodon_Context | null> => {
-	const url = to_api_status_context_url(host, id);
+	const url = to_mastodon_api_status_context_url(host, id);
 	const fetched = await fetch_value(url, {
 		cache,
 		return_early_from_cache: true,
@@ -83,12 +88,12 @@ export const fetch_status_context = async (
 	return fetched.value;
 };
 
-export const fetch_status = async (
+export const fetch_mastodon_status = async (
 	host: string,
 	id: string,
 	cache?: Fetch_Value_Cache,
 ): Promise<Mastodon_Status | null> => {
-	const url = to_api_status_url(host, id);
+	const url = to_mastodon_api_status_url(host, id);
 	const fetched = await fetch_value(url, {
 		cache,
 		return_early_from_cache: true,
@@ -97,12 +102,12 @@ export const fetch_status = async (
 	return fetched.value;
 };
 
-export const fetch_favourites = async (
+export const fetch_mastodon_favourites = async (
 	host: string,
 	status_id: string,
 	cache?: Fetch_Value_Cache,
 ): Promise<Mastodon_Favourite[] | null> => {
-	const url = to_api_favourites_url(host, status_id);
+	const url = to_mastodon_api_favourites_url(host, status_id);
 	const fetched = await fetch_value(url, {
 		cache,
 		return_early_from_cache: true,
@@ -112,6 +117,8 @@ export const fetch_favourites = async (
 };
 
 // TODO these are very in-progress
+
+// TODO BLOCK zod parsers
 
 /**
  * Result from `https://:host/api/v1/statuses/:id/context`.

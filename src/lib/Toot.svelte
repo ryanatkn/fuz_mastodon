@@ -9,7 +9,7 @@
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
 	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_status_url} from '$lib/mastodon.js';
+	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	const dispatch = createEventDispatcher<{reset: void}>();
@@ -93,7 +93,7 @@
 
 	$: cache_enabled_key && set_in_storage(cache_enabled_key, cache_enabled); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
 
-	$: parsed = parse_status_url(url);
+	$: parsed = parse_mastodon_status_url(url);
 	$: id = parsed?.status_id ?? null;
 	$: host = parsed?.host ?? null;
 
