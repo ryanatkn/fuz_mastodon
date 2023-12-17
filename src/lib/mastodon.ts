@@ -14,7 +14,7 @@ import {Logger} from '@grogarden/util/log.js';
 // https://${host}/api/v1/statuses/${id}/context // status context endpoint
 // https://${host}/api/v1/statuses/${id}/favourited_by // status favourited by endpoint
 
-export type Mastodon_Cache = Map<string, Mastodon_Response_Data>;
+export type Fetch_Value_Cache = Map<string, Mastodon_Response_Data>;
 
 const CACHE_NETWORK_DELAY = 0; // set this to like 1000 to see how the animations behave
 
@@ -48,7 +48,7 @@ let ratelimit_reset: Date | null = null;
 
 const RETRY_DELAY = 1000 * 60 * 2; // TODO exponential backoff
 
-export const fetch_data = async (url: string, cache?: Mastodon_Cache | null): Promise<any> => {
+export const fetch_data = async (url: string, cache?: Fetch_Value_Cache | null): Promise<any> => {
 	// local cache?
 	const r = cache?.get(url);
 	if (r) {
@@ -161,7 +161,7 @@ export const parse_status_url = (url: string): Mastodon_Status_Url | null => {
 export const fetch_status_context = async (
 	host: string,
 	id: string,
-	cache?: Mastodon_Cache | null,
+	cache?: Fetch_Value_Cache | null,
 ): Promise<Mastodon_Context | null> => {
 	const url = to_api_status_context_url(host, id);
 	return fetch_data(url, cache);
@@ -170,8 +170,7 @@ export const fetch_status_context = async (
 export const fetch_status = async (
 	host: string,
 	id: string,
-
-	cache?: Mastodon_Cache | null,
+	cache?: Fetch_Value_Cache | null,
 ): Promise<Mastodon_Status | null> => {
 	const url = to_api_status_url(host, id);
 	return fetch_data(url, cache);
@@ -180,7 +179,7 @@ export const fetch_status = async (
 export const fetch_favourites = async (
 	host: string,
 	status: Mastodon_Status,
-	cache?: Mastodon_Cache | null,
+	cache?: Fetch_Value_Cache | null,
 ): Promise<Mastodon_Favourite[] | null> => {
 	const url = to_api_favourites_url(host, status.id);
 	return fetch_data(url, cache);

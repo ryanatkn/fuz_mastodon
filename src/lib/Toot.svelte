@@ -8,7 +8,7 @@
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
 	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_status_url, type Mastodon_Cache} from '$lib/mastodon.js';
+	import {parse_status_url, type Fetch_Value_Cache} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	const dispatch = createEventDispatcher<{reset: void}>();
@@ -30,7 +30,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Mastodon_Cache | null = null;
+	export let cache: Fetch_Value_Cache | null = null;
 
 	/**
 	 * @readonly

@@ -5,7 +5,7 @@
 		fetch_status,
 		type Mastodon_Status,
 		fetch_favourites,
-		type Mastodon_Cache,
+		type Fetch_Value_Cache,
 	} from '$lib/mastodon.js';
 
 	// TODO maybe delete this and merge into `Toot`
@@ -28,7 +28,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Mastodon_Cache | null = null;
+	export let cache: Fetch_Value_Cache | null = null;
 
 	/**
 	 * @readonly
