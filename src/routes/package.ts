@@ -108,8 +108,6 @@ export const src_json = {
 		'./mastodon.js': {
 			path: 'mastodon.ts',
 			declarations: [
-				{name: 'Response_Data', kind: 'type'},
-				{name: 'Mastodon_Response_Data', kind: 'type'},
 				{name: 'to_mastodon_status_url', kind: 'function'},
 				{name: 'to_mastodon_status_url_with_author', kind: 'function'},
 				{name: 'to_mastodon_status_url_with_users_author', kind: 'function'},
@@ -121,7 +119,7 @@ export const src_json = {
 				{name: 'fetch_mastodon_status_context', kind: 'function'},
 				{name: 'fetch_mastodon_status', kind: 'function'},
 				{name: 'fetch_mastodon_favourites', kind: 'function'},
-				{name: 'Mastodon_Context', kind: 'type'},
+				{name: 'Mastodon_Status_Context', kind: 'type'},
 				{name: 'Mastodon_Status', kind: 'type'},
 				{name: 'Mastodon_Favourite', kind: 'type'},
 			],

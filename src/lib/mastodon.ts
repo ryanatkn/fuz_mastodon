@@ -69,7 +69,7 @@ export const fetch_mastodon_status_context = async (
 	host: string,
 	id: string,
 	cache?: Fetch_Value_Cache | null,
-): Promise<Mastodon_Context | null> => {
+): Promise<Mastodon_Status_Context | null> => {
 	const url = to_mastodon_api_status_context_url(host, id);
 	const fetched = await fetch_value(url, {
 		cache,
@@ -115,7 +115,7 @@ export const fetch_mastodon_favourites = async (
  * Result from `https://:host/api/v1/statuses/:id/context`.
  * @see https://docs.joinmastodon.org/entities/Context/
  */
-export interface Mastodon_Context {
+export interface Mastodon_Status_Context {
 	ancestors: Mastodon_Status[];
 	descendants: Mastodon_Status[];
 }

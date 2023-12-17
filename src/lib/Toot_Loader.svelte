@@ -3,7 +3,7 @@
 
 	import {
 		fetch_mastodon_status_context,
-		type Mastodon_Context,
+		type Mastodon_Status_Context,
 		fetch_mastodon_status,
 		type Mastodon_Status,
 		fetch_mastodon_favourites,
@@ -44,7 +44,7 @@
 	/**
 	 * @readonly
 	 */
-	export let context: Mastodon_Context | undefined | null = undefined;
+	export let context: Mastodon_Status_Context | undefined | null = undefined;
 
 	/**
 	 * @readonly
