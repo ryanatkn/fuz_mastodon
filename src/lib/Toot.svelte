@@ -3,12 +3,13 @@
 	import {slide} from 'svelte/transition';
 	import {createEventDispatcher} from 'svelte';
 	import {intersect} from '@fuz.dev/svelte_intersect';
+	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
 
 	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
 	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_status_url, type Fetch_Value_Cache} from '$lib/mastodon.js';
+	import {parse_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	const dispatch = createEventDispatcher<{reset: void}>();
@@ -30,7 +31,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Fetch_Value_Cache | null = null;
+	export let cache: Fetch_Value_Cache | undefined = undefined;
 
 	/**
 	 * @readonly
@@ -102,7 +103,7 @@
 
 	$: enable_reset = loading !== undefined || url !== initial_url;
 
-	$: final_cache = cache_enabled ? cache : null;
+	$: final_cache = cache_enabled ? cache : undefined;
 </script>
 
 {#key loaded_status_key}
