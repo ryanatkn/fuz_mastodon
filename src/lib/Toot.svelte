@@ -31,7 +31,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Fetch_Value_Cache | undefined = undefined;
+	export let cache: Fetch_Value_Cache | null | undefined = undefined;
 
 	/**
 	 * @readonly
@@ -103,7 +103,7 @@
 
 	$: enable_reset = loading !== undefined || url !== initial_url;
 
-	$: final_cache = cache_enabled ? cache : undefined;
+	$: final_cache = cache_enabled ? cache : null;
 </script>
 
 {#key loaded_status_key}

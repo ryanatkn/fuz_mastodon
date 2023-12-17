@@ -29,7 +29,7 @@
 	/**
 	 * Optional API result cache.
 	 */
-	export let cache: Fetch_Value_Cache | undefined = undefined;
+	export let cache: Fetch_Value_Cache | null | undefined = undefined;
 
 	/**
 	 * @readonly

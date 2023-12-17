@@ -11,15 +11,6 @@ import {Fetch_Value_Cache, fetch_value} from '@grogarden/util/fetch.js';
 // https://${host}/api/v1/statuses/${id}/context // status context endpoint
 // https://${host}/api/v1/statuses/${id}/favourited_by // status favourited by endpoint
 
-export interface Response_Data<T = any> {
-	url: string;
-	data: T;
-}
-
-export type Mastodon_Response_Data = Response_Data<
-	Mastodon_Context | Mastodon_Status | Mastodon_Favourite
->;
-
 export const to_mastodon_status_url = (host: string, id: string): string =>
 	`https://${host}/statuses/${id}`;
 
@@ -77,7 +68,7 @@ export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | nu
 export const fetch_mastodon_status_context = async (
 	host: string,
 	id: string,
-	cache?: Fetch_Value_Cache,
+	cache?: Fetch_Value_Cache | null,
 ): Promise<Mastodon_Context | null> => {
 	const url = to_mastodon_api_status_context_url(host, id);
 	const fetched = await fetch_value(url, {
@@ -91,7 +82,7 @@ export const fetch_mastodon_status_context = async (
 export const fetch_mastodon_status = async (
 	host: string,
 	id: string,
-	cache?: Fetch_Value_Cache,
+	cache?: Fetch_Value_Cache | null,
 ): Promise<Mastodon_Status | null> => {
 	const url = to_mastodon_api_status_url(host, id);
 	const fetched = await fetch_value(url, {
@@ -105,7 +96,7 @@ export const fetch_mastodon_status = async (
 export const fetch_mastodon_favourites = async (
 	host: string,
 	status_id: string,
-	cache?: Fetch_Value_Cache,
+	cache?: Fetch_Value_Cache | null,
 ): Promise<Mastodon_Favourite[] | null> => {
 	const url = to_mastodon_api_favourites_url(host, status_id);
 	const fetched = await fetch_value(url, {
