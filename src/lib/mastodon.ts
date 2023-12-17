@@ -132,9 +132,7 @@ export const fetch_mastodon_favourites = async (
 	return fetched.value;
 };
 
-// TODO these are very in-progress
-
-// TODO BLOCK zod parsers
+// TODO these are very in-progress - add schemas and use them for parsing in the fetch helpers (probably with `.passthrough()` for foward-compat?)
 
 /**
  * Result from `https://:host/api/v1/statuses/:id/context`.
