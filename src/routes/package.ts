@@ -108,10 +108,8 @@ export const src_json = {
 		'./mastodon.js': {
 			path: 'mastodon.ts',
 			declarations: [
-				{name: 'Fetch_Value_Cache', kind: 'type'},
 				{name: 'Response_Data', kind: 'type'},
 				{name: 'Mastodon_Response_Data', kind: 'type'},
-				{name: 'fetch_data', kind: 'function'},
 				{name: 'to_status_url', kind: 'function'},
 				{name: 'to_status_url_with_author', kind: 'function'},
 				{name: 'to_status_url_with_users_author', kind: 'function'},
