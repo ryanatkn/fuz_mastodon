@@ -11,6 +11,8 @@ import {Fetch_Value_Cache, fetch_value} from '@grogarden/util/fetch.js';
 // https://${host}/api/v1/statuses/${id}/context // status context endpoint
 // https://${host}/api/v1/statuses/${id}/favourited_by // status favourited by endpoint
 
+// TODO BLOCK maybe add `mastodon_` to all of these exports
+
 export interface Response_Data<T = any> {
 	url: string;
 	data: T;
