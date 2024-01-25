@@ -1,5 +1,11 @@
 # @fuz.dev/fuz_mastodon
 
+## 0.6.0
+
+### Minor Changes
+
+- upgrade deps ([bc34cb6](https://github.com/fuz-dev/fuz_mastodon/commit/bc34cb6))
+
 ## 0.5.0
 
 ### Minor Changes
