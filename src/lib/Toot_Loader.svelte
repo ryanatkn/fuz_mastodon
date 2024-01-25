@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
-	import type {Logger} from '@grogarden/util/log.js';
+	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
+	import type {Logger} from '@ryanatkn/belt/log.js';
 
 	import {
 		fetch_mastodon_status_context,

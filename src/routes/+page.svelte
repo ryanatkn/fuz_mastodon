@@ -6,7 +6,7 @@
 	import {base} from '$app/paths';
 	import 'prismjs'; // TODO shouldn't be needed
 	import Code from '@fuz.dev/fuz_code/Code.svelte';
-	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
+	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 
 	import Toot from '$lib/Toot.svelte';
 	import {package_json, src_json} from '$routes/package.js';

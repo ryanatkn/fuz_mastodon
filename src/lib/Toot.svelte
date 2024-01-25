@@ -2,9 +2,9 @@
 	import Pending_Button from '@fuz.dev/fuz_library/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
 	import {createEventDispatcher} from 'svelte';
-	import {intersect} from '@fuz.dev/svelte_intersect';
-	import type {Fetch_Value_Cache} from '@grogarden/util/fetch.js';
-	import type {Logger} from '@grogarden/util/log.js';
+	import {intersect} from 'svelte-intersect';
+	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
+	import type {Logger} from '@ryanatkn/belt/log.js';
 
 	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';

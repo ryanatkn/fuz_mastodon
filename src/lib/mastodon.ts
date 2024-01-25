@@ -1,6 +1,6 @@
-import {strip_end} from '@grogarden/util/string.js';
-import {Fetch_Value_Cache, fetch_value} from '@grogarden/util/fetch.js';
-import type {Logger} from '@grogarden/util/log.js';
+import {strip_end} from '@ryanatkn/belt/string.js';
+import {Fetch_Value_Cache, fetch_value} from '@ryanatkn/belt/fetch.js';
+import type {Logger} from '@ryanatkn/belt/log.js';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig
