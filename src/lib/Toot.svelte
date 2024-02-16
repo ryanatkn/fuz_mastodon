@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Pending_Button from '@fuz.dev/fuz_library/Pending_Button.svelte';
+	import Pending_Button from '@ryanatkn/fuz/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
 	import {createEventDispatcher} from 'svelte';
 	import {intersect} from 'svelte-intersect';

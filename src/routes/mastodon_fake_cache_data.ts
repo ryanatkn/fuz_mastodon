@@ -23,7 +23,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 				favourites_count: 0,
 				edited_at: '2023-11-29T04:21:46.799Z',
 				content:
-					'<p>this post is embedded on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a> using a <a href="https://hci.social/tags/Svelte" class="mention hashtag" rel="tag">#<span>Svelte</span></a> component that loads the data in your browser on demand</p><p>the code is rough and early but works if you&#39;re reading this on mastodon.fuz.dev - <a href="https://github.com/fuz-dev/fuz_mastodon" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">github.com/fuz-dev/fuz_mastodo</span><span class="invisible">n</span></a></p><p>replies to this post that I favourite will appear on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a></p>',
+					'<p>this post is embedded on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a> using a <a href="https://hci.social/tags/Svelte" class="mention hashtag" rel="tag">#<span>Svelte</span></a> component that loads the data in your browser on demand</p><p>the code is rough and early but works if you&#39;re reading this on mastodon.fuz.dev - <a href="https://github.com/ryanatkn/fuz_mastodon" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">github.com/ryanatkn/fuz_mastodo</span><span class="invisible">n</span></a></p><p>replies to this post that I favourite will appear on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a></p>',
 				reblog: null,
 				application: {name: 'Web', website: null},
 				account: {
@@ -36,7 +36,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+					note: '<p>open source web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -68,9 +68,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'feltjs',
+							name: 'Fuz',
 							value:
-								'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 							verified_at: '2023-09-20T03:27:04.768+00:00',
 						},
 						{
@@ -87,7 +87,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 				emojis: [],
 				card: {
 					url: 'https://mastodon.fuz.dev/',
-					title: '@fuz.dev/fuz_mastodon',
+					title: '@ryanatkn/fuz_mastodon',
 					description: '',
 					language: 'en',
 					type: 'link',
@@ -146,7 +146,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							discoverable: true,
 							group: false,
 							created_at: '2022-11-13T00:00:00.000Z',
-							note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+							note: '<p>open source web dev</p>',
 							url: 'https://hci.social/@ryanatkn',
 							uri: 'https://hci.social/users/ryanatkn',
 							avatar:
@@ -178,9 +178,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 									verified_at: '2022-11-13T19:12:25.810+00:00',
 								},
 								{
-									name: 'feltjs',
+									name: 'Fuz',
 									value:
-										'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+										'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 									verified_at: '2023-09-20T03:27:04.768+00:00',
 								},
 								{
@@ -226,7 +226,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							discoverable: true,
 							group: false,
 							created_at: '2022-11-13T00:00:00.000Z',
-							note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+							note: '<p>open source web dev</p>',
 							url: 'https://hci.social/@ryanatkn',
 							uri: 'https://hci.social/users/ryanatkn',
 							avatar:
@@ -258,9 +258,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 									verified_at: '2022-11-13T19:12:25.810+00:00',
 								},
 								{
-									name: 'feltjs',
+									name: 'Fuz',
 									value:
-										'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+										'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 									verified_at: '2023-09-20T03:27:04.768+00:00',
 								},
 								{
@@ -306,7 +306,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							discoverable: true,
 							group: false,
 							created_at: '2022-11-13T00:00:00.000Z',
-							note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+							note: '<p>open source web dev</p>',
 							url: 'https://hci.social/@ryanatkn',
 							uri: 'https://hci.social/users/ryanatkn',
 							avatar:
@@ -338,9 +338,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 									verified_at: '2022-11-13T19:12:25.810+00:00',
 								},
 								{
-									name: 'feltjs',
+									name: 'Fuz',
 									value:
-										'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+										'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 									verified_at: '2023-09-20T03:27:04.768+00:00',
 								},
 								{
@@ -380,7 +380,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+					note: '<p>open source web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -412,9 +412,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'feltjs',
+							name: 'Fuz',
 							value:
-								'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 							verified_at: '2023-09-20T03:27:04.768+00:00',
 						},
 						{
@@ -446,7 +446,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+					note: '<p>open source web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -478,9 +478,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'feltjs',
+							name: 'Fuz',
 							value:
-								'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 							verified_at: '2023-09-20T03:27:04.768+00:00',
 						},
 						{
@@ -512,7 +512,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev, working on felt.dev, fuz.dev, grogarden.org, and spiderspace.org, <a href="https://hci.social/tags/ActivityStreams" class="mention hashtag" rel="tag">#<span>ActivityStreams</span></a> <a href="https://hci.social/tags/ActivityPub" class="mention hashtag" rel="tag">#<span>ActivityPub</span></a> <a href="https://hci.social/tags/JS" class="mention hashtag" rel="tag">#<span>JS</span></a> <a href="https://hci.social/tags/CSS" class="mention hashtag" rel="tag">#<span>CSS</span></a> <a href="https://hci.social/tags/HTML" class="mention hashtag" rel="tag">#<span>HTML</span></a> <a href="https://hci.social/tags/svelte" class="mention hashtag" rel="tag">#<span>svelte</span></a> <a href="https://hci.social/tags/SvelteKit" class="mention hashtag" rel="tag">#<span>SvelteKit</span></a></p>',
+					note: '<p>open source web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -544,9 +544,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'feltjs',
+							name: 'Fuz',
 							value:
-								'<a href="https://www.felt.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">felt.dev</span><span class="invisible"></span></a>',
+								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
 							verified_at: '2023-09-20T03:27:04.768+00:00',
 						},
 						{

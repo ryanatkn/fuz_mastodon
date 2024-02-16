@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Library_Header from '@fuz.dev/fuz_library/Library_Header.svelte';
-	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
-	import Card from '@fuz.dev/fuz_library/Card.svelte';
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
+	import Library_Header from '@ryanatkn/fuz/Library_Header.svelte';
+	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
+	import Card from '@ryanatkn/fuz/Card.svelte';
+	import {parse_package_meta} from '@ryanatkn/fuz/package_meta.js';
 	import {base} from '$app/paths';
 	import 'prismjs'; // TODO shouldn't be needed
-	import Code from '@fuz.dev/fuz_code/Code.svelte';
+	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 
 	import Toot from '$lib/Toot.svelte';
@@ -35,7 +35,7 @@
 	<section class="box width_md">
 		<div class="spaced box width_full">
 			<div class="box width_full spaced">
-				<Code lang="ts" content={`import Toot from '@fuz.dev/fuz_mastodon/Toot.svelte'`} />
+				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte'`} />
 			</div>
 			<div class="box width_full">
 				<Code

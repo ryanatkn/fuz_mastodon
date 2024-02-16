@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Alert from '@fuz.dev/fuz_library/Alert.svelte';
+	import Alert from '@ryanatkn/fuz/Alert.svelte';
 	import {slide} from 'svelte/transition';
 
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';

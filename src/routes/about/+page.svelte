@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
-	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
+	import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
+	import {parse_package_meta} from '@ryanatkn/fuz/package_meta.js';
+	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json, src_json} from '$routes/package.js';

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Color_Scheme_Input from '@fuz.dev/fuz/Color_Scheme_Input.svelte';
-	import Theme_Input from '@fuz.dev/fuz/Theme_Input.svelte';
+	import Color_Scheme_Input from '@ryanatkn/fuz/Color_Scheme_Input.svelte';
+	import Theme_Input from '@ryanatkn/fuz/Theme_Input.svelte';
 </script>
 
 <div class="prose padded_1 box">

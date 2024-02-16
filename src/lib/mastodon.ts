@@ -1,5 +1,5 @@
 import {strip_end} from '@ryanatkn/belt/string.js';
-import {Fetch_Value_Cache, fetch_value} from '@ryanatkn/belt/fetch.js';
+import {type Fetch_Value_Cache, fetch_value} from '@ryanatkn/belt/fetch.js';
 import type {Logger} from '@ryanatkn/belt/log.js';
 
 // TODO go through a single fetch helper and trace each call to the API,

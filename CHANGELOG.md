@@ -1,85 +1,85 @@
-# @fuz.dev/fuz_mastodon
+# @ryanatkn/fuz_mastodon
 
 ## 0.6.0
 
 ### Minor Changes
 
-- upgrade deps ([bc34cb6](https://github.com/fuz-dev/fuz_mastodon/commit/bc34cb6))
+- upgrade deps ([bc34cb6](https://github.com/ryanatkn/fuz_mastodon/commit/bc34cb6))
 
 ## 0.5.0
 
 ### Minor Changes
 
-- upgrade @grogarden/util to use `fetch_value` ([#2](https://github.com/fuz-dev/fuz_mastodon/pull/2))
+- upgrade @grogarden/util to use `fetch_value` ([#2](https://github.com/ryanatkn/fuz_mastodon/pull/2))
 
 ## 0.4.1
 
 ### Patch Changes
 
-- fix `Mastodon_Status_Tree` ([40bc404](https://github.com/fuz-dev/fuz_mastodon/commit/40bc404))
+- fix `Mastodon_Status_Tree` ([40bc404](https://github.com/ryanatkn/fuz_mastodon/commit/40bc404))
 
 ## 0.4.0
 
 ### Minor Changes
 
-- cleanup `Mastodon_Status_Tree` API ([080d66e](https://github.com/fuz-dev/fuz_mastodon/commit/080d66e))
+- cleanup `Mastodon_Status_Tree` API ([080d66e](https://github.com/ryanatkn/fuz_mastodon/commit/080d66e))
 
 ## 0.3.0
 
 ### Minor Changes
 
-- unpublish package.ts ([e332cd8](https://github.com/fuz-dev/fuz_mastodon/commit/e332cd8))
+- unpublish package.ts ([e332cd8](https://github.com/ryanatkn/fuz_mastodon/commit/e332cd8))
 
 ## 0.2.4
 
 ### Patch Changes
 
-- handle 429s ([7034797](https://github.com/fuz-dev/fuz_mastodon/commit/7034797))
+- handle 429s ([7034797](https://github.com/ryanatkn/fuz_mastodon/commit/7034797))
 
 ## 0.2.3
 
 ### Patch Changes
 
-- improve ratelimit handling ([e11b6fc](https://github.com/fuz-dev/fuz_mastodon/commit/e11b6fc))
+- improve ratelimit handling ([e11b6fc](https://github.com/ryanatkn/fuz_mastodon/commit/e11b6fc))
 
 ## 0.2.2
 
 ### Patch Changes
 
-- respect rate limits in `fetch_data` ([f8c1f65](https://github.com/fuz-dev/fuz_mastodon/commit/f8c1f65))
+- respect rate limits in `fetch_data` ([f8c1f65](https://github.com/ryanatkn/fuz_mastodon/commit/f8c1f65))
 
 ## 0.2.1
 
 ### Patch Changes
 
-- fix a name ([b36c7c8](https://github.com/fuz-dev/fuz_mastodon/commit/b36c7c8))
+- fix a name ([b36c7c8](https://github.com/ryanatkn/fuz_mastodon/commit/b36c7c8))
 
 ## 0.2.0
 
 ### Minor Changes
 
-- rename to `Proper_Snakes` ([73447c0](https://github.com/fuz-dev/fuz_mastodon/commit/73447c0))
+- rename to `Proper_Snakes` ([73447c0](https://github.com/ryanatkn/fuz_mastodon/commit/73447c0))
 
 ## 0.1.3
 
 ### Patch Changes
 
-- upgrade `@grogarden/gro` to fix `package.ts` ([e7f5d95](https://github.com/fuz-dev/fuz_mastodon/commit/e7f5d95))
+- upgrade `@grogarden/gro` to fix `package.ts` ([e7f5d95](https://github.com/ryanatkn/fuz_mastodon/commit/e7f5d95))
 
 ## 0.1.2
 
 ### Patch Changes
 
-- use `import.meta.env.SSR` instead of `browser` from `$app/environment` ([6cab5ac](https://github.com/fuz-dev/fuz_mastodon/commit/6cab5ac))
+- use `import.meta.env.SSR` instead of `browser` from `$app/environment` ([6cab5ac](https://github.com/ryanatkn/fuz_mastodon/commit/6cab5ac))
 
 ## 0.1.1
 
 ### Patch Changes
 
-- add peer deps ([48c518c](https://github.com/fuz-dev/fuz_mastodon/commit/48c518c))
+- add peer deps ([48c518c](https://github.com/ryanatkn/fuz_mastodon/commit/48c518c))
 
 ## 0.1.0
 
 ### Minor Changes
 
-- init ([0aa8e9c](https://github.com/fuz-dev/fuz_mastodon/commit/0aa8e9c))
+- init ([0aa8e9c](https://github.com/ryanatkn/fuz_mastodon/commit/0aa8e9c))
