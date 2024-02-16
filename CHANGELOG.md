@@ -1,5 +1,12 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.7.0
+
+### Minor Changes
+
+- republish ([1ee1ad2](https://github.com/ryanatkn/fuz_mastodon/commit/1ee1ad2))
+- upgrade deps ([1ee1ad2](https://github.com/ryanatkn/fuz_mastodon/commit/1ee1ad2))
+
 ## 0.6.0
 
 ### Minor Changes
