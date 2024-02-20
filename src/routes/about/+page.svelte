@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
-	import {parse_package_meta} from '@ryanatkn/fuz/package_meta.js';
+	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
