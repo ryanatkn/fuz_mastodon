@@ -176,7 +176,7 @@
 							on:click={toggle_settings}
 							class="deselectable"
 							class:selected={show_settings}
-							style:margin-right="var(--spacing_sm)">settings</button
+							style:margin-right="var(--space_sm)">settings</button
 						>
 						<div class="reset">
 							<button on:click={reset} disabled={!enable_reset}>reset</button
@@ -217,7 +217,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		flex: 1;
-		gap: var(--spacing_md);
+		gap: var(--space_md);
 		width: 100%;
 	}
 	.toot_content {
@@ -232,7 +232,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: var(--spacing_md);
+		gap: var(--space_md);
 	}
 	.icon_button_content {
 		width: 100%;
@@ -248,18 +248,18 @@
 		line-height: var(--line_height);
 	}
 	.main_post {
-		padding: var(--spacing_md);
+		padding: var(--space_md);
 	}
 	.toot.replies .main_post {
-		margin-bottom: var(--spacing_md);
+		margin-bottom: var(--space_md);
 	}
 	.bg_panel {
 		background-color: var(--bg);
-		padding: var(--spacing_xs);
+		padding: var(--space_xs);
 	}
 	.icon {
 		font-size: var(--icon_size_md);
-		padding: var(--spacing_sm) var(--spacing_md) var(--spacing_sm) 0;
+		padding: var(--space_sm) var(--space_md) var(--space_sm) 0;
 	}
 	.reset {
 		display: flex;
@@ -270,12 +270,12 @@
 		margin-bottom: 0;
 	}
 	.loaded_message {
-		margin-left: var(--spacing_sm);
+		margin-left: var(--space_sm);
 	}
 	.settings {
 		display: flex;
-		padding: var(--spacing_md);
-		margin-top: var(--spacing_md);
+		padding: var(--space_md);
+		margin-top: var(--space_md);
 		width: 100%;
 	}
 	.transition_wrapper {
