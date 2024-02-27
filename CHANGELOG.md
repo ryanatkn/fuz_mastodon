@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.8.0
+
+### Minor Changes
+
+- upgrade deps ([968210e](https://github.com/ryanatkn/fuz_mastodon/commit/968210e))
+
 ## 0.7.0
 
 ### Minor Changes
