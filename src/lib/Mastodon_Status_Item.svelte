@@ -74,9 +74,9 @@
 		display: flex;
 		flex-direction: column;
 		background-color: var(--panel_bg, var(--fg_1));
-		border-radius: var(--border_radius_sm);
-		padding: var(--spacing_md);
-		margin-bottom: var(--spacing_md);
+		border-radius: var(--radius_sm);
+		padding: var(--space_md);
+		margin-bottom: var(--space_md);
 	}
 	.mastodon_status_item:last-child {
 		margin-bottom: 0;
@@ -95,7 +95,7 @@
 	header {
 		display: flex;
 		align-items: center;
-		margin-bottom: var(--spacing_sm);
+		margin-bottom: var(--space_sm);
 	}
 	.avatar {
 		margin-bottom: 0;
@@ -107,7 +107,7 @@
 	.names {
 		display: flex;
 		flex-direction: column;
-		padding: 0 var(--spacing_md);
+		padding: 0 var(--space_md);
 	}
 	.name {
 		display: flex;

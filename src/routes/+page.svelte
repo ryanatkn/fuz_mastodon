@@ -72,6 +72,6 @@
 		margin: 0 auto;
 	}
 	section {
-		margin: var(--spacing_5) 0;
+		margin: var(--space_xl5) 0;
 	}
 </style>
