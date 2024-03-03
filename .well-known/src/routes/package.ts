@@ -6,7 +6,7 @@ import type {Src_Json} from '@ryanatkn/gro/src_json.js';
 export const package_json = {
 	name: '@ryanatkn/fuz_mastodon',
 	description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
-	version: '0.8.0',
+	version: '0.9.0',
 	public: true,
 	icon: '🦣',
 	license: 'MIT',
@@ -34,9 +34,9 @@ export const package_json = {
 		'@changesets/changelog-git': '^0.2.0',
 		'@ryanatkn/belt': '^0.20.5',
 		'@ryanatkn/eslint-config': '^0.1.0',
-		'@ryanatkn/fuz': '^0.90.0',
+		'@ryanatkn/fuz': '^0.91.3',
 		'@ryanatkn/fuz_code': '^0.11.0',
-		'@ryanatkn/gro': '^0.112.3',
+		'@ryanatkn/gro': '^0.112.4',
 		'@sveltejs/adapter-static': '^3.0.1',
 		'@sveltejs/kit': '^2.5.2',
 		'@sveltejs/package': '^2.2.7',
@@ -47,11 +47,11 @@ export const package_json = {
 		eslint: '^8.57.0',
 		'eslint-plugin-svelte': '^2.35.1',
 		prettier: '^3.2.5',
-		'prettier-plugin-svelte': '^3.2.1',
+		'prettier-plugin-svelte': '^3.2.2',
 		'prism-svelte': '^0.5.0',
 		prismjs: '^1.29.0',
 		svelte: '^4.2.12',
-		'svelte-check': '^3.6.4',
+		'svelte-check': '^3.6.6',
 		'svelte-intersect': '^0.11.0',
 		tslib: '^2.6.2',
 		typescript: '^5.3.3',
@@ -99,7 +99,7 @@ export const package_json = {
 
 export const src_json = {
 	name: '@ryanatkn/fuz_mastodon',
-	version: '0.8.0',
+	version: '0.9.0',
 	modules: {
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},
 		'./Mastodon_Status_Tree.svelte': {path: 'Mastodon_Status_Tree.svelte', declarations: []},

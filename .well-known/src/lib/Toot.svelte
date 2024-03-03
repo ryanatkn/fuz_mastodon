@@ -188,8 +188,8 @@
 				</div>
 				{#if show_settings}
 					<div transition:slide class="settings controls panel">
-						<form class="width_full">
-							<div class="spaced">
+						<form class="w_100">
+							<div class="mb_lg">
 								<Toot_Input bind:url />
 							</div>
 							<fieldset class="row">
