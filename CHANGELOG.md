@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.9.0
+
+### Minor Changes
+
+- upgrade @ryanatkn/fuz@0.91 ([36153b3](https://github.com/ryanatkn/fuz_mastodon/commit/36153b3))
+
 ## 0.8.0
 
 ### Minor Changes
