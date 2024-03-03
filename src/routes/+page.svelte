@@ -33,11 +33,11 @@
 		<blockquote>⚠️ this project is still early, and its APIs will change</blockquote>
 	</section>
 	<section class="box width_md">
-		<div class="spaced box width_full">
-			<div class="box width_full spaced">
+		<div class="mb_lg box w_100">
+			<div class="box w_100 mb_lg">
 				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte'`} />
 			</div>
-			<div class="box width_full">
+			<div class="box w_100">
 				<Code
 					content={`<Toot
 	initial_url="${initial_url}"

@@ -58,7 +58,7 @@
 		</div>
 	</header>
 	{#if show_note && account_note}
-		<div class="content prose panel padded_md spaced" transition:slide>
+		<div class="content prose panel p_md mb_lg" transition:slide>
 			{@html account_note}
 		</div>
 	{/if}

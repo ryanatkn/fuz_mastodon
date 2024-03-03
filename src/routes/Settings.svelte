@@ -3,7 +3,7 @@
 	import Theme_Input from '@ryanatkn/fuz/Theme_Input.svelte';
 </script>
 
-<div class="prose padded_1 box">
+<div class="prose p_xl box">
 	<h1>Settings</h1>
 	<h2>Color Scheme</h2>
 	<Color_Scheme_Input />
