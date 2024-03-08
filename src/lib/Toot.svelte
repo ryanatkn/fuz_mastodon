@@ -165,7 +165,7 @@
 				<div
 					class="controls"
 					use:intersect={{
-						cb: (intersecting) => {
+						onintersect: ({intersecting}) => {
 							if (intersecting && autoload) load();
 						},
 						count: 1,
