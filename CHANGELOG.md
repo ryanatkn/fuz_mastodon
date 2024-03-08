@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.10.0
+
+### Minor Changes
+
+- upgrade svelte-intersect@0.12.1 ([7a76383](https://github.com/ryanatkn/fuz_mastodon/commit/7a76383))
+
 ## 0.9.0
 
 ### Minor Changes
