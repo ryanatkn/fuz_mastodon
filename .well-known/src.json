@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "modules": {
     "./Mastodon_Status_Item.svelte": {
       "path": "Mastodon_Status_Item.svelte",
