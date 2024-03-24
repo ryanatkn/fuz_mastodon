@@ -245,7 +245,7 @@
 		overflow: hidden;
 	}
 	.button_content {
-		line-height: var(--line_height);
+		line-height: var(--line_height_lg);
 	}
 	.main_post {
 		padding: var(--space_md);
