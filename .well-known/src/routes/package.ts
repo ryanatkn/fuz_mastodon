@@ -13,6 +13,8 @@ export const package_json = {
 	homepage: 'https://mastodon.fuz.dev/',
 	repository: 'https://github.com/ryanatkn/fuz_mastodon',
 	author: {name: 'Ryan Atkinson', email: 'mail@ryanatkn.com', url: 'https://www.ryanatkn.com/'},
+	bugs: 'https://github.com/ryanatkn/fuz_mastodon/issues',
+	funding: 'https://www.ryanatkn.com/funding',
 	type: 'module',
 	engines: {node: '>=20.10'},
 	scripts: {
