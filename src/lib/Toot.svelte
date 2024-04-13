@@ -61,11 +61,7 @@
 		load_time = $bindable(),
 		storage_key, // eslint-disable-line prefer-const
 		initial_show_settings = false, // eslint-disable-line prefer-const
-		show_settings = $bindable(
-			show_settings_key
-				? load_from_storage(show_settings_key, () => initial_show_settings)
-				: initial_show_settings,
-		),
+		show_settings = $bindable(),
 		autoload_key = 'autoload', // eslint-disable-line prefer-const
 		initial_autoload = false, // eslint-disable-line prefer-const
 		autoload = autoload_key
@@ -75,7 +71,7 @@
 		settings, // eslint-disable-line prefer-const
 	}: Props = $props();
 
-	let loaded_status_key = 1;
+	let loaded_status_key = $state(1);
 
 	export const reset = (): void => {
 		loaded_status_key++;
@@ -88,6 +84,15 @@
 
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
 	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
+
+	$effect(() => {
+		// TODO BLOCK is this broken?
+		if (show_settings === undefined) {
+			show_settings = show_settings_key
+				? load_from_storage(show_settings_key, () => initial_show_settings)
+				: initial_show_settings;
+		}
+	});
 
 	$effect(() => {
 		if (show_settings_key) {
