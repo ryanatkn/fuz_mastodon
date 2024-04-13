@@ -23,7 +23,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 				favourites_count: 0,
 				edited_at: '2023-11-29T04:21:46.799Z',
 				content:
-					'<p>this post is embedded on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a> using a <a href="https://hci.social/tags/Svelte" class="mention hashtag" rel="tag">#<span>Svelte</span></a> component that loads the data in your browser on demand</p><p>the code is rough and early but works if you&#39;re reading this on mastodon.fuz.dev - <a href="https://github.com/ryanatkn/fuz_mastodon" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">github.com/ryanatkn/fuz_mastodo</span><span class="invisible">n</span></a></p><p>replies to this post that I favourite will appear on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a></p>',
+					'<p>this post is embedded on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a> using a <a href="https://hci.social/tags/Svelte" class="mention hashtag" rel="tag">#<span>Svelte</span></a> component that loads the data in your browser on demand</p><p>the code is rough and early but works if you&#39;re reading this on mastodon.fuz.dev - <a href="https://github.com/fuz-dev/fuz_mastodon" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">github.com/fuz-dev/fuz_mastodo</span><span class="invisible">n</span></a></p><p>replies to this post that I favourite will appear on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a></p>',
 				reblog: null,
 				application: {name: 'Web', website: null},
 				account: {
@@ -36,7 +36,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev</p>',
+					note: '<p>FOSS web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -47,36 +47,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 					header_static:
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-					followers_count: 37,
-					following_count: 96,
-					statuses_count: 13,
-					last_status_at: '2023-11-29',
+					followers_count: 35,
+					following_count: 68,
+					statuses_count: 16,
+					last_status_at: '2024-03-07',
 					noindex: false,
 					emojis: [],
 					roles: [],
 					fields: [
 						{
-							name: 'home',
+							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T18:48:11.596+00:00',
 						},
 						{
-							name: 'code',
+							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'Fuz',
-							value:
-								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-							verified_at: '2023-09-20T03:27:04.768+00:00',
-						},
-						{
-							name: 'youtube',
+							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+							verified_at: null,
+						},
+						{
+							name: 'Fuz',
+							value:
+								'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 							verified_at: null,
 						},
 					],
@@ -87,7 +87,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 				emojis: [],
 				card: {
 					url: 'https://mastodon.fuz.dev/',
-					title: '@ryanatkn/fuz_mastodon',
+					title: '@fuz.dev/fuz_mastodon',
 					description: '',
 					language: 'en',
 					type: 'link',
@@ -146,7 +146,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							discoverable: true,
 							group: false,
 							created_at: '2022-11-13T00:00:00.000Z',
-							note: '<p>open source web dev</p>',
+							note: '<p>FOSS web dev</p>',
 							url: 'https://hci.social/@ryanatkn',
 							uri: 'https://hci.social/users/ryanatkn',
 							avatar:
@@ -157,36 +157,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 								'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 							header_static:
 								'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-							followers_count: 37,
-							following_count: 96,
-							statuses_count: 13,
-							last_status_at: '2023-11-29',
+							followers_count: 35,
+							following_count: 68,
+							statuses_count: 16,
+							last_status_at: '2024-03-07',
 							noindex: false,
 							emojis: [],
 							roles: [],
 							fields: [
 								{
-									name: 'home',
+									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 									verified_at: '2022-11-13T18:48:11.596+00:00',
 								},
 								{
-									name: 'code',
+									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 									verified_at: '2022-11-13T19:12:25.810+00:00',
 								},
 								{
-									name: 'Fuz',
-									value:
-										'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-									verified_at: '2023-09-20T03:27:04.768+00:00',
-								},
-								{
-									name: 'youtube',
+									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+									verified_at: null,
+								},
+								{
+									name: 'Fuz',
+									value:
+										'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 									verified_at: null,
 								},
 							],
@@ -226,7 +226,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							discoverable: true,
 							group: false,
 							created_at: '2022-11-13T00:00:00.000Z',
-							note: '<p>open source web dev</p>',
+							note: '<p>FOSS web dev</p>',
 							url: 'https://hci.social/@ryanatkn',
 							uri: 'https://hci.social/users/ryanatkn',
 							avatar:
@@ -237,36 +237,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 								'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 							header_static:
 								'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-							followers_count: 37,
-							following_count: 96,
-							statuses_count: 13,
-							last_status_at: '2023-11-29',
+							followers_count: 35,
+							following_count: 68,
+							statuses_count: 16,
+							last_status_at: '2024-03-07',
 							noindex: false,
 							emojis: [],
 							roles: [],
 							fields: [
 								{
-									name: 'home',
+									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 									verified_at: '2022-11-13T18:48:11.596+00:00',
 								},
 								{
-									name: 'code',
+									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 									verified_at: '2022-11-13T19:12:25.810+00:00',
 								},
 								{
-									name: 'Fuz',
-									value:
-										'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-									verified_at: '2023-09-20T03:27:04.768+00:00',
-								},
-								{
-									name: 'youtube',
+									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+									verified_at: null,
+								},
+								{
+									name: 'Fuz',
+									value:
+										'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 									verified_at: null,
 								},
 							],
@@ -283,8 +283,9 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 						created_at: '2023-11-29T03:58:28.689Z',
 						in_reply_to_id: '111491794208793604',
 						in_reply_to_account_id: '109337961591161088',
-						sensitive: false,
-						spoiler_text: '',
+						sensitive: true,
+						spoiler_text:
+							'(unlisted second reply with a content warning for demo purposes, please ignore)',
 						visibility: 'unlisted',
 						language: 'en',
 						uri: 'https://hci.social/users/ryanatkn/statuses/111491829510427790',
@@ -292,8 +293,8 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 						replies_count: 0,
 						reblogs_count: 0,
 						favourites_count: 1,
-						edited_at: null,
-						content: '<p>(unlisted second reply for demo purposes, please ignore)</p>',
+						edited_at: '2023-12-18T01:27:14.677Z',
+						content: '<p>(sensitive content)</p>',
 						reblog: null,
 						application: {name: 'Web', website: null},
 						account: {
@@ -306,7 +307,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 							discoverable: true,
 							group: false,
 							created_at: '2022-11-13T00:00:00.000Z',
-							note: '<p>open source web dev</p>',
+							note: '<p>FOSS web dev</p>',
 							url: 'https://hci.social/@ryanatkn',
 							uri: 'https://hci.social/users/ryanatkn',
 							avatar:
@@ -317,36 +318,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 								'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 							header_static:
 								'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-							followers_count: 37,
-							following_count: 96,
-							statuses_count: 13,
-							last_status_at: '2023-11-29',
+							followers_count: 35,
+							following_count: 68,
+							statuses_count: 16,
+							last_status_at: '2024-03-07',
 							noindex: false,
 							emojis: [],
 							roles: [],
 							fields: [
 								{
-									name: 'home',
+									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 									verified_at: '2022-11-13T18:48:11.596+00:00',
 								},
 								{
-									name: 'code',
+									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 									verified_at: '2022-11-13T19:12:25.810+00:00',
 								},
 								{
-									name: 'Fuz',
-									value:
-										'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-									verified_at: '2023-09-20T03:27:04.768+00:00',
-								},
-								{
-									name: 'youtube',
+									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+									verified_at: null,
+								},
+								{
+									name: 'Fuz',
+									value:
+										'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 									verified_at: null,
 								},
 							],
@@ -380,7 +381,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev</p>',
+					note: '<p>FOSS web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -391,36 +392,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 					header_static:
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-					followers_count: 37,
-					following_count: 96,
-					statuses_count: 13,
-					last_status_at: '2023-11-29',
+					followers_count: 35,
+					following_count: 68,
+					statuses_count: 16,
+					last_status_at: '2024-03-07',
 					noindex: false,
 					emojis: [],
 					roles: [],
 					fields: [
 						{
-							name: 'home',
+							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T18:48:11.596+00:00',
 						},
 						{
-							name: 'code',
+							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'Fuz',
-							value:
-								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-							verified_at: '2023-09-20T03:27:04.768+00:00',
-						},
-						{
-							name: 'youtube',
+							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+							verified_at: null,
+						},
+						{
+							name: 'Fuz',
+							value:
+								'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 							verified_at: null,
 						},
 					],
@@ -446,7 +447,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev</p>',
+					note: '<p>FOSS web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -457,36 +458,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 					header_static:
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-					followers_count: 37,
-					following_count: 96,
-					statuses_count: 13,
-					last_status_at: '2023-11-29',
+					followers_count: 35,
+					following_count: 68,
+					statuses_count: 16,
+					last_status_at: '2024-03-07',
 					noindex: false,
 					emojis: [],
 					roles: [],
 					fields: [
 						{
-							name: 'home',
+							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T18:48:11.596+00:00',
 						},
 						{
-							name: 'code',
+							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'Fuz',
-							value:
-								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-							verified_at: '2023-09-20T03:27:04.768+00:00',
-						},
-						{
-							name: 'youtube',
+							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+							verified_at: null,
+						},
+						{
+							name: 'Fuz',
+							value:
+								'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 							verified_at: null,
 						},
 					],
@@ -512,7 +513,7 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 					discoverable: true,
 					group: false,
 					created_at: '2022-11-13T00:00:00.000Z',
-					note: '<p>open source web dev</p>',
+					note: '<p>FOSS web dev</p>',
 					url: 'https://hci.social/@ryanatkn',
 					uri: 'https://hci.social/users/ryanatkn',
 					avatar:
@@ -523,36 +524,36 @@ export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
 					header_static:
 						'https://storage.googleapis.com/hci-social-storage/accounts/headers/109/337/961/591/161/088/original/e002ff8d78a865ce.jpg',
-					followers_count: 37,
-					following_count: 96,
-					statuses_count: 13,
-					last_status_at: '2023-11-29',
+					followers_count: 35,
+					following_count: 68,
+					statuses_count: 16,
+					last_status_at: '2024-03-07',
 					noindex: false,
 					emojis: [],
 					roles: [],
 					fields: [
 						{
-							name: 'home',
+							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T18:48:11.596+00:00',
 						},
 						{
-							name: 'code',
+							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
 							verified_at: '2022-11-13T19:12:25.810+00:00',
 						},
 						{
-							name: 'Fuz',
-							value:
-								'<a href="https://www.fuz.dev" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev</span><span class="invisible"></span></a>',
-							verified_at: '2023-09-20T03:27:04.768+00:00',
-						},
-						{
-							name: 'youtube',
+							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
+							verified_at: null,
+						},
+						{
+							name: 'Fuz',
+							value:
+								'<a href="https://www.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">fuz.dev/</span><span class="invisible"></span></a>',
 							verified_at: null,
 						},
 					],
