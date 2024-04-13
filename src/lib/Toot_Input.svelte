@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Alert from '@ryanatkn/fuz/Alert.svelte';
 	import {slide} from 'svelte/transition';
+	import type {SvelteHTMLElements} from 'svelte/elements';
 
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';
-	import type {SvelteHTMLElements} from 'svelte/elements';
 
 	interface Props {
 		url: string;

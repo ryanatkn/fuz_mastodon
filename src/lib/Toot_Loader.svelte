@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
+	import type {Snippet} from 'svelte';
 
 	import {
 		fetch_mastodon_status_context,
@@ -9,7 +10,6 @@
 		type Mastodon_Status,
 		fetch_mastodon_favourites,
 	} from '$lib/mastodon.js';
-	import type {Snippet} from 'svelte';
 
 	// TODO maybe delete this and merge into `Toot`
 

@@ -4,6 +4,7 @@
 	import {intersect} from 'svelte-intersect';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
+	import type {Snippet} from 'svelte';
 
 	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
@@ -11,7 +12,6 @@
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
-	import type {Snippet} from 'svelte';
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
