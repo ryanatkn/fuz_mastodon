@@ -6,7 +6,7 @@
 
 	interface Props {
 		pkg: Package_Meta;
-		children: Snippet;
+		children?: Snippet;
 	}
 
 	const {pkg, children}: Props = $props();
@@ -16,7 +16,7 @@
 	{#if pkg.package_json}
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />
 	{/if}
-	{@render children()}
+	{#if children}{@render children()}{/if}
 	<div class="breadcrumb_wrapper">
 		<Breadcrumb>{pkg.package_json?.icon}</Breadcrumb>
 	</div>

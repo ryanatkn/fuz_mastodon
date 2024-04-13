@@ -62,11 +62,11 @@
 		</div>
 	</header>
 	{#if show_note && account_note}
-		<div class="content prose panel p_md mb_lg" transition:slide>
+		<div class="content panel p_md mb_lg" transition:slide>
 			{@html account_note}
 		</div>
 	{/if}
-	<div class="content prose">
+	<div class="content">
 		{#if sensitive}<details>
 				<summary>{spoiler_text || 'view sensitive content'}</summary>{@html content}
 			</details>{:else}{@html content}{/if}

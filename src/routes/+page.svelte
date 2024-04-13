@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Library_Header from '@ryanatkn/fuz/Library_Header.svelte';
 	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
+	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
 	import Card from '@ryanatkn/fuz/Card.svelte';
 	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
 	import {base} from '$app/paths';
@@ -28,8 +28,10 @@
 </script>
 
 <main>
-	<section class="box prose">
-		<Library_Header {pkg} />
+	<section class="box">
+		<div class="panel p_lg mb_xl">
+			<Package_Summary {pkg} />
+		</div>
 		<blockquote>⚠️ this project is still early, and its APIs will change</blockquote>
 	</section>
 	<section class="box width_md">

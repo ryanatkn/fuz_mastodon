@@ -11,7 +11,7 @@
 </script>
 
 <main class="width_md">
-	<div class="prose">
+	<div>
 		<section>
 			<header>
 				<h1>{pkg.repo_name}</h1>
