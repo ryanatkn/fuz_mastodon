@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.11.1
+
+### Patch Changes
+
+- work around Svelte 5 transition bug ([aa41d24](https://github.com/ryanatkn/fuz_mastodon/commit/aa41d24))
+
 ## 0.11.0
 
 ### Minor Changes
