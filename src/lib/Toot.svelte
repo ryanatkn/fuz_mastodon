@@ -85,7 +85,7 @@
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
 	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
 
-	// TODO some of this may be broken
+	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 	$effect(() => {
 		if (show_settings === undefined) {
 			show_settings = show_settings_key
