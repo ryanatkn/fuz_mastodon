@@ -117,118 +117,106 @@
 </script>
 
 {#key loaded_status_key}
-	<Toot_Loader
-		{host}
-		{id}
-		{with_context}
-		{cache}
-		{log}
-		let:item
-		let:context
-		let:replies
-		let:load
-		let:loading
-		bind:loading
-		let:load_time
-		bind:load_time
-	>
-		<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
-		<div class="toot" class:replies transition:slide>
-			<div class="toot_content">
-				{#if ancestors && context}
-					<div transition:slide>
-						<!-- TODO style differently or something -->
-						{#each context.ancestors as ancestor}
-							<Mastodon_Status_Item item={ancestor} />
-						{/each}
-					</div>
-				{/if}
-				<div class="main_post panel">
-					<div class="panel bg_panel">
-						{#if item}
-							<div class="transition_wrapper" transition:slide>
-								<Mastodon_Status_Item {item} />
-							</div>
-						{:else}
-							<div class="transition_wrapper" transition:slide>
-								<Pending_Button
-									pending={loading || false}
-									disabled={!enable_load}
-									onclick={() => load()}
-								>
-									<div class="icon_button_content">
-										<div class="icon">🦣</div>
-										<div class="button_content">
-											<div>
-												load toot{#if replies || ancestors}s{/if} from
+	<Toot_Loader {host} {id} {with_context} {cache} {log} bind:loading bind:load_time>
+		{#snippet children({item, context, replies, load, loading, load_time})}
+			<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
+			<div class="toot" class:replies transition:slide>
+				<div class="toot_content">
+					{#if ancestors && context}
+						<div transition:slide>
+							<!-- TODO style differently or something -->
+							{#each context.ancestors as ancestor}
+								<Mastodon_Status_Item item={ancestor} />
+							{/each}
+						</div>
+					{/if}
+					<div class="main_post panel">
+						<div class="panel bg_panel">
+							{#if item}
+								<div class="transition_wrapper" transition:slide>
+									<Mastodon_Status_Item {item} />
+								</div>
+							{:else}
+								<div class="transition_wrapper" transition:slide>
+									<Pending_Button
+										pending={loading || false}
+										disabled={!enable_load}
+										onclick={() => load()}
+									>
+										<div class="icon_button_content">
+											<div class="icon">🦣</div>
+											<div class="button_content">
+												<div>
+													load toot{#if replies || ancestors}s{/if} from
+												</div>
+												<code class="ellipsis"
+													>{#if host}{host}{:else}invalid url{/if}</code
+												>
 											</div>
-											<code class="ellipsis"
-												>{#if host}{host}{:else}invalid url{/if}</code
-											>
 										</div>
-									</div>
-								</Pending_Button>
-							</div>
-						{/if}
-					</div>
-				</div>
-				{#if item && replies}
-					<div transition:slide>
-						<Mastodon_Status_Tree {item} items={replies} />
-					</div>
-				{/if}
-			</div>
-			<div class="toot_controls">
-				<div
-					class="controls"
-					use:intersect={{
-						onintersect: ({intersecting}) => {
-							if (intersecting && autoload) load();
-						},
-						count: 1,
-					}}
-				>
-					<div class="row">
-						<button
-							type="button"
-							onclick={toggle_settings}
-							class="deselectable"
-							class:selected={show_settings}
-							style:margin-right="var(--space_sm)"
-						>
-							settings
-						</button>
-						<div class="reset">
-							<button type="button" onclick={reset} disabled={!enable_reset}>
-								reset
-							</button>{#if load_time !== undefined}<div class="loaded_message" transition:slide>
-									loaded in {Math.round(load_time)}ms
-								</div>{/if}
+									</Pending_Button>
+								</div>
+							{/if}
 						</div>
 					</div>
+					{#if item && replies}
+						<div transition:slide>
+							<Mastodon_Status_Tree {item} items={replies} />
+						</div>
+					{/if}
 				</div>
-				{#if show_settings}
-					<div transition:slide class="settings controls panel">
-						<form class="w_100">
-							<div class="mb_lg">
-								<Toot_Input bind:url />
+				<div class="toot_controls">
+					<div
+						class="controls"
+						use:intersect={{
+							onintersect: ({intersecting}) => {
+								if (intersecting && autoload) load();
+							},
+							count: 1,
+						}}
+					>
+						<div class="row">
+							<button
+								type="button"
+								onclick={toggle_settings}
+								class="deselectable"
+								class:selected={show_settings}
+								style:margin-right="var(--space_sm)"
+							>
+								settings
+							</button>
+							<div class="reset">
+								<button type="button" onclick={reset} disabled={!enable_reset}>
+									reset
+								</button>{#if load_time !== undefined}<div class="loaded_message" transition:slide>
+										loaded in {Math.round(load_time)}ms
+									</div>{/if}
 							</div>
-							<fieldset class="row">
-								<label
-									class="row"
-									title={autoload
-										? 'replies will load automatically when scrolled intersect'
-										: 'replies are not loaded until you request them'}
-									><input type="checkbox" bind:checked={autoload} />automatically load when scrolled
-									onscreen</label
-								>
-							</fieldset>
-						</form>
-						{#if settings}{@render settings()}{/if}
+						</div>
 					</div>
-				{/if}
+					{#if show_settings}
+						<div transition:slide class="settings controls panel">
+							<form class="w_100">
+								<div class="mb_lg">
+									<Toot_Input bind:url />
+								</div>
+								<fieldset class="row">
+									<label
+										class="row"
+										title={autoload
+											? 'replies will load automatically when scrolled intersect'
+											: 'replies are not loaded until you request them'}
+										><input type="checkbox" bind:checked={autoload} />automatically load when
+										scrolled onscreen</label
+									>
+								</fieldset>
+							</form>
+							{#if settings}{@render settings()}{/if}
+						</div>
+					{/if}
+				</div>
 			</div>
-		</div>
+		{/snippet}
 	</Toot_Loader>
 {/key}
 
