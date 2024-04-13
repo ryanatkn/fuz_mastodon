@@ -139,6 +139,8 @@
 					<div class="main_post panel">
 						<div class="panel bg_panel">
 							{#if item}
+								<!-- TODO Svelte 5 animation bug - keeping this one here because the alternative is a janky animation,
+									and it's not as bad for UX as the contentwarning one below -->
 								<div class="transition_wrapper" transition:slide>
 									<Mastodon_Status_Item {item} />
 								</div>
@@ -166,9 +168,10 @@
 						</div>
 					</div>
 					{#if item && replies}
-						<div transition:slide>
-							<Mastodon_Status_Tree {item} items={replies} />
-						</div>
+						<!-- TODO Svelte 5 animation bug -->
+						<!-- <div transition:slide> -->
+						<Mastodon_Status_Tree {item} items={replies} />
+						<!-- </div> -->
 					{/if}
 				</div>
 				<div class="toot_controls">
