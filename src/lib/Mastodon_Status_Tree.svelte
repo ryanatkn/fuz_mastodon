@@ -2,11 +2,15 @@
 	import type {Mastodon_Status} from '$lib/mastodon.js';
 	import Message from '$lib/Mastodon_Status_Item.svelte';
 
-	export let item: Mastodon_Status;
-	export let items: Mastodon_Status[]; // TODO make this a map?
+	interface Props {
+		item: Mastodon_Status;
+		items: Mastodon_Status[];
+	}
 
-	$: ({id} = item);
-	$: replies = items.filter((i) => i.in_reply_to_id === id);
+	const {item, items}: Props = $props();
+
+	const {id} = $derived(item);
+	const replies = $derived(items.filter((i) => i.in_reply_to_id === id));
 </script>
 
 {#if replies.length}

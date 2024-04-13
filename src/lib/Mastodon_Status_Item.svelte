@@ -5,28 +5,32 @@
 
 	import type {Mastodon_Status} from '$lib/mastodon.js';
 
-	export let item: Mastodon_Status;
+	interface Props {
+		item: Mastodon_Status;
+	}
+
+	const {item}: Props = $props();
 
 	// see the CSP in `svelte.config.js`
 	/* eslint-disable svelte/no-at-html-tags */
 
-	$: ({created_at, edited_at, content, account, url, sensitive, spoiler_text} = item);
-	$: account_created = account.created_at;
-	$: account_avatar = account.avatar_static;
-	$: account_url = account.url;
-	$: account_display_name = account.display_name;
-	$: account_followers_count = account.followers_count;
-	$: account_following_count = account.following_count;
-	$: account_acct = account.acct;
-	$: account_note = account.note;
+	const {created_at, edited_at, content, account, url, sensitive, spoiler_text} = $derived(item);
+	const account_created = $derived(account.created_at);
+	const account_avatar = $derived(account.avatar_static);
+	const account_url = $derived(account.url);
+	const account_display_name = $derived(account.display_name);
+	const account_followers_count = $derived(account.followers_count);
+	const account_following_count = $derived(account.following_count);
+	const account_acct = $derived(account.acct);
+	const account_note = $derived(account.note);
 
-	$: created = format(new Date(account_created), 'PPpp');
-	$: created_ago = formatDistance(new Date(), new Date(created_at));
-	$: edited = edited_at ? format(new Date(edited_at), 'PPpp') : null;
-	$: edited_ago = edited_at ? formatDistance(new Date(), new Date(edited_at)) : null;
-	$: joined = format(new Date(account_created), 'MMM yyyy');
+	const created = $derived(format(new Date(account_created), 'PPpp'));
+	const created_ago = $derived(formatDistance(new Date(), new Date(created_at)));
+	const edited = $derived(edited_at ? format(new Date(edited_at), 'PPpp') : null);
+	const edited_ago = $derived(edited_at ? formatDistance(new Date(), new Date(edited_at)) : null);
+	const joined = $derived(format(new Date(account_created), 'MMM yyyy'));
 
-	let show_note = false;
+	let show_note = $state(false);
 	const toggle_note = (): void => {
 		show_note = !show_note;
 	};

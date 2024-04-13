@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Pending_Button from '@ryanatkn/fuz/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
-	import {createEventDispatcher} from 'svelte';
 	import {intersect} from 'svelte-intersect';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
@@ -13,41 +12,65 @@
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
-	const dispatch = createEventDispatcher<{reset: void}>();
+	interface Props {
+		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
+		url?: string;
+		/**
+		 * Whether to fetch and display replies aka descendants in the status context.
+		 */
+		replies?: boolean;
+		/**
+		 * Whether to fetch and display the ancestors in the status context.
+		 */
+		ancestors?: boolean;
+		/**
+		 * Optional API result cache.
+		 */
+		cache?: Fetch_Value_Cache | null | undefined;
+		/**
+		 * Optional logger for network calls.
+		 */
+		log?: Logger | undefined;
+		/**
+		 * @readonly
+		 */
+		loading?: boolean | undefined;
+		/**
+		 * @readonly
+		 */
+		load_time?: number | undefined;
+		storage_key?: string | undefined;
+		initial_show_settings?: boolean;
+		show_settings?: boolean;
+		autoload_key: string | undefined;
+		initial_autoload?: boolean;
+		autoload?: boolean;
+		onreset?: () => void;
+	}
 
-	export let initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
-
-	export let url = initial_url;
-
-	/**
-	 * Whether to fetch and display replies aka descendants in the status context.
-	 */
-	export let replies = false;
-
-	/**
-	 * Whether to fetch and display the ancestors in the status context.
-	 */
-	export let ancestors = false;
-
-	/**
-	 * Optional API result cache.
-	 */
-	export let cache: Fetch_Value_Cache | null | undefined = undefined;
-
-	/**
-	 * Optional logger for network calls.
-	 */
-	export let log: Logger | undefined = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let loading: boolean | undefined = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let load_time: number | undefined = undefined;
+	let {
+		initial_url, // eslint-disable-line prefer-const
+		url = initial_url,
+		replies = false, // eslint-disable-line prefer-const
+		ancestors = false, // eslint-disable-line prefer-const
+		cache, // eslint-disable-line prefer-const
+		log, // eslint-disable-line prefer-const
+		loading = $bindable(),
+		load_time = $bindable(),
+		storage_key, // eslint-disable-line prefer-const
+		initial_show_settings = false, // eslint-disable-line prefer-const
+		show_settings = $bindable(
+			show_settings_key
+				? load_from_storage(show_settings_key, () => initial_show_settings)
+				: initial_show_settings,
+		),
+		autoload_key = 'autoload', // eslint-disable-line prefer-const
+		initial_autoload = false, // eslint-disable-line prefer-const
+		autoload = autoload_key
+			? load_from_storage(autoload_key, () => initial_autoload)
+			: initial_autoload,
+		onreset, // eslint-disable-line prefer-const
+	}: Props = $props();
 
 	let loaded_status_key = 1;
 
@@ -57,46 +80,37 @@
 		// these get bound but their values stick because they're optional, so reset them
 		loading = undefined;
 		load_time = undefined;
-		dispatch('reset');
+		onreset?.();
 	};
 
-	export let storage_key: string | undefined = undefined;
-
-	export let initial_show_settings = false;
-
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
-	let show_settings_key = storage_key && 'show_settings' + storage_key;
-	$: show_settings_key = storage_key && 'show_settings' + storage_key;
+	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
 
-	export let show_settings = show_settings_key
-		? load_from_storage(show_settings_key, () => initial_show_settings)
-		: initial_show_settings; // TODO store?
-
-	$: show_settings_key && set_in_storage(show_settings_key, show_settings); // TODO @multiple wastefully sets on init
+	$effect(() => {
+		if (show_settings_key) {
+			set_in_storage(show_settings_key, show_settings); // TODO @multiple wastefully sets on init
+		}
+	});
 
 	const toggle_settings = () => {
 		show_settings = !show_settings;
 	};
 
-	export let autoload_key: string | undefined = 'autoload';
+	$effect(() => {
+		if (autoload_key) {
+			set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
+		}
+	});
 
-	export let initial_autoload = false;
+	const parsed = $derived(parse_mastodon_status_url(url));
+	const id = $derived(parsed?.status_id ?? null);
+	const host = $derived(parsed?.host ?? null);
 
-	export let autoload = autoload_key
-		? load_from_storage(autoload_key, () => initial_autoload)
-		: initial_autoload; // TODO store?
+	const with_context = $derived(replies || ancestors);
 
-	$: autoload_key && set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
+	const enable_load = $derived(loading !== false && !!host);
 
-	$: parsed = parse_mastodon_status_url(url);
-	$: id = parsed?.status_id ?? null;
-	$: host = parsed?.host ?? null;
-
-	$: with_context = replies || ancestors;
-
-	$: enable_load = loading !== false && !!host;
-
-	$: enable_reset = loading !== undefined || url !== initial_url;
+	const enable_reset = $derived(loading !== undefined || url !== initial_url);
 </script>
 
 {#key loaded_status_key}

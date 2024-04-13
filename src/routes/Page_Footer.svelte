@@ -3,7 +3,11 @@
 	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
 	import type {Package_Meta} from '@ryanatkn/gro/package_meta.js';
 
-	export let pkg: Package_Meta;
+	interface Props {
+		pkg: Package_Meta;
+	}
+
+	const {pkg}: Props = $props();
 </script>
 
 <footer>
