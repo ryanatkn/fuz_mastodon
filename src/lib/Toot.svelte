@@ -13,6 +13,8 @@
 	import Toot_Input from '$lib/Toot_Input.svelte';
 	import type {Snippet} from 'svelte';
 
+	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
+
 	interface Props {
 		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
 		url?: string;
@@ -85,7 +87,6 @@
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
 	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
 
-	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 	$effect(() => {
 		if (show_settings === undefined) {
 			show_settings = show_settings_key
