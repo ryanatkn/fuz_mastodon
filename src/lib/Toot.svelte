@@ -11,6 +11,7 @@
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
+	import type {Snippet} from 'svelte';
 
 	interface Props {
 		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
@@ -42,10 +43,11 @@
 		storage_key?: string | undefined;
 		initial_show_settings?: boolean;
 		show_settings?: boolean;
-		autoload_key: string | undefined;
+		autoload_key?: string | undefined;
 		initial_autoload?: boolean;
 		autoload?: boolean;
 		onreset?: () => void;
+		settings?: Snippet;
 	}
 
 	let {
@@ -70,6 +72,7 @@
 			? load_from_storage(autoload_key, () => initial_autoload)
 			: initial_autoload,
 		onreset, // eslint-disable-line prefer-const
+		settings, // eslint-disable-line prefer-const
 	}: Props = $props();
 
 	let loaded_status_key = 1;
@@ -221,7 +224,7 @@
 								>
 							</fieldset>
 						</form>
-						<slot name="settings" />
+						{#if settings}{@render settings()}{/if}
 					</div>
 				{/if}
 			</div>

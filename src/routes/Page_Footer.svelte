@@ -2,19 +2,21 @@
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
 	import type {Package_Meta} from '@ryanatkn/gro/package_meta.js';
+	import type {Snippet} from 'svelte';
 
 	interface Props {
 		pkg: Package_Meta;
+		children: Snippet;
 	}
 
-	const {pkg}: Props = $props();
+	const {pkg, children}: Props = $props();
 </script>
 
 <footer>
 	{#if pkg.package_json}
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />
 	{/if}
-	<slot />
+	{@render children()}
 	<div class="breadcrumb_wrapper">
 		<Breadcrumb>{pkg.package_json?.icon}</Breadcrumb>
 	</div>

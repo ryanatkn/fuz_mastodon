@@ -57,7 +57,7 @@
 	</section>
 	<section class="box">
 		<!-- TODO this slot API is hacky -->
-		<Card href="{base}/about"><svelte:fragment slot="icon">{''}</svelte:fragment>about</Card>
+		<Card href="{base}/about">{#snippet icon()}{''}{/snippet}about</Card>
 	</section>
 	<section>
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />

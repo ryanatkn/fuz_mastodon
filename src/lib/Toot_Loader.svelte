@@ -9,6 +9,7 @@
 		type Mastodon_Status,
 		fetch_mastodon_favourites,
 	} from '$lib/mastodon.js';
+	import type {Snippet} from 'svelte';
 
 	// TODO maybe delete this and merge into `Toot`
 
@@ -38,6 +39,18 @@
 		context?: Mastodon_Status_Context | null | undefined;
 		replies?: Mastodon_Status[] | null | undefined;
 		load_time?: number | undefined;
+		children: Snippet<
+			[
+				{
+					item: Mastodon_Status | null | undefined;
+					context: Mastodon_Status_Context | null | undefined;
+					replies: Mastodon_Status[] | null | undefined;
+					load: () => Promise<void>;
+					loading: boolean | undefined;
+					load_time: number | undefined;
+				},
+			]
+		>;
 	}
 
 	let {
@@ -51,6 +64,7 @@
 		context = $bindable(),
 		replies = $bindable(),
 		load_time = $bindable(),
+		children, // eslint-disable-line prefer-const
 	}: Props = $props();
 
 	// TODO add concurrency, currently makes calls serially, make configurable
@@ -113,4 +127,4 @@
 	};
 </script>
 
-<slot {item} {context} {replies} {load} {loading} {load_time} />
+{@render children({item, context, replies, load, loading, load_time})}
