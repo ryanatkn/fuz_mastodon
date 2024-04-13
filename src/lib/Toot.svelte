@@ -85,8 +85,8 @@
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
 	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
 
+	// TODO some of this may be broken
 	$effect(() => {
-		// TODO BLOCK is this broken?
 		if (show_settings === undefined) {
 			show_settings = show_settings_key
 				? load_from_storage(show_settings_key, () => initial_show_settings)
