@@ -11,13 +11,13 @@
 </script>
 
 <main class="width_md">
-	<div>
-		<section>
-			<header>
-				<h1>{pkg.repo_name}</h1>
-			</header>
+	<div class="box">
+		<header>
+			<h1 class="my_xl3">{pkg.repo_name}</h1>
+		</header>
+		<nav class="mb_xl3">
 			<Breadcrumb>{pkg.package_json.icon}</Breadcrumb>
-		</section>
+		</nav>
 	</div>
 	<section class="box w_100 mb_lg">
 		<div class="panel p_md width_md">

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
 	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
-	import Card from '@ryanatkn/fuz/Card.svelte';
 	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
 	import {base} from '$app/paths';
 	import 'prismjs'; // TODO shouldn't be needed
@@ -29,17 +28,17 @@
 
 <main>
 	<section class="box">
-		<div class="panel p_lg mb_xl">
+		<div class="panel p_lg mb_xl5 shadow_md bg">
 			<Package_Summary {pkg} />
 		</div>
-		<blockquote>⚠️ this project is still early, and its APIs will change</blockquote>
+		<blockquote>⚠️ This project is still early, and its APIs will change.</blockquote>
 	</section>
-	<section class="box width_md">
-		<div class="mb_lg box w_100">
-			<div class="box w_100 mb_lg">
+	<section class="width_md">
+		<div class="mb_lg w_100">
+			<div class="w_100 mb_lg">
 				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte'`} />
 			</div>
-			<div class="box w_100">
+			<div class="w_100">
 				<Code
 					content={`<Toot
 	initial_url="${initial_url}"
@@ -52,17 +51,17 @@
 			</div>
 		</div>
 	</section>
-	<section class="box width_sm">
+	<section class="width_sm">
 		{#if cache !== undefined}
 			<Toot {initial_url} initial_autoload={true} replies={true} storage_key="example_1" {cache} />
 		{/if}
 	</section>
-	<section class="box">
-		<!-- TODO this slot API is hacky -->
-		<Card href="{base}/about">{#snippet icon()}{''}{/snippet}about</Card>
-	</section>
 	<section>
-		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />
+		<Library_Footer {pkg} root_url="https://www.fuz.dev/">
+			{#snippet logo_header()}
+				<a class="mb_xs" href="{base}/about">about</a>
+			{/snippet}
+		</Library_Footer>
 	</section>
 </main>
 

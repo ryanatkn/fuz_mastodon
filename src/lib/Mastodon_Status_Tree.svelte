@@ -14,7 +14,7 @@
 </script>
 
 {#if replies.length}
-	<ul class="mastodon_status_tree">
+	<ul class="mastodon_status_tree unstyled">
 		{#each replies as reply (reply.id)}
 			<li>
 				<Message item={reply} />
