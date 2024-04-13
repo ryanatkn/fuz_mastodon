@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.11.0
+
+### Minor Changes
+
+- upgrade to svelte 5 ([#3](https://github.com/ryanatkn/fuz_mastodon/pull/3))
+
 ## 0.10.0
 
 ### Minor Changes
