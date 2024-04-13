@@ -37,7 +37,7 @@
 		<button
 			class="avatar plain icon_button"
 			title={account_note ? `${show_note ? 'hide' : 'show'} ${account_acct}'s profile` : undefined}
-			on:click={account_note ? toggle_note : undefined}
+			onclick={account_note ? toggle_note : undefined}
 			disabled={!account_note}
 			><img class="icon" src={account_avatar} alt="avatar for {account_acct}" /></button
 		>

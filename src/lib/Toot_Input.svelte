@@ -20,7 +20,7 @@
 			<input
 				bind:value={url}
 				placeholder="> toot url"
-				on:focus={(e) => e.currentTarget.select()}
+				onfocus={(e) => e.currentTarget.select()}
 				{...attrs}
 			/>
 		</label>

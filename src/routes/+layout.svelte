@@ -6,14 +6,19 @@
 
 	import Themed from '@ryanatkn/fuz/Themed.svelte';
 	import Dialog from '@ryanatkn/fuz/Dialog.svelte';
-	import Contextmenu from '@ryanatkn/fuz/Contextmenu.svelte';
-	import {create_contextmenu} from '@ryanatkn/fuz/contextmenu.js';
+	import Contextmenu_Root from '@ryanatkn/fuz/Contextmenu_Root.svelte';
+	import {contextmenu_action} from '@ryanatkn/fuz/contextmenu.svelte.js';
 
 	import Settings from '$routes/Settings.svelte';
+	import type {Snippet} from 'svelte';
 
-	const contextmenu = create_contextmenu();
+	interface Props {
+		children: Snippet;
+	}
 
-	let show_settings = false;
+	const {children}: Props = $props();
+
+	let show_settings = $state(false);
 </script>
 
 <svelte:head>
@@ -21,32 +26,39 @@
 </svelte:head>
 
 <svelte:body
-	use:contextmenu.action={[
+	use:contextmenu_action={[
 		{
-			content: 'Settings',
-			icon: '?',
-			run: () => {
-				show_settings = true;
+			snippet: 'text',
+			props: {
+				content: 'Settings',
+				icon: '?',
+				run: () => {
+					show_settings = true;
+				},
 			},
 		},
 		{
-			content: 'Reload',
-			icon: '⟳',
-			run: () => {
-				location.reload();
+			snippet: 'text',
+			props: {
+				content: 'Reload',
+				icon: '⟳',
+				run: () => {
+					location.reload();
+				},
 			},
 		},
 	]}
 />
 
 <Themed>
-	<slot />
-	<Contextmenu {contextmenu} />
-	{#if show_settings}
-		<Dialog on:close={() => (show_settings = false)}>
-			<div class="pane">
-				<Settings />
-			</div>
-		</Dialog>
-	{/if}
+	<Contextmenu_Root>
+		{@render children()}
+		{#if show_settings}
+			<Dialog onclose={() => (show_settings = false)}>
+				<div class="pane">
+					<Settings />
+				</div>
+			</Dialog>
+		{/if}
+	</Contextmenu_Root>
 </Themed>

@@ -137,7 +137,7 @@
 								<Pending_Button
 									pending={loading || false}
 									disabled={!enable_load}
-									on:click={() => load()}
+									onclick={() => load()}
 								>
 									<div class="icon_button_content">
 										<div class="icon">🦣</div>
@@ -173,14 +173,18 @@
 				>
 					<div class="row">
 						<button
-							on:click={toggle_settings}
+							type="button"
+							onclick={toggle_settings}
 							class="deselectable"
 							class:selected={show_settings}
-							style:margin-right="var(--space_sm)">settings</button
+							style:margin-right="var(--space_sm)"
 						>
+							settings
+						</button>
 						<div class="reset">
-							<button on:click={reset} disabled={!enable_reset}>reset</button
-							>{#if load_time !== undefined}<div class="loaded_message" transition:slide>
+							<button type="button" onclick={reset} disabled={!enable_reset}>
+								reset
+							</button>{#if load_time !== undefined}<div class="loaded_message" transition:slide>
 									loaded in {Math.round(load_time)}ms
 								</div>{/if}
 						</div>
