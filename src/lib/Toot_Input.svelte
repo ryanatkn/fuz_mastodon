@@ -3,12 +3,17 @@
 	import {slide} from 'svelte/transition';
 
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';
+	import type {SvelteHTMLElements} from 'svelte/elements';
 
-	export let url: string;
-	export let attrs: any = undefined;
+	interface Props {
+		url: string;
+		attrs?: SvelteHTMLElements['input'] | undefined;
+	}
 
-	$: parsed = parse_mastodon_status_url(url);
-	$: invalid = !!(url && !parsed);
+	let {url = $bindable(), attrs}: Props = $props(); // eslint-disable-line prefer-const
+
+	const parsed = $derived(parse_mastodon_status_url(url));
+	const invalid = $derived(!!(url && !parsed));
 </script>
 
 <fieldset>
@@ -20,7 +25,7 @@
 			<input
 				bind:value={url}
 				placeholder="> toot url"
-				on:focus={(e) => e.currentTarget.select()}
+				onfocus={(e) => e.currentTarget.select()}
 				{...attrs}
 			/>
 		</label>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Pending_Button from '@ryanatkn/fuz/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
-	import {createEventDispatcher} from 'svelte';
 	import {intersect} from 'svelte-intersect';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
@@ -12,44 +11,69 @@
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
 	import {parse_mastodon_status_url} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
+	import type {Snippet} from 'svelte';
 
-	const dispatch = createEventDispatcher<{reset: void}>();
+	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
-	export let initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
+	interface Props {
+		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
+		url?: string;
+		/**
+		 * Whether to fetch and display replies aka descendants in the status context.
+		 */
+		replies?: boolean;
+		/**
+		 * Whether to fetch and display the ancestors in the status context.
+		 */
+		ancestors?: boolean;
+		/**
+		 * Optional API result cache.
+		 */
+		cache?: Fetch_Value_Cache | null | undefined;
+		/**
+		 * Optional logger for network calls.
+		 */
+		log?: Logger | undefined;
+		/**
+		 * @readonly
+		 */
+		loading?: boolean | undefined;
+		/**
+		 * @readonly
+		 */
+		load_time?: number | undefined;
+		storage_key?: string | undefined;
+		initial_show_settings?: boolean;
+		show_settings?: boolean;
+		autoload_key?: string | undefined;
+		initial_autoload?: boolean;
+		autoload?: boolean;
+		onreset?: () => void;
+		settings?: Snippet;
+	}
 
-	export let url = initial_url;
+	let {
+		initial_url, // eslint-disable-line prefer-const
+		url = initial_url,
+		replies = false, // eslint-disable-line prefer-const
+		ancestors = false, // eslint-disable-line prefer-const
+		cache, // eslint-disable-line prefer-const
+		log, // eslint-disable-line prefer-const
+		loading = $bindable(),
+		load_time = $bindable(),
+		storage_key, // eslint-disable-line prefer-const
+		initial_show_settings = false, // eslint-disable-line prefer-const
+		show_settings = $bindable(),
+		autoload_key = 'autoload', // eslint-disable-line prefer-const
+		initial_autoload = false, // eslint-disable-line prefer-const
+		autoload = autoload_key
+			? load_from_storage(autoload_key, () => initial_autoload)
+			: initial_autoload,
+		onreset, // eslint-disable-line prefer-const
+		settings, // eslint-disable-line prefer-const
+	}: Props = $props();
 
-	/**
-	 * Whether to fetch and display replies aka descendants in the status context.
-	 */
-	export let replies = false;
-
-	/**
-	 * Whether to fetch and display the ancestors in the status context.
-	 */
-	export let ancestors = false;
-
-	/**
-	 * Optional API result cache.
-	 */
-	export let cache: Fetch_Value_Cache | null | undefined = undefined;
-
-	/**
-	 * Optional logger for network calls.
-	 */
-	export let log: Logger | undefined = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let loading: boolean | undefined = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let load_time: number | undefined = undefined;
-
-	let loaded_status_key = 1;
+	let loaded_status_key = $state(1);
 
 	export const reset = (): void => {
 		loaded_status_key++;
@@ -57,157 +81,148 @@
 		// these get bound but their values stick because they're optional, so reset them
 		loading = undefined;
 		load_time = undefined;
-		dispatch('reset');
+		onreset?.();
 	};
 
-	export let storage_key: string | undefined = undefined;
-
-	export let initial_show_settings = false;
-
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
-	let show_settings_key = storage_key && 'show_settings' + storage_key;
-	$: show_settings_key = storage_key && 'show_settings' + storage_key;
+	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
 
-	export let show_settings = show_settings_key
-		? load_from_storage(show_settings_key, () => initial_show_settings)
-		: initial_show_settings; // TODO store?
+	$effect(() => {
+		if (show_settings === undefined) {
+			show_settings = show_settings_key
+				? load_from_storage(show_settings_key, () => initial_show_settings)
+				: initial_show_settings;
+		}
+	});
 
-	$: show_settings_key && set_in_storage(show_settings_key, show_settings); // TODO @multiple wastefully sets on init
+	$effect(() => {
+		if (show_settings_key) {
+			set_in_storage(show_settings_key, show_settings); // TODO @multiple wastefully sets on init
+		}
+	});
 
 	const toggle_settings = () => {
 		show_settings = !show_settings;
 	};
 
-	export let autoload_key: string | undefined = 'autoload';
+	$effect(() => {
+		if (autoload_key) {
+			set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
+		}
+	});
 
-	export let initial_autoload = false;
+	const parsed = $derived(parse_mastodon_status_url(url));
+	const id = $derived(parsed?.status_id ?? null);
+	const host = $derived(parsed?.host ?? null);
 
-	export let autoload = autoload_key
-		? load_from_storage(autoload_key, () => initial_autoload)
-		: initial_autoload; // TODO store?
+	const with_context = $derived(replies || ancestors);
 
-	$: autoload_key && set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
+	const enable_load = $derived(loading !== false && !!host);
 
-	$: parsed = parse_mastodon_status_url(url);
-	$: id = parsed?.status_id ?? null;
-	$: host = parsed?.host ?? null;
-
-	$: with_context = replies || ancestors;
-
-	$: enable_load = loading !== false && !!host;
-
-	$: enable_reset = loading !== undefined || url !== initial_url;
+	const enable_reset = $derived(loading !== undefined || url !== initial_url);
 </script>
 
 {#key loaded_status_key}
-	<Toot_Loader
-		{host}
-		{id}
-		{with_context}
-		{cache}
-		{log}
-		let:item
-		let:context
-		let:replies
-		let:load
-		let:loading
-		bind:loading
-		let:load_time
-		bind:load_time
-	>
-		<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
-		<div class="toot" class:replies transition:slide>
-			<div class="toot_content">
-				{#if ancestors && context}
-					<div transition:slide>
-						<!-- TODO style differently or something -->
-						{#each context.ancestors as ancestor}
-							<Mastodon_Status_Item item={ancestor} />
-						{/each}
-					</div>
-				{/if}
-				<div class="main_post panel">
-					<div class="panel bg_panel">
-						{#if item}
-							<div class="transition_wrapper" transition:slide>
-								<Mastodon_Status_Item {item} />
-							</div>
-						{:else}
-							<div class="transition_wrapper" transition:slide>
-								<Pending_Button
-									pending={loading || false}
-									disabled={!enable_load}
-									on:click={() => load()}
-								>
-									<div class="icon_button_content">
-										<div class="icon">🦣</div>
-										<div class="button_content">
-											<div>
-												load toot{#if replies || ancestors}s{/if} from
+	<Toot_Loader {host} {id} {with_context} {cache} {log} bind:loading bind:load_time>
+		{#snippet children({item, context, replies, load, loading, load_time})}
+			<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
+			<div class="toot" class:replies transition:slide>
+				<div class="toot_content">
+					{#if ancestors && context}
+						<div transition:slide>
+							<!-- TODO style differently or something -->
+							{#each context.ancestors as ancestor}
+								<Mastodon_Status_Item item={ancestor} />
+							{/each}
+						</div>
+					{/if}
+					<div class="main_post panel">
+						<div class="panel bg_panel">
+							{#if item}
+								<div class="transition_wrapper" transition:slide>
+									<Mastodon_Status_Item {item} />
+								</div>
+							{:else}
+								<div class="transition_wrapper" transition:slide>
+									<Pending_Button
+										pending={loading || false}
+										disabled={!enable_load}
+										onclick={() => load()}
+									>
+										<div class="icon_button_content">
+											<div class="icon">🦣</div>
+											<div class="button_content">
+												<div>
+													load toot{#if replies || ancestors}s{/if} from
+												</div>
+												<code class="ellipsis"
+													>{#if host}{host}{:else}invalid url{/if}</code
+												>
 											</div>
-											<code class="ellipsis"
-												>{#if host}{host}{:else}invalid url{/if}</code
-											>
 										</div>
-									</div>
-								</Pending_Button>
-							</div>
-						{/if}
-					</div>
-				</div>
-				{#if item && replies}
-					<div transition:slide>
-						<Mastodon_Status_Tree {item} items={replies} />
-					</div>
-				{/if}
-			</div>
-			<div class="toot_controls">
-				<div
-					class="controls"
-					use:intersect={{
-						onintersect: ({intersecting}) => {
-							if (intersecting && autoload) load();
-						},
-						count: 1,
-					}}
-				>
-					<div class="row">
-						<button
-							on:click={toggle_settings}
-							class="deselectable"
-							class:selected={show_settings}
-							style:margin-right="var(--space_sm)">settings</button
-						>
-						<div class="reset">
-							<button on:click={reset} disabled={!enable_reset}>reset</button
-							>{#if load_time !== undefined}<div class="loaded_message" transition:slide>
-									loaded in {Math.round(load_time)}ms
-								</div>{/if}
+									</Pending_Button>
+								</div>
+							{/if}
 						</div>
 					</div>
+					{#if item && replies}
+						<div transition:slide>
+							<Mastodon_Status_Tree {item} items={replies} />
+						</div>
+					{/if}
 				</div>
-				{#if show_settings}
-					<div transition:slide class="settings controls panel">
-						<form class="w_100">
-							<div class="mb_lg">
-								<Toot_Input bind:url />
+				<div class="toot_controls">
+					<div
+						class="controls"
+						use:intersect={{
+							onintersect: ({intersecting}) => {
+								if (intersecting && autoload) load();
+							},
+							count: 1,
+						}}
+					>
+						<div class="row">
+							<button
+								type="button"
+								onclick={toggle_settings}
+								class="deselectable"
+								class:selected={show_settings}
+								style:margin-right="var(--space_sm)"
+							>
+								settings
+							</button>
+							<div class="reset">
+								<button type="button" onclick={reset} disabled={!enable_reset}>
+									reset
+								</button>{#if load_time !== undefined}<div class="loaded_message" transition:slide>
+										loaded in {Math.round(load_time)}ms
+									</div>{/if}
 							</div>
-							<fieldset class="row">
-								<label
-									class="row"
-									title={autoload
-										? 'replies will load automatically when scrolled intersect'
-										: 'replies are not loaded until you request them'}
-									><input type="checkbox" bind:checked={autoload} />automatically load when scrolled
-									onscreen</label
-								>
-							</fieldset>
-						</form>
-						<slot name="settings" />
+						</div>
 					</div>
-				{/if}
+					{#if show_settings}
+						<div transition:slide class="settings controls panel">
+							<form class="w_100">
+								<div class="mb_lg">
+									<Toot_Input bind:url />
+								</div>
+								<fieldset class="row">
+									<label
+										class="row"
+										title={autoload
+											? 'replies will load automatically when scrolled intersect'
+											: 'replies are not loaded until you request them'}
+										><input type="checkbox" bind:checked={autoload} />automatically load when
+										scrolled onscreen</label
+									>
+								</fieldset>
+							</form>
+							{#if settings}{@render settings()}{/if}
+						</div>
+					{/if}
+				</div>
 			</div>
-		</div>
+		{/snippet}
 	</Toot_Loader>
 {/key}
 
@@ -245,7 +260,7 @@
 		overflow: hidden;
 	}
 	.button_content {
-		line-height: var(--line_height);
+		line-height: var(--line_height_lg);
 	}
 	.main_post {
 		padding: var(--space_md);

@@ -9,58 +9,63 @@
 		type Mastodon_Status,
 		fetch_mastodon_favourites,
 	} from '$lib/mastodon.js';
+	import type {Snippet} from 'svelte';
 
 	// TODO maybe delete this and merge into `Toot`
 
-	/**
-	 * The host part of the url, like `'mastodon.ryanatkn.com'`.
-	 */
-	export let host: string | null;
+	interface Props {
+		/**
+		 * The host part of the url, like `'mastodon.ryanatkn.com'`.
+		 */
+		host: string | null;
+		/**
+		 * The status id to fetch, like `'110702983310017651'`.
+		 */
+		id: string | null;
+		/**
+		 * Should we also fetch the status's context, getting its ancestors and descendants?
+		 */
+		with_context?: boolean;
+		/**
+		 * Optional API result cache.
+		 */
+		cache?: Fetch_Value_Cache | null | undefined;
+		/**
+		 * Optional logger for network calls.
+		 */
+		log?: Logger | undefined;
+		loading?: boolean | undefined;
+		item?: Mastodon_Status | null | undefined;
+		context?: Mastodon_Status_Context | null | undefined;
+		replies?: Mastodon_Status[] | null | undefined;
+		load_time?: number | undefined;
+		children: Snippet<
+			[
+				{
+					item: Mastodon_Status | null | undefined;
+					context: Mastodon_Status_Context | null | undefined;
+					replies: Mastodon_Status[] | null | undefined;
+					load: () => Promise<void>;
+					loading: boolean | undefined;
+					load_time: number | undefined;
+				},
+			]
+		>;
+	}
 
-	/**
-	 * The status id to fetch, like `'110702983310017651'`.
-	 */
-	export let id: string | null;
-
-	/**
-	 * Should we also fetch the status's context, getting its ancestors and descendants?
-	 */
-	export let with_context = false;
-
-	/**
-	 * Optional API result cache.
-	 */
-	export let cache: Fetch_Value_Cache | null | undefined = undefined;
-
-	/**
-	 * Optional logger for network calls.
-	 */
-	export let log: Logger | undefined = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let loading: boolean | undefined = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let item: Mastodon_Status | undefined | null = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let context: Mastodon_Status_Context | undefined | null = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let replies: Mastodon_Status[] | undefined | null = undefined;
-
-	/**
-	 * @readonly
-	 */
-	export let load_time: number | undefined = undefined;
+	let {
+		host, // eslint-disable-line prefer-const
+		id, // eslint-disable-line prefer-const
+		with_context = false, // eslint-disable-line prefer-const
+		cache, // eslint-disable-line prefer-const
+		log, // eslint-disable-line prefer-const
+		loading = $bindable(),
+		item = $bindable(),
+		context = $bindable(),
+		replies = $bindable(),
+		load_time = $bindable(),
+		children, // eslint-disable-line prefer-const
+	}: Props = $props();
 
 	// TODO add concurrency, currently makes calls serially, make configurable
 	const map_async = async <T, U>(
@@ -122,4 +127,4 @@
 	};
 </script>
 
-<slot {item} {context} {replies} {load} {loading} {load_time} />
+{@render children({item, context, replies, load, loading, load_time})}
