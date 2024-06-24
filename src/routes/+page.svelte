@@ -11,7 +11,7 @@
 	import {package_json, src_json} from '$routes/package.js';
 	import {onMount} from 'svelte';
 
-	let cache: Fetch_Value_Cache | undefined | null;
+	let cache: Fetch_Value_Cache | undefined | null = $state();
 
 	onMount(async () => {
 		if (import.meta.env.DEV) {
