@@ -1,13 +1,13 @@
 <script lang="ts">
-	import '@ryanatkn/fuz/style.css';
-	import '@ryanatkn/fuz/theme.css';
+	import '@ryanatkn/moss/style.css';
+	import '@ryanatkn/moss/theme.css';
 	import '$routes/style.css';
-	import '@ryanatkn/fuz_code/prism.css'; // TODO maybe import from Code?
+	import '@ryanatkn/fuz_code/prism.css';
 
 	import Themed from '@ryanatkn/fuz/Themed.svelte';
 	import Dialog from '@ryanatkn/fuz/Dialog.svelte';
 	import Contextmenu_Root from '@ryanatkn/fuz/Contextmenu_Root.svelte';
-	import {contextmenu_action} from '@ryanatkn/fuz/contextmenu.svelte.js';
+	import {contextmenu_action} from '@ryanatkn/fuz/contextmenu_helpers.svelte.js';
 
 	import Settings from '$routes/Settings.svelte';
 	import type {Snippet} from 'svelte';
