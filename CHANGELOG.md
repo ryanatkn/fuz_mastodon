@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.12.0
+
+### Minor Changes
+
+- upgrade `node@22.3` ([#4](https://github.com/ryanatkn/fuz_mastodon/pull/4))
+
 ## 0.11.1
 
 ### Patch Changes
