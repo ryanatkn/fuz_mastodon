@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.13.0
+
+### Minor Changes
+
+- support `node@20.12` and later ([ee77b51](https://github.com/ryanatkn/fuz_mastodon/commit/ee77b51))
+
 ## 0.12.0
 
 ### Minor Changes

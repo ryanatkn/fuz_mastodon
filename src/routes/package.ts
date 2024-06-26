@@ -6,7 +6,7 @@ import type {Src_Json} from '@ryanatkn/gro/src_json.js';
 export const package_json = {
 	name: '@ryanatkn/fuz_mastodon',
 	description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
-	version: '0.12.0',
+	version: '0.13.0',
 	public: true,
 	icon: '🦣',
 	license: 'MIT',
@@ -103,7 +103,7 @@ export const package_json = {
 
 export const src_json = {
 	name: '@ryanatkn/fuz_mastodon',
-	version: '0.12.0',
+	version: '0.13.0',
 	modules: {
 		'./package.json': {path: 'package.json', declarations: []},
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},
