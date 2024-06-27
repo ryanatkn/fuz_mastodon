@@ -2,7 +2,7 @@
   "name": "@ryanatkn/fuz_mastodon",
   "description": "Mastodon components and helpers for Svelte, SvelteKit, and Fuz",
   "glyph": "🦣",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "public": true,
   "license": "MIT",
   "homepage": "https://mastodon.fuz.dev/",

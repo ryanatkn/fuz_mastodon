@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.13.1
+
+### Patch Changes
+
+- upgrade gro with correctly formatted exports ([7006216](https://github.com/ryanatkn/fuz_mastodon/commit/7006216))
+
 ## 0.13.0
 
 ### Minor Changes
