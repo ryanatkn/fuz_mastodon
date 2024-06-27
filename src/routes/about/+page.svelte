@@ -16,7 +16,7 @@
 			<h1 class="my_xl3">{pkg.repo_name}</h1>
 		</header>
 		<nav class="mb_xl3">
-			<Breadcrumb>{pkg.package_json.icon}</Breadcrumb>
+			<Breadcrumb>{pkg.package_json.glyph}</Breadcrumb>
 		</nav>
 	</div>
 	<section class="box w_100 mb_lg">
