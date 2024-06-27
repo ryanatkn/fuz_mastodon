@@ -55,7 +55,7 @@ export const package_json = {
 		prismjs: '^1.29.0',
 		svelte: '^5.0.0-next.165',
 		'svelte-check': '^3.8.2',
-		'svelte-intersect': '^0.13.0',
+		'svelte-intersect': '^0.14.1',
 		tslib: '^2.6.3',
 		typescript: '^5.5.2',
 		uvu: '^0.5.6',
