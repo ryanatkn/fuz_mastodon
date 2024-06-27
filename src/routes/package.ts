@@ -7,7 +7,7 @@ export const package_json = {
 	name: '@ryanatkn/fuz_mastodon',
 	description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
 	glyph: '🦣',
-	version: '0.13.1',
+	version: '0.14.0',
 	public: true,
 	license: 'MIT',
 	homepage: 'https://mastodon.fuz.dev/',
@@ -103,7 +103,7 @@ export const package_json = {
 
 export const src_json = {
 	name: '@ryanatkn/fuz_mastodon',
-	version: '0.13.1',
+	version: '0.14.0',
 	modules: {
 		'./package.json': {path: 'package.json', declarations: []},
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},

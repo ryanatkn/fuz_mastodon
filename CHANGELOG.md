@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.14.0
+
+### Minor Changes
+
+- add peer deps for Svelte and SvelteKit ([36738de](https://github.com/ryanatkn/fuz_mastodon/commit/36738de))
+
 ## 0.13.1
 
 ### Patch Changes
