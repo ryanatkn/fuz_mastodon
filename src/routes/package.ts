@@ -28,9 +28,9 @@ export const package_json = {
 	peerDependencies: {
 		'@ryanatkn/belt': '*',
 		'@ryanatkn/fuz': '*',
-		'@sveltejs/kit': '*',
-		svelte: '*',
-		'svelte-intersect': '*',
+		'@sveltejs/kit': '^2',
+		svelte: '^5.0.0-next.0',
+		'svelte-intersect': '^0.14',
 	},
 	devDependencies: {
 		'@changesets/changelog-git': '^0.2.0',
