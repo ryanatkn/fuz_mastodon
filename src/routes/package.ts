@@ -24,7 +24,6 @@ export const package_json = {
 		test: 'gro test',
 		deploy: 'gro deploy',
 	},
-	files: ['dist'],
 	peerDependencies: {
 		'@ryanatkn/belt': '*',
 		'@ryanatkn/fuz': '*',
@@ -69,6 +68,8 @@ export const package_json = {
 		bracketSpacing: false,
 		overrides: [{files: 'package.json', options: {useTabs: false}}],
 	},
+	sideEffects: ['**/*.css'],
+	files: ['dist'],
 	exports: {
 		'./package.json': './package.json',
 		'./Mastodon_Status_Item.svelte': {
