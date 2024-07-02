@@ -9,7 +9,7 @@ export const package_json = {
 	description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
 	glyph: '🦣',
 	logo: 'logo.svg',
-	logo_alt: 'a friendly pixelated spider facing you',
+	logo_alt: 'a friendly purple spider facing you',
 	public: true,
 	license: 'MIT',
 	homepage: 'https://mastodon.fuz.dev/',
