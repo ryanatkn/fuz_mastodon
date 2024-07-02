@@ -1,4 +1,4 @@
-[<img src="/static/log.svg" alt="a friendly brown spider facing you" align="right" width="192" height="192">](https://www.fuz.dev/)
+[<img src="/static/log.svg" alt="a friendly purple spider facing you" align="right" width="192" height="192">](https://www.fuz.dev/)
 
 # @ryanatkn/fuz_mastodon
 
