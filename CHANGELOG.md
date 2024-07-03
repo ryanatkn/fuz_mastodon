@@ -5,7 +5,7 @@
 ### Patch Changes
 
 - add `sideEffects` to `package.json` ([b571ea1](https://github.com/ryanatkn/fuz_mastodon/commit/b571ea1))
-- switch to use `esm-env` from using `import.meta.env` ([c9ae7ea](https://github.com/ryanatkn/fuz_mastodon/commit/c9ae7ea))
+- switch to `esm-env` from using `import.meta.env` ([#6](https://github.com/ryanatkn/fuz_mastodon/pull/6))
 
 ## 0.14.0
 
