@@ -7,7 +7,14 @@
 > and [Fuz](https://github.com/ryanatkn/fuz)
 > 🦣 [mastodon.fuz.dev](https://mastodon.fuz.dev/)
 
-> ⚠️ this project is still early, and its APIs will change
+> ⚠️ This project is still early, and its APIs will change.
+> The code is fairly low quality, but the UX for embedding toots should work.
+
+Features
+
+- embed toots without authentication
+- spoiler warnings are behind `<details>`
+- customizable caching
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
