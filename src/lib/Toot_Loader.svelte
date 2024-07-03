@@ -54,6 +54,7 @@
 		>;
 	}
 
+	// TODO maybe these shouldn't be bindable?
 	let {
 		host, // eslint-disable-line prefer-const
 		id, // eslint-disable-line prefer-const
@@ -98,7 +99,7 @@
 		if (unvalidated_replies.length) {
 			await map_async(unvalidated_replies, async (s) => {
 				const favourites = await fetch_mastodon_favourites(host, s.id, cache, log);
-				const favourite = favourites?.find((f) => f.acct === acct);
+				const favourite = favourites?.find((f) => f.acct === acct); // TODO customize via a prop (string/set/callback)
 				// TODO this logic is what I want, but `favourite.created_at` is showing a date in 2022
 				// if (favourite && (!s.edited_at || new Date(s.edited_at) < new Date(favourite.created_at))) {
 				if (favourite) {

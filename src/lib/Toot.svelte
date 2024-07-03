@@ -52,6 +52,7 @@
 		settings?: Snippet;
 	}
 
+	// TODO maybe these shouldn't be bindable?
 	let {
 		initial_url, // eslint-disable-line prefer-const
 		url = initial_url,
