@@ -26,6 +26,8 @@ Planned:
 
 - multiple views and layouts
 
+Need help or want to help? Visit [the Discord community](https://discord.gg/YU5tyeK72X).
+
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
 [MIT](LICENSE)
