@@ -2,6 +2,7 @@
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
 	import type {Snippet} from 'svelte';
+	import {BROWSER} from 'esm-env';
 
 	import {
 		fetch_mastodon_status_context,
@@ -109,7 +110,7 @@
 	};
 
 	const load = async (): Promise<void> => {
-		if (import.meta.env.SSR || !host || !id) return;
+		if (!BROWSER || !host || !id) return;
 		const start_time = performance.now();
 		loading = true;
 		// TODO error handling
