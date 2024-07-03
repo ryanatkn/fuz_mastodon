@@ -4,8 +4,10 @@
 
 > [Mastodon](https://github.com/mastodon/mastodon) components and helpers for
 > [Svelte](https://github.com/sveltejs/svelte), [SvelteKit](https://github.com/sveltejs/kit),
-> and [Fuz](https://github.com/ryanatkn/fuz)
-> 🦣 [mastodon.fuz.dev](https://mastodon.fuz.dev/)
+> [Fuz](https://github.com/ryanatkn/fuz), and [Moss](https://github.com/ryanatkn/moss)
+> 🦣
+
+[**mastodon.fuz.dev**](https://mastodon.fuz.dev/)
 
 > ⚠️ This project is still early, and its APIs will change.
 > The code is fairly low quality, but the UX for embedding toots should work.
