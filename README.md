@@ -15,12 +15,14 @@ Features:
 - embed toots without authentication
 - nested replies
 - spoiler warnings are behind `<details>`
+- allowlisting via likes by the toot author
 - customizable caching
 
 Limitations:
 
 - read-only (no authentication is supported)
 - only one view/layout
+- allowlisting is hardcoded to the original toot author's likes
 
 Planned:
 
