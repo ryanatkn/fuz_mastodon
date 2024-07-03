@@ -6,6 +6,7 @@
 	import 'prismjs'; // TODO shouldn't be needed
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
+	import {DEV} from 'esm-env';
 
 	import Toot from '$lib/Toot.svelte';
 	import {package_json, src_json} from '$routes/package.js';
@@ -14,7 +15,7 @@
 	let cache: Fetch_Value_Cache | undefined | null = $state();
 
 	onMount(async () => {
-		if (import.meta.env.DEV) {
+		if (DEV) {
 			cache = new Map((await import('./mastodon_fake_cache_data.js')).mastodon_fake_cache_data);
 		} else {
 			cache = null;
