@@ -10,11 +10,21 @@
 > ⚠️ This project is still early, and its APIs will change.
 > The code is fairly low quality, but the UX for embedding toots should work.
 
-Features
+Features:
 
 - embed toots without authentication
+- nested replies
 - spoiler warnings are behind `<details>`
 - customizable caching
+
+Limitations:
+
+- read-only (no authentication is supported)
+- only one view/layout
+
+Planned:
+
+- multiple views and layouts
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
