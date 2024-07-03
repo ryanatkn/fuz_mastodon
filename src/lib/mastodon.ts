@@ -1,6 +1,7 @@
 import {strip_end} from '@ryanatkn/belt/string.js';
 import {type Fetch_Value_Cache, fetch_value} from '@ryanatkn/belt/fetch.js';
 import type {Logger} from '@ryanatkn/belt/log.js';
+import {DEV} from 'esm-env';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig
@@ -80,7 +81,7 @@ export const fetch_mastodon_status_context = async (
 		request,
 		token,
 		cache,
-		return_early_from_cache: true,
+		return_early_from_cache: DEV,
 		log,
 		fetch,
 	});
@@ -102,7 +103,7 @@ export const fetch_mastodon_status = async (
 		request,
 		token,
 		cache,
-		return_early_from_cache: true,
+		return_early_from_cache: DEV,
 		log,
 		fetch,
 	});
@@ -124,7 +125,7 @@ export const fetch_mastodon_favourites = async (
 		request,
 		token,
 		cache,
-		return_early_from_cache: true,
+		return_early_from_cache: DEV,
 		log,
 		fetch,
 	});
