@@ -10,7 +10,7 @@
 		attrs?: SvelteHTMLElements['input'] | undefined;
 	}
 
-	let {url = $bindable(), attrs}: Props = $props(); // eslint-disable-line prefer-const
+	let {url = $bindable(), attrs}: Props = $props();
 
 	const parsed = $derived(parse_mastodon_status_url(url));
 	const invalid = $derived(!!(url && !parsed));

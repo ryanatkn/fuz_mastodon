@@ -12,7 +12,7 @@
 
 <footer>
 	<nav>
-		<Breadcrumb>{pkg.package_json?.glyph}</Breadcrumb>
+		<Breadcrumb>{pkg.package_json.glyph}</Breadcrumb>
 	</nav>
 	{#if pkg.package_json}
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />

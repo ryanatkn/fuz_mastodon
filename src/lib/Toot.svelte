@@ -54,24 +54,24 @@
 
 	// TODO maybe these shouldn't be bindable?
 	let {
-		initial_url, // eslint-disable-line prefer-const
+		initial_url,
 		url = initial_url,
-		replies = false, // eslint-disable-line prefer-const
-		ancestors = false, // eslint-disable-line prefer-const
-		cache, // eslint-disable-line prefer-const
-		log, // eslint-disable-line prefer-const
+		replies = false,
+		ancestors = false,
+		cache,
+		log,
 		loading = $bindable(),
 		load_time = $bindable(),
-		storage_key, // eslint-disable-line prefer-const
-		initial_show_settings = false, // eslint-disable-line prefer-const
+		storage_key,
+		initial_show_settings = false,
 		show_settings = $bindable(),
-		autoload_key = 'autoload', // eslint-disable-line prefer-const
-		initial_autoload = false, // eslint-disable-line prefer-const
+		autoload_key = 'autoload',
+		initial_autoload = false,
 		autoload = autoload_key
 			? load_from_storage(autoload_key, () => initial_autoload)
 			: initial_autoload,
-		onreset, // eslint-disable-line prefer-const
-		settings, // eslint-disable-line prefer-const
+		onreset,
+		settings,
 	}: Props = $props();
 
 	let loaded_status_key = $state(1);

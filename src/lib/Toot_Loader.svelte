@@ -56,17 +56,17 @@
 
 	// TODO maybe these shouldn't be bindable?
 	let {
-		host, // eslint-disable-line prefer-const
-		id, // eslint-disable-line prefer-const
-		with_context = false, // eslint-disable-line prefer-const
-		cache, // eslint-disable-line prefer-const
-		log, // eslint-disable-line prefer-const
+		host,
+		id,
+		with_context = false,
+		cache,
+		log,
 		loading = $bindable(),
 		item = $bindable(),
 		context = $bindable(),
 		replies = $bindable(),
 		load_time = $bindable(),
-		children, // eslint-disable-line prefer-const
+		children,
 	}: Props = $props();
 
 	// TODO add concurrency, currently makes calls serially, make configurable

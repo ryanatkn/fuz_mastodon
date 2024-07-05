@@ -62,7 +62,7 @@ export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | nu
 		const id = parts.length > 1 ? parts[parts.length - 1] : null;
 		if (!id) return null;
 		return {href: url, host: u.host, author, status_id: id};
-	} catch (err) {
+	} catch (_err) {
 		return null;
 	}
 };
