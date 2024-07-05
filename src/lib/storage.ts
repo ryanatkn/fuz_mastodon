@@ -22,7 +22,7 @@ export const load_from_storage = <T>(
 		const parsed = JSON.parse(stored);
 		validate?.(parsed);
 		return parsed;
-	} catch (err) {
+	} catch (_err) {
 		try {
 			localStorage.removeItem(key);
 		} catch (_err) {}
