@@ -48,10 +48,8 @@
     "@sveltejs/kit": "^2.5.17",
     "@sveltejs/package": "^2.3.2",
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
-    "@typescript-eslint/parser": "^7.13.1",
     "date-fns": "^3.6.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.6.0",
     "eslint-plugin-svelte": "^2.41.0",
     "esm-env": "^1.0.0",
     "prettier": "^3.3.2",
@@ -63,6 +61,7 @@
     "svelte-intersect": "^0.14.1",
     "tslib": "^2.6.3",
     "typescript": "^5.5.2",
+    "typescript-eslint": "^8.0.0-alpha.39",
     "uvu": "^0.5.6"
   },
   "prettier": {
