@@ -39,6 +39,7 @@
 <div class="mastodon_status_item">
 	<header>
 		<button
+			type="button"
 			class="avatar plain icon_button"
 			title={account_note ? `${show_note ? 'hide' : 'show'} ${account_acct}'s profile` : undefined}
 			onclick={account_note ? toggle_note : undefined}
