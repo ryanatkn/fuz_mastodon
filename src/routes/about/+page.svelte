@@ -2,6 +2,7 @@
 	import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
 	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
+	import Community_Links_Panel from '@ryanatkn/fuz/Community_Links_Panel.svelte';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json, src_json} from '$routes/package.js';
@@ -19,6 +20,7 @@
 			<Breadcrumb>{pkg.package_json.glyph}</Breadcrumb>
 		</nav>
 	</div>
+	<Community_Links_Panel />
 	<section class="box w_100 mb_lg">
 		<div class="panel p_md width_md">
 			<Package_Detail {pkg} />
