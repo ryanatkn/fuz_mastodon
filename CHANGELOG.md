@@ -1,5 +1,13 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.14.2
+
+### Patch Changes
+
+- add tsconfig `sourceRoot` ([4477305](https://github.com/ryanatkn/fuz_mastodon/commit/4477305))
+- enable tsconfig `declaration` and `declarationMap` ([161ad35](https://github.com/ryanatkn/fuz_mastodon/commit/161ad35))
+- publish src files ([9c24f65](https://github.com/ryanatkn/fuz_mastodon/commit/9c24f65))
+
 ## 0.14.1
 
 ### Patch Changes
