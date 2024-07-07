@@ -72,7 +72,7 @@ export const package_json = {
 		overrides: [{files: 'package.json', options: {useTabs: false}}],
 	},
 	sideEffects: ['**/*.css'],
-	files: ['dist'],
+	files: ['dist', 'src/lib/**/*.ts', '!src/lib/**/*.test.*', '!dist/**/*.test.*'],
 	exports: {
 		'./package.json': './package.json',
 		'./Mastodon_Status_Item.svelte': {
