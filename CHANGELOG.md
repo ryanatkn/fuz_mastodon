@@ -1,5 +1,15 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.15.0
+
+### Minor Changes
+
+- add rules to toot visibility ([#8](https://github.com/ryanatkn/fuz_mastodon/pull/8))
+
+  - replies are now always included by default when `include_replies` is `true`
+  - to get the old behavior, set `Toot` prop `get_reply_filter_rules`
+    to `(status) => [{type: 'favourited_by', favourited_by: [status.account.acct]}]`
+
 ## 0.14.2
 
 ### Patch Changes
