@@ -98,9 +98,10 @@
 	const with_context = $derived(include_ancestors || include_replies);
 
 	const final_get_reply_filter_rules: Props['get_reply_filter_rules'] = $derived(
-		get_reply_filter_rules ?? include_replies
-			? () => [{type: 'custom', should_include: () => true}] // allow all by default
-			: undefined,
+		get_reply_filter_rules ??
+			(include_replies
+				? () => [{type: 'custom', should_include: () => true}] // allow all by default
+				: undefined),
 	);
 
 	// TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
@@ -119,7 +120,9 @@
 		const allowed = new Set(); // TODO could simplify if no longer used, was allowing author but changed to favourites - `statuses.filter((s) => s.account.acct === acct`
 		// TODO do in parallel but with max concurrency, need a helper
 		for (const status of statuses) {
+			console.log(`status`, status);
 			for (const rule of reply_filter_rules) {
+				console.log(`rule`, rule);
 				if (rule.type === 'favourited_by') {
 					// TODO cache these somewhere
 					const favourites = await fetch_mastodon_favourites(host, status.id, cache, log); // eslint-disable-line no-await-in-loop

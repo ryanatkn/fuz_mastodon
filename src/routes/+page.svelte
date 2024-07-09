@@ -15,8 +15,7 @@
 	let cache: Fetch_Value_Cache | undefined | null = $state();
 
 	onMount(async () => {
-		// TODO BLOCK remove the !
-		if (!DEV) {
+		if (DEV) {
 			cache = new Map((await import('./mastodon_fake_cache_data.js')).mastodon_fake_cache_data);
 		} else {
 			cache = null;
