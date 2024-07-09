@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.14.2",
+  "version": "0.15.0",
   "modules": {
     "./package.json": {
       "path": "package.json",
@@ -71,6 +71,22 @@
         },
         {
           "name": "Mastodon_Favourite",
+          "kind": "type"
+        },
+        {
+          "name": "Reply_Filter_Rule",
+          "kind": "type"
+        },
+        {
+          "name": "Liked_By_Reply_Filter_Rule",
+          "kind": "type"
+        },
+        {
+          "name": "Minimum_Favourites_Reply_Filter_Rule",
+          "kind": "type"
+        },
+        {
+          "name": "Custom_Reply_Filter_Rule",
           "kind": "type"
         }
       ]
