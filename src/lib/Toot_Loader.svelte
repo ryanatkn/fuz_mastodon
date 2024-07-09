@@ -120,11 +120,9 @@
 		const allowed = new Set(); // TODO could simplify if no longer used, was allowing author but changed to favourites - `statuses.filter((s) => s.account.acct === acct`
 		// TODO do in parallel but with max concurrency, need a helper
 		for (const status of statuses) {
-			console.log(`status`, status);
 			for (const rule of reply_filter_rules) {
-				console.log(`rule`, rule);
 				if (rule.type === 'favourited_by') {
-					// TODO cache these somewhere
+					// TODO cache these somewhere maybe?
 					const favourites = await fetch_mastodon_favourites(host, status.id, cache, log); // eslint-disable-line no-await-in-loop
 					const favourite = favourites?.find((f) => rule.favourited_by.includes(f.acct)); // TODO customize via a prop (string/set/callback)
 					// TODO this logic is what I want, but `favourite.created_at` is the account creation not the favourite creation, and the API doesn't appear to support it :[
@@ -138,6 +136,7 @@
 						allowed.add(status.id);
 						break;
 					}
+					// TODO typescript-eslint bug
 					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 				} else if (rule.type === 'custom') {
 					if (rule.should_include(status, root_status, context)) {

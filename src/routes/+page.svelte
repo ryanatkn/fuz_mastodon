@@ -45,6 +45,9 @@
 	initial_url="${initial_url}"
 	initial_autoload={true}
 	include_replies
+	get_reply_filter_rules={(item) => [
+		{type: 'favourited_by', favourited_by: [item.account.acct]},
+	]}
 	storage_key="example_1"
 	{cache}
 />`}
