@@ -15,7 +15,8 @@
 	let cache: Fetch_Value_Cache | undefined | null = $state();
 
 	onMount(async () => {
-		if (DEV) {
+		// TODO BLOCK remove the !
+		if (!DEV) {
 			cache = new Map((await import('./mastodon_fake_cache_data.js')).mastodon_fake_cache_data);
 		} else {
 			cache = null;
@@ -44,7 +45,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	initial_autoload={true}
-	replies={true}
+	include_replies
 	storage_key="example_1"
 	{cache}
 />`}
@@ -54,8 +55,105 @@
 	</section>
 	<section class="width_sm">
 		{#if cache !== undefined}
-			<Toot {initial_url} initial_autoload={true} replies={true} storage_key="example_1" {cache} />
+			<Toot
+				{initial_url}
+				initial_autoload={true}
+				include_replies
+				get_reply_filter_rules={(item) => [
+					{type: 'favourited_by', favourited_by: [item.account.acct]},
+				]}
+				storage_key="example_1"
+				{cache}
+			/>
 		{/if}
+	</section>
+	<section>
+		<h2>Allowlisting replies with custom rules</h2>
+		<p>
+			By default, no replies are included. You can opt into including replies with <code
+				>include_replies</code
+			>
+			and customize them with <code>get_reply_filter_rules</code>.
+		</p>
+		<h3>Allow all</h3>
+		<p>
+			This is the default, <code>get_reply_filter_rules</code> does nothing here because
+			<code>include_replies</code> is <code>true</code>.
+		</p>
+		<div class="w_100">
+			<Code
+				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={() => [
+		{type: 'custom', should_include: () => true}
+	]}
+/>`}
+			/>
+		</div>
+		<h3>Allow if favourited by the root status author</h3>
+		<div class="w_100">
+			<Code
+				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={(item) => [
+		{type: 'favourited_by', favourited_by: [item.account.acct]}
+	]},
+/>`}
+			/>
+		</div>
+		<h3>Allow with a mimimum number of favourites</h3>
+		<div class="w_100">
+			<Code
+				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={(item) => [
+		{type: 'minimum_favourites', minimum_favourites: 3}
+	]},
+/>`}
+			/>
+		</div>
+		<h3>Allow based on arbitrary conditions</h3>
+		<div class="w_100">
+			<Code
+				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={(item) => [
+		{
+			type: 'custom',
+			should_include: (item, context) => {/* return boolean */})
+		}
+	]},
+/>`}
+			/>
+		</div>
+		<h3>Multiple conditions</h3>
+		<p>Replies are included if <strong>any</strong> filter passes.</p>
+		<div class="w_100">
+			<Code
+				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={(item) => [
+		{type: 'favourited_by', favourited_by: [item.account.acct]},
+		{type: 'minimum_favourites', minimum_favourites: 3}
+	]},
+/>`}
+			/>
+		</div>
+		<h3>Allow none</h3>
+		<div class="w_100">
+			<Code
+				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={(item) => []}
+/>`}
+			/>
+		</div>
 	</section>
 	<section>
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/">

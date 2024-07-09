@@ -236,3 +236,26 @@ export interface Mastodon_Favourite {
 		verified_at: string; // Datetime
 	}>;
 }
+
+/**
+ * When filtering replies, at least one rule must pass for a reply to be included.
+ */
+export type Reply_Filter_Rule =
+	| Liked_By_Reply_Filter_Rule
+	| Minimum_Favourites_Reply_Filter_Rule
+	| Custom_Reply_Filter_Rule;
+
+export interface Liked_By_Reply_Filter_Rule {
+	type: 'favourited_by';
+	favourited_by: string[];
+}
+
+export interface Minimum_Favourites_Reply_Filter_Rule {
+	type: 'minimum_favourites';
+	minimum_favourites: number;
+}
+
+export interface Custom_Reply_Filter_Rule {
+	type: 'custom';
+	should_include: (status: Mastodon_Status, context: Mastodon_Status_Context) => boolean;
+}
