@@ -129,6 +129,10 @@ export const src_json = {
 				{name: 'Mastodon_Status_Context', kind: 'type'},
 				{name: 'Mastodon_Status', kind: 'type'},
 				{name: 'Mastodon_Favourite', kind: 'type'},
+				{name: 'Reply_Filter_Rule', kind: 'type'},
+				{name: 'Liked_By_Reply_Filter_Rule', kind: 'type'},
+				{name: 'Minimum_Favourites_Reply_Filter_Rule', kind: 'type'},
+				{name: 'Custom_Reply_Filter_Rule', kind: 'type'},
 			],
 		},
 		'./storage.js': {
