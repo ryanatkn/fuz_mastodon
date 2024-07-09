@@ -10,7 +10,12 @@
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
 	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_mastodon_status_url} from '$lib/mastodon.js';
+	import {
+		parse_mastodon_status_url,
+		type Mastodon_Status,
+		type Mastodon_Status_Context,
+		type Reply_Filter_Rule,
+	} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
@@ -19,13 +24,20 @@
 		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
 		url?: string;
 		/**
-		 * Whether to fetch and display replies aka descendants in the status context.
-		 */
-		replies?: boolean;
-		/**
 		 * Whether to fetch and display the ancestors in the status context.
 		 */
-		ancestors?: boolean;
+		include_ancestors?: boolean;
+		/**
+		 * Whether to fetch and display replies aka descendants in the status context.
+		 */
+		include_replies?: boolean;
+		/**
+		 * Get a list of rules that controls whether replies are shown or not.
+		 */
+		get_reply_filter_rules?: (
+			item: Mastodon_Status,
+			context: Mastodon_Status_Context,
+		) => Reply_Filter_Rule[];
 		/**
 		 * Optional API result cache.
 		 */
@@ -56,8 +68,9 @@
 	let {
 		initial_url,
 		url = initial_url,
-		replies = false,
-		ancestors = false,
+		include_ancestors = false,
+		include_replies = false,
+		get_reply_filter_rules,
 		cache,
 		log,
 		loading = $bindable(),
@@ -116,20 +129,29 @@
 	const id = $derived(parsed?.status_id ?? null);
 	const host = $derived(parsed?.host ?? null);
 
-	const with_context = $derived(replies || ancestors);
-
 	const enable_load = $derived(loading !== false && !!host);
 
 	const enable_reset = $derived(loading !== undefined || url !== initial_url);
 </script>
 
 {#key loaded_status_key}
-	<Toot_Loader {host} {id} {with_context} {cache} {log} bind:loading bind:load_time>
+	<Toot_Loader
+		{host}
+		{id}
+		{include_ancestors}
+		{include_replies}
+		{cache}
+		{log}
+		{get_reply_filter_rules}
+		bind:loading
+		bind:load_time
+	>
 		{#snippet children({item, context, replies, load, loading, load_time})}
 			<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
+			<!-- TODO techically this class should probably be added based on `include_replies`, and display an error if they're null, meaning failed to load -->
 			<div class="toot" class:replies transition:slide>
 				<div class="toot_content">
-					{#if ancestors && context}
+					{#if include_ancestors && context}
 						<div transition:slide>
 							<!-- TODO style differently or something -->
 							{#each context.ancestors as ancestor}
@@ -156,7 +178,7 @@
 											<div class="icon">🦣</div>
 											<div class="button_content">
 												<div>
-													load toot{#if replies || ancestors}s{/if} from
+													load toot{#if include_replies || include_ancestors}s{/if} from
 												</div>
 												<code class="ellipsis"
 													>{#if host}{host}{:else}invalid url{/if}</code
