@@ -3,6 +3,7 @@
 	import type {Logger} from '@ryanatkn/belt/log.js';
 	import type {Snippet} from 'svelte';
 	import {BROWSER} from 'esm-env';
+	import {Unreachable_Error} from '@ryanatkn/belt/error.js';
 
 	import {
 		fetch_mastodon_status_context,
@@ -102,48 +103,49 @@
 			: undefined,
 	);
 
-	// TODO add concurrency, currently makes calls serially, make configurable
-	const map_async = async <T, U>(
-		items: T[],
-		cb: (item: T, index: number) => Promise<U>,
-	): Promise<U[]> => {
-		const results: U[] = [];
-		for (let i = 0; i < items.length; i++) {
-			const item = items[i];
-			const r = await cb(item, i); // eslint-disable-line no-await-in-loop
-			results.push(r);
-		}
-		return results;
-	};
-
 	// TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
 	// TODO refactor
 	const filter_valid_replies = async (
-		status: Mastodon_Status,
-		statuses: Mastodon_Status[],
+		root_status: Mastodon_Status,
+		context: Mastodon_Status_Context,
 		reply_filter_rules: Reply_Filter_Rule[] | null,
 	): Promise<Mastodon_Status[]> => {
+		const statuses = context.descendants;
 		// For a reply to be included, there must be at least one rule that passes.
 		if (!statuses.length || !reply_filter_rules?.length) {
 			return [];
 		}
-		const host = new URL(status.url).host;
+		const host = new URL(root_status.url).host;
 		const allowed = new Set(); // TODO could simplify if no longer used, was allowing author but changed to favourites - `statuses.filter((s) => s.account.acct === acct`
-		// TODO do in parallel but with max concurrency
-		await map_async(statuses, async (s) => {
+		// TODO do in parallel but with max concurrency, need a helper
+		for (const status of statuses) {
 			for (const rule of reply_filter_rules) {
 				if (rule.type === 'favourited_by') {
-					const favourites = await fetch_mastodon_favourites(host, s.id, cache, log); // eslint-disable-line no-await-in-loop
+					// TODO cache these somewhere
+					const favourites = await fetch_mastodon_favourites(host, status.id, cache, log); // eslint-disable-line no-await-in-loop
 					const favourite = favourites?.find((f) => rule.favourited_by.includes(f.acct)); // TODO customize via a prop (string/set/callback)
 					// TODO this logic is what I want, but `favourite.created_at` is the account creation not the favourite creation, and the API doesn't appear to support it :[
 					// if (favourite && (!s.edited_at || new Date(s.edited_at) < new Date(favourite.created_at))) {
 					if (favourite) {
-						allowed.add(s.id);
+						allowed.add(status.id);
+						break;
 					}
 				} else if (rule.type === 'minimum_favourites') {
+					if (status.favourites_count >= rule.minimum_favourites) {
+						allowed.add(status.id);
+						break;
+					}
+					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				} else if (rule.type === 'custom') {
+					if (rule.should_include(status, root_status, context)) {
+						allowed.add(status.id);
+						break;
+					}
+				} else {
+					throw new Unreachable_Error(rule);
 				}
 			}
-		});
+		}
 		return statuses.filter((s) => (allowed.has(s.id) ? s : null));
 	};
 
@@ -159,7 +161,7 @@
 		if (item && context) {
 			replies = await filter_valid_replies(
 				item,
-				context.descendants,
+				context,
 				final_get_reply_filter_rules?.(item, context) ?? null,
 			);
 		} else {

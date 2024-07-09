@@ -257,5 +257,9 @@ export interface Minimum_Favourites_Reply_Filter_Rule {
 
 export interface Custom_Reply_Filter_Rule {
 	type: 'custom';
-	should_include: (status: Mastodon_Status, context: Mastodon_Status_Context) => boolean;
+	should_include: (
+		status: Mastodon_Status,
+		root_status: Mastodon_Status,
+		context: Mastodon_Status_Context,
+	) => boolean;
 }

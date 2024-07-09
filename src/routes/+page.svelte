@@ -115,7 +115,7 @@
 />`}
 			/>
 		</div>
-		<h3>Allow based on arbitrary conditions</h3>
+		<h3>Allow based on custom conditions</h3>
 		<div class="w_100">
 			<Code
 				content={`<Toot
@@ -124,7 +124,7 @@
 	get_reply_filter_rules={(item) => [
 		{
 			type: 'custom',
-			should_include: (item, context) => {/* return boolean */})
+			should_include: (item, root_status, context) => {/* return boolean */})
 		}
 	]},
 />`}
