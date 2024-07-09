@@ -7,10 +7,10 @@
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import {DEV} from 'esm-env';
+	import {onMount} from 'svelte';
 
 	import Toot from '$lib/Toot.svelte';
 	import {package_json, src_json} from '$routes/package.js';
-	import {onMount} from 'svelte';
 
 	let cache: Fetch_Value_Cache | undefined | null = $state();
 
