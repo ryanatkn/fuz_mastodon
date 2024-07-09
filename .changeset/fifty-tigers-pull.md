@@ -1,5 +1,5 @@
 ---
-'@ryanatkn/fuz_mastodon': patch
+'@ryanatkn/fuz_mastodon': minor
 ---
 
 add rules to toot visibility
