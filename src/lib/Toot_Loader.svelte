@@ -158,8 +158,6 @@
 			fetch_mastodon_status(host, id, cache, log),
 			with_context ? fetch_mastodon_status_context(host, id, cache, log) : null,
 		]);
-		console.log(`item`, item);
-		console.log(`context`, context);
 		if (item && context) {
 			replies = await filter_valid_replies(
 				item,
