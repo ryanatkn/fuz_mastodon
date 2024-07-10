@@ -77,66 +77,97 @@
 			>
 			and customize them with <code>get_reply_filter_rules</code>.
 		</p>
+		<div class="w_100">
+			<Code
+				content={`type Create_Reply_Filter_Rules = (
+	item: Mastodon_Status,
+	context: Mastodon_Status_Context,
+) => Reply_Filter_Rule[];
+`}
+				lang="ts"
+			/>
+		</div>
 		<h3>Allow all</h3>
-		<p>
-			This is the default, <code>get_reply_filter_rules</code> does nothing here because
-			<code>include_replies</code> is <code>true</code>.
-		</p>
+		<p>Adding <code>include_replies</code> enables all replies by default.</p>
 		<div class="w_100">
 			<Code
 				content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+/>`}
+			/>
+			<p>
+				This is the default value for <code>get_reply_filter_rules</code>. It does nothing here but
+				it's shown for clarity.
+			</p>
+			<div class="w_100">
+				<Code
+					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
 	get_reply_filter_rules={() => [
 		{type: 'custom', should_include: () => true}
 	]}
 />`}
-			/>
-		</div>
-		<h3>Allow if favourited by the root status author</h3>
-		<div class="w_100">
-			<Code
-				content={`<Toot
+				/>
+			</div>
+			<h3>Allow if favourited by specific accounts</h3>
+			<p>You can provide a list of names whose favourites cause the reply to be shown.</p>
+			<div class="w_100">
+				<Code
+					content={`<Toot
+	initial_url="${initial_url}"
+	include_replies
+	get_reply_filter_rules={() => [
+		{type: 'favourited_by', favourited_by: ['username1', 'user2']}
+	]},
+/>`}
+				/>
+			</div>
+			<h3>Allow if favourited by the root status author</h3>
+			<div class="w_100">
+				<Code
+					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
 	get_reply_filter_rules={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
 	]},
 />`}
-			/>
-		</div>
-		<h3>Allow with a mimimum number of favourites</h3>
-		<div class="w_100">
-			<Code
-				content={`<Toot
+				/>
+			</div>
+			<h3>Allow with a mimimum number of favourites</h3>
+			<div class="w_100">
+				<Code
+					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={(item) => [
+	get_reply_filter_rules={() => [
 		{type: 'minimum_favourites', minimum_favourites: 3}
 	]},
 />`}
-			/>
-		</div>
-		<h3>Allow based on custom conditions</h3>
-		<div class="w_100">
-			<Code
-				content={`<Toot
+				/>
+			</div>
+			<h3>Allow on custom conditions</h3>
+			<div class="w_100">
+				<Code
+					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={(item) => [
+	get_reply_filter_rules={() => [
 		{
 			type: 'custom',
 			should_include: (item, root_status, context) => {/* return boolean */})
 		}
 	]},
 />`}
-			/>
-		</div>
-		<h3>Multiple conditions</h3>
-		<p>Replies are included if <strong>any</strong> filter passes.</p>
-		<div class="w_100">
-			<Code
-				content={`<Toot
+				/>
+			</div>
+			<h3>Multiple conditions</h3>
+			<p>Replies are included if <strong>any</strong> filter passes.</p>
+			<div class="w_100">
+				<Code
+					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
 	get_reply_filter_rules={(item) => [
@@ -144,17 +175,18 @@
 		{type: 'minimum_favourites', minimum_favourites: 3}
 	]},
 />`}
-			/>
-		</div>
-		<h3>Allow none</h3>
-		<div class="w_100">
-			<Code
-				content={`<Toot
+				/>
+			</div>
+			<h3>Allow none</h3>
+			<div class="w_100">
+				<Code
+					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={(item) => []}
+	get_reply_filter_rules={() => []}
 />`}
-			/>
+				/>
+			</div>
 		</div>
 	</section>
 	<section>

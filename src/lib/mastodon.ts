@@ -263,3 +263,8 @@ export interface Custom_Reply_Filter_Rule {
 		context: Mastodon_Status_Context,
 	) => boolean;
 }
+
+export type Create_Reply_Filter_Rules = (
+	item: Mastodon_Status,
+	context: Mastodon_Status_Context,
+) => Reply_Filter_Rule[];

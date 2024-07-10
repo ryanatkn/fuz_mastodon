@@ -12,6 +12,7 @@
 		type Mastodon_Status,
 		fetch_mastodon_favourites,
 		type Reply_Filter_Rule,
+		type Create_Reply_Filter_Rules,
 	} from '$lib/mastodon.js';
 
 	// TODO maybe delete this and merge into `Toot`
@@ -49,10 +50,7 @@
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		get_reply_filter_rules?: (
-			item: Mastodon_Status,
-			context: Mastodon_Status_Context,
-		) => Reply_Filter_Rule[];
+		get_reply_filter_rules?: Create_Reply_Filter_Rules;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -97,7 +95,7 @@
 
 	const with_context = $derived(include_ancestors || include_replies);
 
-	const final_get_reply_filter_rules: Props['get_reply_filter_rules'] = $derived(
+	const final_get_reply_filter_rules: Create_Reply_Filter_Rules | undefined = $derived(
 		get_reply_filter_rules ??
 			(include_replies
 				? () => [{type: 'custom', should_include: () => true}] // allow all by default
@@ -160,6 +158,8 @@
 			fetch_mastodon_status(host, id, cache, log),
 			with_context ? fetch_mastodon_status_context(host, id, cache, log) : null,
 		]);
+		console.log(`item`, item);
+		console.log(`context`, context);
 		if (item && context) {
 			replies = await filter_valid_replies(
 				item,
