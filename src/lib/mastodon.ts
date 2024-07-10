@@ -307,7 +307,7 @@ export const filter_valid_replies = async (
 					allowed.add(status.id);
 					break;
 				}
-				// TODO typescript-eslint bug
+				// TODO revisit whether this rule should be globally disabled, or maybe it gets an option added?
 				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 			} else if (rule.type === 'custom') {
 				if (rule.should_include(status, root_status, status_context)) {
