@@ -120,6 +120,9 @@
 		for (const status of statuses) {
 			for (const rule of reply_filter_rules) {
 				if (rule.type === 'favourited_by') {
+					if (!status.favourites_count) {
+						continue;
+					}
 					// TODO cache these somewhere maybe?
 					const favourites = await fetch_mastodon_favourites(host, status.id, cache, log); // eslint-disable-line no-await-in-loop
 					const favourite = favourites?.find((f) => rule.favourited_by.includes(f.acct)); // TODO customize via a prop (string/set/callback)

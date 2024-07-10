@@ -63,7 +63,6 @@
 				include_replies
 				reply_filter_rules={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
 				storage_key="example_1"
-				{cache}
 			/>
 		{/if}
 	</section>
