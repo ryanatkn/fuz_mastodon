@@ -27,7 +27,7 @@
 	const initial_url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
 
-<main>
+<main class="p_lg">
 	<section class="box">
 		<div class="panel p_lg mb_xl5 shadow_md bg">
 			<Package_Summary {pkg} />
@@ -66,7 +66,7 @@
 			/>
 		{/if}
 	</section>
-	<section>
+	<section class="width_md">
 		<h2>Allowlisting replies with custom rules</h2>
 		<p>
 			By default, no replies are included. You can opt into including replies with <code
@@ -178,13 +178,13 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<div class="my_xl5">
 		<Library_Footer {pkg} root_url="https://www.fuz.dev/">
 			{#snippet logo_header()}
 				<a class="mb_xs" href="{base}/about">about</a>
 			{/snippet}
 		</Library_Footer>
-	</section>
+	</div>
 </main>
 
 <style>
