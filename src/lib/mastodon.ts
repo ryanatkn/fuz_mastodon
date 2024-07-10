@@ -241,11 +241,11 @@ export interface Mastodon_Favourite {
  * When filtering replies, at least one rule must pass for a reply to be included.
  */
 export type Reply_Filter_Rule =
-	| Liked_By_Reply_Filter_Rule
+	| Favourited_By_Reply_Filter_Rule
 	| Minimum_Favourites_Reply_Filter_Rule
 	| Custom_Reply_Filter_Rule;
 
-export interface Liked_By_Reply_Filter_Rule {
+export interface Favourited_By_Reply_Filter_Rule {
 	type: 'favourited_by';
 	favourited_by: string[];
 }
