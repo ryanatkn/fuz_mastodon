@@ -161,7 +161,7 @@
 								<!-- TODO Svelte 5 animation bug - keeping this one here because the alternative is a janky animation,
 									and it's not as bad for UX as the contentwarning one below -->
 								<div class="transition_wrapper" transition:slide>
-									<Mastodon_Status_Item {item} />
+									<Mastodon_Status_Item {item} --margin="0" />
 								</div>
 							{:else}
 								<div class="transition_wrapper" transition:slide>
