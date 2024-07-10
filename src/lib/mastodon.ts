@@ -307,7 +307,9 @@ export const filter_valid_replies = async (
 					allowed.add(status.id);
 					break;
 				}
-				// TODO revisit whether this rule should be globally disabled, or maybe it gets an option added?
+				// TODO revisit whether this rule should be globally disabled,
+				//or maybe change to a switch? problem is nesting, verbosity,
+				// and need a for loop label because it would change the semantics of our `break` usage
 				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 			} else if (rule.type === 'custom') {
 				if (rule.should_include(status, root_status, status_context)) {
