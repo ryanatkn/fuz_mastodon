@@ -24,7 +24,7 @@
 
 	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 
-	const initial_url = 'https://hci.social/@ryanatkn/111491794208793604';
+	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
 
 <main class="p_lg">
@@ -42,7 +42,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	initial_autoload={true}
 	include_replies
 	reply_filter_rules={(item) => [
@@ -58,7 +58,7 @@
 	<section class="width_sm">
 		{#if cache !== undefined}
 			<Toot
-				{initial_url}
+				{url}
 				initial_autoload={true}
 				include_replies
 				reply_filter_rules={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
@@ -79,7 +79,7 @@
 		<div class="w_100">
 			<Code
 				content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 />`}
 			/>
@@ -90,7 +90,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={() => [
 		{type: 'custom', should_include: () => true}
@@ -103,7 +103,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={() => [
 		{type: 'favourited_by', favourited_by: ['username1', 'user2']}
@@ -115,7 +115,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
@@ -127,7 +127,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={() => [
 		{type: 'minimum_favourites', minimum_favourites: 3}
@@ -139,7 +139,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={() => [
 		{
@@ -157,7 +157,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]},
@@ -170,7 +170,7 @@
 			<div class="w_100">
 				<Code
 					content={`<Toot
-	initial_url="${initial_url}"
+	url="${url}"
 	include_replies
 	reply_filter_rules={() => []}
 />`}

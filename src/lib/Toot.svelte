@@ -20,8 +20,11 @@
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
 	interface Props {
-		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
-		url?: string;
+		url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
+		/**
+		 * Defaults to the `url`, but can be updated by user input.
+		 */
+		updated_url?: string;
 		/**
 		 * Whether to fetch and display the ancestors in the status context.
 		 */
@@ -62,8 +65,8 @@
 
 	// TODO maybe these shouldn't be bindable?
 	let {
-		initial_url,
-		url = initial_url,
+		url,
+		updated_url = $bindable(url),
 		include_ancestors = false,
 		include_replies = false,
 		reply_filter_rules,
@@ -87,7 +90,7 @@
 
 	export const reset = (): void => {
 		loaded_status_key++;
-		url = initial_url;
+		updated_url = url;
 		// these get bound but their values stick because they're optional, so reset them
 		loading = undefined;
 		load_time = undefined;
@@ -121,13 +124,13 @@
 		}
 	});
 
-	const parsed = $derived(parse_mastodon_status_url(url));
+	const parsed = $derived(parse_mastodon_status_url(updated_url));
 	const id = $derived(parsed?.status_id ?? null);
 	const host = $derived(parsed?.host ?? null);
 
 	const enable_load = $derived(loading !== false && !!host);
 
-	const enable_reset = $derived(loading !== undefined || url !== initial_url);
+	const enable_reset = $derived(loading !== undefined || updated_url !== url);
 </script>
 
 {#key loaded_status_key}
@@ -226,7 +229,7 @@
 						<div transition:slide class="settings controls panel">
 							<form class="w_100">
 								<div class="mb_lg">
-									<Toot_Input bind:url />
+									<Toot_Input bind:url={updated_url} />
 								</div>
 								<fieldset class="row">
 									<label
