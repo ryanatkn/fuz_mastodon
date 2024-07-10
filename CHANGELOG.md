@@ -1,5 +1,12 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.16.0
+
+### Minor Changes
+
+- rename `Toot` prop `url` from `initial_url` and `updated_url` from `url` ([#9](https://github.com/ryanatkn/fuz_mastodon/pull/9))
+- rename `reply_filter_rules` from `get_reply_filter_rules` ([#9](https://github.com/ryanatkn/fuz_mastodon/pull/9))
+
 ## 0.15.0
 
 ### Minor Changes
