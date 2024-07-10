@@ -37,7 +37,7 @@
 	<section class="width_md">
 		<div class="mb_lg w_100">
 			<div class="w_100 mb_lg">
-				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte'`} />
+				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte';`} />
 			</div>
 			<div class="w_100">
 				<Code
