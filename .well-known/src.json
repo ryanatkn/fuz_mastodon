@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "modules": {
     "./package.json": {
       "path": "package.json",
@@ -78,7 +78,7 @@
           "kind": "type"
         },
         {
-          "name": "Liked_By_Reply_Filter_Rule",
+          "name": "Favourited_By_Reply_Filter_Rule",
           "kind": "type"
         },
         {
@@ -88,6 +88,14 @@
         {
           "name": "Custom_Reply_Filter_Rule",
           "kind": "type"
+        },
+        {
+          "name": "Create_Reply_Filter_Rules",
+          "kind": "type"
+        },
+        {
+          "name": "filter_valid_replies",
+          "kind": "function"
         }
       ]
     },
