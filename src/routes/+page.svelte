@@ -144,7 +144,9 @@
 	reply_filter_rules={() => [
 		{
 			type: 'custom',
-			should_include: (item, root_status, context) => {/* return boolean */})
+			should_include: (item, root_status, status_context) => {
+				/* return boolean */
+			})
 		}
 	]},
 />`}

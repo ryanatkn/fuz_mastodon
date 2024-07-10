@@ -142,15 +142,15 @@
 		bind:loading
 		bind:load_time
 	>
-		{#snippet children({item, context, replies, load, loading, load_time})}
+		{#snippet children({item, status_context, replies, load, loading, load_time})}
 			<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
 			<!-- TODO techically this class should probably be added based on `include_replies`, and display an error if they're null, meaning failed to load -->
 			<div class="toot" class:replies transition:slide>
 				<div class="toot_content">
-					{#if include_ancestors && context}
+					{#if include_ancestors && status_context}
 						<div transition:slide>
 							<!-- TODO style differently or something -->
-							{#each context.ancestors as ancestor}
+							{#each status_context.ancestors as ancestor}
 								<Mastodon_Status_Item item={ancestor} />
 							{/each}
 						</div>
