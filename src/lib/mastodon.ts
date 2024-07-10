@@ -267,4 +267,4 @@ export interface Custom_Reply_Filter_Rule {
 export type Create_Reply_Filter_Rules = (
 	item: Mastodon_Status,
 	context: Mastodon_Status_Context,
-) => Reply_Filter_Rule[];
+) => Reply_Filter_Rule[] | null;

@@ -50,7 +50,7 @@
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		get_reply_filter_rules?: Create_Reply_Filter_Rules;
+		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -81,7 +81,7 @@
 		id,
 		include_ancestors = false,
 		include_replies = false,
-		get_reply_filter_rules,
+		reply_filter_rules,
 		cache,
 		log,
 		loading = $bindable(),
@@ -95,11 +95,11 @@
 
 	const with_context = $derived(include_ancestors || include_replies);
 
-	const final_get_reply_filter_rules: Create_Reply_Filter_Rules | undefined = $derived(
-		get_reply_filter_rules ??
+	const get_reply_filter_rules: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null = $derived(
+		reply_filter_rules ??
 			(include_replies
 				? () => [{type: 'custom', should_include: () => true}] // allow all by default
-				: undefined),
+				: null),
 	);
 
 	// TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
@@ -164,7 +164,9 @@
 			replies = await filter_valid_replies(
 				item,
 				context,
-				final_get_reply_filter_rules?.(item, context) ?? null,
+				typeof get_reply_filter_rules === 'function'
+					? get_reply_filter_rules(item, context)
+					: get_reply_filter_rules,
 			);
 		} else {
 			replies = null;

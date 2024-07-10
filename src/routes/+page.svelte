@@ -45,7 +45,7 @@
 	initial_url="${initial_url}"
 	initial_autoload={true}
 	include_replies
-	get_reply_filter_rules={(item) => [
+	reply_filter_rules={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]},
 	]}
 	storage_key="example_1"
@@ -61,9 +61,7 @@
 				{initial_url}
 				initial_autoload={true}
 				include_replies
-				get_reply_filter_rules={(item) => [
-					{type: 'favourited_by', favourited_by: [item.account.acct]},
-				]}
+				reply_filter_rules={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
 				storage_key="example_1"
 				{cache}
 			/>
@@ -75,18 +73,8 @@
 			By default, no replies are included. You can opt into including replies with <code
 				>include_replies</code
 			>
-			and customize them with <code>get_reply_filter_rules</code>.
+			and customize them with <code>reply_filter_rules</code>.
 		</p>
-		<div class="w_100">
-			<Code
-				content={`type Create_Reply_Filter_Rules = (
-	item: Mastodon_Status,
-	context: Mastodon_Status_Context,
-) => Reply_Filter_Rule[];
-`}
-				lang="ts"
-			/>
-		</div>
 		<h3>Allow all</h3>
 		<p>Adding <code>include_replies</code> enables all replies by default.</p>
 		<div class="w_100">
@@ -97,15 +85,15 @@
 />`}
 			/>
 			<p>
-				This is the default value for <code>get_reply_filter_rules</code>. It does nothing here but
-				it's shown for clarity.
+				This is the default value for <code>reply_filter_rules</code>. It does nothing here but it's
+				shown for clarity.
 			</p>
 			<div class="w_100">
 				<Code
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={() => [
+	reply_filter_rules={() => [
 		{type: 'custom', should_include: () => true}
 	]}
 />`}
@@ -118,7 +106,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={() => [
+	reply_filter_rules={() => [
 		{type: 'favourited_by', favourited_by: ['username1', 'user2']}
 	]},
 />`}
@@ -130,7 +118,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={(item) => [
+	reply_filter_rules={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
 	]},
 />`}
@@ -142,7 +130,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={() => [
+	reply_filter_rules={() => [
 		{type: 'minimum_favourites', minimum_favourites: 3}
 	]},
 />`}
@@ -154,7 +142,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={() => [
+	reply_filter_rules={() => [
 		{
 			type: 'custom',
 			should_include: (item, root_status, context) => {/* return boolean */})
@@ -170,7 +158,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={(item) => [
+	reply_filter_rules={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]},
 		{type: 'minimum_favourites', minimum_favourites: 3}
 	]},
@@ -183,7 +171,7 @@
 					content={`<Toot
 	initial_url="${initial_url}"
 	include_replies
-	get_reply_filter_rules={() => []}
+	reply_filter_rules={() => []}
 />`}
 				/>
 			</div>

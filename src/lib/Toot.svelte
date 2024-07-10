@@ -10,7 +10,11 @@
 	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
 	import Toot_Loader from '$lib/Toot_Loader.svelte';
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
-	import {parse_mastodon_status_url, type Create_Reply_Filter_Rules} from '$lib/mastodon.js';
+	import {
+		parse_mastodon_status_url,
+		type Create_Reply_Filter_Rules,
+		type Reply_Filter_Rule,
+	} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
@@ -29,7 +33,7 @@
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 */
-		reply_filter_rules?: Create_Reply_Filter_Rules;
+		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules;
 		/**
 		 * Optional API result cache.
 		 */
