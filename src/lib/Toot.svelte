@@ -12,8 +12,7 @@
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
 	import {
 		parse_mastodon_status_url,
-		type Mastodon_Status,
-		type Mastodon_Status_Context,
+		type Create_Reply_Filter_Rules,
 		type Reply_Filter_Rule,
 	} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
@@ -21,8 +20,11 @@
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
 	interface Props {
-		initial_url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
-		url?: string;
+		url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
+		/**
+		 * Defaults to the `url`, but can be updated by user input.
+		 */
+		updated_url?: string;
 		/**
 		 * Whether to fetch and display the ancestors in the status context.
 		 */
@@ -34,10 +36,7 @@
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 */
-		get_reply_filter_rules?: (
-			item: Mastodon_Status,
-			context: Mastodon_Status_Context,
-		) => Reply_Filter_Rule[];
+		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules;
 		/**
 		 * Optional API result cache.
 		 */
@@ -66,11 +65,11 @@
 
 	// TODO maybe these shouldn't be bindable?
 	let {
-		initial_url,
-		url = initial_url,
+		url,
+		updated_url = $bindable(url),
 		include_ancestors = false,
 		include_replies = false,
-		get_reply_filter_rules,
+		reply_filter_rules,
 		cache,
 		log,
 		loading = $bindable(),
@@ -91,7 +90,7 @@
 
 	export const reset = (): void => {
 		loaded_status_key++;
-		url = initial_url;
+		updated_url = url;
 		// these get bound but their values stick because they're optional, so reset them
 		loading = undefined;
 		load_time = undefined;
@@ -125,13 +124,13 @@
 		}
 	});
 
-	const parsed = $derived(parse_mastodon_status_url(url));
+	const parsed = $derived(parse_mastodon_status_url(updated_url));
 	const id = $derived(parsed?.status_id ?? null);
 	const host = $derived(parsed?.host ?? null);
 
 	const enable_load = $derived(loading !== false && !!host);
 
-	const enable_reset = $derived(loading !== undefined || url !== initial_url);
+	const enable_reset = $derived(loading !== undefined || updated_url !== url);
 </script>
 
 {#key loaded_status_key}
@@ -142,19 +141,19 @@
 		{include_replies}
 		{cache}
 		{log}
-		{get_reply_filter_rules}
+		{reply_filter_rules}
 		bind:loading
 		bind:load_time
 	>
-		{#snippet children({item, context, replies, load, loading, load_time})}
+		{#snippet children({item, status_context, replies, load, loading, load_time})}
 			<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
 			<!-- TODO techically this class should probably be added based on `include_replies`, and display an error if they're null, meaning failed to load -->
 			<div class="toot" class:replies transition:slide>
 				<div class="toot_content">
-					{#if include_ancestors && context}
+					{#if include_ancestors && status_context}
 						<div transition:slide>
 							<!-- TODO style differently or something -->
-							{#each context.ancestors as ancestor}
+							{#each status_context.ancestors as ancestor}
 								<Mastodon_Status_Item item={ancestor} />
 							{/each}
 						</div>
@@ -165,7 +164,7 @@
 								<!-- TODO Svelte 5 animation bug - keeping this one here because the alternative is a janky animation,
 									and it's not as bad for UX as the contentwarning one below -->
 								<div class="transition_wrapper" transition:slide>
-									<Mastodon_Status_Item {item} />
+									<Mastodon_Status_Item {item} --margin="0" />
 								</div>
 							{:else}
 								<div class="transition_wrapper" transition:slide>
@@ -230,7 +229,7 @@
 						<div transition:slide class="settings controls panel">
 							<form class="w_100">
 								<div class="mb_lg">
-									<Toot_Input bind:url />
+									<Toot_Input bind:url={updated_url} />
 								</div>
 								<fieldset class="row">
 									<label
