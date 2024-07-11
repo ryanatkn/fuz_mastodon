@@ -1,5 +1,12 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.17.0
+
+### Minor Changes
+
+- change `reply_filters`, formerly `reply_filter_rules`, to make `null` apply no filters ([#10](https://github.com/ryanatkn/fuz_mastodon/pull/10))
+- rename `reply_filters` from `reply_filter_rules` and `Reply_Filter` from `Reply_Filter_Rule` ([#10](https://github.com/ryanatkn/fuz_mastodon/pull/10))
+
 ## 0.16.0
 
 ### Minor Changes
