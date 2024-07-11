@@ -5,7 +5,7 @@
 ### Minor Changes
 
 - rename `Toot` prop `url` from `initial_url` and `updated_url` from `url` ([#9](https://github.com/ryanatkn/fuz_mastodon/pull/9))
-- rename `reply_filter_rules` from `get_reply_filter_rules` ([#9](https://github.com/ryanatkn/fuz_mastodon/pull/9))
+- rename `reply_filters` from `get_reply_filters` ([#9](https://github.com/ryanatkn/fuz_mastodon/pull/9))
 
 ## 0.15.0
 
@@ -14,7 +14,7 @@
 - add rules to toot visibility ([#8](https://github.com/ryanatkn/fuz_mastodon/pull/8))
 
   - replies are now always included by default when `include_replies` is `true`
-  - to get the old behavior, set `Toot` prop `get_reply_filter_rules`
+  - to get the old behavior, set `Toot` prop `get_reply_filters`
     to `(status) => [{type: 'favourited_by', favourited_by: [status.account.acct]}]`
 
 ## 0.14.2

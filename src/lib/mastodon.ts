@@ -241,22 +241,22 @@ export interface Mastodon_Favourite {
 /**
  * When filtering replies, at least one rule must pass for a reply to be included.
  */
-export type Reply_Filter_Rule =
-	| Favourited_By_Reply_Filter_Rule
-	| Minimum_Favourites_Reply_Filter_Rule
-	| Custom_Reply_Filter_Rule;
+export type Reply_Filter =
+	| Favourited_By_Reply_Filter
+	| Minimum_Favourites_Reply_Filter
+	| Custom_Reply_Filter;
 
-export interface Favourited_By_Reply_Filter_Rule {
+export interface Favourited_By_Reply_Filter {
 	type: 'favourited_by';
 	favourited_by: string[];
 }
 
-export interface Minimum_Favourites_Reply_Filter_Rule {
+export interface Minimum_Favourites_Reply_Filter {
 	type: 'minimum_favourites';
 	minimum_favourites: number;
 }
 
-export interface Custom_Reply_Filter_Rule {
+export interface Custom_Reply_Filter {
 	type: 'custom';
 	should_include: (
 		status: Mastodon_Status,
@@ -265,30 +265,30 @@ export interface Custom_Reply_Filter_Rule {
 	) => boolean;
 }
 
-export type Create_Reply_Filter_Rules = (
+export type Create_Reply_Filters = (
 	item: Mastodon_Status,
 	status_context: Mastodon_Status_Context,
-) => Reply_Filter_Rule[] | null;
+) => Reply_Filter[] | null;
 
 // TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
 // TODO refactor - maybe the name is misleading because it fetches?
 export const filter_valid_replies = async (
 	root_status: Mastodon_Status,
 	status_context: Mastodon_Status_Context,
-	reply_filter_rules: Reply_Filter_Rule[] | null,
+	reply_filters: Reply_Filter[] | null,
 	cache: Fetch_Value_Cache | null | undefined,
 	log: Logger | undefined,
 ): Promise<Mastodon_Status[]> => {
 	const statuses = status_context.descendants;
 	// For a reply to be included, there must be at least one rule that passes.
-	if (!statuses.length || !reply_filter_rules?.length) {
+	if (!statuses.length || !reply_filters?.length) {
 		return [];
 	}
 	const host = new URL(root_status.url).host;
 	const allowed = new Set(); // TODO could simplify if no longer used, was allowing author but changed to favourites - `statuses.filter((s) => s.account.acct === acct`
 	// TODO do in parallel but with max concurrency, need a helper
 	for (const status of statuses) {
-		for (const rule of reply_filter_rules) {
+		for (const rule of reply_filters) {
 			if (rule.type === 'favourited_by') {
 				if (!status.favourites_count) {
 					continue;

@@ -46,7 +46,7 @@
 	url="${url}"
 	initial_autoload={true}
 	include_replies
-	reply_filter_rules={(item) => [
+	reply_filters={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]},
 	]}
 	storage_key="example_1"
@@ -62,7 +62,7 @@
 				{url}
 				initial_autoload={true}
 				include_replies
-				reply_filter_rules={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
+				reply_filters={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
 				storage_key="example_1"
 				{cache}
 			/>
@@ -74,7 +74,7 @@
 			By default, no replies are included. You can opt into including replies with <code
 				>include_replies</code
 			>
-			and customize them with <code>reply_filter_rules</code>.
+			and customize them with <code>reply_filters</code>.
 		</p>
 		<h3>Allow all</h3>
 		<p>Adding <code>include_replies</code> enables all replies by default.</p>
@@ -86,7 +86,7 @@
 />`}
 			/>
 			<p>
-				This is the default value for <code>reply_filter_rules</code>. It does nothing here but it's
+				This is the default value for <code>reply_filters</code>. It does nothing here but it's
 				shown for clarity.
 			</p>
 			<div class="w_100">
@@ -94,7 +94,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={() => [
+	reply_filters={() => [
 		{type: 'custom', should_include: () => true}
 	]}
 />`}
@@ -107,7 +107,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={() => [
+	reply_filters={() => [
 		{type: 'favourited_by', favourited_by: ['username1', 'user2']}
 	]},
 />`}
@@ -119,7 +119,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={(item) => [
+	reply_filters={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
 	]},
 />`}
@@ -131,7 +131,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={() => [
+	reply_filters={() => [
 		{type: 'minimum_favourites', minimum_favourites: 3}
 	]},
 />`}
@@ -143,7 +143,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={() => [
+	reply_filters={() => [
 		{
 			type: 'custom',
 			should_include: (item, root_status, status_context) => {
@@ -161,7 +161,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={(item) => [
+	reply_filters={(item) => [
 		{type: 'favourited_by', favourited_by: ['trusted', 'tasteful']},
 		{type: 'minimum_favourites', minimum_favourites: 10},
 		{type: 'custom', should_include: () => Math.random() > 0.5)}
@@ -174,13 +174,13 @@
 			<div class="w_100 mb_lg">
 				<Code content={`<Toot	url="${url}" />`} />
 			</div>
-			<p>Or pass <code>null</code> for <code>reply_filter_rules</code>:</p>
+			<p>Or pass <code>null</code> for <code>reply_filters</code>:</p>
 			<div class="w_100">
 				<Code
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={null}
+	reply_filters={null}
 />`}
 				/>
 				<p>Or return no filters:</p>
@@ -189,7 +189,7 @@
 						content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={() => []}
+	reply_filters={() => []}
 />`}
 					/>
 				</div>

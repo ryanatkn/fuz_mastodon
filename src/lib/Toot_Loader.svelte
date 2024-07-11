@@ -9,8 +9,8 @@
 		type Mastodon_Status_Context,
 		fetch_mastodon_status,
 		type Mastodon_Status,
-		type Reply_Filter_Rule,
-		type Create_Reply_Filter_Rules,
+		type Reply_Filter,
+		type Create_Reply_Filters,
 		filter_valid_replies,
 	} from '$lib/mastodon.js';
 
@@ -49,7 +49,7 @@
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null;
+		reply_filters?: Reply_Filter[] | Create_Reply_Filters | null;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -80,7 +80,7 @@
 		id,
 		include_ancestors = false,
 		include_replies = false,
-		reply_filter_rules,
+		reply_filters,
 		cache,
 		log,
 		loading = $bindable(),
@@ -93,12 +93,12 @@
 
 	const include_status_context = $derived(include_ancestors || include_replies);
 
-	const get_reply_filter_rules: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null = $derived(
-		reply_filter_rules === undefined // apply default only if `undefined`, pass through `null`
+	const get_reply_filters: Reply_Filter[] | Create_Reply_Filters | null = $derived(
+		reply_filters === undefined // apply default only if `undefined`, pass through `null`
 			? include_replies
 				? () => [{type: 'custom', should_include: () => true}] // allow all by default
 				: null
-			: reply_filter_rules,
+			: reply_filters,
 	);
 
 	const load = async (): Promise<void> => {
@@ -114,9 +114,9 @@
 			replies = await filter_valid_replies(
 				item,
 				status_context,
-				typeof get_reply_filter_rules === 'function'
-					? get_reply_filter_rules(item, status_context)
-					: get_reply_filter_rules,
+				typeof get_reply_filters === 'function'
+					? get_reply_filters(item, status_context)
+					: get_reply_filters,
 				cache,
 				log,
 			);

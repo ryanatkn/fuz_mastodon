@@ -12,8 +12,8 @@
 	import {load_from_storage, set_in_storage} from '$lib/storage.js';
 	import {
 		parse_mastodon_status_url,
-		type Create_Reply_Filter_Rules,
-		type Reply_Filter_Rule,
+		type Create_Reply_Filters,
+		type Reply_Filter,
 	} from '$lib/mastodon.js';
 	import Toot_Input from '$lib/Toot_Input.svelte';
 
@@ -36,7 +36,7 @@
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 */
-		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null;
+		reply_filters?: Reply_Filter[] | Create_Reply_Filters | null;
 		/**
 		 * Optional API result cache.
 		 */
@@ -69,7 +69,7 @@
 		updated_url = $bindable(url),
 		include_ancestors = false,
 		include_replies = false,
-		reply_filter_rules,
+		reply_filters,
 		cache,
 		log,
 		loading = $bindable(),
@@ -141,7 +141,7 @@
 		{include_replies}
 		{cache}
 		{log}
-		{reply_filter_rules}
+		{reply_filters}
 		bind:loading
 		bind:load_time
 	>
