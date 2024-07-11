@@ -36,7 +36,7 @@
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 */
-		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules;
+		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null;
 		/**
 		 * Optional API result cache.
 		 */
