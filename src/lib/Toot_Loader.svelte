@@ -49,7 +49,7 @@
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules;
+		reply_filter_rules?: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -94,10 +94,11 @@
 	const include_status_context = $derived(include_ancestors || include_replies);
 
 	const get_reply_filter_rules: Reply_Filter_Rule[] | Create_Reply_Filter_Rules | null = $derived(
-		reply_filter_rules ??
-			(include_replies
+		reply_filter_rules === undefined // apply default only if `undefined`, pass through `null`
+			? include_replies
 				? () => [{type: 'custom', should_include: () => true}] // allow all by default
-				: null),
+				: null
+			: reply_filter_rules,
 	);
 
 	const load = async (): Promise<void> => {

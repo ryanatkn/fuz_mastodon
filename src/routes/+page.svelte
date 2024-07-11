@@ -154,7 +154,7 @@
 />`}
 				/>
 			</div>
-			<h3>Multiple conditions</h3>
+			<h3>Allow on multiple conditions</h3>
 			<p>Replies are included if <strong>any</strong> filter passes.</p>
 			<div class="w_100">
 				<Code
@@ -162,21 +162,37 @@
 	url="${url}"
 	include_replies
 	reply_filter_rules={(item) => [
-		{type: 'favourited_by', favourited_by: [item.account.acct]},
-		{type: 'minimum_favourites', minimum_favourites: 3}
+		{type: 'favourited_by', favourited_by: ['trusted', 'tasteful']},
+		{type: 'minimum_favourites', minimum_favourites: 10},
+		{type: 'custom', should_include: () => Math.random() > 0.5)}
 	]},
 />`}
 				/>
 			</div>
 			<h3>Allow none</h3>
+			<p>Simply omit <code>include_replies</code>:</p>
+			<div class="w_100 mb_lg">
+				<Code content={`<Toot	url="${url}" />`} />
+			</div>
+			<p>Or pass <code>null</code> for <code>reply_filter_rules</code>:</p>
 			<div class="w_100">
 				<Code
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filter_rules={() => []}
+	reply_filter_rules={null}
 />`}
 				/>
+				<p>Or return no filters:</p>
+				<div class="w_100">
+					<Code
+						content={`<Toot
+	url="${url}"
+	include_replies
+	reply_filter_rules={() => []}
+/>`}
+					/>
+				</div>
 			</div>
 		</div>
 	</section>

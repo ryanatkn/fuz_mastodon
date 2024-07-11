@@ -16,7 +16,7 @@ Features:
 
 - embed toots without authentication
 - nested replies
-- allowlisting replies with configurable rules
+- allowlisting replies with configurable filters
 - spoiler warnings are behind `<details>`
 - customizable caching
 
