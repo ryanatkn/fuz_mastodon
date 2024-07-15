@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.17.1
+
+### Patch Changes
+
+- upgrade `@ryanatkn/fuz@0.110.4` from `0.108.4` ([7661c64](https://github.com/ryanatkn/fuz_mastodon/commit/7661c64))
+
 ## 0.17.0
 
 ### Minor Changes
