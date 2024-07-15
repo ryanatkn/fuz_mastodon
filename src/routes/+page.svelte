@@ -3,7 +3,7 @@
 	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
 	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
 	import {base} from '$app/paths';
-	// TODO @multiple why is this import needed? `Code` already imports it. Fails in dev with SSR enabled without it. Is there a Vite config option that would be better? I tried the combinations of `ssr.external/noExternal/external` with `@ryanatkn/fuz_code` and `prismjs`.
+	// TODO @many why is this import needed? `Code` already imports it. Fails in dev with SSR enabled without it. Is there a Vite config option that would be better? I tried the combinations of `ssr.external/noExternal/external` with `@ryanatkn/fuz_code` and `prismjs`.
 	import 'prismjs';
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';

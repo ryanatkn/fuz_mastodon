@@ -110,7 +110,7 @@
 
 	$effect(() => {
 		if (show_settings_key) {
-			set_in_storage(show_settings_key, show_settings); // TODO @multiple wastefully sets on init
+			set_in_storage(show_settings_key, show_settings); // TODO @many wastefully sets on init
 		}
 	});
 
@@ -120,7 +120,7 @@
 
 	$effect(() => {
 		if (autoload_key) {
-			set_in_storage(autoload_key, autoload); // TODO @multiple wastefully sets on init and across multiple `Toot` instances if bound
+			set_in_storage(autoload_key, autoload); // TODO @many wastefully sets on init and across multiple `Toot` instances if bound
 		}
 	});
 
