@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.18.0
+
+### Minor Changes
+
+- bump minor for breaking changes in fuz ([2e32942](https://github.com/ryanatkn/fuz_mastodon/commit/2e32942))
+
 ## 0.17.1
 
 ### Patch Changes
