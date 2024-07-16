@@ -57,8 +57,8 @@
 		initial_show_settings?: boolean;
 		show_settings?: boolean;
 		autoload_key?: string | undefined;
-		initial_autoload?: boolean;
-		autoload?: boolean;
+		initial_autoload?: boolean; // TODO @many rethink these names
+		autoload?: boolean; // TODO @many rethink these names
 		onreset?: () => void;
 		settings?: Snippet;
 	}
