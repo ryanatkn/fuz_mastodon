@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "description": "Mastodon components and helpers for Svelte, SvelteKit, and Fuz",
   "glyph": "🦣",
   "logo": "logo.svg",

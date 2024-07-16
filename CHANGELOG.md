@@ -1,5 +1,15 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.19.0
+
+### Minor Changes
+
+- pin peer deps ([#11](https://github.com/ryanatkn/fuz_mastodon/pull/11))
+
+### Patch Changes
+
+- fix published types ([#11](https://github.com/ryanatkn/fuz_mastodon/pull/11))
+
 ## 0.18.0
 
 ### Minor Changes
