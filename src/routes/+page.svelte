@@ -23,7 +23,7 @@
 		}
 	});
 
-	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
+	const pkg = parse_package_meta(package_json, src_json);
 
 	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
