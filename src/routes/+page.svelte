@@ -44,7 +44,7 @@
 				<Code
 					content={`<Toot
 	url="${url}"
-	initial_autoload={true}
+	initial_autoload
 	include_replies
 	reply_filters={(item) => [
 		{type: 'favourited_by', favourited_by: [item.account.acct]},
@@ -60,7 +60,7 @@
 		{#if cache !== undefined}
 			<Toot
 				{url}
-				initial_autoload={true}
+				initial_autoload
 				include_replies
 				reply_filters={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
 				storage_key="example_1"
