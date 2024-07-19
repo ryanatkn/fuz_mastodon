@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.21.0
+
+### Minor Changes
+
+- upgrade `@ryanatkn/moss@0.9.0` from `0.8.0` and `@ryanatkn/fuz@0.116` from `0.115` ([04dd9df](https://github.com/ryanatkn/fuz_mastodon/commit/04dd9df))
+
 ## 0.20.0
 
 ### Minor Changes
