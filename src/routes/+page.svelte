@@ -18,6 +18,10 @@
 	onMount(async () => {
 		if (DEV) {
 			cache = new Map((await import('./mastodon_fake_cache_data.js')).mastodon_fake_cache_data);
+			// To get the latest cache data, run this in the console: (and disable the `reply_filters` if you want all the data)
+			// cache = new Map();
+			// window.cache = cache;
+			// setTimeout(() => navigator.clipboard.writeText(JSON.stringify(Array.from(cache.entries()))), 500)
 		} else {
 			cache = null;
 		}
