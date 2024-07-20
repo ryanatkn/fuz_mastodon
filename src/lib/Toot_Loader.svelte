@@ -49,7 +49,7 @@
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		reply_filters?: Reply_Filter[] | Create_Reply_Filters | null;
+		reply_filter?: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -80,7 +80,7 @@
 		id,
 		include_ancestors = false,
 		include_replies = false,
-		reply_filters,
+		reply_filter,
 		cache,
 		log,
 		loading = $bindable(),
@@ -93,12 +93,12 @@
 
 	const include_status_context = $derived(include_ancestors || include_replies);
 
-	const get_reply_filters: Reply_Filter[] | Create_Reply_Filters | null = $derived(
-		reply_filters === undefined // apply default only if `undefined`, pass through `null`
+	const final_reply_filter: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null = $derived(
+		reply_filter === undefined // apply default only if `undefined`, pass through `null`
 			? include_replies
-				? () => [{type: 'custom', should_include: () => true}] // allow all by default
+				? {type: 'custom', should_include: () => true} // allow all by default
 				: null
-			: reply_filters,
+			: reply_filter,
 	);
 
 	const load = async (): Promise<void> => {
@@ -114,9 +114,9 @@
 			replies = await filter_valid_replies(
 				item,
 				status_context,
-				typeof get_reply_filters === 'function'
-					? get_reply_filters(item, status_context)
-					: get_reply_filters,
+				typeof final_reply_filter === 'function'
+					? final_reply_filter(item, status_context)
+					: final_reply_filter,
 				cache,
 				log,
 			);

@@ -18,7 +18,7 @@
 	onMount(async () => {
 		if (DEV) {
 			cache = new Map((await import('./mastodon_fake_cache_data.js')).mastodon_fake_cache_data);
-			// To get the latest cache data, run this in the console: (and disable the `reply_filters` if you want all the data)
+			// To get the latest cache data, run this in the console: (and disable the `reply_filter` if you want all the data)
 			// cache = new Map();
 			// window.cache = cache;
 			// setTimeout(() => navigator.clipboard.writeText(JSON.stringify(Array.from(cache.entries()))), 500)
@@ -50,9 +50,9 @@
 	url="${url}"
 	initial_autoload
 	include_replies
-	reply_filters={(item) => [
-		{type: 'favourited_by', favourited_by: [item.account.acct]},
-	]}
+	reply_filter={(item) => (
+		{type: 'favourited_by', favourited_by: [item.account.acct]}
+	)}
 	storage_key="example_1"
 	{cache}
 />`}
@@ -66,7 +66,7 @@
 				{url}
 				initial_autoload
 				include_replies
-				reply_filters={(item) => [{type: 'favourited_by', favourited_by: [item.account.acct]}]}
+				reply_filter={(item) => ({type: 'favourited_by', favourited_by: [item.account.acct]})}
 				storage_key="example_1"
 				{cache}
 			/>
@@ -78,7 +78,7 @@
 			By default, no replies are included. You can opt into including replies with <code
 				>include_replies</code
 			>
-			and customize them with <code>reply_filters</code>.
+			and customize them with <code>reply_filter</code>.
 		</p>
 		<h3>Allow all</h3>
 		<p>Adding <code>include_replies</code> enables all replies by default.</p>
@@ -90,17 +90,17 @@
 />`}
 			/>
 			<p>
-				This is the default value for <code>reply_filters</code>. It does nothing here but it's
-				shown for clarity.
+				This is the default value for <code>reply_filter</code>. It does nothing here but it's shown
+				for clarity.
 			</p>
 			<div class="w_100">
 				<Code
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={() => [
+	reply_filter={() => (
 		{type: 'custom', should_include: () => true}
-	]}
+	)}
 />`}
 				/>
 			</div>
@@ -111,9 +111,9 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={() => [
+	reply_filter={() => (
 		{type: 'favourited_by', favourited_by: ['username1', 'user2']}
-	]},
+	)},
 />`}
 				/>
 			</div>
@@ -123,9 +123,9 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={(item) => [
+	reply_filter={(item) => (
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
-	]},
+	)},
 />`}
 				/>
 			</div>
@@ -135,9 +135,9 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={() => [
+	reply_filter={() => (
 		{type: 'minimum_favourites', minimum_favourites: 3}
-	]},
+	)},
 />`}
 				/>
 			</div>
@@ -147,14 +147,14 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={() => [
+	reply_filter={() => (
 		{
 			type: 'custom',
 			should_include: (item, root_status, status_context) => {
 				/* return boolean */
 			})
 		}
-	]},
+	)},
 />`}
 				/>
 			</div>
@@ -165,7 +165,7 @@
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={(item) => [
+	reply_filter={(item) => [
 		{type: 'favourited_by', favourited_by: ['trusted', 'tasteful']},
 		{type: 'minimum_favourites', minimum_favourites: 10},
 		{type: 'custom', should_include: () => Math.random() > 0.5)}
@@ -178,22 +178,27 @@
 			<div class="w_100 mb_lg">
 				<Code content={`<Toot	url="${url}" />`} />
 			</div>
-			<p>Or pass <code>null</code> for <code>reply_filters</code>:</p>
+			<p>
+				Or pass <code>null</code> or <code>undefined</code> or <code>[]</code> for
+				<code>reply_filter</code>:
+			</p>
 			<div class="w_100">
 				<Code
 					content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={null}
+	reply_filter={null}
 />`}
 				/>
-				<p>Or return no filters:</p>
+				<p>
+					Or return no filters (<code>null</code> or <code>undefined</code> or <code>[]</code>):
+				</p>
 				<div class="w_100">
 					<Code
 						content={`<Toot
 	url="${url}"
 	include_replies
-	reply_filters={() => []}
+	reply_filter={() => null}
 />`}
 					/>
 				</div>

@@ -3,6 +3,7 @@ import {type Fetch_Value_Cache, fetch_value} from '@ryanatkn/belt/fetch.js';
 import type {Logger} from '@ryanatkn/belt/log.js';
 import {DEV} from 'esm-env';
 import {Unreachable_Error} from '@ryanatkn/belt/error.js';
+import {to_array} from '@ryanatkn/belt/array.js';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig
@@ -268,42 +269,43 @@ export interface Custom_Reply_Filter {
 export type Create_Reply_Filters = (
 	item: Mastodon_Status,
 	status_context: Mastodon_Status_Context,
-) => Reply_Filter[] | null;
+) => Reply_Filter | Reply_Filter[] | null;
 
 // TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
 // TODO refactor - maybe the name is misleading because it fetches?
 export const filter_valid_replies = async (
 	root_status: Mastodon_Status,
 	status_context: Mastodon_Status_Context,
-	reply_filters: Reply_Filter[] | null,
+	reply_filter: Reply_Filter | Reply_Filter[] | null,
 	cache: Fetch_Value_Cache | null | undefined,
 	log: Logger | undefined,
 ): Promise<Mastodon_Status[]> => {
+	const filters = reply_filter ? to_array(reply_filter) : null;
 	const statuses = status_context.descendants;
 	// For a reply to be included, there must be at least one rule that passes.
-	if (!statuses.length || !reply_filters?.length) {
+	if (!statuses.length || !filters?.length) {
 		return [];
 	}
 	const host = new URL(root_status.url).host;
 	const allowed = new Set(); // TODO could simplify if no longer used, was allowing author but changed to favourites - `statuses.filter((s) => s.account.acct === acct`
 	// TODO do in parallel but with max concurrency, need a helper
 	for (const status of statuses) {
-		for (const rule of reply_filters) {
-			if (rule.type === 'favourited_by') {
+		for (const filter of filters) {
+			if (filter.type === 'favourited_by') {
 				if (!status.favourites_count) {
 					continue;
 				}
 				// TODO cache these somewhere maybe?
 				const favourites = await fetch_mastodon_favourites(host, status.id, cache, log); // eslint-disable-line no-await-in-loop
-				const favourite = favourites?.find((f) => rule.favourited_by.includes(f.acct)); // TODO customize via a prop (string/set/callback)
+				const favourite = favourites?.find((f) => filter.favourited_by.includes(f.acct)); // TODO customize via a prop (string/set/callback)
 				// TODO this logic is what I want, but `favourite.created_at` is the account creation not the favourite creation, and the API doesn't appear to support it :[
 				// if (favourite && (!s.edited_at || new Date(s.edited_at) < new Date(favourite.created_at))) {
 				if (favourite) {
 					allowed.add(status.id);
 					break;
 				}
-			} else if (rule.type === 'minimum_favourites') {
-				if (status.favourites_count >= rule.minimum_favourites) {
+			} else if (filter.type === 'minimum_favourites') {
+				if (status.favourites_count >= filter.minimum_favourites) {
 					allowed.add(status.id);
 					break;
 				}
@@ -311,13 +313,13 @@ export const filter_valid_replies = async (
 				//or maybe change to a switch? problem is nesting, verbosity,
 				// and need a for loop label because it would change the semantics of our `break` usage
 				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-			} else if (rule.type === 'custom') {
-				if (rule.should_include(status, root_status, status_context)) {
+			} else if (filter.type === 'custom') {
+				if (filter.should_include(status, root_status, status_context)) {
 					allowed.add(status.id);
 					break;
 				}
 			} else {
-				throw new Unreachable_Error(rule);
+				throw new Unreachable_Error(filter);
 			}
 		}
 	}

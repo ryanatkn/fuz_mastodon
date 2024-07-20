@@ -36,7 +36,7 @@
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 */
-		reply_filters?: Reply_Filter[] | Create_Reply_Filters | null;
+		reply_filter?: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null;
 		/**
 		 * Optional API result cache.
 		 */
@@ -69,7 +69,7 @@
 		updated_url = $bindable(url),
 		include_ancestors = false,
 		include_replies = false,
-		reply_filters,
+		reply_filter,
 		cache,
 		log,
 		loading = $bindable(),
@@ -141,7 +141,7 @@
 		{include_replies}
 		{cache}
 		{log}
-		{reply_filters}
+		{reply_filter}
 		bind:loading
 		bind:load_time
 	>
