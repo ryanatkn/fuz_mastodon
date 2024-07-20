@@ -95,6 +95,10 @@
   ],
   "exports": {
     "./package.json": "./package.json",
+    "./mastodon_cache.svelte.js": {
+      "types": "./dist/mastodon_cache.svelte.d.ts",
+      "default": "./dist/mastodon_cache.svelte.js"
+    },
     "./Mastodon_Status_Item.svelte": {
       "types": "./dist/Mastodon_Status_Item.svelte.d.ts",
       "svelte": "./dist/Mastodon_Status_Item.svelte",
