@@ -7,7 +7,7 @@
 	import Themed from '@ryanatkn/fuz/Themed.svelte';
 	import Dialog from '@ryanatkn/fuz/Dialog.svelte';
 	import Contextmenu_Root from '@ryanatkn/fuz/Contextmenu_Root.svelte';
-	import {contextmenu_action} from '@ryanatkn/fuz/contextmenu_helpers.svelte.js';
+	import {contextmenu_action} from '@ryanatkn/fuz/contextmenu_state.svelte.js';
 
 	import Settings from '$routes/Settings.svelte';
 	import type {Snippet} from 'svelte';
