@@ -29,9 +29,9 @@ export const package_json = {
 	type: 'module',
 	engines: {node: '>=20.12'},
 	peerDependencies: {
-		'@ryanatkn/belt': '^0.24',
-		'@ryanatkn/fuz': '^0.116.0',
-		'@ryanatkn/moss': '^0.9.0',
+		'@ryanatkn/belt': '*',
+		'@ryanatkn/fuz': '*',
+		'@ryanatkn/moss': '*',
 		'@sveltejs/kit': '^2',
 		'date-fns': '^3',
 		'esm-env': '^1',
