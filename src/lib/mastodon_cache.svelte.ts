@@ -3,6 +3,7 @@ import type {Url} from '@ryanatkn/gro/package_json.js';
 import {getContext, onMount, setContext} from 'svelte';
 
 export class Mastodon_Cache {
+	// TODO maybe make a loading state?
 	/**
 	 * If `undefined`, it's still loading.
 	 */

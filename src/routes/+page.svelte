@@ -15,7 +15,7 @@
 
 	let cache: Mastodon_Cache | null = $state(null);
 
-	if (DEV) {
+	if (!DEV) {
 		cache = set_mastodon_cache(
 			new Mastodon_Cache(
 				async () => (await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data,
@@ -63,14 +63,14 @@
 		</div>
 	</section>
 	<section class="width_sm">
-		{#if cache?.data !== undefined}
+		{#if !cache || cache.data !== undefined}
 			<Toot
 				{url}
 				initial_autoload
 				include_replies
 				reply_filter={(item) => ({type: 'favourited_by', favourited_by: [item.account.acct]})}
 				settings_storage_key="example_1"
-				cache={cache.data}
+				cache={cache?.data}
 			/>
 		{/if}
 	</section>
