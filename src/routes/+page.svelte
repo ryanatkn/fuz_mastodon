@@ -17,7 +17,7 @@
 
 	onMount(async () => {
 		if (DEV) {
-			cache = new Map((await import('./mastodon_fake_cache_data.js')).mastodon_fake_cache_data);
+			cache = new Map((await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data);
 			// To get the latest cache data, run this in the console: (and disable the `reply_filter` if you want all the data)
 			// cache = new Map();
 			// window.cache = cache;

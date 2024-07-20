@@ -1,7 +1,7 @@
 import type {Url} from '@ryanatkn/gro/package_json.js';
 import type {Fetch_Value_Cache_Item} from '@ryanatkn/belt/fetch.js';
 
-export const mastodon_fake_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
+export const mastodon_dev_cache_data: Array<[Url, Fetch_Value_Cache_Item]> = [
 	[
 		'GET::https://hci.social/api/v1/statuses/111491794208793604',
 		{
