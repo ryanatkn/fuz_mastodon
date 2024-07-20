@@ -1,10 +1,27 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "modules": {
     "./package.json": {
       "path": "package.json",
       "declarations": []
+    },
+    "./mastodon_cache.svelte.js": {
+      "path": "mastodon_cache.svelte.ts",
+      "declarations": [
+        {
+          "name": "Mastodon_Cache",
+          "kind": "class"
+        },
+        {
+          "name": "get_mastodon_cache",
+          "kind": "function"
+        },
+        {
+          "name": "set_mastodon_cache",
+          "kind": "function"
+        }
+      ]
     },
     "./Mastodon_Status_Item.svelte": {
       "path": "Mastodon_Status_Item.svelte",
