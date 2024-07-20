@@ -1,5 +1,18 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.23.0
+
+### Minor Changes
+
+- rename some `Toot.svelte` props ([#12](https://github.com/ryanatkn/fuz_mastodon/pull/12))
+
+  - rename `settings_storage_key` from `storage_key`
+  - rename `autoload_storage_key` from `autoload_key`
+
+### Patch Changes
+
+- add `Mastodon_Cache` helper in `mastodon_cache.svelte.ts` ([#12](https://github.com/ryanatkn/fuz_mastodon/pull/12))
+
 ## 0.22.0
 
 ### Minor Changes
