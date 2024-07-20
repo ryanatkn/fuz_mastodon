@@ -55,7 +55,7 @@
 	reply_filter={(item) => (
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
 	)}
-	storage_key="example_1"
+	settings_storage_key="example_1"
 	{cache}
 />`}
 				/>
@@ -69,7 +69,7 @@
 				initial_autoload
 				include_replies
 				reply_filter={(item) => ({type: 'favourited_by', favourited_by: [item.account.acct]})}
-				storage_key="example_1"
+				settings_storage_key="example_1"
 				cache={cache.data}
 			/>
 		{/if}
