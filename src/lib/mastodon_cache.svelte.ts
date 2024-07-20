@@ -8,12 +8,19 @@ export class Mastodon_Cache {
 	 */
 	data: Fetch_Value_Cache | undefined | null = $state();
 
-	constructor(load: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>) {
-		onMount(async () => {
-			const loaded = await load();
-			this.data = loaded && new Map(loaded);
-		});
+	constructor(
+		protected load_data: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>,
+		load_on_mount = true,
+	) {
+		if (load_on_mount) {
+			onMount(this.load);
+		}
 	}
+
+	load = async (): Promise<void> => {
+		const loaded = await this.load_data();
+		this.data = loaded && new Map(loaded);
+	};
 }
 
 const KEY = Symbol('mastodon_cache');

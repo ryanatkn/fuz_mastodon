@@ -6,26 +6,28 @@
 	// TODO @many why is this import needed? `Code` already imports it. Fails in dev with SSR enabled without it. Is there a Vite config option that would be better? I tried the combinations of `ssr.external/noExternal/external` with `@ryanatkn/fuz_code` and `prismjs`.
 	import 'prismjs';
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
-	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import {DEV} from 'esm-env';
-	import {onMount} from 'svelte';
 
 	import Toot from '$lib/Toot.svelte';
 	import {package_json, src_json} from '$routes/package.js';
 
-	let cache: Fetch_Value_Cache | undefined | null = $state();
+	import {Mastodon_Cache, set_mastodon_cache} from '$lib/mastodon_cache.svelte.js';
 
-	onMount(async () => {
-		if (DEV) {
-			cache = new Map((await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data);
-			// To get the latest cache data, run this in the console: (and disable the `reply_filter` if you want all the data)
-			// cache = new Map();
-			// window.cache = cache;
-			// setTimeout(() => navigator.clipboard.writeText(JSON.stringify(Array.from(cache.entries()))), 500)
-		} else {
-			cache = null;
-		}
-	});
+	let cache: Mastodon_Cache | null = $state(null);
+
+	if (DEV) {
+		cache = set_mastodon_cache(
+			new Mastodon_Cache(
+				async () => (await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data,
+			),
+		);
+		// To get the latest cache data, add these lines:
+		// 		const cache = set_mastodon_cache(...);
+		// 		if (typeof window !== 'undefined') window.cache = cache;
+		// Then run this in the console and then click into the document to make the clipboard work: (and disable the `reply_filter` if you want all the data)
+		// 		setTimeout(() => navigator.clipboard.writeText(JSON.stringify(Array.from(cache.data.entries()))), 500)
+		// Then paste the string into the `mastodon_dev_cache_data.js` file as the exported `mastodon_dev_cache_data` value.
+	}
 
 	const pkg = parse_package_meta(package_json, src_json);
 
@@ -61,14 +63,14 @@
 		</div>
 	</section>
 	<section class="width_sm">
-		{#if cache !== undefined}
+		{#if cache?.data !== undefined}
 			<Toot
 				{url}
 				initial_autoload
 				include_replies
 				reply_filter={(item) => ({type: 'favourited_by', favourited_by: [item.account.acct]})}
 				storage_key="example_1"
-				{cache}
+				cache={cache.data}
 			/>
 		{/if}
 	</section>

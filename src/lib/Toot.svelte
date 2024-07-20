@@ -39,6 +39,7 @@
 		reply_filter?: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null;
 		/**
 		 * Optional API result cache.
+		 * See `Mastodon_Cache` and `get_mastodon_cache`/`set_mastodon_cache`.
 		 */
 		cache?: Fetch_Value_Cache | null | undefined;
 		/**
