@@ -56,7 +56,7 @@
 		{type: 'favourited_by', favourited_by: [item.account.acct]}
 	)}
 	settings_storage_key="example_1"
-	{cache}
+	cache={cache?.data}
 />`}
 				/>
 			</div>
