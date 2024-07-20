@@ -1,5 +1,12 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.22.0
+
+### Minor Changes
+
+- loosen peer deps temporarily ([82268ec](https://github.com/ryanatkn/fuz_mastodon/commit/82268ec))
+- rename `reply_filter` from `reply_filters` and loosen type to accept single objects ([6e3ee47](https://github.com/ryanatkn/fuz_mastodon/commit/6e3ee47))
+
 ## 0.21.0
 
 ### Minor Changes
