@@ -20,11 +20,11 @@
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
 	interface Props {
-		url: string; // TODO this API is awkward, ideally it would be `url`? maybe rename `url` to `current_url` then?
+		url: string; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
 		/**
 		 * Defaults to the `url`, but can be updated by user input.
 		 */
-		updated_url?: string;
+		updated_url?: string; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
 		/**
 		 * Whether to fetch and display the ancestors in the status context.
 		 */
@@ -39,6 +39,7 @@
 		reply_filter?: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null;
 		/**
 		 * Optional API result cache.
+		 * See `Mastodon_Cache` and `get_mastodon_cache`/`set_mastodon_cache`.
 		 */
 		cache?: Fetch_Value_Cache | null | undefined;
 		/**
@@ -53,12 +54,12 @@
 		 * @readonly
 		 */
 		load_time?: number | undefined;
-		storage_key?: string | undefined;
-		initial_show_settings?: boolean;
-		show_settings?: boolean;
-		autoload_key?: string | undefined;
-		initial_autoload?: boolean; // TODO @many rethink these names
-		autoload?: boolean; // TODO @many rethink these names
+		settings_storage_key?: string | undefined;
+		initial_show_settings?: boolean; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
+		show_settings?: boolean; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
+		autoload_storage_key?: string | undefined;
+		initial_autoload?: boolean; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
+		autoload?: boolean; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
 		onreset?: () => void;
 		settings?: Snippet;
 	}
@@ -74,13 +75,13 @@
 		log,
 		loading = $bindable(),
 		load_time = $bindable(),
-		storage_key,
+		settings_storage_key,
 		initial_show_settings = false,
 		show_settings = $bindable(),
-		autoload_key = 'autoload',
+		autoload_storage_key = 'autoload',
 		initial_autoload = false,
-		autoload = autoload_key
-			? load_from_storage(autoload_key, () => initial_autoload)
+		autoload = autoload_storage_key
+			? load_from_storage(autoload_storage_key, () => initial_autoload)
 			: initial_autoload,
 		onreset,
 		settings,
@@ -98,7 +99,9 @@
 	};
 
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
-	const show_settings_key = $derived(storage_key && 'show_settings' + storage_key);
+	const show_settings_key = $derived(
+		settings_storage_key && 'show_settings' + settings_storage_key,
+	);
 
 	$effect(() => {
 		if (show_settings === undefined) {
@@ -119,8 +122,8 @@
 	};
 
 	$effect(() => {
-		if (autoload_key) {
-			set_in_storage(autoload_key, autoload); // TODO @many wastefully sets on init and across multiple `Toot` instances if bound
+		if (autoload_storage_key) {
+			set_in_storage(autoload_storage_key, autoload); // TODO @many wastefully sets on init and across multiple `Toot` instances if bound
 		}
 	});
 

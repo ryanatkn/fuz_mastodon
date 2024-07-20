@@ -42,10 +42,10 @@ export const package_json = {
 		'@changesets/changelog-git': '^0.2.0',
 		'@ryanatkn/belt': '^0.24.10',
 		'@ryanatkn/eslint-config': '^0.4.2',
-		'@ryanatkn/fuz': '^0.116.0',
+		'@ryanatkn/fuz': '^0.117.0',
 		'@ryanatkn/fuz_code': '^0.16.0',
-		'@ryanatkn/gro': '^0.133.2',
-		'@ryanatkn/moss': '^0.9.0',
+		'@ryanatkn/gro': '^0.133.3',
+		'@ryanatkn/moss': '^0.10.1',
 		'@sveltejs/adapter-static': '^3.0.2',
 		'@sveltejs/kit': '^2.5.18',
 		'@sveltejs/package': '^2.3.2',
@@ -78,6 +78,10 @@ export const package_json = {
 	files: ['dist', 'src/lib/**/*.ts', '!src/lib/**/*.test.*', '!dist/**/*.test.*'],
 	exports: {
 		'./package.json': './package.json',
+		'./mastodon_cache.svelte.js': {
+			types: './dist/mastodon_cache.svelte.d.ts',
+			default: './dist/mastodon_cache.svelte.js',
+		},
 		'./Mastodon_Status_Item.svelte': {
 			types: './dist/Mastodon_Status_Item.svelte.d.ts',
 			svelte: './dist/Mastodon_Status_Item.svelte',
@@ -113,6 +117,14 @@ export const src_json = {
 	version: '0.22.0',
 	modules: {
 		'./package.json': {path: 'package.json', declarations: []},
+		'./mastodon_cache.svelte.js': {
+			path: 'mastodon_cache.svelte.ts',
+			declarations: [
+				{name: 'Mastodon_Cache', kind: 'class'},
+				{name: 'get_mastodon_cache', kind: 'function'},
+				{name: 'set_mastodon_cache', kind: 'function'},
+			],
+		},
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},
 		'./Mastodon_Status_Tree.svelte': {path: 'Mastodon_Status_Tree.svelte', declarations: []},
 		'./mastodon.js': {
