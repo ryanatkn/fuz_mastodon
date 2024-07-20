@@ -22,7 +22,7 @@
 			),
 		);
 		// To get the latest cache data, add these lines:
-		// 		const cache = set_mastodon_cache(...);
+		// 		const cache = get_mastodon_cache();
 		// 		if (typeof window !== 'undefined') window.cache = cache;
 		// Then run this in the console and then click into the document to make the clipboard work: (and disable the `reply_filter` if you want all the data)
 		// 		setTimeout(() => navigator.clipboard.writeText(JSON.stringify(Array.from(cache.data.entries()))), 500)
