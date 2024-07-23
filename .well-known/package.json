@@ -43,7 +43,7 @@
     "@changesets/changelog-git": "^0.2.0",
     "@ryanatkn/belt": "^0.24.11",
     "@ryanatkn/eslint-config": "^0.4.2",
-    "@ryanatkn/fuz": "^0.118.1",
+    "@ryanatkn/fuz": "^0.118.2",
     "@ryanatkn/fuz_code": "^0.17.0",
     "@ryanatkn/gro": "^0.133.4",
     "@ryanatkn/moss": "^0.11.1",
