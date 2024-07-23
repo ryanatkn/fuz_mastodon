@@ -15,7 +15,7 @@
 
 	let cache: Mastodon_Cache | null = $state(null);
 
-	if (!DEV) {
+	if (DEV) {
 		cache = set_mastodon_cache(
 			new Mastodon_Cache(
 				async () => (await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data,
