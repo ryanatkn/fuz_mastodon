@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.23.1
+
+### Patch Changes
+
+- upgrade deps ([5d9c95d](https://github.com/ryanatkn/fuz_mastodon/commit/5d9c95d))
+
 ## 0.23.0
 
 ### Minor Changes
