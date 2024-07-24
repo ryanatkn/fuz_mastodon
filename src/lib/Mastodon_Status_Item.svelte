@@ -119,7 +119,7 @@
 	.names small,
 	.date a {
 		font-weight: 500;
-		color: var(--text_2);
+		color: var(--text_color_3);
 	}
 	.date {
 		display: flex;
