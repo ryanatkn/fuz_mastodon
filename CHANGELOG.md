@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.24.1
+
+### Patch Changes
+
+- update logo color to #8866cc from #6a40bf ([6073d1a](https://github.com/ryanatkn/fuz_mastodon/commit/6073d1a))
+
 ## 0.24.0
 
 ### Minor Changes
