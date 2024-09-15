@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.24.1",
+  "version": "0.25.0",
   "modules": {
     "./package.json": {
       "path": "package.json",
