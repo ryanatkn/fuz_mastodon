@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.25.0
+
+### Minor Changes
+
+- bump required node version to `20.17` ([f43e387](https://github.com/ryanatkn/fuz_mastodon/commit/f43e387))
+
 ## 0.24.1
 
 ### Patch Changes
