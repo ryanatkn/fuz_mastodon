@@ -245,7 +245,7 @@
 									>
 								</fieldset>
 							</form>
-							{#if settings}{@render settings()}{/if}
+							{@render settings?.()}
 						</div>
 					{/if}
 				</div>
