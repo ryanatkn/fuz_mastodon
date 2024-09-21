@@ -44,6 +44,9 @@
 			title={account_note ? `${show_note ? 'hide' : 'show'} ${account_acct}'s profile` : undefined}
 			onclick={account_note ? toggle_note : undefined}
 			disabled={!account_note}
+			aria-label={account_note
+				? `${show_note ? 'hide' : 'show'} ${account_acct}'s profile`
+				: undefined}
 			><img class="icon" src={account_avatar} alt="avatar for {account_acct}" /></button
 		>
 		<div class="names">

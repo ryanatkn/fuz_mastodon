@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Pending_Button from '@ryanatkn/fuz/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
-	import {intersect} from 'svelte-intersect';
+	import {intersect} from '@ryanatkn/fuz/intersect.js';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
 	import type {Snippet} from 'svelte';

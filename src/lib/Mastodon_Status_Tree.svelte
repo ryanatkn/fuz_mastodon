@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {Mastodon_Status} from '$lib/mastodon.js';
 	import Message from '$lib/Mastodon_Status_Item.svelte';
+	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
 
 	interface Props {
 		item: Mastodon_Status;
@@ -18,7 +19,7 @@
 		{#each replies as reply (reply.id)}
 			<li>
 				<Message item={reply} />
-				<svelte:self item={reply} {items} />
+				<Mastodon_Status_Tree item={reply} {items} />
 			</li>
 		{/each}
 	</ul>
