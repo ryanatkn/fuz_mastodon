@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.26.0
+
+### Minor Changes
+
+- upgrade `date-fns@4` ([56f1e00](https://github.com/ryanatkn/fuz_mastodon/commit/56f1e00))
+
 ## 0.25.0
 
 ### Minor Changes
