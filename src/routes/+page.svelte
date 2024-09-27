@@ -11,12 +11,12 @@
 	import Toot from '$lib/Toot.svelte';
 	import {package_json, src_json} from '$routes/package.js';
 
-	import {Mastodon_Cache, set_mastodon_cache} from '$lib/mastodon_cache.svelte.js';
+	import {Mastodon_Cache, mastodon_cache_context} from '$lib/mastodon_cache.svelte.js';
 
 	let cache: Mastodon_Cache | null = $state(null);
 
 	if (DEV) {
-		cache = set_mastodon_cache(
+		cache = mastodon_cache_context.set(
 			new Mastodon_Cache(
 				async () => (await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data,
 			),

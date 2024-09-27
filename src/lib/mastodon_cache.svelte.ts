@@ -1,6 +1,7 @@
 import type {Fetch_Value_Cache, Fetch_Value_Cache_Item} from '@ryanatkn/belt/fetch.js';
 import type {Url} from '@ryanatkn/gro/package_json.js';
-import {getContext, onMount, setContext} from 'svelte';
+import {onMount} from 'svelte';
+import {create_context} from '@ryanatkn/fuz/context_helpers.js';
 
 export class Mastodon_Cache {
 	// TODO maybe make a loading state?
@@ -24,6 +25,4 @@ export class Mastodon_Cache {
 	};
 }
 
-const KEY = Symbol('mastodon_cache');
-export const get_mastodon_cache = (): Mastodon_Cache | undefined => getContext(KEY);
-export const set_mastodon_cache = (cache: Mastodon_Cache): Mastodon_Cache => setContext(KEY, cache);
+export const mastodon_cache_context = create_context<Mastodon_Cache>();
