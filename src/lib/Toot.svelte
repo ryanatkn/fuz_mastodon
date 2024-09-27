@@ -199,6 +199,11 @@
 						<!-- </div> -->
 					{/if}
 				</div>
+				{#if item}
+					<a href={item.url} rel="noreferrer" class="panel p_md mb_md">
+						<span class="font_mono">↪︎</span> reply on Mastodon
+					</a>
+				{/if}
 				<div class="toot_controls">
 					<div
 						class="controls"
