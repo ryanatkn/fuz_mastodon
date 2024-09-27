@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.26.0",
+  "version": "0.26.1",
   "modules": {
     "./package.json": {
       "path": "package.json",
@@ -14,12 +14,8 @@
           "kind": "class"
         },
         {
-          "name": "get_mastodon_cache",
-          "kind": "function"
-        },
-        {
-          "name": "set_mastodon_cache",
-          "kind": "function"
+          "name": "mastodon_cache_context",
+          "kind": "variable"
         }
       ]
     },
