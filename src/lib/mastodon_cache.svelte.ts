@@ -37,4 +37,6 @@ export const mastodon_cache_context2 = create_context2<Mastodon_Cache>();
 // works with the published types, so it seems the problem is when they're transitive
 export const mastodon_cache_context3 = create_context3<Mastodon_Cache>();
 
-// TODO BLOCK try when it's not overloaded
+// TODO BLOCK when declared?
+export const mastodon_cache_context4: ReturnType<typeof create_context<Mastodon_Cache>> =
+	create_context();

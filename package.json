@@ -32,8 +32,10 @@
   "peerDependencies": {
     "@ryanatkn/belt": "*",
     "@ryanatkn/fuz": "*",
+    "@ryanatkn/gro": "*",
     "@ryanatkn/moss": "*",
     "@sveltejs/kit": "^2",
+    "@types/node": "*",
     "date-fns": "^4",
     "esm-env": "^1",
     "svelte": "^5.0.0-next.0"
@@ -41,7 +43,7 @@
   "devDependencies": {
     "@changesets/changelog-git": "^0.2.0",
     "@ryanatkn/belt": "^0.25.0",
-    "@ryanatkn/eslint-config": "^0.5.3",
+    "@ryanatkn/eslint-config": "^0.5.4",
     "@ryanatkn/fuz": "^0.128.0",
     "@ryanatkn/fuz_code": "^0.19.0",
     "@ryanatkn/gro": "^0.135.2",
@@ -50,6 +52,7 @@
     "@sveltejs/kit": "^2.6.0",
     "@sveltejs/package": "^2.3.5",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@types/node": "^22.7.4",
     "date-fns": "^4.1.0",
     "eslint": "^9.11.1",
     "eslint-plugin-svelte": "^2.44.1",
