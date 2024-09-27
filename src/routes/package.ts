@@ -135,6 +135,8 @@ export const src_json = {
 		'./mastodon_cache.svelte.js': {
 			path: 'mastodon_cache.svelte.ts',
 			declarations: [
+				{name: 'testclass1', kind: 'variable'},
+				{name: 'testclass2', kind: 'variable'},
 				{name: 'Mastodon_Cache', kind: 'class'},
 				{name: 'mastodon_cache_context', kind: 'variable'},
 				{name: 'mastodon_cache_context2', kind: 'variable'},

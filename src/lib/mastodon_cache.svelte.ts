@@ -1,10 +1,15 @@
 import type {Fetch_Value_Cache, Fetch_Value_Cache_Item} from '@ryanatkn/belt/fetch.js';
 import type {Url} from '@ryanatkn/gro/package_json.js';
 import {onMount} from 'svelte';
-import {create_context} from '@ryanatkn/fuz/context_helpers.js';
+import {create_context, TestClass} from '@ryanatkn/fuz/context_helpers.js';
 
 import {create_context2} from '$lib/context_helpers2.js';
 import {create_context3} from '$lib/context_helpers3.js';
+
+// doens't work:
+export const testclass1 = new TestClass();
+// works:
+export const testclass2: TestClass = new TestClass();
 
 export class Mastodon_Cache {
 	// TODO maybe make a loading state?
