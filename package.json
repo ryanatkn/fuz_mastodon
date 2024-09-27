@@ -93,6 +93,17 @@
   ],
   "exports": {
     "./package.json": "./package.json",
+    "./context_helpers2.js": {
+      "types": "./dist/context_helpers2.d.ts",
+      "default": "./dist/context_helpers2.js"
+    },
+    "./context_helpers3.d.ts": {
+      "default": "./dist/context_helpers3.d.ts"
+    },
+    "./context_helpers3.js": {
+      "types": "./dist/context_helpers3.d.ts",
+      "default": "./dist/context_helpers3.js"
+    },
     "./mastodon_cache.svelte.js": {
       "types": "./dist/mastodon_cache.svelte.d.ts",
       "default": "./dist/mastodon_cache.svelte.js"

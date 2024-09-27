@@ -76,6 +76,10 @@ export const package_json = {
 	files: ['dist', 'src/lib/**/*.ts', '!src/lib/**/*.test.*', '!dist/**/*.test.*'],
 	exports: {
 		'./package.json': './package.json',
+		'./context_helpers2.js': {
+			types: './dist/context_helpers2.d.ts',
+			default: './dist/context_helpers2.js',
+		},
 		'./mastodon_cache.svelte.js': {
 			types: './dist/mastodon_cache.svelte.d.ts',
 			default: './dist/mastodon_cache.svelte.js',
@@ -115,11 +119,16 @@ export const src_json = {
 	version: '0.27.1',
 	modules: {
 		'./package.json': {path: 'package.json', declarations: []},
+		'./context_helpers2.js': {
+			path: 'context_helpers2.ts',
+			declarations: [{name: 'create_context2', kind: null}],
+		},
 		'./mastodon_cache.svelte.js': {
 			path: 'mastodon_cache.svelte.ts',
 			declarations: [
 				{name: 'Mastodon_Cache', kind: 'class'},
 				{name: 'mastodon_cache_context', kind: 'variable'},
+				{name: 'mastodon_cache_context2', kind: 'variable'},
 			],
 		},
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},

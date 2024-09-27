@@ -4,6 +4,7 @@ import {onMount} from 'svelte';
 import {create_context} from '@ryanatkn/fuz/context_helpers.js';
 
 import {create_context2} from '$lib/context_helpers2.js';
+import {create_context3} from '$lib/context_helpers3.js';
 
 export class Mastodon_Cache {
 	// TODO maybe make a loading state?
@@ -30,3 +31,5 @@ export class Mastodon_Cache {
 export const mastodon_cache_context = create_context<Mastodon_Cache>();
 
 export const mastodon_cache_context2 = create_context2<Mastodon_Cache>();
+
+export const mastodon_cache_context3 = create_context3<Mastodon_Cache>();
