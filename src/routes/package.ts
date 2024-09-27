@@ -140,6 +140,8 @@ export const src_json = {
 				{name: 'mastodon_cache_context2', kind: 'variable'},
 				{name: 'mastodon_cache_context3', kind: 'variable'},
 				{name: 'mastodon_cache_context4', kind: 'variable'},
+				{name: 'Mastodon_Cache2', kind: 'type'},
+				{name: 'mastodon_cache_context5', kind: 'variable'},
 			],
 		},
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},
