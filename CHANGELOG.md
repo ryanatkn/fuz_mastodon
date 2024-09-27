@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.27.1
+
+### Patch Changes
+
+- add a transition to the reply link ([ba0ae49](https://github.com/ryanatkn/fuz_mastodon/commit/ba0ae49))
+
 ## 0.27.0
 
 ### Minor Changes
