@@ -34,5 +34,7 @@ export const mastodon_cache_context = create_context<Mastodon_Cache>();
 // works when original file is local
 export const mastodon_cache_context2 = create_context2<Mastodon_Cache>();
 
-// TODO is the problem the published types, or the fact that they're transitive? this inlines?
+// works with the published types, so it seems the problem is when they're transitive
 export const mastodon_cache_context3 = create_context3<Mastodon_Cache>();
+
+// TODO BLOCK try when it's not overloaded

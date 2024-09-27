@@ -100,10 +100,6 @@
     "./context_helpers3.d.ts": {
       "default": "./dist/context_helpers3.d.ts"
     },
-    "./context_helpers3.js": {
-      "types": "./dist/context_helpers3.d.ts",
-      "default": "./dist/context_helpers3.js"
-    },
     "./mastodon_cache.svelte.js": {
       "types": "./dist/mastodon_cache.svelte.d.ts",
       "default": "./dist/mastodon_cache.svelte.js"
@@ -117,6 +113,10 @@
       "types": "./dist/Mastodon_Status_Tree.svelte.d.ts",
       "svelte": "./dist/Mastodon_Status_Tree.svelte",
       "default": "./dist/Mastodon_Status_Tree.svelte"
+    },
+    "./mastodon.test.js": {
+      "types": "./dist/mastodon.test.d.ts",
+      "default": "./dist/mastodon.test.js"
     },
     "./mastodon.js": {
       "types": "./dist/mastodon.d.ts",

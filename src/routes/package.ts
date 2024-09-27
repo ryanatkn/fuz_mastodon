@@ -80,6 +80,7 @@ export const package_json = {
 			types: './dist/context_helpers2.d.ts',
 			default: './dist/context_helpers2.js',
 		},
+		'./context_helpers3.d.ts': {default: './dist/context_helpers3.d.ts'},
 		'./mastodon_cache.svelte.js': {
 			types: './dist/mastodon_cache.svelte.d.ts',
 			default: './dist/mastodon_cache.svelte.js',
@@ -94,6 +95,7 @@ export const package_json = {
 			svelte: './dist/Mastodon_Status_Tree.svelte',
 			default: './dist/Mastodon_Status_Tree.svelte',
 		},
+		'./mastodon.test.js': {types: './dist/mastodon.test.d.ts', default: './dist/mastodon.test.js'},
 		'./mastodon.js': {types: './dist/mastodon.d.ts', default: './dist/mastodon.js'},
 		'./storage.js': {types: './dist/storage.d.ts', default: './dist/storage.js'},
 		'./Toot_Input.svelte': {
@@ -123,16 +125,22 @@ export const src_json = {
 			path: 'context_helpers2.ts',
 			declarations: [{name: 'create_context2', kind: null}],
 		},
+		'./context_helpers3.d.ts': {
+			path: 'context_helpers3.d.ts',
+			declarations: [{name: 'create_context3', kind: null}],
+		},
 		'./mastodon_cache.svelte.js': {
 			path: 'mastodon_cache.svelte.ts',
 			declarations: [
 				{name: 'Mastodon_Cache', kind: 'class'},
 				{name: 'mastodon_cache_context', kind: 'variable'},
 				{name: 'mastodon_cache_context2', kind: 'variable'},
+				{name: 'mastodon_cache_context3', kind: 'variable'},
 			],
 		},
 		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},
 		'./Mastodon_Status_Tree.svelte': {path: 'Mastodon_Status_Tree.svelte', declarations: []},
+		'./mastodon.test.js': {path: 'mastodon.test.ts', declarations: []},
 		'./mastodon.js': {
 			path: 'mastodon.ts',
 			declarations: [
