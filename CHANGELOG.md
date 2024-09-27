@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.26.1
+
+### Patch Changes
+
+- add a reply link ([a741c7f](https://github.com/ryanatkn/fuz_mastodon/commit/a741c7f))
+
 ## 0.26.0
 
 ### Minor Changes
