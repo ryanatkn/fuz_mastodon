@@ -200,9 +200,11 @@
 					{/if}
 				</div>
 				{#if item}
-					<a href={item.url} rel="noreferrer" class="panel p_md mb_md">
-						<span class="font_mono">↪︎</span> reply on Mastodon
-					</a>
+					<div transition:slide class="pb_md">
+						<a href={item.url} rel="noreferrer" class="block panel p_md">
+							<span class="font_mono">↪︎</span> reply on Mastodon
+						</a>
+					</div>
 				{/if}
 				<div class="toot_controls">
 					<div
