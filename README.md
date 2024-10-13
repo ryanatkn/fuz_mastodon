@@ -30,8 +30,6 @@ Planned:
 - multiple views and layouts
 - a more complete and robust wrapper around the Mastodon API
 
-Need help or want to help? Visit [the Discord community](https://discord.gg/YU5tyeK72X).
-
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
 [MIT](LICENSE)
