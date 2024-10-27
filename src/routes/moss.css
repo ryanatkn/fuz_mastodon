@@ -14,11 +14,24 @@
 	justify-content: center;
 }
 
+.chip {
+	font-weight: 600;
+	padding: var(--space_xs5) var(--space_sm); /* maybe different inside `p`? using `calc` with `--size`? */
+	background-color: var(--fg_1);
+	border-radius: var(--radius_xs);
+}
+a.chip {
+	font-weight: 700;
+}
+
 .ellipsis {
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+.flex {
+	display: flex;
 }
 .flex_1 {
 	flex: 1;
@@ -40,6 +53,9 @@
 	padding: 0;
 }
 
+.inline {
+	display: inline;
+}
 .mb_0 {
 	margin-bottom: 0;
 }
@@ -55,8 +71,56 @@
 .mb_xs {
 	margin-bottom: var(--space_xs);
 }
+
+.menu_item {
+	--border_radius: 0;
+	--border_color: var(--border_color_3);
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	min-height: var(--min_height, var(--icon_size_sm));
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--menu_item_padding, var(--space_xs3) var(--space_xs));
+}
+.menu_item.selected {
+	/* TODO different patterns for border and bg? */
+	--border_color: var(--color_a_5);
+	background-color: var(--fg_1);
+	z-index: 1;
+}
+.menu_item.plain {
+	border: none;
+}
+.menu_item .content {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	/* allows the flex children to shrink */
+	min-width: 0;
+}
+.menu_item .icon {
+	width: var(--icon_size, var(--icon_size_md));
+	margin-right: var(--space_sm);
+	flex-shrink: 0;
+	text-align: center;
+	font-weight: 900;
+}
+.menu_item .title {
+	margin-right: var(--space_lg);
+	flex-shrink: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: var(--line_height_lg); /* prevents the bottom of g's and others from being cut off */
+}
+
 .mr_lg {
 	margin-right: var(--space_lg);
+}
+.mt_0 {
+	margin-top: 0;
 }
 .my_xl3 {
 	margin-top: var(--space_xl3);
@@ -113,9 +177,42 @@
 	align-items: center;
 }
 
+.selectable {
+	--button_fill: color-mix(in hsl, var(--fill) 8%, transparent);
+	--button_fill_hover: color-mix(in hsl, var(--fill) 16%, transparent);
+	--button_fill_active: color-mix(in hsl, var(--fill) 24%, transparent);
+	cursor: pointer;
+	background-color: var(--button_fill);
+	border-color: var(--border_color_3);
+	border-style: var(--border_style);
+	border-width: var(--border_width);
+}
+.selectable:hover {
+	background-color: var(--button_fill_hover);
+	border-color: var(--border_color_2);
+}
+.selectable.selected,
+.selectable:active {
+	background-color: var(--button_fill_active);
+	border-color: var(--color_a_5);
+}
+.selectable.selected {
+	cursor: default;
+}
+.selectable.selected.deselectable:not(:disabled) {
+	cursor: pointer;
+}
+
+.shadow_inset_xs {
+	box-shadow: var(--shadow_inset_xs)
+		color-mix(in hsl, var(--shadow_color) var(--shadow_alpha, var(--shadow_alpha_1)), transparent);
+}
 .shadow_md {
 	box-shadow: var(--shadow_md)
 		color-mix(in hsl, var(--shadow_color) var(--shadow_alpha, var(--shadow_alpha_3)), transparent);
+}
+.text_align_center {
+	text-align: center;
 }
 .w_100 {
 	width: 100%;
