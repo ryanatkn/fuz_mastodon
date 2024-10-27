@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.28.0
+
+### Minor Changes
+
+- upgrade peer dep to Svelte 5 ([24b0cf0](https://github.com/ryanatkn/fuz_mastodon/commit/24b0cf0))
+
 ## 0.27.1
 
 ### Patch Changes
