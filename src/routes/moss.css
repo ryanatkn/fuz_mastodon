@@ -42,7 +42,7 @@ a.chip {
 
 /* TODO other button variants? */
 /* TODO this is slightly strange that it doesn't use --icon_size */
-/* These are used as modifiers to buttons, and so they use `:where` so they cascade.  */
+/* These are used as modifiers to buttons, and so they use `:where` so they cascade. */
 .icon_button {
 	width: var(--input_height);
 	height: var(--input_height);
@@ -168,6 +168,20 @@ a.chip {
 	border-color: transparent;
 	box-shadow: none;
 	--button_fill: transparent;
+}
+
+.pre {
+	font-family: var(--font_mono);
+	color: var(--text_color, var(--text_color_3));
+	overflow: auto;
+	max-width: 100%;
+}
+.pre > code {
+	font-size: var(--size_sm); /* TODO @many use a var? maybe computed from generic `--size`? */
+	font-weight: 500;
+}
+.pre:not(.inline) > code {
+	display: block;
 }
 
 /* can be used to override the direction of a `.box` */
