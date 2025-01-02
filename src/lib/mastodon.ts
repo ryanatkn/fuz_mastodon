@@ -121,7 +121,7 @@ export const fetch_mastodon_favourites = async (
 	request?: RequestInit,
 	token?: string,
 	fetch?: typeof globalThis.fetch,
-): Promise<Mastodon_Favourite[] | null> => {
+): Promise<Array<Mastodon_Favourite> | null> => {
 	const url = to_mastodon_api_favourites_url(host, status_id);
 	const fetched = await fetch_value(url, {
 		request,
@@ -142,8 +142,8 @@ export const fetch_mastodon_favourites = async (
  * @see https://docs.joinmastodon.org/entities/Context/
  */
 export interface Mastodon_Status_Context {
-	ancestors: Mastodon_Status[];
-	descendants: Mastodon_Status[];
+	ancestors: Array<Mastodon_Status>;
+	descendants: Array<Mastodon_Status>;
 }
 
 export interface Mastodon_Status {
@@ -166,7 +166,7 @@ export interface Mastodon_Status {
 	muted: boolean;
 	bookmarked: boolean;
 	content: string;
-	filtered: unknown[];
+	filtered: Array<unknown>;
 	reblog: unknown; // | null;
 	account: {
 		id: string;
@@ -188,10 +188,10 @@ export interface Mastodon_Status {
 		following_count: number;
 		statuses_count: number;
 		last_status_at: string;
-		emojis: unknown[];
-		fields: unknown[];
+		emojis: Array<unknown>;
+		fields: Array<unknown>;
 	};
-	media_attachments: unknown[];
+	media_attachments: Array<unknown>;
 	mentions: [
 		{
 			id: string;
@@ -206,7 +206,7 @@ export interface Mastodon_Status {
 			url: string;
 		},
 	];
-	emojis: unknown[];
+	emojis: Array<unknown>;
 	card: unknown; // | null;
 	poll: unknown; // | null;
 }
@@ -231,7 +231,7 @@ export interface Mastodon_Favourite {
 	following_count: number;
 	statuses_count: number;
 	last_status_at: string;
-	emojis: unknown[];
+	emojis: Array<unknown>;
 	fields: Array<{
 		name: string;
 		value: string;
@@ -249,7 +249,7 @@ export type Reply_Filter =
 
 export interface Favourited_By_Reply_Filter {
 	type: 'favourited_by';
-	favourited_by: string[];
+	favourited_by: Array<string>;
 }
 
 export interface Minimum_Favourites_Reply_Filter {
@@ -269,17 +269,17 @@ export interface Custom_Reply_Filter {
 export type Create_Reply_Filters = (
 	item: Mastodon_Status,
 	status_context: Mastodon_Status_Context,
-) => Reply_Filter | Reply_Filter[] | null;
+) => Reply_Filter | Array<Reply_Filter> | null;
 
 // TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
 // TODO refactor - maybe the name is misleading because it fetches?
 export const filter_valid_replies = async (
 	root_status: Mastodon_Status,
 	status_context: Mastodon_Status_Context,
-	reply_filter: Reply_Filter | Reply_Filter[] | null,
+	reply_filter: Reply_Filter | Array<Reply_Filter> | null,
 	cache: Fetch_Value_Cache | null | undefined,
 	log: Logger | undefined,
-): Promise<Mastodon_Status[]> => {
+): Promise<Array<Mastodon_Status>> => {
 	const filters = reply_filter ? to_array(reply_filter) : null;
 	const statuses = status_context.descendants;
 	// For a reply to be included, there must be at least one rule that passes.

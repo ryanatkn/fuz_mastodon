@@ -44,12 +44,12 @@
 		loading?: boolean | undefined;
 		item?: Mastodon_Status | null | undefined;
 		status_context?: Mastodon_Status_Context | null | undefined;
-		replies?: Mastodon_Status[] | null | undefined;
+		replies?: Array<Mastodon_Status> | null | undefined;
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		reply_filter?: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null;
+		reply_filter?: Reply_Filter | Array<Reply_Filter> | Create_Reply_Filters | null;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -65,7 +65,7 @@
 					/**
 					 * `null` here is a failed loading condition for `item` or `status_context`.
 					 */
-					replies: Mastodon_Status[] | null | undefined;
+					replies: Array<Mastodon_Status> | null | undefined;
 					load: () => Promise<void>;
 					loading: boolean | undefined;
 					load_time: number | undefined;
@@ -93,13 +93,14 @@
 
 	const include_status_context = $derived(include_ancestors || include_replies);
 
-	const final_reply_filter: Reply_Filter | Reply_Filter[] | Create_Reply_Filters | null = $derived(
-		reply_filter === undefined // apply default only if `undefined`, pass through `null`
-			? include_replies
-				? {type: 'custom', should_include: () => true} // allow all by default
-				: null
-			: reply_filter,
-	);
+	const final_reply_filter: Reply_Filter | Array<Reply_Filter> | Create_Reply_Filters | null =
+		$derived(
+			reply_filter === undefined // apply default only if `undefined`, pass through `null`
+				? include_replies
+					? {type: 'custom', should_include: () => true} // allow all by default
+					: null
+				: reply_filter,
+		);
 
 	const load = async (): Promise<void> => {
 		if (!BROWSER || !host || !id) return;

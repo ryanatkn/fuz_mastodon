@@ -5,7 +5,7 @@
 
 	interface Props {
 		item: Mastodon_Status;
-		items: Mastodon_Status[];
+		items: Array<Mastodon_Status>;
 	}
 
 	const {item, items}: Props = $props();
