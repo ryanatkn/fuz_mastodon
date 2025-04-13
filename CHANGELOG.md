@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.29.0
+
+### Minor Changes
+
+- bump node@22.11 ([#13](https://github.com/ryanatkn/fuz_mastodon/pull/13))
+
 ## 0.28.0
 
 ### Minor Changes
