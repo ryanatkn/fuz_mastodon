@@ -156,7 +156,7 @@
 					{#if include_ancestors && status_context}
 						<div transition:slide>
 							<!-- TODO style differently or something -->
-							{#each status_context.ancestors as ancestor}
+							{#each status_context.ancestors as ancestor (ancestor.id)}
 								<Mastodon_Status_Item item={ancestor} />
 							{/each}
 						</div>
