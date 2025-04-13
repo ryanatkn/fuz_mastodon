@@ -32,6 +32,8 @@
 	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
 
+<!-- eslint-disable svelte/no-useless-mustaches -->
+
 <main class="p_lg">
 	<section class="box">
 		<div class="panel p_lg mb_xl5 shadow_md bg">
