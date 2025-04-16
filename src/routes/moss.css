@@ -254,6 +254,10 @@ a.chip {
 .mb_xl5 {
 	margin-bottom: var(--space_xl5);
 }
+.mx_auto {
+	margin-left: auto;
+	margin-right: auto;
+}
 .my_xl3 {
 	margin-top: var(--space_xl3);
 	margin-bottom: var(--space_xl3);

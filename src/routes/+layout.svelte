@@ -56,7 +56,7 @@
 		{@render children()}
 		{#if show_settings}
 			<Dialog onclose={() => (show_settings = false)}>
-				<div class="pane">
+				<div class="pane p_md width_md mx_auto">
 					<Settings />
 				</div>
 			</Dialog>
