@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
-	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
+	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
 	import type {Package_Meta} from '@ryanatkn/gro/package_meta.js';
 
 	interface Props {
@@ -15,7 +15,7 @@
 		<Breadcrumb>{pkg.package_json.glyph}</Breadcrumb>
 	</nav>
 	{#if pkg.package_json}
-		<Library_Footer {pkg} root_url="https://www.fuz.dev/" />
+		<Docs_Footer {pkg} root_url="https://www.fuz.dev/" />
 	{/if}
 </footer>
 

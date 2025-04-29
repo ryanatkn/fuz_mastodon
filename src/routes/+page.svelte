@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Library_Footer from '@ryanatkn/fuz/Library_Footer.svelte';
+	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
 	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
 	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
 	import {base} from '$app/paths';
@@ -208,11 +208,11 @@
 		</div>
 	</section>
 	<div class="my_xl5">
-		<Library_Footer {pkg} root_url="https://www.fuz.dev/">
+		<Docs_Footer {pkg} root_url="https://www.fuz.dev/">
 			{#snippet logo_header()}
 				<a class="mb_xs" href="{base}/about">about</a>
 			{/snippet}
-		</Library_Footer>
+		</Docs_Footer>
 	</div>
 </main>
 

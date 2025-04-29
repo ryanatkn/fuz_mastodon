@@ -4,9 +4,10 @@ import {onMount} from 'svelte';
 import {create_context} from '@ryanatkn/fuz/context_helpers.js';
 
 export class Mastodon_Cache {
-	// TODO maybe make a loading state?
+	// TODO maybe add a loading status state?
+
 	/**
-	 * If `undefined`, it's still loading.
+	 * If `undefined`, it's still loading. `null` means no data.
 	 */
 	data: Fetch_Value_Cache | undefined | null = $state();
 
