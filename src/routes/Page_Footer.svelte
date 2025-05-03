@@ -24,7 +24,7 @@
 		margin-bottom: var(--space_xl7);
 	}
 	nav {
-		font-size: var(--size_lg);
+		font-size: var(--font_size_lg);
 		margin-top: var(--space_xl3);
 	}
 </style>

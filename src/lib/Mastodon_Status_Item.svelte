@@ -82,7 +82,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: var(--panel_bg, var(--fg_1));
-		border-radius: var(--radius_sm);
+		border-radius: var(--border_radius_sm);
 		padding: var(--space_md);
 		/* TODO is this the API pattern we want? */
 		margin: var(--margin, 0 0 var(--space_md) 0);

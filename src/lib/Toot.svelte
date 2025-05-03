@@ -201,8 +201,8 @@
 				</div>
 				{#if item}
 					<div transition:slide class="pb_md">
-						<a href={item.url} rel="noreferrer" class="block panel p_md">
-							<span class="font_mono">↪︎</span> reply on Mastodon
+						<a href={item.url} rel="noreferrer" class="display_block panel p_md">
+							<span class="font_family_mono">↪︎</span> reply on Mastodon
 						</a>
 					</div>
 				{/if}

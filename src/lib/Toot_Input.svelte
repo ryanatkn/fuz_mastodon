@@ -19,7 +19,7 @@
 <fieldset>
 	<div class="row" class:mb_lg={invalid}>
 		<label title="where to load the toot" class="flex_1 row">
-			<a class="icon_button box mr_lg" style:font-size="var(--size_xl)" href={url || undefined}
+			<a class="icon_button box mr_lg" style:font-size="var(--font_size_xl)" href={url || undefined}
 				>🔗</a
 			>
 			<input
