@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.30.0
+
+### Minor Changes
+
+- upgrade deps ([add36e6](https://github.com/ryanatkn/fuz_mastodon/commit/add36e6))
+
 ## 0.29.0
 
 ### Minor Changes
