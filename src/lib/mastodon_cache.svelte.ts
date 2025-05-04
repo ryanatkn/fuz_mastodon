@@ -6,15 +6,18 @@ import {create_context} from '@ryanatkn/fuz/context_helpers.js';
 export class Mastodon_Cache {
 	// TODO maybe add a loading status state?
 
+	protected load_data: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>;
+
 	/**
 	 * If `undefined`, it's still loading. `null` means no data.
 	 */
 	data: Fetch_Value_Cache | undefined | null = $state();
 
 	constructor(
-		protected load_data: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>,
+		load_data: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>,
 		load_on_mount = true,
 	) {
+		this.load_data = load_data;
 		if (load_on_mount) {
 			onMount(this.load);
 		}
