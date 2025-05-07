@@ -4,7 +4,12 @@
   "modules": {
     "./package.json": {
       "path": "package.json",
-      "declarations": []
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "json"
+        }
+      ]
     },
     "./mastodon_cache.svelte.js": {
       "path": "mastodon_cache.svelte.ts",
@@ -21,11 +26,21 @@
     },
     "./Mastodon_Status_Item.svelte": {
       "path": "Mastodon_Status_Item.svelte",
-      "declarations": []
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
     },
     "./Mastodon_Status_Tree.svelte": {
       "path": "Mastodon_Status_Tree.svelte",
-      "declarations": []
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
     },
     "./mastodon.js": {
       "path": "mastodon.ts",
@@ -127,15 +142,30 @@
     },
     "./Toot_Input.svelte": {
       "path": "Toot_Input.svelte",
-      "declarations": []
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
     },
     "./Toot_Loader.svelte": {
       "path": "Toot_Loader.svelte",
-      "declarations": []
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
     },
     "./Toot.svelte": {
       "path": "Toot.svelte",
-      "declarations": []
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
     }
   }
 }
