@@ -41,10 +41,10 @@ export const package_json = {
 		'@changesets/changelog-git': '^0.2.1',
 		'@ryanatkn/belt': '^0.30.2',
 		'@ryanatkn/eslint-config': '^0.8.0',
-		'@ryanatkn/fuz': '^0.141.1',
+		'@ryanatkn/fuz': '^0.143.0',
 		'@ryanatkn/fuz_code': '^0.23.0',
-		'@ryanatkn/gro': '^0.156.0',
-		'@ryanatkn/moss': '^0.28.0',
+		'@ryanatkn/gro': '^0.158.0',
+		'@ryanatkn/moss': '^0.29.0',
 		'@sveltejs/adapter-static': '^3.0.8',
 		'@sveltejs/kit': '^2.20.8',
 		'@sveltejs/package': '^2.3.11',
@@ -114,7 +114,7 @@ export const src_json = {
 	name: '@ryanatkn/fuz_mastodon',
 	version: '0.30.0',
 	modules: {
-		'./package.json': {path: 'package.json', declarations: []},
+		'./package.json': {path: 'package.json', declarations: [{name: 'default', kind: 'json'}]},
 		'./mastodon_cache.svelte.js': {
 			path: 'mastodon_cache.svelte.ts',
 			declarations: [
@@ -122,8 +122,14 @@ export const src_json = {
 				{name: 'mastodon_cache_context', kind: 'variable'},
 			],
 		},
-		'./Mastodon_Status_Item.svelte': {path: 'Mastodon_Status_Item.svelte', declarations: []},
-		'./Mastodon_Status_Tree.svelte': {path: 'Mastodon_Status_Tree.svelte', declarations: []},
+		'./Mastodon_Status_Item.svelte': {
+			path: 'Mastodon_Status_Item.svelte',
+			declarations: [{name: 'default', kind: 'component'}],
+		},
+		'./Mastodon_Status_Tree.svelte': {
+			path: 'Mastodon_Status_Tree.svelte',
+			declarations: [{name: 'default', kind: 'component'}],
+		},
 		'./mastodon.js': {
 			path: 'mastodon.ts',
 			declarations: [
@@ -156,9 +162,15 @@ export const src_json = {
 				{name: 'set_in_storage', kind: 'function'},
 			],
 		},
-		'./Toot_Input.svelte': {path: 'Toot_Input.svelte', declarations: []},
-		'./Toot_Loader.svelte': {path: 'Toot_Loader.svelte', declarations: []},
-		'./Toot.svelte': {path: 'Toot.svelte', declarations: []},
+		'./Toot_Input.svelte': {
+			path: 'Toot_Input.svelte',
+			declarations: [{name: 'default', kind: 'component'}],
+		},
+		'./Toot_Loader.svelte': {
+			path: 'Toot_Loader.svelte',
+			declarations: [{name: 'default', kind: 'component'}],
+		},
+		'./Toot.svelte': {path: 'Toot.svelte', declarations: [{name: 'default', kind: 'component'}]},
 	},
 } satisfies Src_Json;
 
