@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
 	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
-	import {parse_package_meta} from '@ryanatkn/gro/package_meta.js';
-	import {base} from '$app/paths';
+	import {parse_pkg} from '@ryanatkn/belt/pkg.js';
+	import {resolve} from '$app/paths';
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import {DEV} from 'esm-env';
 
@@ -27,7 +27,7 @@
 		// Then paste the string into the `mastodon_dev_cache_data.js` file as the exported `mastodon_dev_cache_data` value.
 	}
 
-	const pkg = parse_package_meta(package_json, src_json);
+	const pkg = parse_pkg(package_json, src_json);
 
 	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
@@ -210,7 +210,7 @@
 	<div class="my_xl5">
 		<Docs_Footer {pkg} root_url="https://www.fuz.dev/">
 			{#snippet logo_header()}
-				<a class="mb_xs" href="{base}/about">about</a>
+				<a class="mb_xs" href={resolve('/about')}>about</a>
 			{/snippet}
 		</Docs_Footer>
 	</div>

@@ -1,5 +1,5 @@
 import type {Fetch_Value_Cache, Fetch_Value_Cache_Item} from '@ryanatkn/belt/fetch.js';
-import type {Url} from '@ryanatkn/gro/package_json.js';
+import type {Url} from '@ryanatkn/belt/url.js';
 import {onMount} from 'svelte';
 import {create_context} from '@ryanatkn/fuz/context_helpers.js';
 

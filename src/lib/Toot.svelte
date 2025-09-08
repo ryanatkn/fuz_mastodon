@@ -201,6 +201,7 @@
 				</div>
 				{#if item}
 					<div transition:slide class="pb_md">
+						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 						<a href={item.url} rel="noreferrer" class="display_block panel p_md">
 							<span class="font_family_mono">↪︎</span> reply on Mastodon
 						</a>

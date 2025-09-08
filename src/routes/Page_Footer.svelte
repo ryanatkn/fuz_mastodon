@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
-	import type {Package_Meta} from '@ryanatkn/gro/package_meta.js';
+	import type {Pkg} from '@ryanatkn/belt/pkg.js';
 
 	interface Props {
-		pkg: Package_Meta;
+		pkg: Pkg;
 	}
 
 	const {pkg}: Props = $props();
