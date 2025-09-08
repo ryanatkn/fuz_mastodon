@@ -186,7 +186,7 @@ a.chip {
 	display: block;
 }
 
-.relative {
+.position_relative {
 	position: relative;
 }
 /** Same as `display: block flow`. */

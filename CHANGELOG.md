@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.31.0
+
+### Minor Changes
+
+- bump node@22.15 from 22.11 ([4ce47ed](https://github.com/ryanatkn/fuz_mastodon/commit/4ce47ed))
+
 ## 0.30.0
 
 ### Minor Changes
@@ -71,7 +77,6 @@
 ### Minor Changes
 
 - rename some `Toot.svelte` props ([#12](https://github.com/ryanatkn/fuz_mastodon/pull/12))
-
   - rename `settings_storage_key` from `storage_key`
   - rename `autoload_storage_key` from `autoload_key`
 
@@ -139,7 +144,6 @@
 ### Minor Changes
 
 - add rules to toot visibility ([#8](https://github.com/ryanatkn/fuz_mastodon/pull/8))
-
   - replies are now always included by default when `include_replies` is `true`
   - to get the old behavior, set `Toot` prop `get_reply_filters`
     to `(status) => [{type: 'favourited_by', favourited_by: [status.account.acct]}]`
