@@ -51,6 +51,7 @@
 		>
 		<div class="names">
 			<div class="name">
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a href={account_url} title={strip_start(account_url, 'https://')}>
 					{account_display_name}
 				</a>
@@ -61,7 +62,9 @@
 			<small
 				class="date"
 				title="posted {created}{edited ? `, edited ${edited}` : ''}, joined {joined}"
-				><a href={url}>{created_ago} ago{edited_ago ? `, edited ${edited_ago} ago` : ''}</a></small
+			>
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+				<a href={url}>{created_ago} ago{edited_ago ? `, edited ${edited_ago} ago` : ''}</a></small
 			>
 		</div>
 	</header>
