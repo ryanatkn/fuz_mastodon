@@ -41,12 +41,12 @@
 		</div>
 		<blockquote>⚠️ This project is still early, and its APIs will change.</blockquote>
 	</section>
-	<section class="width_md">
-		<div class="mb_lg w_100">
-			<div class="w_100 mb_lg">
+	<section class="width_upto_md">
+		<div class="mb_lg width_100">
+			<div class="width_100 mb_lg">
 				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte';`} />
 			</div>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="width_sm">
+	<section class="width_upto_sm">
 		{#if !cache || cache.data !== undefined}
 			<Toot
 				{url}
@@ -74,7 +74,7 @@
 			/>
 		{/if}
 	</section>
-	<section class="width_md">
+	<section class="width_upto_md">
 		<h2>Allowlisting replies with custom rules</h2>
 		<p>
 			By default, no replies are included. You can opt into including replies with <code
@@ -84,7 +84,7 @@
 		</p>
 		<h3>Allow all</h3>
 		<p>Adding <code>include_replies</code> enables all replies by default.</p>
-		<div class="w_100">
+		<div class="width_100">
 			<Code
 				content={`<Toot
 	url="${url}"
@@ -95,7 +95,7 @@
 				This is the default value for <code>reply_filter</code>. It does nothing here but it's shown
 				for clarity.
 			</p>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -108,7 +108,7 @@
 			</div>
 			<h3>Allow if favourited by specific accounts</h3>
 			<p>You can provide a list of names whose favourites cause the reply to be shown.</p>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -120,7 +120,7 @@
 				/>
 			</div>
 			<h3>Allow if favourited by the root status author</h3>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -132,7 +132,7 @@
 				/>
 			</div>
 			<h3>Allow with a mimimum number of favourites</h3>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -144,7 +144,7 @@
 				/>
 			</div>
 			<h3>Allow on custom conditions</h3>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -162,7 +162,7 @@
 			</div>
 			<h3>Allow on multiple conditions</h3>
 			<p>Replies are included if <strong>any</strong> filter passes.</p>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -177,14 +177,14 @@
 			</div>
 			<h3>Allow none</h3>
 			<p>Simply omit <code>include_replies</code>:</p>
-			<div class="w_100 mb_lg">
+			<div class="width_100 mb_lg">
 				<Code content={`<Toot	url="${url}" />`} />
 			</div>
 			<p>
 				Or pass <code>null</code> or <code>undefined</code> or <code>[]</code> for
 				<code>reply_filter</code>:
 			</p>
-			<div class="w_100">
+			<div class="width_100">
 				<Code
 					content={`<Toot
 	url="${url}"
@@ -195,7 +195,7 @@
 				<p>
 					Or return no filters (<code>null</code> or <code>undefined</code> or <code>[]</code>):
 				</p>
-				<div class="w_100">
+				<div class="width_100">
 					<Code
 						content={`<Toot
 	url="${url}"

@@ -238,7 +238,7 @@
 					</div>
 					{#if show_settings}
 						<div transition:slide class="settings controls panel">
-							<form class="w_100">
+							<form class="width_100">
 								<div class="mb_lg">
 									<Toot_Input bind:url={updated_url} />
 								</div>

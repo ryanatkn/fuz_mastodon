@@ -11,7 +11,7 @@
 	const pkg = parse_pkg(package_json, src_json);
 </script>
 
-<main class="width_md">
+<main class="width_upto_md">
 	<div class="box">
 		<header>
 			<h1 class="my_xl3">{pkg.repo_name}</h1>
@@ -21,8 +21,8 @@
 		</nav>
 	</div>
 	<Community_Links_Panel />
-	<section class="box w_100 mb_lg">
-		<div class="panel p_md width_md">
+	<section class="box width_100 mb_lg">
+		<div class="panel p_md width_upto_md">
 			<Package_Detail {pkg} />
 		</div>
 	</section>
