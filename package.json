@@ -30,9 +30,9 @@
     "node": ">=22.15"
   },
   "peerDependencies": {
-    "@ryanatkn/belt": "*",
-    "@ryanatkn/fuz": "*",
-    "@ryanatkn/moss": "*",
+    "@ryanatkn/belt": "^0.35.1",
+    "@ryanatkn/fuz": "^0.147.0",
+    "@ryanatkn/moss": "^0.36.2",
     "@sveltejs/kit": "^2",
     "date-fns": "^4",
     "esm-env": "^1",
