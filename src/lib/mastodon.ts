@@ -59,7 +59,7 @@ export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | nu
 	try {
 		const u = new URL(url);
 		const parts = strip_end(u.pathname, '/context').split('/').filter(Boolean);
-		const author = parts[0][0] === '@' ? parts[0].substring(1) : null;
+		const author = parts[0]?.[0] === '@' ? parts[0].substring(1) : null;
 		if (!author) return null;
 		const id = parts.length > 1 ? parts[parts.length - 1] : null;
 		if (!id) return null;
