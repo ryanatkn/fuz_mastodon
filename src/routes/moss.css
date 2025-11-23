@@ -170,22 +170,6 @@ a.chip {
 	font-weight: 600;
 }
 
-.pre {
-	font-family: var(--font_family_mono);
-	color: var(--text_color, var(--text_color_3));
-	overflow: auto;
-	max-width: 100%;
-}
-.pre > code {
-	font-size: var(
-		--font_size_sm
-	); /* TODO @many use a var? maybe computed from generic `--font_size`? */
-	font-weight: 500;
-}
-.pre:not(.inline) > code {
-	display: block;
-}
-
 .position_relative {
 	position: relative;
 }
@@ -209,6 +193,10 @@ a.chip {
 }
 .font_family_mono {
 	font-family: var(--font_family_mono);
+}
+.font_size_xl {
+	font-size: var(--font_size_xl);
+	--font_size: var(--font_size_xl);
 }
 .text_align_center {
 	text-align: center;

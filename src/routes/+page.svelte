@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
 	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
-	import {parse_pkg} from '@ryanatkn/belt/pkg.js';
+	import {Pkg} from '@ryanatkn/fuz/pkg.svelte.js';
 	import {resolve} from '$app/paths';
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import {DEV} from 'esm-env';
@@ -27,7 +27,7 @@
 		// Then paste the string into the `mastodon_dev_cache_data.js` file as the exported `mastodon_dev_cache_data` value.
 	}
 
-	const pkg = parse_pkg(package_json, src_json);
+	const pkg = new Pkg(package_json, src_json);
 
 	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
