@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
+	// TODO add docs
+	// import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
 	import {Pkg} from '@ryanatkn/fuz/pkg.svelte.js';
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 	import Ecosystem_Links_Panel from '@ryanatkn/fuz/Ecosystem_Links_Panel.svelte';
@@ -21,11 +22,11 @@
 		</nav>
 	</div>
 	<Ecosystem_Links_Panel />
-	<section class="box width_100 mb_lg">
+	<!-- <section class="box width_100 mb_lg">
 		<div class="panel p_md width_upto_md">
 			<Package_Detail {pkg} />
 		</div>
-	</section>
+	</section> -->
 	<div class="box">
 		<Page_Footer {pkg} />
 	</div>
