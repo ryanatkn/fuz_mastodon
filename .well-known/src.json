@@ -1,10 +1,10 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.32.0",
-  "modules": {
-    "./mastodon_cache.svelte.js": {
+  "version": "0.33.0",
+  "modules": [
+    {
       "path": "mastodon_cache.svelte.ts",
-      "declarations": [
+      "identifiers": [
         {
           "name": "Mastodon_Cache",
           "kind": "class"
@@ -15,9 +15,9 @@
         }
       ]
     },
-    "./mastodon.js": {
+    {
       "path": "mastodon.ts",
-      "declarations": [
+      "identifiers": [
         {
           "name": "to_mastodon_status_url",
           "kind": "function"
@@ -100,9 +100,9 @@
         }
       ]
     },
-    "./storage.js": {
+    {
       "path": "storage.ts",
-      "declarations": [
+      "identifiers": [
         {
           "name": "load_from_storage",
           "kind": "function"
@@ -113,50 +113,50 @@
         }
       ]
     },
-    "./Mastodon_Status_Item.svelte": {
+    {
       "path": "Mastodon_Status_Item.svelte",
-      "declarations": [
+      "identifiers": [
         {
           "name": "default",
           "kind": "component"
         }
       ]
     },
-    "./Mastodon_Status_Tree.svelte": {
+    {
       "path": "Mastodon_Status_Tree.svelte",
-      "declarations": [
+      "identifiers": [
         {
           "name": "default",
           "kind": "component"
         }
       ]
     },
-    "./Toot_Input.svelte": {
+    {
       "path": "Toot_Input.svelte",
-      "declarations": [
+      "identifiers": [
         {
           "name": "default",
           "kind": "component"
         }
       ]
     },
-    "./Toot_Loader.svelte": {
+    {
       "path": "Toot_Loader.svelte",
-      "declarations": [
+      "identifiers": [
         {
           "name": "default",
           "kind": "component"
         }
       ]
     },
-    "./Toot.svelte": {
+    {
       "path": "Toot.svelte",
-      "declarations": [
+      "identifiers": [
         {
           "name": "default",
           "kind": "component"
         }
       ]
     }
-  }
+  ]
 }
