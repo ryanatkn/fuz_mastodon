@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.33.0
+
+### Minor Changes
+
+- update peer deps ([f23d872](https://github.com/ryanatkn/fuz_mastodon/commit/f23d872))
+
 ## 0.32.0
 
 ### Minor Changes
