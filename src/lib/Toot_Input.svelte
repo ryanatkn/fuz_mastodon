@@ -3,7 +3,7 @@
 	import {slide} from 'svelte/transition';
 	import type {SvelteHTMLElements} from 'svelte/elements';
 
-	import {parse_mastodon_status_url} from '$lib/mastodon.js';
+	import {parse_mastodon_status_url} from './mastodon.js';
 
 	interface Props {
 		url: string;
