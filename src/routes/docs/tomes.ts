@@ -1,4 +1,5 @@
 import type {Tome} from '@ryanatkn/fuz/tome.js';
+
 import ApiPage from '$routes/docs/api/+page.svelte';
 import PackagePage from '$routes/docs/package/+page.svelte';
 
@@ -6,7 +7,7 @@ export const tomes: Array<Tome> = [
 	{
 		name: 'api',
 		category: 'reference',
-		component: ApiPage,
+		Component: ApiPage,
 		related_tomes: [],
 		related_modules: [],
 		related_identifiers: [],
@@ -14,7 +15,7 @@ export const tomes: Array<Tome> = [
 	{
 		name: 'package',
 		category: 'reference',
-		component: PackagePage,
+		Component: PackagePage,
 		related_tomes: [],
 		related_modules: [],
 		related_identifiers: [],
