@@ -1,21 +1,21 @@
 <script lang="ts">
 	import Pending_Button from '@ryanatkn/fuz/Pending_Button.svelte';
 	import {slide} from 'svelte/transition';
-	import {intersect} from '@ryanatkn/fuz/intersect.js';
+	import {intersect} from '@ryanatkn/fuz/intersect.svelte.js';
 	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
 	import type {Snippet} from 'svelte';
 
-	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
-	import Mastodon_Status_Item from '$lib/Mastodon_Status_Item.svelte';
-	import Toot_Loader from '$lib/Toot_Loader.svelte';
-	import {load_from_storage, set_in_storage} from '$lib/storage.js';
+	import Mastodon_Status_Tree from './Mastodon_Status_Tree.svelte';
+	import Mastodon_Status_Item from './Mastodon_Status_Item.svelte';
+	import Toot_Loader from './Toot_Loader.svelte';
+	import {load_from_storage, set_in_storage} from './storage.js';
 	import {
 		parse_mastodon_status_url,
 		type Create_Reply_Filters,
 		type Reply_Filter,
-	} from '$lib/mastodon.js';
-	import Toot_Input from '$lib/Toot_Input.svelte';
+	} from './mastodon.js';
+	import Toot_Input from './Toot_Input.svelte';
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
@@ -210,12 +210,12 @@
 				<div class="toot_controls">
 					<div
 						class="controls"
-						use:intersect={{
+						{@attach intersect(() => ({
 							onintersect: ({intersecting}) => {
 								if (intersecting && autoload) load();
 							},
 							count: 1,
-						}}
+						}))}
 					>
 						<div class="row">
 							<button

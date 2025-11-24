@@ -12,7 +12,7 @@
 		type Reply_Filter,
 		type Create_Reply_Filters,
 		filter_valid_replies,
-	} from '$lib/mastodon.js';
+	} from './mastodon.js';
 
 	// TODO maybe delete this and merge into `Toot`
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {Mastodon_Status} from '$lib/mastodon.js';
-	import Message from '$lib/Mastodon_Status_Item.svelte';
-	import Mastodon_Status_Tree from '$lib/Mastodon_Status_Tree.svelte';
+	import type {Mastodon_Status} from './mastodon.js';
+	import Message from './Mastodon_Status_Item.svelte';
+	import Mastodon_Status_Tree from './Mastodon_Status_Tree.svelte';
 
 	interface Props {
 		item: Mastodon_Status;

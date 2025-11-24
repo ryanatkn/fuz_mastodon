@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
-	import type {Pkg} from '@ryanatkn/belt/pkg.js';
+	import type {Pkg} from '@ryanatkn/fuz/pkg.svelte.js';
 
 	interface Props {
 		pkg: Pkg;

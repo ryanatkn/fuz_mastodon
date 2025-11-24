@@ -3,7 +3,7 @@
 	import {slide} from 'svelte/transition';
 	import {strip_start} from '@ryanatkn/belt/string.js';
 
-	import type {Mastodon_Status} from '$lib/mastodon.js';
+	import type {Mastodon_Status} from './mastodon.js';
 
 	interface Props {
 		item: Mastodon_Status;
