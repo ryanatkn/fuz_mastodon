@@ -10,4 +10,6 @@
 	const pkg = pkg_context.get();
 </script>
 
-<Docs_Content {tomes} {pkg}></Docs_Content>
+<div class="pt_sm">
+	<Docs_Content {tomes} {pkg}></Docs_Content>
+</div>
