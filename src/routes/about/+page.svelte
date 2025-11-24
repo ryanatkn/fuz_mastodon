@@ -1,15 +1,12 @@
 <script lang="ts">
-	// TODO add docs
-	// import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
-	import {Pkg} from '@ryanatkn/fuz/pkg.svelte.js';
+	import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
+	import {pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 	import Ecosystem_Links_Panel from '@ryanatkn/fuz/Ecosystem_Links_Panel.svelte';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json, src_json} from '$routes/package.js';
 
-	// TODO hacky - maybe put in context?
-	const pkg = new Pkg(package_json, src_json);
+	const pkg = pkg_context.get();
 </script>
 
 <main class="width_upto_md">
@@ -21,12 +18,12 @@
 			<Breadcrumb>{pkg.package_json.glyph}</Breadcrumb>
 		</nav>
 	</div>
-	<Ecosystem_Links_Panel />
-	<!-- <section class="box width_100 mb_lg">
+	<section class="box width_100 mb_lg">
 		<div class="panel p_md width_upto_md">
 			<Package_Detail {pkg} />
 		</div>
-	</section> -->
+	</section>
+	<Ecosystem_Links_Panel />
 	<div class="box">
 		<Page_Footer {pkg} />
 	</div>

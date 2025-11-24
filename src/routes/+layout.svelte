@@ -9,8 +9,10 @@
 	import Dialog from '@ryanatkn/fuz/Dialog.svelte';
 	import Contextmenu_Root from '@ryanatkn/fuz/Contextmenu_Root.svelte';
 	import {contextmenu_attachment} from '@ryanatkn/fuz/contextmenu_state.svelte.js';
+	import {Pkg, pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
 
 	import Settings from '$routes/Settings.svelte';
+	import {package_json, src_json} from '$routes/package.js';
 	import type {Snippet} from 'svelte';
 
 	interface Props {
@@ -18,6 +20,9 @@
 	}
 
 	const {children}: Props = $props();
+
+	const pkg = new Pkg(package_json, src_json);
+	pkg_context.set(pkg);
 
 	let show_settings = $state(false);
 </script>
