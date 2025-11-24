@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/fuz_mastodon",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "modules": [
     {
       "path": "mastodon_cache.svelte.ts",
