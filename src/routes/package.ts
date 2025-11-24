@@ -36,9 +36,9 @@ export const package_json: Package_Json = {
 		node: '>=22.15',
 	},
 	peerDependencies: {
-		'@ryanatkn/belt': '>=0.35.1',
-		'@ryanatkn/fuz': '>=0.147.0',
-		'@ryanatkn/moss': '>=0.36.2',
+		'@ryanatkn/belt': '>=0.38.0',
+		'@ryanatkn/fuz': '>=0.158.0',
+		'@ryanatkn/moss': '>=0.38.0',
 		'@sveltejs/kit': '^2',
 		'date-fns': '^4',
 		'esm-env': '^1',

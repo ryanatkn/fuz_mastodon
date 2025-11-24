@@ -194,10 +194,6 @@ a.chip {
 .font_family_mono {
 	font-family: var(--font_family_mono);
 }
-.font_size_xl {
-	font-size: var(--font_size_xl);
-	--font_size: var(--font_size_xl);
-}
 .text_align_center {
 	text-align: center;
 }
@@ -236,9 +232,6 @@ a.chip {
 }
 .mt_0 {
 	margin-top: 0;
-}
-.mr_xs {
-	margin-right: var(--space_xs);
 }
 .mr_lg {
 	margin-right: var(--space_lg);
