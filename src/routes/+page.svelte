@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
 	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
-	import {Pkg} from '@ryanatkn/fuz/pkg.svelte.js';
+	import Card from '@ryanatkn/fuz/Card.svelte';
+	import {pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
 	import {resolve} from '$app/paths';
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import {DEV} from 'esm-env';
 
 	import Toot from '$lib/Toot.svelte';
-	import {package_json, src_json} from '$routes/package.js';
 
 	import {Mastodon_Cache, mastodon_cache_context} from '$lib/mastodon_cache.svelte.js';
 
@@ -27,7 +27,7 @@
 		// Then paste the string into the `mastodon_dev_cache_data.js` file as the exported `mastodon_dev_cache_data` value.
 	}
 
-	const pkg = new Pkg(package_json, src_json);
+	const pkg = pkg_context.get();
 
 	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
@@ -39,7 +39,7 @@
 		<div class="panel p_lg mb_xl5 shadow_md bg">
 			<Package_Summary {pkg} />
 		</div>
-		<blockquote>⚠️ This project is still early, and its APIs will change.</blockquote>
+		<Card href={resolve('/docs')}>docs{#snippet icon()}{pkg.package_json.glyph}{/snippet}</Card>
 	</section>
 	<section class="width_upto_md">
 		<div class="mb_lg width_100">
