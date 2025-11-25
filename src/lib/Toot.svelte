@@ -1,21 +1,21 @@
 <script lang="ts">
-	import Pending_Button from '@ryanatkn/fuz/Pending_Button.svelte';
+	import PendingButton from '@ryanatkn/fuz/PendingButton.svelte';
 	import {slide} from 'svelte/transition';
 	import {intersect} from '@ryanatkn/fuz/intersect.svelte.js';
-	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
+	import type {FetchValueCache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
 	import type {Snippet} from 'svelte';
 
-	import Mastodon_Status_Tree from './Mastodon_Status_Tree.svelte';
-	import Mastodon_Status_Item from './Mastodon_Status_Item.svelte';
-	import Toot_Loader from './Toot_Loader.svelte';
+	import MastodonStatusTree from './MastodonStatusTree.svelte';
+	import MastodonStatusItem from './MastodonStatusItem.svelte';
+	import TootLoader from './TootLoader.svelte';
 	import {load_from_storage, set_in_storage} from './storage.js';
 	import {
 		parse_mastodon_status_url,
-		type Create_Reply_Filters,
-		type Reply_Filter,
+		type CreateReplyFilters,
+		type ReplyFilter,
 	} from './mastodon.js';
-	import Toot_Input from './Toot_Input.svelte';
+	import TootInput from './TootInput.svelte';
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
@@ -36,12 +36,12 @@
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 */
-		reply_filter?: Reply_Filter | Array<Reply_Filter> | Create_Reply_Filters | null;
+		reply_filter?: ReplyFilter | Array<ReplyFilter> | CreateReplyFilters | null;
 		/**
 		 * Optional API result cache.
-		 * See `Mastodon_Cache` and `get_mastodon_cache`/`set_mastodon_cache`.
+		 * See `MastodonCache` and `get_mastodon_cache`/`set_mastodon_cache`.
 		 */
-		cache?: Fetch_Value_Cache | null | undefined;
+		cache?: FetchValueCache | null | undefined;
 		/**
 		 * Optional logger for network calls.
 		 */
@@ -137,7 +137,7 @@
 </script>
 
 {#key loaded_status_key}
-	<Toot_Loader
+	<TootLoader
 		{host}
 		{id}
 		{include_ancestors}
@@ -157,7 +157,7 @@
 						<div transition:slide>
 							<!-- TODO style differently or something -->
 							{#each status_context.ancestors as ancestor (ancestor.id)}
-								<Mastodon_Status_Item item={ancestor} />
+								<MastodonStatusItem item={ancestor} />
 							{/each}
 						</div>
 					{/if}
@@ -167,11 +167,11 @@
 								<!-- TODO Svelte 5 animation bug - keeping this one here because the alternative is a janky animation,
 									and it's not as bad for UX as the contentwarning one below -->
 								<div class="transition_wrapper" transition:slide>
-									<Mastodon_Status_Item {item} --margin="0" />
+									<MastodonStatusItem {item} --margin="0" />
 								</div>
 							{:else}
 								<div class="transition_wrapper" transition:slide>
-									<Pending_Button
+									<PendingButton
 										pending={loading || false}
 										disabled={!enable_load}
 										onclick={() => load()}
@@ -187,7 +187,7 @@
 												>
 											</div>
 										</div>
-									</Pending_Button>
+									</PendingButton>
 								</div>
 							{/if}
 						</div>
@@ -195,7 +195,7 @@
 					{#if item && replies}
 						<!-- TODO Svelte 5 animation bug -->
 						<!-- <div transition:slide> -->
-						<Mastodon_Status_Tree {item} items={replies} />
+						<MastodonStatusTree {item} items={replies} />
 						<!-- </div> -->
 					{/if}
 				</div>
@@ -240,7 +240,7 @@
 						<div transition:slide class="settings controls panel">
 							<form class="width_100">
 								<div class="mb_lg">
-									<Toot_Input bind:url={updated_url} />
+									<TootInput bind:url={updated_url} />
 								</div>
 								<fieldset class="row">
 									<label
@@ -259,7 +259,7 @@
 				</div>
 			</div>
 		{/snippet}
-	</Toot_Loader>
+	</TootLoader>
 {/key}
 
 <style>

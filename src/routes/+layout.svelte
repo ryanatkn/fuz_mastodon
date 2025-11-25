@@ -7,7 +7,7 @@
 
 	import Themed from '@ryanatkn/fuz/Themed.svelte';
 	import Dialog from '@ryanatkn/fuz/Dialog.svelte';
-	import Contextmenu_Root from '@ryanatkn/fuz/Contextmenu_Root.svelte';
+	import ContextmenuRoot from '@ryanatkn/fuz/ContextmenuRoot.svelte';
 	import {contextmenu_attachment} from '@ryanatkn/fuz/contextmenu_state.svelte.js';
 	import {Pkg, pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
 
@@ -56,7 +56,7 @@
 />
 
 <Themed>
-	<Contextmenu_Root>
+	<ContextmenuRoot>
 		{@render children()}
 		{#if show_settings}
 			<Dialog onclose={() => (show_settings = false)}>
@@ -65,5 +65,5 @@
 				</div>
 			</Dialog>
 		{/if}
-	</Contextmenu_Root>
+	</ContextmenuRoot>
 </Themed>

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Package_Detail from '@ryanatkn/fuz/Package_Detail.svelte';
+	import PackageDetail from '@ryanatkn/fuz/PackageDetail.svelte';
 	import {pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
-	import Ecosystem_Links_Panel from '@ryanatkn/fuz/Ecosystem_Links_Panel.svelte';
+	import EcosystemLinksPanel from '@ryanatkn/fuz/EcosystemLinksPanel.svelte';
 
-	import Page_Footer from '$routes/Page_Footer.svelte';
+	import PageFooter from '$routes/PageFooter.svelte';
 
 	const pkg = pkg_context.get();
 </script>
@@ -20,12 +20,12 @@
 	</div>
 	<section class="box width_100 mb_lg">
 		<div class="panel p_md width_upto_md">
-			<Package_Detail {pkg} />
+			<PackageDetail {pkg} />
 		</div>
 	</section>
-	<Ecosystem_Links_Panel />
+	<EcosystemLinksPanel />
 	<div class="box">
-		<Page_Footer {pkg} />
+		<PageFooter {pkg} />
 	</div>
 </main>
 

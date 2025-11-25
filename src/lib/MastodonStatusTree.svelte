@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {Mastodon_Status} from './mastodon.js';
-	import Message from './Mastodon_Status_Item.svelte';
-	import Mastodon_Status_Tree from './Mastodon_Status_Tree.svelte';
+	import type {MastodonStatus} from './mastodon.js';
+	import Message from './MastodonStatusItem.svelte';
+	import MastodonStatusTree from './MastodonStatusTree.svelte';
 
 	interface Props {
-		item: Mastodon_Status;
-		items: Array<Mastodon_Status>;
+		item: MastodonStatus;
+		items: Array<MastodonStatus>;
 	}
 
 	const {item, items}: Props = $props();
@@ -19,7 +19,7 @@
 		{#each replies as reply (reply.id)}
 			<li>
 				<Message item={reply} />
-				<Mastodon_Status_Tree item={reply} {items} />
+				<MastodonStatusTree item={reply} {items} />
 			</li>
 		{/each}
 	</ul>

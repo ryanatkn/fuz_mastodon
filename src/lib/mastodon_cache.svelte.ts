@@ -1,20 +1,20 @@
-import type {Fetch_Value_Cache, Fetch_Value_Cache_Item} from '@ryanatkn/belt/fetch.js';
+import type {FetchValueCache, FetchValueCacheItem} from '@ryanatkn/belt/fetch.js';
 import type {Url} from '@ryanatkn/belt/url.js';
 import {onMount} from 'svelte';
 import {create_context} from '@ryanatkn/fuz/context_helpers.js';
 
-export class Mastodon_Cache {
+export class MastodonCache {
 	// TODO maybe add a loading status state?
 
-	readonly load_data: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>;
+	readonly load_data: () => Promise<Array<[Url, FetchValueCacheItem]> | null>;
 
 	/**
 	 * If `undefined`, it's still loading. `null` means no data.
 	 */
-	data: Fetch_Value_Cache | undefined | null = $state();
+	data: FetchValueCache | undefined | null = $state();
 
 	constructor(
-		load_data: () => Promise<Array<[Url, Fetch_Value_Cache_Item]> | null>,
+		load_data: () => Promise<Array<[Url, FetchValueCacheItem]> | null>,
 		load_on_mount = true,
 	) {
 		this.load_data = load_data;
@@ -29,4 +29,4 @@ export class Mastodon_Cache {
 	};
 }
 
-export const mastodon_cache_context = create_context<Mastodon_Cache>();
+export const mastodon_cache_context = create_context<MastodonCache>();

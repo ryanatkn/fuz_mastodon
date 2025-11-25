@@ -3,10 +3,10 @@
 	import {slide} from 'svelte/transition';
 	import {strip_start} from '@ryanatkn/belt/string.js';
 
-	import type {Mastodon_Status} from './mastodon.js';
+	import type {MastodonStatus} from './mastodon.js';
 
 	interface Props {
-		item: Mastodon_Status;
+		item: MastodonStatus;
 	}
 
 	const {item}: Props = $props();

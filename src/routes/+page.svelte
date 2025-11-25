@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Docs_Footer from '@ryanatkn/fuz/Docs_Footer.svelte';
-	import Package_Summary from '@ryanatkn/fuz/Package_Summary.svelte';
+	import DocsFooter from '@ryanatkn/fuz/DocsFooter.svelte';
+	import PackageSummary from '@ryanatkn/fuz/PackageSummary.svelte';
 	import Card from '@ryanatkn/fuz/Card.svelte';
 	import {pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
 	import {resolve} from '$app/paths';
@@ -9,13 +9,13 @@
 
 	import Toot from '$lib/Toot.svelte';
 
-	import {Mastodon_Cache, mastodon_cache_context} from '$lib/mastodon_cache.svelte.js';
+	import {MastodonCache, mastodon_cache_context} from '$lib/mastodon_cache.svelte.js';
 
-	let cache: Mastodon_Cache | null = $state(null);
+	let cache: MastodonCache | null = $state(null);
 
 	if (DEV) {
 		cache = mastodon_cache_context.set(
-			new Mastodon_Cache(
+			new MastodonCache(
 				async () => (await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data,
 			),
 		);
@@ -37,7 +37,7 @@
 <main class="p_lg">
 	<section class="box">
 		<div class="panel p_lg mb_xl5 shadow_md bg">
-			<Package_Summary {pkg} />
+			<PackageSummary {pkg} />
 		</div>
 		<Card href={resolve('/docs')}>docs{#snippet icon()}{pkg.package_json.glyph}{/snippet}</Card>
 	</section>
@@ -208,11 +208,11 @@
 		</div>
 	</section>
 	<div class="my_xl5">
-		<Docs_Footer {pkg} root_url="https://www.fuz.dev/">
+		<DocsFooter {pkg} root_url="https://www.fuz.dev/">
 			{#snippet logo_header()}
 				<a class="mb_xs" href={resolve('/about')}>about</a>
 			{/snippet}
-		</Docs_Footer>
+		</DocsFooter>
 	</div>
 </main>
 

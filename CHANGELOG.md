@@ -100,7 +100,7 @@
 
 ### Patch Changes
 
-- add `Mastodon_Cache` helper in `mastodon_cache.svelte.ts` ([#12](https://github.com/ryanatkn/fuz_mastodon/pull/12))
+- add `MastodonCache` helper in `mastodon_cache.svelte.ts` ([#12](https://github.com/ryanatkn/fuz_mastodon/pull/12))
 
 ## 0.22.0
 
@@ -148,7 +148,7 @@
 ### Minor Changes
 
 - change `reply_filters`, formerly `reply_filter_rules`, to make `null` apply no filters ([#10](https://github.com/ryanatkn/fuz_mastodon/pull/10))
-- rename `reply_filters` from `reply_filter_rules` and `Reply_Filter` from `Reply_Filter_Rule` ([#10](https://github.com/ryanatkn/fuz_mastodon/commit/e967cd841b1e46772cb3bcac4b1ddc800a985154))
+- rename `reply_filters` from `reply_filter_rules` and `ReplyFilter` from `ReplyFilterRule` ([#10](https://github.com/ryanatkn/fuz_mastodon/commit/e967cd841b1e46772cb3bcac4b1ddc800a985154))
 
 ## 0.16.0
 
@@ -258,13 +258,13 @@
 
 ### Patch Changes
 
-- fix `Mastodon_Status_Tree` ([40bc404](https://github.com/ryanatkn/fuz_mastodon/commit/40bc404))
+- fix `MastodonStatusTree` ([40bc404](https://github.com/ryanatkn/fuz_mastodon/commit/40bc404))
 
 ## 0.4.0
 
 ### Minor Changes
 
-- cleanup `Mastodon_Status_Tree` API ([080d66e](https://github.com/ryanatkn/fuz_mastodon/commit/080d66e))
+- cleanup `MastodonStatusTree` API ([080d66e](https://github.com/ryanatkn/fuz_mastodon/commit/080d66e))
 
 ## 0.3.0
 
@@ -300,7 +300,7 @@
 
 ### Minor Changes
 
-- rename to `Proper_Snakes` ([73447c0](https://github.com/ryanatkn/fuz_mastodon/commit/73447c0))
+- rename to `ProperSnakes` ([73447c0](https://github.com/ryanatkn/fuz_mastodon/commit/73447c0))
 
 ## 0.1.3
 

@@ -1,8 +1,8 @@
 import {strip_end} from '@ryanatkn/belt/string.js';
-import {type Fetch_Value_Cache, fetch_value} from '@ryanatkn/belt/fetch.js';
+import {type FetchValueCache, fetch_value} from '@ryanatkn/belt/fetch.js';
 import type {Logger} from '@ryanatkn/belt/log.js';
 import {DEV} from 'esm-env';
-import {Unreachable_Error} from '@ryanatkn/belt/error.js';
+import {UnreachableError} from '@ryanatkn/belt/error.js';
 import {to_array} from '@ryanatkn/belt/array.js';
 
 // TODO go through a single fetch helper and trace each call to the API,
@@ -43,7 +43,7 @@ export const to_mastodon_api_favourites_url = (host: string, id: string): string
 	`https://${host}/api/v1/statuses/${id}/favourited_by`;
 
 // TODO should this have a `Parsed` prefix and then have a zod schema for the URL with a refinement type that uses `parse_mastodon_status_url`?
-export interface Mastodon_Status_Url {
+export interface MastodonStatusUrl {
 	href: string;
 	host: string;
 	status_id: string;
@@ -55,7 +55,7 @@ export interface Mastodon_Status_Url {
  * @param url
  * @returns the parsed host and id params, if any
  */
-export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | null => {
+export const parse_mastodon_status_url = (url: string): MastodonStatusUrl | null => {
 	try {
 		const u = new URL(url);
 		const parts = strip_end(u.pathname, '/context').split('/').filter(Boolean);
@@ -72,12 +72,12 @@ export const parse_mastodon_status_url = (url: string): Mastodon_Status_Url | nu
 export const fetch_mastodon_status_context = async (
 	host: string,
 	id: string,
-	cache?: Fetch_Value_Cache | null,
+	cache?: FetchValueCache | null,
 	log?: Logger,
 	request?: RequestInit,
 	token?: string,
 	fetch?: typeof globalThis.fetch,
-): Promise<Mastodon_Status_Context | null> => {
+): Promise<MastodonStatusContext | null> => {
 	const url = to_mastodon_api_status_context_url(host, id);
 	const fetched = await fetch_value(url, {
 		request,
@@ -94,12 +94,12 @@ export const fetch_mastodon_status_context = async (
 export const fetch_mastodon_status = async (
 	host: string,
 	id: string,
-	cache?: Fetch_Value_Cache | null,
+	cache?: FetchValueCache | null,
 	log?: Logger,
 	request?: RequestInit,
 	token?: string,
 	fetch?: typeof globalThis.fetch,
-): Promise<Mastodon_Status | null> => {
+): Promise<MastodonStatus | null> => {
 	const url = to_mastodon_api_status_url(host, id);
 	const fetched = await fetch_value(url, {
 		request,
@@ -116,12 +116,12 @@ export const fetch_mastodon_status = async (
 export const fetch_mastodon_favourites = async (
 	host: string,
 	status_id: string,
-	cache?: Fetch_Value_Cache | null,
+	cache?: FetchValueCache | null,
 	log?: Logger,
 	request?: RequestInit,
 	token?: string,
 	fetch?: typeof globalThis.fetch,
-): Promise<Array<Mastodon_Favourite> | null> => {
+): Promise<Array<MastodonFavourite> | null> => {
 	const url = to_mastodon_api_favourites_url(host, status_id);
 	const fetched = await fetch_value(url, {
 		request,
@@ -141,12 +141,12 @@ export const fetch_mastodon_favourites = async (
  * Result from `https://:host/api/v1/statuses/:id/context`.
  * @see https://docs.joinmastodon.org/entities/Context/
  */
-export interface Mastodon_Status_Context {
-	ancestors: Array<Mastodon_Status>;
-	descendants: Array<Mastodon_Status>;
+export interface MastodonStatusContext {
+	ancestors: Array<MastodonStatus>;
+	descendants: Array<MastodonStatus>;
 }
 
-export interface Mastodon_Status {
+export interface MastodonStatus {
 	id: string;
 	created_at: string;
 	in_reply_to_id: string;
@@ -211,7 +211,7 @@ export interface Mastodon_Status {
 	poll: unknown; // | null;
 }
 
-export interface Mastodon_Favourite {
+export interface MastodonFavourite {
 	id: string;
 	username: string;
 	acct: string;
@@ -242,44 +242,44 @@ export interface Mastodon_Favourite {
 /**
  * When filtering replies, at least one rule must pass for a reply to be included.
  */
-export type Reply_Filter =
-	| Favourited_By_Reply_Filter
-	| Minimum_Favourites_Reply_Filter
-	| Custom_Reply_Filter;
+export type ReplyFilter =
+	| FavouritedByReplyFilter
+	| MinimumFavouritesReplyFilter
+	| CustomReplyFilter;
 
-export interface Favourited_By_Reply_Filter {
+export interface FavouritedByReplyFilter {
 	type: 'favourited_by';
 	favourited_by: Array<string>;
 }
 
-export interface Minimum_Favourites_Reply_Filter {
+export interface MinimumFavouritesReplyFilter {
 	type: 'minimum_favourites';
 	minimum_favourites: number;
 }
 
-export interface Custom_Reply_Filter {
+export interface CustomReplyFilter {
 	type: 'custom';
 	should_include: (
-		status: Mastodon_Status,
-		root_status: Mastodon_Status,
-		status_context: Mastodon_Status_Context,
+		status: MastodonStatus,
+		root_status: MastodonStatus,
+		status_context: MastodonStatusContext,
 	) => boolean;
 }
 
-export type Create_Reply_Filters = (
-	item: Mastodon_Status,
-	status_context: Mastodon_Status_Context,
-) => Reply_Filter | Array<Reply_Filter> | null;
+export type CreateReplyFilters = (
+	item: MastodonStatus,
+	status_context: MastodonStatusContext,
+) => ReplyFilter | Array<ReplyFilter> | null;
 
 // TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
 // TODO refactor - maybe the name is misleading because it fetches?
 export const filter_valid_replies = async (
-	root_status: Mastodon_Status,
-	status_context: Mastodon_Status_Context,
-	reply_filter: Reply_Filter | Array<Reply_Filter> | null,
-	cache: Fetch_Value_Cache | null | undefined,
+	root_status: MastodonStatus,
+	status_context: MastodonStatusContext,
+	reply_filter: ReplyFilter | Array<ReplyFilter> | null,
+	cache: FetchValueCache | null | undefined,
 	log: Logger | undefined,
-): Promise<Array<Mastodon_Status>> => {
+): Promise<Array<MastodonStatus>> => {
 	const filters = reply_filter ? to_array(reply_filter) : null;
 	const statuses = status_context.descendants;
 	// For a reply to be included, there must be at least one rule that passes.
@@ -319,7 +319,7 @@ export const filter_valid_replies = async (
 					break;
 				}
 			} else {
-				throw new Unreachable_Error(filter);
+				throw new UnreachableError(filter);
 			}
 		}
 	}

@@ -1,16 +1,16 @@
 <script lang="ts">
-	import type {Fetch_Value_Cache} from '@ryanatkn/belt/fetch.js';
+	import type {FetchValueCache} from '@ryanatkn/belt/fetch.js';
 	import type {Logger} from '@ryanatkn/belt/log.js';
 	import type {Snippet} from 'svelte';
 	import {BROWSER} from 'esm-env';
 
 	import {
 		fetch_mastodon_status_context,
-		type Mastodon_Status_Context,
+		type MastodonStatusContext,
 		fetch_mastodon_status,
-		type Mastodon_Status,
-		type Reply_Filter,
-		type Create_Reply_Filters,
+		type MastodonStatus,
+		type ReplyFilter,
+		type CreateReplyFilters,
 		filter_valid_replies,
 	} from './mastodon.js';
 
@@ -36,20 +36,20 @@
 		/**
 		 * Optional API result cache.
 		 */
-		cache?: Fetch_Value_Cache | null | undefined;
+		cache?: FetchValueCache | null | undefined;
 		/**
 		 * Optional logger for network calls.
 		 */
 		log?: Logger | undefined;
 		loading?: boolean | undefined;
-		item?: Mastodon_Status | null | undefined;
-		status_context?: Mastodon_Status_Context | null | undefined;
-		replies?: Array<Mastodon_Status> | null | undefined;
+		item?: MastodonStatus | null | undefined;
+		status_context?: MastodonStatusContext | null | undefined;
+		replies?: Array<MastodonStatus> | null | undefined;
 		/**
 		 * Get a list of rules that controls whether replies are shown or not.
 		 * If omitted, all replies are included.
 		 */
-		reply_filter?: Reply_Filter | Array<Reply_Filter> | Create_Reply_Filters | null;
+		reply_filter?: ReplyFilter | Array<ReplyFilter> | CreateReplyFilters | null;
 		load_time?: number | undefined;
 		children: Snippet<
 			[
@@ -57,15 +57,15 @@
 					/**
 					 * `null` here is a failed loading condition.
 					 */
-					item: Mastodon_Status | null | undefined;
+					item: MastodonStatus | null | undefined;
 					/**
 					 * `null` here is a failed loading condition.
 					 */
-					status_context: Mastodon_Status_Context | null | undefined;
+					status_context: MastodonStatusContext | null | undefined;
 					/**
 					 * `null` here is a failed loading condition for `item` or `status_context`.
 					 */
-					replies: Array<Mastodon_Status> | null | undefined;
+					replies: Array<MastodonStatus> | null | undefined;
 					load: () => Promise<void>;
 					loading: boolean | undefined;
 					load_time: number | undefined;
@@ -93,14 +93,13 @@
 
 	const include_status_context = $derived(include_ancestors || include_replies);
 
-	const final_reply_filter: Reply_Filter | Array<Reply_Filter> | Create_Reply_Filters | null =
-		$derived(
-			reply_filter === undefined // apply default only if `undefined`, pass through `null`
-				? include_replies
-					? {type: 'custom', should_include: () => true} // allow all by default
-					: null
-				: reply_filter,
-		);
+	const final_reply_filter: ReplyFilter | Array<ReplyFilter> | CreateReplyFilters | null = $derived(
+		reply_filter === undefined // apply default only if `undefined`, pass through `null`
+			? include_replies
+				? {type: 'custom', should_include: () => true} // allow all by default
+				: null
+			: reply_filter,
+	);
 
 	const load = async (): Promise<void> => {
 		if (!BROWSER || !host || !id) return;
