@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.36.0
+
+### Minor Changes
+
+- upgrade peer deps ([e657c44](https://github.com/ryanatkn/fuz_mastodon/commit/e657c44))
+
 ## 0.35.0
 
 ### Minor Changes
