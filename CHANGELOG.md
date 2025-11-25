@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.35.0
+
+### Minor Changes
+
+- rename `PascalCase` from `Upper_Snake_Case` (lol) ([b377768](https://github.com/ryanatkn/fuz_mastodon/commit/b377768))
+
 ## 0.34.0
 
 ### Minor Changes

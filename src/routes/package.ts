@@ -6,7 +6,7 @@ import type {SrcJson} from '@ryanatkn/belt/src_json.js';
 
 export const package_json: PackageJson = {
 	name: '@ryanatkn/fuz_mastodon',
-	version: '0.34.0',
+	version: '0.35.0',
 	description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
 	glyph: '🦣',
 	logo: 'logo.svg',
@@ -106,7 +106,7 @@ export const package_json: PackageJson = {
 
 export const src_json: SrcJson = {
 	name: '@ryanatkn/fuz_mastodon',
-	version: '0.34.0',
+	version: '0.35.0',
 	modules: [
 		{
 			path: 'mastodon_cache.svelte.ts',
