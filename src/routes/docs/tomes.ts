@@ -10,7 +10,7 @@ export const tomes: Array<Tome> = [
 		Component: ApiPage,
 		related_tomes: [],
 		related_modules: [],
-		related_identifiers: [],
+		related_declarations: [],
 	},
 	{
 		name: 'package',
@@ -18,6 +18,6 @@ export const tomes: Array<Tome> = [
 		Component: PackagePage,
 		related_tomes: [],
 		related_modules: [],
-		related_identifiers: [],
+		related_declarations: [],
 	},
 ];
