@@ -1,21 +1,21 @@
 <script lang="ts">
 	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
 	import DocsFooter from '@ryanatkn/fuz/DocsFooter.svelte';
-	import type {Pkg} from '@ryanatkn/fuz/pkg.svelte.js';
+	import type {Library} from '@ryanatkn/fuz/library.svelte.js';
 
 	interface Props {
-		pkg: Pkg;
+		library: Library;
 	}
 
-	const {pkg}: Props = $props();
+	const {library}: Props = $props();
 </script>
 
 <footer>
 	<nav>
-		<Breadcrumb>{pkg.package_json.glyph}</Breadcrumb>
+		<Breadcrumb>{library.package_json.glyph}</Breadcrumb>
 	</nav>
-	{#if pkg.package_json}
-		<DocsFooter {pkg} root_url="https://www.fuz.dev/" />
+	{#if library.package_json}
+		<DocsFooter {library} root_url="https://www.fuz.dev/" />
 	{/if}
 </footer>
 

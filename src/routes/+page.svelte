@@ -1,8 +1,8 @@
 <script lang="ts">
 	import DocsFooter from '@ryanatkn/fuz/DocsFooter.svelte';
-	import PackageSummary from '@ryanatkn/fuz/PackageSummary.svelte';
+	import LibrarySummary from '@ryanatkn/fuz/LibrarySummary.svelte';
 	import Card from '@ryanatkn/fuz/Card.svelte';
-	import {pkg_context} from '@ryanatkn/fuz/pkg.svelte.js';
+	import {library_context} from '@ryanatkn/fuz/library.svelte.js';
 	import {resolve} from '$app/paths';
 	import Code from '@ryanatkn/fuz_code/Code.svelte';
 	import {DEV} from 'esm-env';
@@ -27,7 +27,7 @@
 		// Then paste the string into the `mastodon_dev_cache_data.js` file as the exported `mastodon_dev_cache_data` value.
 	}
 
-	const pkg = pkg_context.get();
+	const library = library_context.get();
 
 	const url = 'https://hci.social/@ryanatkn/111491794208793604';
 </script>
@@ -37,9 +37,9 @@
 <main class="p_lg">
 	<section class="box">
 		<div class="panel p_lg mb_xl5 shadow_md bg">
-			<PackageSummary {pkg} />
+			<LibrarySummary {library} />
 		</div>
-		<Card href={resolve('/docs')}>docs{#snippet icon()}{pkg.package_json.glyph}{/snippet}</Card>
+		<Card href={resolve('/docs')}>docs{#snippet icon()}{library.package_json.glyph}{/snippet}</Card>
 	</section>
 	<section class="width_upto_md">
 		<div class="mb_lg width_100">
@@ -208,7 +208,7 @@
 		</div>
 	</section>
 	<div class="my_xl5">
-		<DocsFooter {pkg} root_url="https://www.fuz.dev/">
+		<DocsFooter {library} root_url="https://www.fuz.dev/">
 			{#snippet logo_header()}
 				<a class="mb_xs" href={resolve('/about')}>about</a>
 			{/snippet}
