@@ -1,9 +1,9 @@
-import {strip_end} from '@ryanatkn/belt/string.js';
-import {type FetchValueCache, fetch_value} from '@ryanatkn/belt/fetch.js';
-import type {Logger} from '@ryanatkn/belt/log.js';
+import {strip_end} from '@fuzdev/fuz_util/string.js';
+import {type FetchValueCache, fetch_value} from '@fuzdev/fuz_util/fetch.js';
+import type {Logger} from '@fuzdev/fuz_util/log.js';
 import {DEV} from 'esm-env';
-import {UnreachableError} from '@ryanatkn/belt/error.js';
-import {to_array} from '@ryanatkn/belt/array.js';
+import {UnreachableError} from '@fuzdev/fuz_util/error.js';
+import {to_array} from '@fuzdev/fuz_util/array.js';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig

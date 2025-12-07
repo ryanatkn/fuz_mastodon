@@ -1,7 +1,7 @@
-import type {FetchValueCache, FetchValueCacheItem} from '@ryanatkn/belt/fetch.js';
-import type {Url} from '@ryanatkn/belt/url.js';
+import type {FetchValueCache, FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.js';
+import type {Url} from '@fuzdev/fuz_util/url.js';
 import {onMount} from 'svelte';
-import {create_context} from '@ryanatkn/fuz/context_helpers.js';
+import {create_context} from '@fuzdev/fuz_ui/context_helpers.js';
 
 export class MastodonCache {
 	// TODO maybe add a loading status state?

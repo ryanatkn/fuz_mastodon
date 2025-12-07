@@ -1,10 +1,10 @@
 <script lang="ts">
-	import DocsFooter from '@ryanatkn/fuz/DocsFooter.svelte';
-	import LibrarySummary from '@ryanatkn/fuz/LibrarySummary.svelte';
-	import Card from '@ryanatkn/fuz/Card.svelte';
-	import {library_context} from '@ryanatkn/fuz/library.svelte.js';
+	import DocsFooter from '@fuzdev/fuz_ui/DocsFooter.svelte';
+	import LibrarySummary from '@fuzdev/fuz_ui/LibrarySummary.svelte';
+	import Card from '@fuzdev/fuz_ui/Card.svelte';
+	import {library_context} from '@fuzdev/fuz_ui/library.svelte.js';
 	import {resolve} from '$app/paths';
-	import Code from '@ryanatkn/fuz_code/Code.svelte';
+	import Code from '@fuzdev/fuz_code/Code.svelte';
 	import {DEV} from 'esm-env';
 
 	import Toot from '$lib/Toot.svelte';
@@ -44,7 +44,7 @@
 	<section class="width_upto_md">
 		<div class="mb_lg width_100">
 			<div class="width_100 mb_lg">
-				<Code lang="ts" content={`import Toot from '@ryanatkn/fuz_mastodon/Toot.svelte';`} />
+				<Code lang="ts" content={`import Toot from '@fuzdev/fuz_mastodon/Toot.svelte';`} />
 			</div>
 			<div class="width_100">
 				<Code

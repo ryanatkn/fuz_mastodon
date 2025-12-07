@@ -1,9 +1,9 @@
 <script lang="ts">
-	import PendingButton from '@ryanatkn/fuz/PendingButton.svelte';
+	import PendingButton from '@fuzdev/fuz_ui/PendingButton.svelte';
 	import {slide} from 'svelte/transition';
-	import {intersect} from '@ryanatkn/fuz/intersect.svelte.js';
-	import type {FetchValueCache} from '@ryanatkn/belt/fetch.js';
-	import type {Logger} from '@ryanatkn/belt/log.js';
+	import {intersect} from '@fuzdev/fuz_ui/intersect.svelte.js';
+	import type {FetchValueCache} from '@fuzdev/fuz_util/fetch.js';
+	import type {Logger} from '@fuzdev/fuz_util/log.js';
 	import type {Snippet} from 'svelte';
 
 	import MastodonStatusTree from './MastodonStatusTree.svelte';
