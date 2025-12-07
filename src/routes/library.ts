@@ -5,7 +5,7 @@ import type {LibraryJson} from '@fuzdev/fuz_util/library_json.js';
 export const library_json: LibraryJson = {
 	package_json: {
 		name: '@fuzdev/fuz_mastodon',
-		version: '0.36.0',
+		version: '0.37.0',
 		description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
 		glyph: '🦣',
 		logo: 'logo.svg',
@@ -35,9 +35,9 @@ export const library_json: LibraryJson = {
 			node: '>=22.15',
 		},
 		peerDependencies: {
-			'@fuzdev/fuz_util': '>=0.39.0',
-			'@fuzdev/fuz_ui': '>=0.162.0',
-			'@fuzdev/fuz_css': '>=0.39.0',
+			'@fuzdev/fuz_css': '>=0.40.0',
+			'@fuzdev/fuz_ui': '>=0.169.0',
+			'@fuzdev/fuz_util': '>=0.42.0',
 			'@sveltejs/kit': '^2',
 			'date-fns': '^4',
 			'esm-env': '^1',
@@ -45,12 +45,12 @@ export const library_json: LibraryJson = {
 		},
 		devDependencies: {
 			'@changesets/changelog-git': '^0.2.1',
-			'@fuzdev/fuz_util': '^0.40.0',
+			'@fuzdev/fuz_code': '^0.37.0',
+			'@fuzdev/fuz_css': '^0.40.0',
+			'@fuzdev/fuz_ui': '^0.169.0',
+			'@fuzdev/fuz_util': '^0.42.0',
 			'@ryanatkn/eslint-config': '^0.9.0',
-			'@fuzdev/fuz_ui': '^0.165.0',
-			'@fuzdev/fuz_code': '^0.36.0',
-			'@ryanatkn/gro': '^0.179.0',
-			'@fuzdev/fuz_css': '^0.39.0',
+			'@ryanatkn/gro': '^0.181.0',
 			'@sveltejs/adapter-static': '^3.0.10',
 			'@sveltejs/kit': '^2.49.0',
 			'@sveltejs/package': '^2.5.6',
@@ -104,7 +104,7 @@ export const library_json: LibraryJson = {
 	},
 	source_json: {
 		name: '@fuzdev/fuz_mastodon',
-		version: '0.36.0',
+		version: '0.37.0',
 		modules: [
 			{
 				path: 'mastodon_cache.svelte.ts',
@@ -135,12 +135,10 @@ export const library_json: LibraryJson = {
 									{
 										name: 'load_data',
 										type: '() => Promise<[Url, { key: string; url: string; params: any; value: any; etag: string | null; last_modified: string | null; }][] | null>',
-										optional: false,
 									},
 									{
 										name: 'load_on_mount',
 										type: 'boolean',
-										optional: false,
 										default_value: 'true',
 									},
 								],
@@ -173,12 +171,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -192,17 +188,14 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'author',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -217,17 +210,14 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'author',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -241,12 +231,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -260,12 +248,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -279,12 +265,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -329,7 +313,6 @@ export const library_json: LibraryJson = {
 							{
 								name: 'url',
 								type: 'string',
-								optional: false,
 							},
 						],
 					},
@@ -344,12 +327,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'cache',
@@ -389,12 +370,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'id',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'cache',
@@ -434,12 +413,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'status_id',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'cache',
@@ -832,27 +809,22 @@ export const library_json: LibraryJson = {
 							{
 								name: 'root_status',
 								type: 'MastodonStatus',
-								optional: false,
 							},
 							{
 								name: 'status_context',
 								type: 'MastodonStatusContext',
-								optional: false,
 							},
 							{
 								name: 'reply_filter',
 								type: 'ReplyFilter | ReplyFilter[] | null',
-								optional: false,
 							},
 							{
 								name: 'cache',
 								type: 'Map<string, { key: string; url: string; params: any; value: any; etag: string | null; last_modified: string | null; }> | null | undefined',
-								optional: false,
 							},
 							{
 								name: 'log',
 								type: 'Logger | undefined',
-								optional: false,
 							},
 						],
 					},
@@ -869,7 +841,6 @@ export const library_json: LibraryJson = {
 							{
 								name: 'item',
 								type: 'MastodonStatus',
-								optional: false,
 							},
 						],
 						source_line: 1,
@@ -887,12 +858,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'item',
 								type: 'MastodonStatus',
-								optional: false,
 							},
 							{
 								name: 'items',
 								type: 'Array<MastodonStatus>',
-								optional: false,
 							},
 						],
 						source_line: 1,
@@ -917,12 +886,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'key',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'to_default_value',
 								type: '() => T',
-								optional: false,
 							},
 							{
 								name: 'validate',
@@ -943,12 +910,10 @@ export const library_json: LibraryJson = {
 							{
 								name: 'key',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'value',
 								type: 'any',
-								optional: false,
 							},
 						],
 					},
@@ -965,7 +930,6 @@ export const library_json: LibraryJson = {
 							{
 								name: 'url',
 								type: 'string',
-								optional: false,
 							},
 							{
 								name: 'updated_url',
@@ -1084,7 +1048,6 @@ export const library_json: LibraryJson = {
 							{
 								name: 'url',
 								type: 'string',
-								optional: false,
 								bindable: true,
 							},
 							{
@@ -1109,13 +1072,11 @@ export const library_json: LibraryJson = {
 							{
 								name: 'host',
 								type: 'string | null',
-								optional: false,
 								description: "The host part of the url, like `'mastodon.ryanatkn.com'`.",
 							},
 							{
 								name: 'id',
 								type: 'string | null',
-								optional: false,
 								description: "The status id to fetch, like `'110702983310017651'`.",
 							},
 							{
@@ -1183,7 +1144,6 @@ export const library_json: LibraryJson = {
 							{
 								name: 'children',
 								type: 'Snippet<\n\t\t\t[\n\t\t\t\t{\n\t\t\t\t\t/**\n\t\t\t\t\t * `null` here is a failed loading condition.\n\t\t\t\t\t */\n\t\t\t\t\titem: MastodonStatus | null | undefined;\n\t\t\t\t\t/**\n\t\t\t\t\t * `null` here is a failed loading condition.\n\t\t\t\t\t */\n\t\t\t\t\tstatus_context: MastodonStatusContext | null | undefined;\n\t\t\t\t\t/**\n\t\t\t\t\t * `null` here is a failed loading condition for `item` or `status_context`.\n\t\t\t\t\t */\n\t\t\t\t\treplies: Array<MastodonStatus> | null | undefined;\n\t\t\t\t\tload: () => Promise<void>;\n\t\t\t\t\tloading: boolean | undefined;\n\t\t\t\t\tload_time: number | undefined;\n\t\t\t\t},\n\t\t\t]\n\t\t>',
-								optional: false,
 							},
 						],
 						source_line: 1,
@@ -1197,7 +1157,7 @@ export const library_json: LibraryJson = {
 	name: '@fuzdev/fuz_mastodon',
 	repo_name: 'fuz_mastodon',
 	repo_url: 'https://github.com/fuzdev/fuz_mastodon',
-	owner_name: 'ryanatkn',
+	owner_name: 'fuzdev',
 	homepage_url: 'https://mastodon.fuz.dev/',
 	logo_url: 'https://mastodon.fuz.dev/logo.svg',
 	logo_alt: 'a friendly purple spider facing you',
