@@ -5,7 +5,7 @@ import type {LibraryJson} from '@fuzdev/fuz_util/library_json.js';
 export const library_json: LibraryJson = {
 	package_json: {
 		name: '@fuzdev/fuz_mastodon',
-		version: '0.36.0',
+		version: '0.37.0',
 		description: 'Mastodon components and helpers for Svelte, SvelteKit, and Fuz',
 		glyph: '🦣',
 		logo: 'logo.svg',
@@ -104,7 +104,7 @@ export const library_json: LibraryJson = {
 	},
 	source_json: {
 		name: '@fuzdev/fuz_mastodon',
-		version: '0.36.0',
+		version: '0.37.0',
 		modules: [
 			{
 				path: 'mastodon_cache.svelte.ts',

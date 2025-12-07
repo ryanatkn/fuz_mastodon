@@ -1,5 +1,11 @@
 # @ryanatkn/fuz_mastodon
 
+## 0.37.0
+
+### Minor Changes
+
+- move to fuzdev ([1519dd5](https://github.com/fuzdev/fuz_mastodon/commit/1519dd5))
+
 ## 0.36.0
 
 ### Minor Changes
