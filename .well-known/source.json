@@ -1,0 +1,162 @@
+{
+  "name": "@fuzdev/fuz_mastodon",
+  "version": "0.37.0",
+  "modules": [
+    {
+      "path": "mastodon_cache.svelte.ts",
+      "declarations": [
+        {
+          "name": "MastodonCache",
+          "kind": "class"
+        },
+        {
+          "name": "mastodon_cache_context",
+          "kind": "variable"
+        }
+      ]
+    },
+    {
+      "path": "mastodon.ts",
+      "declarations": [
+        {
+          "name": "to_mastodon_status_url",
+          "kind": "function"
+        },
+        {
+          "name": "to_mastodon_status_url_with_author",
+          "kind": "function"
+        },
+        {
+          "name": "to_mastodon_status_url_with_users_author",
+          "kind": "function"
+        },
+        {
+          "name": "to_mastodon_api_status_url",
+          "kind": "function"
+        },
+        {
+          "name": "to_mastodon_api_status_context_url",
+          "kind": "function"
+        },
+        {
+          "name": "to_mastodon_api_favourites_url",
+          "kind": "function"
+        },
+        {
+          "name": "MastodonStatusUrl",
+          "kind": "type"
+        },
+        {
+          "name": "parse_mastodon_status_url",
+          "kind": "function"
+        },
+        {
+          "name": "fetch_mastodon_status_context",
+          "kind": "function"
+        },
+        {
+          "name": "fetch_mastodon_status",
+          "kind": "function"
+        },
+        {
+          "name": "fetch_mastodon_favourites",
+          "kind": "function"
+        },
+        {
+          "name": "MastodonStatusContext",
+          "kind": "type"
+        },
+        {
+          "name": "MastodonStatus",
+          "kind": "type"
+        },
+        {
+          "name": "MastodonFavourite",
+          "kind": "type"
+        },
+        {
+          "name": "ReplyFilter",
+          "kind": "type"
+        },
+        {
+          "name": "FavouritedByReplyFilter",
+          "kind": "type"
+        },
+        {
+          "name": "MinimumFavouritesReplyFilter",
+          "kind": "type"
+        },
+        {
+          "name": "CustomReplyFilter",
+          "kind": "type"
+        },
+        {
+          "name": "CreateReplyFilters",
+          "kind": "type"
+        },
+        {
+          "name": "filter_valid_replies",
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "storage.ts",
+      "declarations": [
+        {
+          "name": "load_from_storage",
+          "kind": "function"
+        },
+        {
+          "name": "set_in_storage",
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "MastodonStatusItem.svelte",
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
+    },
+    {
+      "path": "MastodonStatusTree.svelte",
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
+    },
+    {
+      "path": "Toot.svelte",
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
+    },
+    {
+      "path": "TootInput.svelte",
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
+    },
+    {
+      "path": "TootLoader.svelte",
+      "declarations": [
+        {
+          "name": "default",
+          "kind": "component"
+        }
+      ]
+    }
+  ]
+}
