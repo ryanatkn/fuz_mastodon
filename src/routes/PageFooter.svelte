@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Breadcrumb from '@ryanatkn/fuz/Breadcrumb.svelte';
-	import DocsFooter from '@ryanatkn/fuz/DocsFooter.svelte';
-	import type {Library} from '@ryanatkn/fuz/library.svelte.js';
+	import Breadcrumb from '@fuzdev/fuz_ui/Breadcrumb.svelte';
+	import DocsFooter from '@fuzdev/fuz_ui/DocsFooter.svelte';
+	import type {Library} from '@fuzdev/fuz_ui/library.svelte.js';
 
 	interface Props {
 		library: Library;

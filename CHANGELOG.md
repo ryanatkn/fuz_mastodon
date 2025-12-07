@@ -1,4 +1,4 @@
-# @ryanatkn/fuz_mastodon
+# @fuzdev/fuz_mastodon
 
 ## 0.36.0
 
