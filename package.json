@@ -30,9 +30,9 @@
     "node": ">=22.15"
   },
   "peerDependencies": {
-    "@fuzdev/fuz_util": ">=0.39.0",
-    "@fuzdev/fuz_ui": ">=0.162.0",
     "@fuzdev/fuz_css": ">=0.39.0",
+    "@fuzdev/fuz_ui": ">=0.162.0",
+    "@fuzdev/fuz_util": ">=0.39.0",
     "@sveltejs/kit": "^2",
     "date-fns": "^4",
     "esm-env": "^1",
@@ -40,12 +40,12 @@
   },
   "devDependencies": {
     "@changesets/changelog-git": "^0.2.1",
+    "@fuzdev/fuz_code": "^0.36.0",
+    "@fuzdev/fuz_css": "^0.39.0",
+    "@fuzdev/fuz_ui": "^0.165.0",
     "@fuzdev/fuz_util": "^0.40.0",
     "@ryanatkn/eslint-config": "^0.9.0",
-    "@fuzdev/fuz_ui": "^0.165.0",
-    "@fuzdev/fuz_code": "^0.36.0",
     "@ryanatkn/gro": "^0.179.0",
-    "@fuzdev/fuz_css": "^0.39.0",
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/kit": "^2.49.0",
     "@sveltejs/package": "^2.5.6",
