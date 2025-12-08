@@ -3,11 +3,11 @@
 	import DocsFooter from '@fuzdev/fuz_ui/DocsFooter.svelte';
 	import type {Library} from '@fuzdev/fuz_ui/library.svelte.js';
 
-	interface Props {
+	const {
+		library,
+	}: {
 		library: Library;
-	}
-
-	const {library}: Props = $props();
+	} = $props();
 </script>
 
 <footer>

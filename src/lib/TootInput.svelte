@@ -5,12 +5,13 @@
 
 	import {parse_mastodon_status_url} from './mastodon.js';
 
-	interface Props {
+	let {
+		url = $bindable(),
+		attrs,
+	}: {
 		url: string;
 		attrs?: SvelteHTMLElements['input'] | undefined;
-	}
-
-	let {url = $bindable(), attrs}: Props = $props();
+	} = $props();
 
 	const parsed = $derived(parse_mastodon_status_url(url));
 	const invalid = $derived(!!(url && !parsed));

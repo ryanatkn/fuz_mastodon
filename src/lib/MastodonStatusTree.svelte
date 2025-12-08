@@ -3,12 +3,13 @@
 	import Message from './MastodonStatusItem.svelte';
 	import MastodonStatusTree from './MastodonStatusTree.svelte';
 
-	interface Props {
+	const {
+		item,
+		items,
+	}: {
 		item: MastodonStatus;
 		items: Array<MastodonStatus>;
-	}
-
-	const {item, items}: Props = $props();
+	} = $props();
 
 	const {id} = $derived(item);
 	const replies = $derived(items.filter((i) => i.in_reply_to_id === id));

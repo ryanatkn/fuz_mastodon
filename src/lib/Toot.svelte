@@ -19,7 +19,28 @@
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess
 
-	interface Props {
+	// TODO maybe these shouldn't be bindable?
+	let {
+		url,
+		updated_url = $bindable(url),
+		include_ancestors = false,
+		include_replies = false,
+		reply_filter,
+		cache,
+		log,
+		loading = $bindable(),
+		load_time = $bindable(),
+		settings_storage_key,
+		initial_show_settings = false,
+		show_settings = $bindable(),
+		autoload_storage_key = 'autoload',
+		initial_autoload = false,
+		autoload = autoload_storage_key
+			? load_from_storage(autoload_storage_key, () => initial_autoload)
+			: initial_autoload,
+		onreset,
+		settings,
+	}: {
 		url: string; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
 		/**
 		 * Defaults to the `url`, but can be updated by user input.
@@ -62,30 +83,7 @@
 		autoload?: boolean; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
 		onreset?: () => void;
 		settings?: Snippet;
-	}
-
-	// TODO maybe these shouldn't be bindable?
-	let {
-		url,
-		updated_url = $bindable(url),
-		include_ancestors = false,
-		include_replies = false,
-		reply_filter,
-		cache,
-		log,
-		loading = $bindable(),
-		load_time = $bindable(),
-		settings_storage_key,
-		initial_show_settings = false,
-		show_settings = $bindable(),
-		autoload_storage_key = 'autoload',
-		initial_autoload = false,
-		autoload = autoload_storage_key
-			? load_from_storage(autoload_storage_key, () => initial_autoload)
-			: initial_autoload,
-		onreset,
-		settings,
-	}: Props = $props();
+	} = $props();
 
 	let loaded_status_key = $state(1);
 

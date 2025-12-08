@@ -5,11 +5,11 @@
 
 	import type {MastodonStatus} from './mastodon.js';
 
-	interface Props {
+	const {
+		item,
+	}: {
 		item: MastodonStatus;
-	}
-
-	const {item}: Props = $props();
+	} = $props();
 
 	// see the CSP in `svelte.config.js`
 	/* eslint-disable svelte/no-at-html-tags */

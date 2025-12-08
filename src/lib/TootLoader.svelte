@@ -16,7 +16,22 @@
 
 	// TODO maybe delete this and merge into `Toot`
 
-	interface Props {
+	// TODO maybe these shouldn't be bindable?
+	let {
+		host,
+		id,
+		include_ancestors = false,
+		include_replies = false,
+		reply_filter,
+		cache,
+		log,
+		loading = $bindable(),
+		item = $bindable(),
+		status_context = $bindable(),
+		replies = $bindable(),
+		load_time = $bindable(),
+		children,
+	}: {
 		/**
 		 * The host part of the url, like `'mastodon.ryanatkn.com'`.
 		 */
@@ -72,24 +87,7 @@
 				},
 			]
 		>;
-	}
-
-	// TODO maybe these shouldn't be bindable?
-	let {
-		host,
-		id,
-		include_ancestors = false,
-		include_replies = false,
-		reply_filter,
-		cache,
-		log,
-		loading = $bindable(),
-		item = $bindable(),
-		status_context = $bindable(),
-		replies = $bindable(),
-		load_time = $bindable(),
-		children,
-	}: Props = $props();
+	} = $props();
 
 	const include_status_context = $derived(include_ancestors || include_replies);
 
