@@ -1,1 +1,0 @@
-import{g as c,h as _,i as o,F as d,G as T,I as b,J as g,v,B as y,o as i}from"./DVm1S4SW.js";function p(t,f,h=!1){_&&o();var r=new y(t),u=h?d:0;function n(a,s){if(_){const l=T(t)===b;if(a===l){var e=g();v(e),r.anchor=e,i(!1),r.ensure(a,s),i(!0);return}}r.ensure(a,s)}c(()=>{var a=!1;f((s,e=!0)=>{a=!0,n(e,s)}),a||n(!1,null)},u)}export{p as i};
