@@ -1,4 +1,14 @@
 {
+	"name": "@fuzdev/fuz_mastodon",
+	"repo_name": "fuz_mastodon",
+	"repo_url": "https://github.com/fuzdev/fuz_mastodon",
+	"owner_name": "fuzdev",
+	"homepage_url": "https://mastodon.fuz.dev/",
+	"logo_url": "https://mastodon.fuz.dev/logo.svg",
+	"logo_alt": "a friendly purple spider facing you",
+	"npm_url": "https://www.npmjs.com/package/@fuzdev/fuz_mastodon",
+	"changelog_url": "https://github.com/fuzdev/fuz_mastodon/blob/main/CHANGELOG.md",
+	"published": true,
 	"package_json": {
 		"name": "@fuzdev/fuz_mastodon",
 		"version": "0.37.0",
@@ -41,9 +51,9 @@
 		"devDependencies": {
 			"@changesets/changelog-git": "^0.2.1",
 			"@fuzdev/fuz_code": "^0.38.0",
-			"@fuzdev/fuz_css": "^0.42.1",
-			"@fuzdev/fuz_ui": "^0.174.0",
-			"@fuzdev/fuz_util": "^0.42.0",
+			"@fuzdev/fuz_css": "^0.43.0",
+			"@fuzdev/fuz_ui": "^0.175.0",
+			"@fuzdev/fuz_util": "^0.45.1",
 			"@ryanatkn/eslint-config": "^0.9.0",
 			"@ryanatkn/gro": "^0.184.0",
 			"@sveltejs/adapter-static": "^3.0.10",
@@ -1129,15 +1139,5 @@
 				"dependents": ["Toot.svelte"]
 			}
 		]
-	},
-	"name": "@fuzdev/fuz_mastodon",
-	"repo_name": "fuz_mastodon",
-	"repo_url": "https://github.com/fuzdev/fuz_mastodon",
-	"owner_name": "fuzdev",
-	"homepage_url": "https://mastodon.fuz.dev/",
-	"logo_url": "https://mastodon.fuz.dev/logo.svg",
-	"logo_alt": "a friendly purple spider facing you",
-	"npm_url": "https://www.npmjs.com/package/@fuzdev/fuz_mastodon",
-	"changelog_url": "https://github.com/fuzdev/fuz_mastodon/blob/main/CHANGELOG.md",
-	"published": true
+	}
 }
