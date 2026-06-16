@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {MastodonStatus} from './mastodon.js';
+	import type {MastodonStatus} from './mastodon.ts';
 	import Message from './MastodonStatusItem.svelte';
 	import MastodonStatusTree from './MastodonStatusTree.svelte';
 

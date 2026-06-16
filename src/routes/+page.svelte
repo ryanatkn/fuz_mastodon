@@ -1,24 +1,24 @@
 <script lang="ts">
 	import DocsFooter from '@fuzdev/fuz_ui/DocsFooter.svelte';
-	import {site_context} from '@fuzdev/fuz_ui/site.svelte.js';
-	import {FUZ_DEV_URL} from '@fuzdev/fuz_ui/constants.js';
+	import {site_context} from '@fuzdev/fuz_ui/site.svelte.ts';
+	import {FUZ_DEV_URL} from '@fuzdev/fuz_ui/constants.ts';
 	import Card from '@fuzdev/fuz_ui/Card.svelte';
 	import Svg from '@fuzdev/fuz_ui/Svg.svelte';
-	import {logo_fuz_mastodon} from '@fuzdev/fuz_ui/logos.js';
+	import {logo_fuz_mastodon} from '@fuzdev/fuz_ui/logos.ts';
 	import {resolve} from '$app/paths';
 	import Code from '@fuzdev/fuz_code/Code.svelte';
 	import {DEV} from 'esm-env';
 
 	import Toot from '$lib/Toot.svelte';
 
-	import {MastodonCache, mastodon_cache_context} from '$lib/mastodon_cache.svelte.js';
+	import {MastodonCache, mastodon_cache_context} from '$lib/mastodon_cache.svelte.ts';
 
 	let cache: MastodonCache | null = $state.raw(null);
 
 	if (DEV) {
 		cache = mastodon_cache_context.set(
 			new MastodonCache(
-				async () => (await import('./mastodon_dev_cache_data.js')).mastodon_dev_cache_data,
+				async () => (await import('./mastodon_dev_cache_data.ts')).mastodon_dev_cache_data,
 			),
 		);
 		// To get the latest cache data, add these lines:

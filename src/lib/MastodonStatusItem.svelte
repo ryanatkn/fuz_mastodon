@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {format, formatDistance} from 'date-fns';
 	import {slide} from 'svelte/transition';
-	import {strip_start} from '@fuzdev/fuz_util/string.js';
+	import {strip_start} from '@fuzdev/fuz_util/string.ts';
 
-	import type {MastodonStatus} from './mastodon.js';
+	import type {MastodonStatus} from './mastodon.ts';
 
 	const {
 		item,

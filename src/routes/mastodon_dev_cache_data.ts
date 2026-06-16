@@ -1,5 +1,5 @@
-import type {Url} from '@fuzdev/fuz_util/url.js';
-import type {FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.js';
+import type {Url} from '@fuzdev/fuz_util/url.ts';
+import type {FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.ts';
 
 export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 	[

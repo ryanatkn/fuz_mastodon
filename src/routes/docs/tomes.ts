@@ -1,7 +1,7 @@
-import type {Tome} from '@fuzdev/fuz_ui/tome.js';
+import type {Tome} from '@fuzdev/fuz_ui/tome.ts';
 
-import ApiPage from '$routes/docs/api/+page.svelte';
-import PackagePage from '$routes/docs/package/+page.svelte';
+import ApiPage from './api/+page.svelte';
+import PackagePage from './package/+page.svelte';
 
 export const tomes: Array<Tome> = [
 	{

@@ -1,20 +1,20 @@
 <script lang="ts">
 	import PendingButton from '@fuzdev/fuz_ui/PendingButton.svelte';
 	import {slide} from 'svelte/transition';
-	import {intersect} from '@fuzdev/fuz_ui/intersect.svelte.js';
-	import type {FetchValueCache} from '@fuzdev/fuz_util/fetch.js';
-	import type {Logger} from '@fuzdev/fuz_util/log.js';
+	import {intersect} from '@fuzdev/fuz_ui/intersect.svelte.ts';
+	import type {FetchValueCache} from '@fuzdev/fuz_util/fetch.ts';
+	import type {Logger} from '@fuzdev/fuz_util/log.ts';
 	import type {Snippet} from 'svelte';
 
 	import MastodonStatusTree from './MastodonStatusTree.svelte';
 	import MastodonStatusItem from './MastodonStatusItem.svelte';
 	import TootLoader from './TootLoader.svelte';
-	import {load_from_storage, set_in_storage} from './storage.js';
+	import {load_from_storage, set_in_storage} from './storage.ts';
 	import {
 		parse_mastodon_status_url,
 		type CreateReplyFilters,
 		type ReplyFilter,
-	} from './mastodon.js';
+	} from './mastodon.ts';
 	import TootInput from './TootInput.svelte';
 
 	// TODO some of this may be broken after the Svelte 5 upgrade, the patterns are a mess

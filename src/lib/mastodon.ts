@@ -1,9 +1,9 @@
-import {strip_end} from '@fuzdev/fuz_util/string.js';
-import {type FetchValueCache, fetch_value} from '@fuzdev/fuz_util/fetch.js';
-import type {Logger} from '@fuzdev/fuz_util/log.js';
+import {strip_end} from '@fuzdev/fuz_util/string.ts';
+import {type FetchValueCache, fetch_value} from '@fuzdev/fuz_util/fetch.ts';
+import type {Logger} from '@fuzdev/fuz_util/log.ts';
 import {DEV} from 'esm-env';
-import {UnreachableError} from '@fuzdev/fuz_util/error.js';
-import {to_array} from '@fuzdev/fuz_util/array.js';
+import {UnreachableError} from '@fuzdev/fuz_util/error.ts';
+import {to_array} from '@fuzdev/fuz_util/array.ts';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig

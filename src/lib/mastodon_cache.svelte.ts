@@ -1,7 +1,7 @@
-import type {FetchValueCache, FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.js';
-import type {Url} from '@fuzdev/fuz_util/url.js';
+import type {FetchValueCache, FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.ts';
+import type {Url} from '@fuzdev/fuz_util/url.ts';
 import {onMount} from 'svelte';
-import {create_context} from '@fuzdev/fuz_ui/context_helpers.js';
+import {create_context} from '@fuzdev/fuz_ui/context_helpers.ts';
 
 export class MastodonCache {
 	// TODO maybe add a loading status state?

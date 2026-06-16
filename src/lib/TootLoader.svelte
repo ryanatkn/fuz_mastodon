@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {FetchValueCache} from '@fuzdev/fuz_util/fetch.js';
-	import type {Logger} from '@fuzdev/fuz_util/log.js';
+	import type {FetchValueCache} from '@fuzdev/fuz_util/fetch.ts';
+	import type {Logger} from '@fuzdev/fuz_util/log.ts';
 	import type {Snippet} from 'svelte';
 	import {BROWSER} from 'esm-env';
 
@@ -12,7 +12,7 @@
 		type ReplyFilter,
 		type CreateReplyFilters,
 		filter_valid_replies,
-	} from './mastodon.js';
+	} from './mastodon.ts';
 
 	// TODO maybe delete this and merge into `Toot`
 
