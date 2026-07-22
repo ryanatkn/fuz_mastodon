@@ -31,7 +31,7 @@ dev server.
 - SvelteKit - application framework
 - date-fns - date formatting for "ago" display
 - esm-env - environment detection (DEV mode)
-- fuz_css (@fuzdev/fuz_css) - CSS framework
+- fuz_css (@fuzdev/fuz_css) - semantic-first CSS framework and design system
 - fuz_ui (@fuzdev/fuz_ui) - UI components, context helpers
 - fuz_util (@fuzdev/fuz_util) - fetch utilities, logging, types
 
