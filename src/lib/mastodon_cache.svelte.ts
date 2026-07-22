@@ -1,7 +1,7 @@
-import type {FetchValueCache, FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.ts';
-import type {Url} from '@fuzdev/fuz_util/url.ts';
-import {onMount} from 'svelte';
-import {create_context} from '@fuzdev/fuz_ui/context_helpers.ts';
+import type { FetchValueCache, FetchValueCacheItem } from '@fuzdev/fuz_util/fetch.ts';
+import type { Url } from '@fuzdev/fuz_util/url.ts';
+import { onMount } from 'svelte';
+import { create_context } from '@fuzdev/fuz_ui/context_helpers.ts';
 
 export class MastodonCache {
 	// TODO maybe add a loading status state?
@@ -15,7 +15,7 @@ export class MastodonCache {
 
 	constructor(
 		load_data: () => Promise<Array<[Url, FetchValueCacheItem]> | null>,
-		load_on_mount = true,
+		load_on_mount = true
 	) {
 		this.load_data = load_data;
 		if (load_on_mount) {

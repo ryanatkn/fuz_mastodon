@@ -1,5 +1,5 @@
-import type {Url} from '@fuzdev/fuz_util/url.ts';
-import type {FetchValueCacheItem} from '@fuzdev/fuz_util/fetch.ts';
+import type { Url } from '@fuzdev/fuz_util/url.ts';
+import type { FetchValueCacheItem } from '@fuzdev/fuz_util/fetch.ts';
 
 export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 	[
@@ -26,7 +26,7 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 				content:
 					'<p>this post is embedded on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a> using a <a href="https://hci.social/tags/Svelte" class="mention hashtag" rel="tag">#<span>Svelte</span></a> component that loads the data in your browser on demand</p><p>the code is rough and early but works if you&#39;re reading this on mastodon.fuz.dev - <a href="https://github.com/fuz-dev/fuz_mastodon" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">github.com/fuz-dev/fuz_mastodo</span><span class="invisible">n</span></a></p><p>replies to this post that I favourite will appear on <a href="https://mastodon.fuz.dev/" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="">mastodon.fuz.dev/</span><span class="invisible"></span></a></p>',
 				reblog: null,
-				application: {name: 'Web', website: null},
+				application: { name: 'Web', website: null },
 				account: {
 					id: '109337961591161088',
 					username: 'ryanatkn',
@@ -60,31 +60,31 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T18:48:11.596+00:00',
+							verified_at: '2022-11-13T18:48:11.596+00:00'
 						},
 						{
 							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T19:12:25.810+00:00',
+							verified_at: '2022-11-13T19:12:25.810+00:00'
 						},
 						{
 							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: null,
+							verified_at: null
 						},
 						{
 							name: 'webdevladder',
 							value:
 								'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-							verified_at: '2024-07-09T05:35:14.774+00:00',
-						},
-					],
+							verified_at: '2024-07-09T05:35:14.774+00:00'
+						}
+					]
 				},
 				media_attachments: [],
 				mentions: [],
-				tags: [{name: 'svelte', url: 'https://hci.social/tags/svelte'}],
+				tags: [{ name: 'svelte', url: 'https://hci.social/tags/svelte' }],
 				emojis: [],
 				card: {
 					url: 'https://mastodon.fuz.dev/',
@@ -103,13 +103,13 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 					image_description: '',
 					embed_url: '',
 					blurhash: null,
-					published_at: null,
+					published_at: null
 				},
-				poll: null,
+				poll: null
 			},
 			etag: null,
-			last_modified: null,
-		},
+			last_modified: null
+		}
 	],
 	[
 		'GET::https://hci.social/api/v1/statuses/111491794208793604/context',
@@ -137,7 +137,7 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 						edited_at: null,
 						content: '<p>(unlisted reply for demo purposes, please ignore)</p>',
 						reblog: null,
-						application: {name: 'Web', website: null},
+						application: { name: 'Web', website: null },
 						account: {
 							id: '109337961591161088',
 							username: 'ryanatkn',
@@ -171,34 +171,34 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T18:48:11.596+00:00',
+									verified_at: '2022-11-13T18:48:11.596+00:00'
 								},
 								{
 									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T19:12:25.810+00:00',
+									verified_at: '2022-11-13T19:12:25.810+00:00'
 								},
 								{
 									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: null,
+									verified_at: null
 								},
 								{
 									name: 'webdevladder',
 									value:
 										'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-									verified_at: '2024-07-09T05:35:14.774+00:00',
-								},
-							],
+									verified_at: '2024-07-09T05:35:14.774+00:00'
+								}
+							]
 						},
 						media_attachments: [],
 						mentions: [],
 						tags: [],
 						emojis: [],
 						card: null,
-						poll: null,
+						poll: null
 					},
 					{
 						id: '111491828406951988',
@@ -217,7 +217,7 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 						edited_at: null,
 						content: '<p>(unlisted reply to a reply for demo purposes, please ignore)</p>',
 						reblog: null,
-						application: {name: 'Web', website: null},
+						application: { name: 'Web', website: null },
 						account: {
 							id: '109337961591161088',
 							username: 'ryanatkn',
@@ -251,34 +251,34 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T18:48:11.596+00:00',
+									verified_at: '2022-11-13T18:48:11.596+00:00'
 								},
 								{
 									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T19:12:25.810+00:00',
+									verified_at: '2022-11-13T19:12:25.810+00:00'
 								},
 								{
 									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: null,
+									verified_at: null
 								},
 								{
 									name: 'webdevladder',
 									value:
 										'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-									verified_at: '2024-07-09T05:35:14.774+00:00',
-								},
-							],
+									verified_at: '2024-07-09T05:35:14.774+00:00'
+								}
+							]
 						},
 						media_attachments: [],
 						mentions: [],
 						tags: [],
 						emojis: [],
 						card: null,
-						poll: null,
+						poll: null
 					},
 					{
 						id: '111491829510427790',
@@ -298,7 +298,7 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 						edited_at: '2023-12-18T01:27:14.677Z',
 						content: '<p>(sensitive content)</p>',
 						reblog: null,
-						application: {name: 'Web', website: null},
+						application: { name: 'Web', website: null },
 						account: {
 							id: '109337961591161088',
 							username: 'ryanatkn',
@@ -332,34 +332,34 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T18:48:11.596+00:00',
+									verified_at: '2022-11-13T18:48:11.596+00:00'
 								},
 								{
 									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T19:12:25.810+00:00',
+									verified_at: '2022-11-13T19:12:25.810+00:00'
 								},
 								{
 									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: null,
+									verified_at: null
 								},
 								{
 									name: 'webdevladder',
 									value:
 										'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-									verified_at: '2024-07-09T05:35:14.774+00:00',
-								},
-							],
+									verified_at: '2024-07-09T05:35:14.774+00:00'
+								}
+							]
 						},
 						media_attachments: [],
 						mentions: [],
 						tags: [],
 						emojis: [],
 						card: null,
-						poll: null,
+						poll: null
 					},
 					{
 						id: '112757807628264821',
@@ -378,7 +378,7 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 						edited_at: '2024-07-09T19:35:54.230Z',
 						content: '<p>(unlisted unfavourited reply for demo purposes, please ignore)</p>',
 						reblog: null,
-						application: {name: 'Web', website: null},
+						application: { name: 'Web', website: null },
 						account: {
 							id: '109337961591161088',
 							username: 'ryanatkn',
@@ -412,40 +412,40 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 									name: 'homepage',
 									value:
 										'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T18:48:11.596+00:00',
+									verified_at: '2022-11-13T18:48:11.596+00:00'
 								},
 								{
 									name: 'GitHub',
 									value:
 										'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: '2022-11-13T19:12:25.810+00:00',
+									verified_at: '2022-11-13T19:12:25.810+00:00'
 								},
 								{
 									name: 'YouTube',
 									value:
 										'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-									verified_at: null,
+									verified_at: null
 								},
 								{
 									name: 'webdevladder',
 									value:
 										'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-									verified_at: '2024-07-09T05:35:14.774+00:00',
-								},
-							],
+									verified_at: '2024-07-09T05:35:14.774+00:00'
+								}
+							]
 						},
 						media_attachments: [],
 						mentions: [],
 						tags: [],
 						emojis: [],
 						card: null,
-						poll: null,
-					},
-				],
+						poll: null
+					}
+				]
 			},
 			etag: null,
-			last_modified: null,
-		},
+			last_modified: null
+		}
 	],
 	[
 		'GET::https://hci.social/api/v1/statuses/111491816409848117/favourited_by',
@@ -487,32 +487,32 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T18:48:11.596+00:00',
+							verified_at: '2022-11-13T18:48:11.596+00:00'
 						},
 						{
 							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T19:12:25.810+00:00',
+							verified_at: '2022-11-13T19:12:25.810+00:00'
 						},
 						{
 							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: null,
+							verified_at: null
 						},
 						{
 							name: 'webdevladder',
 							value:
 								'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-							verified_at: '2024-07-09T05:35:14.774+00:00',
-						},
-					],
-				},
+							verified_at: '2024-07-09T05:35:14.774+00:00'
+						}
+					]
+				}
 			],
 			etag: null,
-			last_modified: null,
-		},
+			last_modified: null
+		}
 	],
 	[
 		'GET::https://hci.social/api/v1/statuses/111491828406951988/favourited_by',
@@ -554,32 +554,32 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T18:48:11.596+00:00',
+							verified_at: '2022-11-13T18:48:11.596+00:00'
 						},
 						{
 							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T19:12:25.810+00:00',
+							verified_at: '2022-11-13T19:12:25.810+00:00'
 						},
 						{
 							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: null,
+							verified_at: null
 						},
 						{
 							name: 'webdevladder',
 							value:
 								'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-							verified_at: '2024-07-09T05:35:14.774+00:00',
-						},
-					],
-				},
+							verified_at: '2024-07-09T05:35:14.774+00:00'
+						}
+					]
+				}
 			],
 			etag: null,
-			last_modified: null,
-		},
+			last_modified: null
+		}
 	],
 	[
 		'GET::https://hci.social/api/v1/statuses/111491829510427790/favourited_by',
@@ -621,32 +621,32 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 							name: 'homepage',
 							value:
 								'<a href="https://www.ryanatkn.com" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">ryanatkn.com</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T18:48:11.596+00:00',
+							verified_at: '2022-11-13T18:48:11.596+00:00'
 						},
 						{
 							name: 'GitHub',
 							value:
 								'<a href="https://github.com/ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">github.com/ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: '2022-11-13T19:12:25.810+00:00',
+							verified_at: '2022-11-13T19:12:25.810+00:00'
 						},
 						{
 							name: 'YouTube',
 							value:
 								'<a href="https://youtube.com/@ryanatkn" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span class="">youtube.com/@ryanatkn</span><span class="invisible"></span></a>',
-							verified_at: null,
+							verified_at: null
 						},
 						{
 							name: 'webdevladder',
 							value:
 								'<a href="https://www.webdevladder.net/" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://www.</span><span class="">webdevladder.net/</span><span class="invisible"></span></a>',
-							verified_at: '2024-07-09T05:35:14.774+00:00',
-						},
-					],
-				},
+							verified_at: '2024-07-09T05:35:14.774+00:00'
+						}
+					]
+				}
 			],
 			etag: null,
-			last_modified: null,
-		},
+			last_modified: null
+		}
 	],
 	[
 		'GET::https://hci.social/api/v1/statuses/112757807628264821/favourited_by',
@@ -656,7 +656,7 @@ export const mastodon_dev_cache_data: Array<[Url, FetchValueCacheItem]> = [
 			params: null,
 			value: [],
 			etag: null,
-			last_modified: null,
-		},
-	],
+			last_modified: null
+		}
+	]
 ];

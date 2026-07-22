@@ -1,11 +1,11 @@
 <script lang="ts">
 	import LibraryDetail from '@fuzdev/fuz_ui/LibraryDetail.svelte';
-	import {Library, library_context} from '@fuzdev/fuz_ui/library.svelte.ts';
+	import { Library, library_context } from '@fuzdev/fuz_ui/library.svelte.ts';
 	import Breadcrumb from '@fuzdev/fuz_ui/Breadcrumb.svelte';
 	import EcosystemLinksPanel from '@fuzdev/fuz_ui/EcosystemLinksPanel.svelte';
 
 	import PageFooter from '$routes/PageFooter.svelte';
-	import {library_json} from '$routes/library.ts';
+	import { library_json } from '$routes/library.ts';
 
 	const library = new Library(library_json);
 	library_context.set(() => library);

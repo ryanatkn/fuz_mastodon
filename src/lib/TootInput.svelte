@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Alert from '@fuzdev/fuz_ui/Alert.svelte';
-	import {slide} from 'svelte/transition';
-	import type {SvelteHTMLElements} from 'svelte/elements';
+	import { slide } from 'svelte/transition';
+	import type { SvelteHTMLElements } from 'svelte/elements';
 
-	import {parse_mastodon_status_url} from './mastodon.ts';
+	import { parse_mastodon_status_url } from './mastodon.ts';
 
 	let {
 		url = $bindable(),
-		attrs,
+		attrs
 	}: {
 		url: string;
 		attrs?: SvelteHTMLElements['input'] | undefined;

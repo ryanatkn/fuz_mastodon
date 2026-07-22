@@ -1,4 +1,4 @@
-import {BROWSER} from 'esm-env';
+import { BROWSER } from 'esm-env';
 
 // TODO would be nice to support `to_default_value` not being a function
 
@@ -13,7 +13,7 @@ import {BROWSER} from 'esm-env';
 export const load_from_storage = <T>(
 	key: string,
 	to_default_value: () => T,
-	validate?: (value: any) => asserts value is T,
+	validate?: (value: any) => asserts value is T
 ): T => {
 	if (!BROWSER) return to_default_value();
 	try {

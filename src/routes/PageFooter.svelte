@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Breadcrumb from '@fuzdev/fuz_ui/Breadcrumb.svelte';
 	import DocsFooter from '@fuzdev/fuz_ui/DocsFooter.svelte';
-	import type {Library} from '@fuzdev/fuz_ui/library.svelte.ts';
-	import {site_context} from '@fuzdev/fuz_ui/site.svelte.ts';
-	import {FUZ_DEV_URL} from '@fuzdev/fuz_ui/constants.ts';
+	import type { Library } from '@fuzdev/fuz_ui/library.svelte.ts';
+	import { site_context } from '@fuzdev/fuz_ui/site.svelte.ts';
+	import { FUZ_DEV_URL } from '@fuzdev/fuz_ui/constants.ts';
 
 	const {
-		library,
+		library
 	}: {
 		library: Library;
 	} = $props();

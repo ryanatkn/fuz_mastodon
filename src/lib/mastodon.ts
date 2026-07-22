@@ -1,9 +1,9 @@
-import {strip_end} from '@fuzdev/fuz_util/string.ts';
-import {type FetchValueCache, fetch_value} from '@fuzdev/fuz_util/fetch.ts';
-import type {Logger} from '@fuzdev/fuz_util/log.ts';
-import {DEV} from 'esm-env';
-import {UnreachableError} from '@fuzdev/fuz_util/error.ts';
-import {to_array} from '@fuzdev/fuz_util/array.ts';
+import { strip_end } from '@fuzdev/fuz_util/string.ts';
+import { type FetchValueCache, fetch_value } from '@fuzdev/fuz_util/fetch.ts';
+import type { Logger } from '@fuzdev/fuz_util/log.ts';
+import { DEV } from 'esm-env';
+import { UnreachableError } from '@fuzdev/fuz_util/error.ts';
+import { to_array } from '@fuzdev/fuz_util/array.ts';
 
 // TODO go through a single fetch helper and trace each call to the API,
 // so we can see the history in a tab displayed to any users who want to dig
@@ -21,7 +21,7 @@ export const to_mastodon_status_url = (host: string, id: string): string =>
 export const to_mastodon_status_url_with_author = (
 	host: string,
 	id: string,
-	author: string,
+	author: string
 ): string => `https://${host}/@${author}/${id}`;
 
 /**
@@ -30,7 +30,7 @@ export const to_mastodon_status_url_with_author = (
 export const to_mastodon_status_url_with_users_author = (
 	host: string,
 	id: string,
-	author: string,
+	author: string
 ): string => `https://${host}/users/${author}/statuses/${id}`;
 
 export const to_mastodon_api_status_url = (host: string, id: string): string =>
@@ -63,7 +63,7 @@ export const parse_mastodon_status_url = (url: string): MastodonStatusUrl | null
 		if (!author) return null;
 		const id = parts.length > 1 ? parts[parts.length - 1] : null;
 		if (!id) return null;
-		return {href: url, host: u.host, author, status_id: id};
+		return { href: url, host: u.host, author, status_id: id };
 	} catch (_err) {
 		return null;
 	}
@@ -76,7 +76,7 @@ export const fetch_mastodon_status_context = async (
 	log?: Logger,
 	request?: RequestInit,
 	token?: string,
-	fetch?: typeof globalThis.fetch,
+	fetch?: typeof globalThis.fetch
 ): Promise<MastodonStatusContext | null> => {
 	const url = to_mastodon_api_status_context_url(host, id);
 	const fetched = await fetch_value(url, {
@@ -85,7 +85,7 @@ export const fetch_mastodon_status_context = async (
 		cache,
 		return_early_from_cache: DEV,
 		log,
-		fetch,
+		fetch
 	});
 	if (!fetched.ok) return null;
 	return fetched.value;
@@ -98,7 +98,7 @@ export const fetch_mastodon_status = async (
 	log?: Logger,
 	request?: RequestInit,
 	token?: string,
-	fetch?: typeof globalThis.fetch,
+	fetch?: typeof globalThis.fetch
 ): Promise<MastodonStatus | null> => {
 	const url = to_mastodon_api_status_url(host, id);
 	const fetched = await fetch_value(url, {
@@ -107,7 +107,7 @@ export const fetch_mastodon_status = async (
 		cache,
 		return_early_from_cache: DEV,
 		log,
-		fetch,
+		fetch
 	});
 	if (!fetched.ok) return null;
 	return fetched.value;
@@ -120,7 +120,7 @@ export const fetch_mastodon_favourites = async (
 	log?: Logger,
 	request?: RequestInit,
 	token?: string,
-	fetch?: typeof globalThis.fetch,
+	fetch?: typeof globalThis.fetch
 ): Promise<Array<MastodonFavourite> | null> => {
 	const url = to_mastodon_api_favourites_url(host, status_id);
 	const fetched = await fetch_value(url, {
@@ -129,7 +129,7 @@ export const fetch_mastodon_favourites = async (
 		cache,
 		return_early_from_cache: DEV,
 		log,
-		fetch,
+		fetch
 	});
 	if (!fetched.ok) return null;
 	return fetched.value;
@@ -198,13 +198,13 @@ export interface MastodonStatus {
 			username: string;
 			url: string;
 			acct: string;
-		},
+		}
 	];
 	tags: [
 		{
 			name: string;
 			url: string;
-		},
+		}
 	];
 	emojis: Array<unknown>;
 	card: unknown; // | null;
@@ -243,9 +243,7 @@ export interface MastodonFavourite {
  * When filtering replies, at least one rule must pass for a reply to be included.
  */
 export type ReplyFilter =
-	| FavouritedByReplyFilter
-	| MinimumFavouritesReplyFilter
-	| CustomReplyFilter;
+	FavouritedByReplyFilter | MinimumFavouritesReplyFilter | CustomReplyFilter;
 
 export interface FavouritedByReplyFilter {
 	type: 'favourited_by';
@@ -262,13 +260,13 @@ export interface CustomReplyFilter {
 	should_include: (
 		status: MastodonStatus,
 		root_status: MastodonStatus,
-		status_context: MastodonStatusContext,
+		status_context: MastodonStatusContext
 	) => boolean;
 }
 
 export type CreateReplyFilters = (
 	item: MastodonStatus,
-	status_context: MastodonStatusContext,
+	status_context: MastodonStatusContext
 ) => ReplyFilter | Array<ReplyFilter> | null;
 
 // TODO somehow figure out which toots should be included but aren't, and put them at the top level with some indicator the parent isn't there, or insert a fake parent?
@@ -278,7 +276,7 @@ export const filter_valid_replies = async (
 	status_context: MastodonStatusContext,
 	reply_filter: ReplyFilter | Array<ReplyFilter> | null,
 	cache: FetchValueCache | null | undefined,
-	log: Logger | undefined,
+	log: Logger | undefined
 ): Promise<Array<MastodonStatus>> => {
 	const filters = reply_filter ? to_array(reply_filter) : null;
 	const statuses = status_context.descendants;

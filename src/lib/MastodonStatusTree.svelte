@@ -1,17 +1,17 @@
 <script lang="ts">
-	import type {MastodonStatus} from './mastodon.ts';
+	import type { MastodonStatus } from './mastodon.ts';
 	import Message from './MastodonStatusItem.svelte';
 	import MastodonStatusTree from './MastodonStatusTree.svelte';
 
 	const {
 		item,
-		items,
+		items
 	}: {
 		item: MastodonStatus;
 		items: Array<MastodonStatus>;
 	} = $props();
 
-	const {id} = $derived(item);
+	const { id } = $derived(item);
 	const replies = $derived(items.filter((i) => i.in_reply_to_id === id));
 </script>
 

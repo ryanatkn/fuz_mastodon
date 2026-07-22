@@ -1,19 +1,19 @@
 <script lang="ts">
 	import PendingButton from '@fuzdev/fuz_ui/PendingButton.svelte';
-	import {slide} from 'svelte/transition';
-	import {intersect} from '@fuzdev/fuz_ui/intersect.svelte.ts';
-	import type {FetchValueCache} from '@fuzdev/fuz_util/fetch.ts';
-	import type {Logger} from '@fuzdev/fuz_util/log.ts';
-	import type {Snippet} from 'svelte';
+	import { slide } from 'svelte/transition';
+	import { intersect } from '@fuzdev/fuz_ui/intersect.svelte.ts';
+	import type { FetchValueCache } from '@fuzdev/fuz_util/fetch.ts';
+	import type { Logger } from '@fuzdev/fuz_util/log.ts';
+	import type { Snippet } from 'svelte';
 
 	import MastodonStatusTree from './MastodonStatusTree.svelte';
 	import MastodonStatusItem from './MastodonStatusItem.svelte';
 	import TootLoader from './TootLoader.svelte';
-	import {load_from_storage, set_in_storage} from './storage.ts';
+	import { load_from_storage, set_in_storage } from './storage.ts';
 	import {
 		parse_mastodon_status_url,
 		type CreateReplyFilters,
-		type ReplyFilter,
+		type ReplyFilter
 	} from './mastodon.ts';
 	import TootInput from './TootInput.svelte';
 
@@ -39,7 +39,7 @@
 			? load_from_storage(autoload_storage_key, () => initial_autoload)
 			: initial_autoload,
 		onreset,
-		settings,
+		settings
 	}: {
 		url: string; // TODO @many rethink these names, maybe remove `initial` and change the other to `updated`? inconsistency with url and settings/autoload
 		/**
@@ -98,7 +98,7 @@
 
 	// TODO refactor with storage helpers with serialize/parse as options, locallyStored?
 	const show_settings_key = $derived(
-		settings_storage_key && 'show_settings' + settings_storage_key,
+		settings_storage_key && 'show_settings' + settings_storage_key
 	);
 
 	$effect(() => {
@@ -146,7 +146,7 @@
 		bind:loading
 		bind:load_time
 	>
-		{#snippet children({item, status_context, replies, load, loading, load_time})}
+		{#snippet children({ item, status_context, replies, load, loading, load_time })}
 			<!-- TODO this transition is working on my blog but not on this docs website, what's going on? I tried it on `/about` too -->
 			<!-- TODO techically this class should probably be added based on `include_replies`, and display an error if they're null, meaning failed to load -->
 			<div class="toot" class:replies transition:slide>
@@ -209,10 +209,10 @@
 					<div
 						class="controls"
 						{@attach intersect(() => ({
-							onintersect: ({intersecting}) => {
+							onintersect: ({ intersecting }) => {
 								if (intersecting && autoload) load();
 							},
-							count: 1,
+							count: 1
 						}))}
 					>
 						<div class="row">

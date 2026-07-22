@@ -1,12 +1,12 @@
 <script lang="ts">
-	import {format, formatDistance} from 'date-fns';
-	import {slide} from 'svelte/transition';
-	import {strip_start} from '@fuzdev/fuz_util/string.ts';
+	import { format, formatDistance } from 'date-fns';
+	import { slide } from 'svelte/transition';
+	import { strip_start } from '@fuzdev/fuz_util/string.ts';
 
-	import type {MastodonStatus} from './mastodon.ts';
+	import type { MastodonStatus } from './mastodon.ts';
 
 	const {
-		item,
+		item
 	}: {
 		item: MastodonStatus;
 	} = $props();
@@ -14,7 +14,7 @@
 	// see the CSP in `svelte.config.js`
 	/* eslint-disable svelte/no-at-html-tags */
 
-	const {created_at, edited_at, content, account, url, sensitive, spoiler_text} = $derived(item);
+	const { created_at, edited_at, content, account, url, sensitive, spoiler_text } = $derived(item);
 	const account_created = $derived(account.created_at);
 	const account_avatar = $derived(account.avatar_static);
 	const account_url = $derived(account.url);

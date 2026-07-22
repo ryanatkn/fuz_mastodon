@@ -97,9 +97,9 @@ Toot.svelte (main entry point)
 
 ```typescript
 type ReplyFilter =
-	| {type: 'favourited_by'; favourited_by: string[]}
-	| {type: 'minimum_favourites'; minimum_favourites: number}
-	| {type: 'custom'; should_include: (status, root, context) => boolean};
+	| { type: 'favourited_by'; favourited_by: string[] }
+	| { type: 'minimum_favourites'; minimum_favourites: number }
+	| { type: 'custom'; should_include: (status, root, context) => boolean };
 
 type CreateReplyFilters = (item, context) => ReplyFilter | ReplyFilter[] | null;
 ```
