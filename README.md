@@ -30,6 +30,10 @@ Planned:
 - multiple views and layouts
 - a more complete and robust wrapper around the Mastodon API
 
+## Contributing
+
+[fuz.dev/contributing](https://www.fuz.dev/contributing)
+
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
 [MIT](LICENSE)
